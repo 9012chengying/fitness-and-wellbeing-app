@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./quiz.css">
+    </head>
+    <body>
+        <h1>Quiz</h1>
+
+        <div id="page1" class="container current page">
+            <h2>Question 1</h2>
+            <button class="ans correct">Ans 1</button>
+            <button class="ans incorrect">Ans2</button>
+            <button class="ans incorrect">Ans3</button>
+        </div>
+
+
+        <div id="page2" class="container hidden page">
+            <h2>Question 2</h2>
+            <button class="ans correct">Ans 1</button>
+            <button class="ans incorrect">Ans2</button>
+            <button class="ans incorrect">Ans3</button>
+        </div>
+
+        <div id="page3" class="container hidden page">
+            <h2>Question 3</h2>
+            <button class="ans correct">Ans 1</button>
+            <button class="ans incorrect">Ans2</button>
+            <button class="ans incorrect">Ans3</button>
+        </div>
+
+        <div id="endOfQuiz" class="hidden">
+            <h2>"Well done!"</h2>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <div id="nextButton">
+            <button currentPage="0">Next Question</button>
+        </div>
+    </body>
+
+    <script>
+        let numberOfQuestions = document.querySelectorAll("div.page").length;
+        let progressBarIncrement = (100/numberOfQuestions);
+        let progress = 0;
+
+        let page = document.querySelector(".current");
+        let correct = document.querySelector(".current > button.correct");
+        let incorrect = document.querySelectorAll(".current > button.incorrect");
+
+        let correctSelection = function() {
+            this.classList.add("green");
+            incorrect.forEach(ans => ans.classList.add("red"));
+        }
+
+        let incorrectSelection = function() {
+            this.classList.add("red");
+        }
+
+        let onClickNext = (e) => {
+            let button = e.target;
+            let currPageIndex = button.getAttribute("currentPage");
+            let nextPageIndex = parseInt(currPageIndex) + 1;
+            button.setAttribute("currentPage", nextPageIndex);
+
+            toNextPage(nextPageIndex);
+        }
+
+                
+        let resetEventListeners = () => {
+            correct.addEventListener("click", correctSelection);
+            incorrect.forEach(ans => ans.addEventListener("click", incorrectSelection));
+        }
+
+        let toNextPage = i => {
+            page.classList.remove("current");
+            page.classList.add("hidden");
+            progress += progressBarIncrement;
+            console.log(progress);
+
+            if (i==numberOfQuestions) {
+                document.querySelector("div.progress-bar").style.width = progress+"%";
+                document.querySelector("#endOfQuiz").classList.remove("hidden");
+            } else {
+                let nextPage = document.querySelectorAll(".page")[i];
+                nextPage.classList.remove("hidden");
+                nextPage.classList.add("current");
+
+                page = document.querySelector(".current");
+                correct = document.querySelector("div.current > button.correct");
+                incorrect = document.querySelectorAll("div.current > button.incorrect");
+                nextButton = document.querySelector("#nextButton > button");
+
+                document.querySelector("div.progress-bar").style.width = progress+"%";
+                i++;
+
+                resetEventListeners();
+            }
+        }
+
+        correct.addEventListener("click", correctSelection);
+        incorrect.forEach(ans => ans.addEventListener("click", incorrectSelection));
+
+        let nextButton = document.querySelector("#nextButton > button");
+        nextButton.addEventListener("click", onClickNext);
+    </script>
+</html>
