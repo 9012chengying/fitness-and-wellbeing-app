@@ -9,18 +9,23 @@
 
 <!--menu -->
 
-<nav>
+<div class ="nav">
   <a class="active" href="#home">Test You Knowledge</a>
   <a href="#question">Ask a question</a>
   <a href="#studentview">Student View</a>
   <a href="#lectureview">Lecture View</a>
-</nav>
+</div>
 
 <body>
   <div id = "welcome" class="current">  <!--start button div -->
     <h1> Java Quiz</h1>
     <p> This is a quiz to test you knowledge </p>
   </div>
+
+<button id ="btn-start"> Start Quiz </button>
+
+
+
 
   <div id = "question1" class="hidden"> <!--question 1 -->
     <h2>question 1</h2>
@@ -76,7 +81,7 @@
 <br>
 
 
-<button type="finish">Finish</button>
+
 
 
 <div id = "score" >  <!--try again -->
@@ -89,7 +94,7 @@
   let nextButton = document.querySelector("#toNext");
 
   let toNext = function() {
-    
+
   }
 
   nextButton.addEventListener("click", toNext)
