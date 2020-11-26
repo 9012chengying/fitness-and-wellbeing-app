@@ -17,66 +17,70 @@
 </div>
 
 <body>
-  <div id = "welcome" class="current">  <!--start button div -->
+  <div id = "welcome" class="page current">  <!--start button div -->
     <h1> Java Quiz</h1>
     <p> This is a quiz to test you knowledge </p>
   </div>
 
+<<<<<<< HEAD
 <button id ="btn-start"> Start Quiz </button>
 
 
 
 
   <div id = "question1" class="hidden"> <!--question 1 -->
+=======
+  <div id = "question1" class="page hidden"> <!--question 1 -->
+>>>>>>> 7a5126c3f6590e2b659e58cbc93b018fd63efd22
     <h2>question 1</h2>
     <button class = "correct"> Answer 1 </button>
     <button class ="incorrect" >Answer 2 </button>
     <button class ="incorrect" >Answer 3 </button>
   </div>
 
-  <div id = "question2" class="hidden"> <!--question 2 -->
+  <div id = "question2" class="page hidden"> <!--question 2 -->
     <h2> question 2</h2>
     <button class = "incorrect"> Answer 1 </button>
     <button class ="incorrect" >Answer 2 </button>
     <button class ="correct" >Answer 3 </button>
   </div>
 
-  <div id = "question3" class="hidden"> <!--question 3 -->
+  <div id = "question3" class="page hidden"> <!--question 3 -->
     <h2> question 3</h2>
     <button class = "incorrect"> Answer 1 </button>
     <button class ="correct" >Answer 2 </button>
     <button class ="incorrect" >Answer 3 </button>
   </div>
 
-  <div id = "question4" class="hidden"> <!--question 4 -->
+  <div id = "question4" class="page hidden"> <!--question 4 -->
     <h2> question 4</h2>
     <button class = "correct"> Answer 1 </button>
     <button class ="incorrect" >Answer 2 </button>
     <button class ="incorrect" >Answer 3 </button>
   </div>
 
-  <div id = "question5" class="hidden"> <!--question 5 -->
+  <div id = "question5" class="page hidden"> <!--question 5 -->
     <h2> question 5</h2>
     <button class = "incorrect"> Answer 1 </button>
     <button class ="incorrect" >Answer 2 </button>
     <button class ="correct" >Answer 3 </button>
   </div>
 
-  <div id = "question6" class="hidden"> <!--question 6 -->
+  <div id = "question6" class="page hidden"> <!--question 6 -->
     <h2> question 6</h2>
     <button class = "incorrect"> Answer 1 </button>
     <button class ="correct" >Answer 2 </button>
     <button class ="incorrect" >Answer 3 </button>
   </div>
 
-  <div id = "question7" class="hidden"> <!--question 7 -->
+  <div id = "question7" class="page hidden"> <!--question 7 -->
     <h2> question 7</h2>
     <button class = "incorrect"> Answer 1 </button>
     <button class ="incorrect" >Answer 2 </button>
     <button class ="correct" >Answer 3 </button>
   </div>
 
-  <button id="toNext">Next</button>
+  <button id="toNext" currentPageIndex="0">Next</button>
 
 <br>
 
@@ -90,14 +94,34 @@
 </div>
 
 <script>
-  let page = Document.querySelectorAll(div.current);
+  let pages = document.querySelectorAll("div.page");
   let nextButton = document.querySelector("#toNext");
+  let currentPageIndex = parseInt(nextButton.getAttribute("currentPageIndex"));
+
+  let correct = document.querySelector(".current")
 
   let toNext = function() {
+<<<<<<< HEAD
 
+=======
+    pages[currentPageIndex].classList.remove("current");
+    pages[currentPageIndex].classList.add("hidden");
+
+    currentPageIndex++;
+
+    pages[currentPageIndex].classList.add("current");
+    pages[currentPageIndex].classList.remove("hidden");
   }
 
-  nextButton.addEventListener("click", toNext)
+  let correctSelect = function() {
+    if (this.classList.contains("correct")) {
+      this.classList.add("green");
+    }
+>>>>>>> 7a5126c3f6590e2b659e58cbc93b018fd63efd22
+  }
+
+  nextButton.addEventListener("click", toNext);
+  correct.addEventListener("click",correctSelect);
 </script>
 
 </html>

@@ -2,6 +2,7 @@
     display: none;
 }
 
+<<<<<<< HEAD
 .nav {
   background-color: #333;
   overflow: hidden;
@@ -33,3 +34,12 @@
 
 
 }
+=======
+.green {
+    background-color: greenyellow;
+}
+
+.red {
+    background-color: red;
+}
+>>>>>>> 7a5126c3f6590e2b659e58cbc93b018fd63efd22
