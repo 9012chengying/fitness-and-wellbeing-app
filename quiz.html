@@ -18,7 +18,7 @@
 </nav>
 
 <body class="container">
-  <div id = "welcome" class="page current">  <!--start button div -->
+  <div id = "welcome" class="page current container">  <!--start button div -->
     <h1> Java Quiz</h1>
     <p> This is a quiz to test you knowledge </p>
   </div>
@@ -65,28 +65,23 @@
   </div>
 
   <div id = "question7" class="page hidden"> <!--question 7 -->
-    <h2> 7.	Java Keywords are written in lowercase as well as uppercase</h2>
+    <h2> 8.	Java Keywords are written in lowercase as well as uppercase</h2>
     <button class = "incorrect"> True </button>
     <button class ="correct" >False</button>
   </div>
 
   <button id="toNext" currentPageIndex="0">Next</button>
 
-<br>
-
-
-<button type="finish">Finish</button>
-
-
-<div id = "score" >  <!--try again -->
-  <h4> Your Score is </h4>
-  <button type = "try again"> Try Again </button>
-</div>
+  <div id="end" class="page hidden">
+    <h2>End of Quiz</h2>
+    <h2 id="score"></h2>
+  </div>
 
 <script>
   let pages = document.querySelectorAll("div.page");
   let nextButton = document.querySelector("#toNext");
   let currentPageIndex = parseInt(nextButton.getAttribute("currentPageIndex"));
+  let score = 0;
 
   let correct;
   let incorrect;
@@ -105,10 +100,19 @@
 
     incorrect = document.querySelectorAll(".current > .incorrect");
     incorrect.forEach(ans => ans.addEventListener("click", incorrectSelect));
+
+    if (currentPageIndex == 7) {
+      score++;
+      score.toString();
+      let scorePrint = document.createTextNode(score);
+      document.querySelector("#score").appendChild(scorePrint);
+    }
   }
 
   let correctSelect = function() {
     this.classList.add("green");
+    score++;
+    console.log(score);
   }
 
   let incorrectSelect = function() {
@@ -116,6 +120,15 @@
   }
 
   nextButton.addEventListener("click", toNext);
+
+  
+
+  let scoreHold = document.createElement("h2");
+  let stringScore = score
+  let scoreFig = document.createTextNode();
+
+  scoreHold.appendChild(scoreFig);
+  document.querySelector("#end").appendChild(scoreHold);
 </script>
 
 </html>
