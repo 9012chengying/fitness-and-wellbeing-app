@@ -89,6 +89,8 @@
   let nextButton = document.querySelector("#toNext");
   let currentPageIndex = parseInt(nextButton.getAttribute("currentPageIndex"));
 
+  let correct = document.querySelector(".current")
+
   let toNext = function() {
     pages[currentPageIndex].classList.remove("current");
     pages[currentPageIndex].classList.add("hidden");
@@ -99,7 +101,14 @@
     pages[currentPageIndex].classList.remove("hidden");
   }
 
-  nextButton.addEventListener("click", toNext)
+  let correctSelect = function() {
+    if (this.classList.contains("correct")) {
+      this.classList.add("green");
+    }
+  }
+
+  nextButton.addEventListener("click", toNext);
+  correct.addEventListener("click",correctSelect);
 </script>
 
 </html>
