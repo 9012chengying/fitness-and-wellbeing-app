@@ -87,7 +87,8 @@
   let nextButton = document.querySelector("#toNext");
   let currentPageIndex = parseInt(nextButton.getAttribute("currentPageIndex"));
 
-  //let correct = document.querySelector(".current > .correct");
+  let correct;
+  let incorrect;
 
   let toNext = function() {
     pages[currentPageIndex].classList.remove("current");
@@ -98,12 +99,19 @@
     pages[currentPageIndex].classList.add("current");
     pages[currentPageIndex].classList.remove("hidden");
 
-    let correct = document.querySelector(".current > .correct");
+    correct = document.querySelector(".current > .correct");
     correct.addEventListener("click",correctSelect);
+
+    incorrect = document.querySelectorAll(".current > .incorrect");
+    incorrect.forEach(ans => ans.addEventListener("click", incorrectSelect));
   }
 
   let correctSelect = function() {
     this.classList.add("green");
+  }
+
+  let incorrectSelect = function() {
+    this.classList.add("red");
   }
 
   nextButton.addEventListener("click", toNext);
