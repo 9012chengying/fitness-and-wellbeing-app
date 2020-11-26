@@ -1,104 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--link to javascript page and css -->
-
-<title> Java Quiz </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link to javascript page and css -->
+  <link href="./quiz.css" rel="stylesheet">
+  <title> Java Quiz </title>
 </head>
 
 <!--menu -->
 
-<div class="topnav">
+<nav>
   <a class="active" href="#home">Test You Knowledge</a>
   <a href="#question">Ask a question</a>
   <a href="#studentview">Student View</a>
   <a href="#lectureview">Lecture View</a>
-</div>
+</nav>
 
 <body>
-
-  <div id = "welcome" >  <!--start button div -->
+  <div id = "welcome" class="current">  <!--start button div -->
     <h1> Java Quiz</h1>
     <p> This is a quiz to test you knowledge </p>
-    <button type = "nextbutton"> Start Quiz </button>
   </div>
 
-<div id = "question1"> <!--question 1 -->
+  <div id = "question1" class="hidden"> <!--question 1 -->
+    <h2>question 1</h2>
+    <button class = "correct"> Answer 1 </button>
+    <button class ="incorrect" >Answer 2 </button>
+    <button class ="incorrect" >Answer 3 </button>
+  </div>
 
-  <h2> question 1</h2>
+  <div id = "question2" class="hidden"> <!--question 2 -->
+    <h2> question 2</h2>
+    <button class = "incorrect"> Answer 1 </button>
+    <button class ="incorrect" >Answer 2 </button>
+    <button class ="correct" >Answer 3 </button>
+  </div>
 
-  <button class = "correct"> Answer 1 </button>
-  <button class ="incorrect" >Answer 2 </button>
-  <button class ="incorrect" >Answer 3 </button>
+  <div id = "question3" class="hidden"> <!--question 3 -->
+    <h2> question 3</h2>
+    <button class = "incorrect"> Answer 1 </button>
+    <button class ="correct" >Answer 2 </button>
+    <button class ="incorrect" >Answer 3 </button>
+  </div>
 
-</div>
+  <div id = "question4" class="hidden"> <!--question 4 -->
+    <h2> question 4</h2>
+    <button class = "correct"> Answer 1 </button>
+    <button class ="incorrect" >Answer 2 </button>
+    <button class ="incorrect" >Answer 3 </button>
+  </div>
 
-<div id = "question2"> <!--question 2 -->
+  <div id = "question5" class="hidden"> <!--question 5 -->
+    <h2> question 5</h2>
+    <button class = "incorrect"> Answer 1 </button>
+    <button class ="incorrect" >Answer 2 </button>
+    <button class ="correct" >Answer 3 </button>
+  </div>
 
+  <div id = "question6" class="hidden"> <!--question 6 -->
+    <h2> question 6</h2>
+    <button class = "incorrect"> Answer 1 </button>
+    <button class ="correct" >Answer 2 </button>
+    <button class ="incorrect" >Answer 3 </button>
+  </div>
 
-  <h2> question 2</h2>
+  <div id = "question7" class="hidden"> <!--question 7 -->
+    <h2> question 7</h2>
+    <button class = "incorrect"> Answer 1 </button>
+    <button class ="incorrect" >Answer 2 </button>
+    <button class ="correct" >Answer 3 </button>
+  </div>
 
-  <button class = "incorrect"> Answer 1 </button>
-  <button class ="incorrect" >Answer 2 </button>
-  <button class ="correct" >Answer 3 </button>
-
-</div>
-
-<div id = "question3"> <!--question 3 -->
-
-
-  <h2> question 3</h2>
-
-  <button class = "incorrect"> Answer 1 </button>
-  <button class ="correct" >Answer 2 </button>
-  <button class ="incorrect" >Answer 3 </button>
-
-</div>
-
-<div id = "question4"> <!--question 4 -->
-
-
-  <h2> question 4</h2>
-
-  <button class = "correct"> Answer 1 </button>
-  <button class ="incorrect" >Answer 2 </button>
-  <button class ="incorrect" >Answer 3 </button>
-
-</div>
-
-<div id = "question5"> <!--question 5 -->
-
-
-  <h2> question 5</h2>
-
-  <button class = "incorrect"> Answer 1 </button>
-  <button class ="incorrect" >Answer 2 </button>
-  <button class ="correct" >Answer 3 </button>
-
-</div>
-
-<div id = "question6"> <!--question 6 -->
-
-
-  <h2> question 6</h2>
-
-  <button class = "incorrect"> Answer 1 </button>
-  <button class ="correct" >Answer 2 </button>
-  <button class ="incorrect" >Answer 3 </button>
-
-</div>
-
-<div id = "question7"> <!--question 7 -->
-
-
-  <h2> question 7</h2>
-
-  <button class = "incorrect"> Answer 1 </button>
-  <button class ="incorrect" >Answer 2 </button>
-  <button class ="correct" >Answer 3 </button>
-
-</div>
+  <button id="toNext">Next</button>
 
 <br>
 
@@ -111,6 +84,15 @@
   <button type = "try again"> Try Again </button>
 </div>
 
+<script>
+  let page = Document.querySelectorAll(div.current);
+  let nextButton = document.querySelector("#toNext");
 
+  let toNext = function() {
+    
+  }
+
+  nextButton.addEventListener("click", toNext)
+</script>
 
 </html>
