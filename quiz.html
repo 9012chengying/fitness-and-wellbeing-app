@@ -91,7 +91,6 @@
     pages[currentPageIndex].classList.add("hidden");
 
     currentPageIndex++;
-
     pages[currentPageIndex].classList.add("current");
     pages[currentPageIndex].classList.remove("hidden");
 
@@ -102,9 +101,8 @@
     incorrect.forEach(ans => ans.addEventListener("click", incorrectSelect));
 
     if (currentPageIndex == 7) {
-      score++;
       score.toString();
-      let scorePrint = document.createTextNode(score);
+      let scorePrint = document.createTextNode(`${score}/7`);
       document.querySelector("#score").appendChild(scorePrint);
     }
   }
@@ -112,7 +110,6 @@
   let correctSelect = function() {
     this.classList.add("green");
     score++;
-    console.log(score);
   }
 
   let incorrectSelect = function() {
@@ -120,15 +117,6 @@
   }
 
   nextButton.addEventListener("click", toNext);
-
-  
-
-  let scoreHold = document.createElement("h2");
-  let stringScore = score
-  let scoreFig = document.createTextNode();
-
-  scoreHold.appendChild(scoreFig);
-  document.querySelector("#end").appendChild(scoreHold);
 </script>
 
 </html>
