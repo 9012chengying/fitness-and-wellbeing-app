@@ -12,8 +12,18 @@
         *{
             margin:0;
             padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+        }
+        p{
+            font-size: 2.5rem;
         }
         nav{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
             min-height: 3vh;
             font-size: 2rem;
         }
@@ -26,15 +36,28 @@
             font-size: 5rem;
             color: black;
         }
+        main>h2{
+            text-align: center;
+            font-size: 4rem;
+            padding: 20px 0;
+        }
         .client-card{
-            min-height: 15vh;
+            margin-top: 1rem;
+            max-height: 50vh;
             display:flex;
             flex-direction: row;
+            justify-content: flex-start;
+            padding: 10px;
+            align-items: center;
         }
         .client-thumbnail{
             width: 200px;
             height: 200px;
         }
+        .client-summary{
+            padding: 1.5rem;
+        }
+
     </style>
 </head>
 <body>
@@ -47,28 +70,56 @@
 </header>
 <main>
     <h2>Your Clients</h2>
+
     <div class="client-list">
         <div class="client-card">
             <img class="client-thumbnail" src="/images/male_profile_image.jpg" alt="thumbnail image of client">
             <div class="client-summary">
                 <p>Client Name:</p>
                 <p>Last workout completed:</p>
+                <button class="btn btn-primary btn-lg">View Details</button>
+            </div>
+
+        </div>
+        <div class="client-card">
+            <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client">
+            <div class="client-summary">
+                <p>Client Name:</p>
+                <p>Last workout completed:</p>
+                <button class="btn btn-primary btn-lg">View Details</button>
             </div>
         </div>
         <div class="client-card">
-            <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client" width="50">
-        </div>
-        <div class="client-card">
             <img class="client-thumbnail" src="/images/male_profile_image.jpg" alt="thumbnail image of client">
+            <div class="client-summary">
+                <p>Client Name:</p>
+                <p>Last workout completed:</p>
+                <button class="btn btn-primary btn-lg">View Details</button>
+            </div>
         </div>
         <div class="client-card">
             <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client">
+            <div class="client-summary">
+                <p>Client Name:</p>
+                <p>Last workout completed:</p>
+                <button class="btn btn-primary btn-lg">View Details</button>
+            </div>
         </div>
         <div class="client-card">
             <img class="client-thumbnail" src="/images/male_profile_image.jpg" alt="thumbnail image of client">
+            <div class="client-summary">
+                <p>Client Name:</p>
+                <p>Last workout completed:</p>
+                <button class="btn btn-primary btn-lg">View Details</button>
+            </div>
         </div>
         <div class="client-card">
             <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client">
+            <div class="client-summary">
+                <p>Client Name:</p>
+                <p>Last workout completed:</p>
+                <button class="btn btn-primary btn-lg">View Details</button>
+            </div>
         </div>
     </div>
 </main>
