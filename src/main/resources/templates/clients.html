@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+    <title>View All Clients</title>
+    <style>
+        html{
+            font-size: 10px;
+        }
+        *{
+            margin:0;
+            padding:0;
+        }
+        nav{
+            min-height: 3vh;
+            font-size: 2rem;
+        }
+        header{
+            min-height:10vh;
+            background-color: orange;
+            text-align: center;
+        }
+        header>h1{
+            font-size: 5rem;
+            color: black;
+        }
+        .client-card{
+            min-height: 15vh;
+            display:flex;
+            flex-direction: row;
+        }
+        .client-thumbnail{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <span>Back to Home</span>
+    <span>Invite Clients</span>
+</nav>
+<header>
+    <h1>Phyt App</h1>
+</header>
+<main>
+    <h2>Your Clients</h2>
+    <div class="client-list">
+        <div class="client-card">
+            <img class="client-thumbnail" src="/images/male_profile_image.jpg" alt="thumbnail image of client">
+            <div class="client-summary">
+                <p>Client Name:</p>
+                <p>Last workout completed:</p>
+            </div>
+        </div>
+        <div class="client-card">
+            <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client" width="50">
+        </div>
+        <div class="client-card">
+            <img class="client-thumbnail" src="/images/male_profile_image.jpg" alt="thumbnail image of client">
+        </div>
+        <div class="client-card">
+            <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client">
+        </div>
+        <div class="client-card">
+            <img class="client-thumbnail" src="/images/male_profile_image.jpg" alt="thumbnail image of client">
+        </div>
+        <div class="client-card">
+            <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client">
+        </div>
+    </div>
+</main>
+<footer>
+
+</footer>
+</body>
+</html>
