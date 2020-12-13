@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+    <title>Main Home Page</title>
+    <style>
+        body {
+            background-color: lightblue;
+            background-image: url('background.jpg');
+            background-attachment: fixed;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+
+        header {
+            margin-top: 16rem;
+            margin-left: 2rem;
+            margin-right: 2rem;
+            min-height: 10vh;
+
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 2rem;
+            border-radius: 1rem;
+        }
+
+        header > h1 {
+            font-size: 8rem;
+            color: white;
+        }
+
+        header > h2 {
+            font-size: 8rem;
+            padding: 20px 0;
+            color: white;
+        }
+
+        .trainerbutton {
+            margin: 1rem;
+            margin-top: 18rem;
+            max-height: 50vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            padding: 1rem 0rem;
+            padding-top: 2rem;
+            align-items: center;
+            background-color: transparent;
+
+        }
+
+        .clientbutton {
+            margin: 1rem;
+            margin-top: 2rem;
+            max-height: 50vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            padding: 1rem 0rem;
+            align-items: center;
+            border-top: 2rem;
+            background-color: transparent;
+
+        }
+
+        footer {
+            color: white;
+            min-height: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 2rem 2.5rem;
+            bottom: 0;
+        }
+    </style>
+</head>
+    <body>
+        <header>
+            <h1>PROJECT</h1>
+            <h2>PHYT</h2>
+        </header>
+        <main>
+    <!--  <div class="userbutton">  -->
+
+
+            <div class="trainerbutton">
+                <a class="btn btn-primary btn-lg btn-block"href="/trainerlogin">I am a trainer</a>
+            </div>
+            <div class="clientbutton">
+                <a class="btn btn-primary btn-lg btn-block"href="/clientlogin">I am a client</a>
+            </div>
+        </main>
+        <footer>
+            <p>&copy Phyt App ltd</p>
+        </footer>
+    </body>
+</html>
