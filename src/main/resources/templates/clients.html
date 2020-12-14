@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
+        <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+        <title>View All Clients</title>
+        <style>
+            html{
+                font-size: 10px;
+            }
+            *{
+                margin:0;
+                padding:0;
+                box-sizing: border-box;
+            }
+            body{
+                width: 100%;
+            }
+
+            p, a{
+                font-size: 2.5rem;
+            }
+            a{
+                color: black;
+                text-decoration: none;
+            }
+            a:hover{
+                color: #007bff;
+                text-decoration: none;
+            }
+            nav{
+                background-color: white;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                display:flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 15rem;
+                font-size: 2rem;
+                padding: 2rem 2.5rem;
+                z-index: 1;
+            }
+            nav>span>a>i{
+                padding: 0 1rem;
+            }
+            .trainer-image{
+                width: 50px;
+                height: 50px;
+            }
+            header{
+                margin-top: 16rem;
+                min-height:10vh;
+                background-color: orange;
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem 2.5rem;
+            }
+            header>h1{
+                font-size: 5rem;
+                color: black;
+            }
+            header>h2{
+                font-size: 4rem;
+                padding: 20px 0;
+            }
+            .client-card{
+                margin: 1rem;
+                max-height: 50vh;
+                display:flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                padding: 1rem 3rem;
+                align-items: center;
+                border: #007bff solid 0.2rem;
+                border-radius: 1rem;
+            }
+            .client-thumbnail{
+                width: 150px;
+                height: 150px;
+            }
+            .client-summary{
+                padding: 1.5rem;
+                flex-basis: 65%;
+            }
+            .btn-xl {
+                padding: 10px 20px;
+                font-size: 2rem;
+                border-radius: 10px;
+            }
+            footer{
+                min-height: 10vh;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                padding: 2rem 2.5rem;
+            }
+
+        </style>
+    </head>
+    <body>
+    <!--Top navigation-->
+        <nav>
+            <span><a href="/trainer/home"><i class="fas fa-arrow-left"></i>Back to Home</a></span>
+            <span>Joe Bloggs
+            <img class="trainer-image" src="/images/male_profile_image.jpg" alt="trainer profile image"></span>
+            <span><a href="">Invite Clients <i class="fas fa-user-plus"></i></a></span>
+        </nav>
+
+        <header>
+            <h1>Phyt App</h1>
+            <h2>Your Clients</h2>
+        </header>
+
+    <!--main list of trainers clients-->
+        <main>
+            <div class="client-list">
+                <div class="client-card">
+                    <img class="client-thumbnail" src="/images/male_profile_image.jpg" alt="thumbnail image of client">
+                    <div class="client-summary">
+                        <p>Client Name: John Smith</p>
+                        <p>Last workout completed: 10/12/2020</p>
+                    </div>
+                    <button class="btn btn-primary btn-xl">View Details</button>
+                </div>
+
+                <div class="client-card">
+                    <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client">
+                    <div class="client-summary">
+                        <p>Client Name: Jane Smith</p>
+                        <p>Last workout completed: 7/12/2020</p>
+                    </div>
+                    <button class="btn btn-primary btn-xl">View Details</button>
+                </div>
+                <div class="client-card">
+                    <img class="client-thumbnail" src="/images/male_profile_image.jpg" alt="thumbnail image of client">
+                    <div class="client-summary">
+                        <p>Client Name:</p>
+                        <p>Last workout completed:</p>
+                    </div>
+                    <button class="btn btn-primary btn-xl">View Details</button>
+                </div>
+                <div class="client-card">
+                    <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client">
+                    <div class="client-summary">
+                        <p>Client Name:</p>
+                        <p>Last workout completed:</p>
+                    </div>
+                    <button class="btn btn-primary btn-xl">View Details</button>
+                </div>
+                <div class="client-card">
+                    <img class="client-thumbnail" src="/images/male_profile_image.jpg" alt="thumbnail image of client">
+                    <div class="client-summary">
+                        <p>Client Name: </p>
+                        <p>Last workout completed:</p>
+                    </div>
+                    <button class="btn btn-primary btn-xl">View Details</button>
+
+                </div>
+                <div class="client-card">
+                    <img class="client-thumbnail" src="/images/female_profile_image.jpg" alt="thumbnail image of client">
+                    <div class="client-summary">
+                        <p>Client Name:</p>
+                        <p>Last workout completed:</p>
+                    </div>
+                    <button class="btn btn-primary btn-xl">View Details</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- add a footer to contain about us and contact us links-->
+        <footer>
+            <p>&copy Phyt App ltd</p>
+        </footer>
+    </body>
+</html>
