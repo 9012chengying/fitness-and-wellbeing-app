@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="StyleSheet.css"> <!--change name to match CSS file-->
+    <title>View Workout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        .backArrow {
+            color: black;
+            text-decoration: none;
+            font-size: 30px;
+            margin-left: 10px;
+            transition: width 1s;
+        }
+
+        .backArrow:hover {
+            color: blue;
+        }
+
+        header {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: white;
+            padding: 2%;
+            background-color: cornflowerblue;
+
+        }
+
+        .exerciseThumbnailsBlock {
+            text-align: center;
+        }
+
+        img {
+            margin-right: 1%;
+            margin-left: 1%;
+            display: inline-block;
+            border: 3px solid cornflowerblue;
+            border-radius: 10px;
+            width: 20%;
+        }
+
+        .exerciseNamesBlock {
+            text-align: center;
+        }
+
+        .exerciseName {
+            clear: both;
+            margin-right: 1%;
+            margin-left: 1%;
+            display: inline-block;
+            border-radius: 8px;
+            width: 20%;
+            text-align: center;
+        }
+
+        .workoutDescription {
+            display: block;
+            padding: 1%;
+            height: 180px;
+            background-color: cornflowerblue;
+            font-size: 25px;
+            color: white;
+            text-align: center;
+        }
+
+        footer {
+            clear: both;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .startButton {
+            text-decoration: none;
+            color: cornflowerblue;
+            font-size: 40px;
+            padding: 0.5%;
+            border: 3px solid cornflowerblue;
+            border-radius: 8px;
+            width: 250px;
+        }
+
+        .startButton:hover {
+            background-color: cornflowerblue;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="ClientHomePage.html" class="backArrow">&larr;</a> <!--change name to match html file-->
+    </nav>
+    <header>
+        <h1>Preview Workout</h1>
+    </header>
+    <br>
+    <main>
+        <div class="exerciseThumbnailsBlock">
+            <img src="IMG1.PNG">
+            <img src="IMG2.PNG">
+            <img src="IMG3.PNG">
+            <img src="IMG4.PNG">
+        </div>
+        <div class="exerciseNamesBlock">
+            <div class="exerciseName">Jog</div>
+            <div class="exerciseName">Jump Rope</div>
+            <div class="exerciseName">Lunges</div>
+            <div class="exerciseName">Deadlift</div>
+        </div>
+        <br>
+        <div class="workoutDescription">
+            <span class="criteria">Workout Number 15</span><br>
+            <span class="criteria">30 Minutes</span><br>
+            <span class="criteria">Set On 10/12/20</span><br>
+            <span class="criteria">Complete By 13/12/20</span><br>
+            <span class="criteria">Full-Body Workout</span><br>
+            <span class="criteria">Need 5kg Dumbbells, 8kg Kettlebell</span><br>
+        </div>
+        <br><br>
+        <footer>
+            <a href="Workout.html" class="startButton">Start Workout</a> <!--change name to match html file-->
+        </footer>
+        <br><br>
+    </main>
+</body>
+</html>
