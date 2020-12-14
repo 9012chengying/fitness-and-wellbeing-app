@@ -4,124 +4,40 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+    <link rel="stylesheet" href="Ptcss.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="PTJS.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
     <title>PT Homepage</title>
-    <style>
-        html{
-            font-size: 10px;
-        }
-        /**{*/
-        /*    margin:0;*/
-        /*    padding:0;*/
-        /*    box-sizing: border-box;*/
-        /*}*/
-        body{
-            height: auto;
-            width: auto;
-        }
-        h1{
-            text-align: center;
-            font-size: 2.5rem;
-        }
-
-        p, a{
-            font-size: 2.5rem;
-        }
-        nav a{
-            color: black;
-            text-decoration: none;
-        }
-        nav a:hover{
-            color: #007bff;
-            text-decoration: none;
-        }
-        nav{
-
-            background-color: white;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display:flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 1rem;
-            font-size: 1rem;
-            padding: 2em 1.5em;
-
-            z-index: 1;
-
-        }
-        nav>span>a>i{
-            padding: 0 1rem;
-        }
-
-
-        .stuff{
-            margin-top: 100px;
-            margin-bottom: 100px;
-        }
-        img.pt-image{
-
-            height: auto;
-            border-radius: 50%;
-        }
-
-        footer{
-            min-height: 10vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            padding: 2rem 2.5rem;
-        }
-        div.ratings h2{
-            font-size: 2.5rem;
-        }
-        div.ratings a
-        {
-            color:#f1c40f;
-            font-size:20px;
-            align-content: center;
-        }
-        div.ratings a:hover
-        {
-            color:#f39c12;
-            text-decoration:none;
-        }
-        div p{
-            font-size: 1.5rem;
-            text-align: left;
-        }
-        div strong{
-            font-size: 2rem;
-        }
-        div.info{
-
-            margin-bottom: 150px;
-        }
-
-
-
-
-
-
-    </style>
 </head>
 <body>
 <!--Top navigation-->
-<nav>
-    <span><a href=""><i class="fas fa-arrow-left"></i>Back</a></span>
-    <span><a href="">Create an exercise<i class="fas fa-dumbbell"></i></a></span>
-    <span><a href="">Bookings<i class="fas fa-book"></i></a></span>
-    <span><a href="">View Clients <i class="fas fa-users"></i></a></span>
-    <span><a href="">Your Account <i class="fas fa-user-cog"></i></a></span>
+<a href="#" class="toggle-btn">
+<!--    <i class="fas fa-bars"></i>-->
+</a>
 
+<nav class="nav-bar">
+
+<div class="brand ">PHYT</div>
+
+
+    <div class="nav-links">
+        <ul>
+            <li><a href="#" class="homes"><i class="fas fa-home active"></i>Home</a></li>
+            <li>  <a href="#"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
+            <li> <a href="#"><i class="fas fa-book"></i>Bookings</a></li>
+            <li><a href="#"><i class="fas fa-users"></i>View Clients </a></li>
+            <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>
+        </ul>
+    </div>
 </nav>
 
-<section class="container-fluid px-0 ">
-    <div class="row align-items-center stuff">
+<section class="container-fluid px-0 sec" >
+    <div class="row  stuff">
         <div class="col-md-6 ">
-            <img src="src/main/resources/PT/OCTOBERFIT.jpg" alt="pt"  class="pt-image img-fluid d-lg-inline  ">
+            <img src="Imgs/OCTOBERFIT.jpg" alt="pt"  class="pt-image img-fluid rounded-circle ">
             <div class="ratings col-12 text-center" >
                 <h2>Ratings</h2>
                 <a href="#">
