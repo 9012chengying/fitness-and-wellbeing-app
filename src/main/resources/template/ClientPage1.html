@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ClientPage</title>
+    <style>
+        html{
+            font-size: 10px;
+        }
+        body{
+            height: auto;
+            width: auto;
+        }
+        h1{
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        p, a{
+            font-size: 2.5rem;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 25%;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        li a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        .stuff{
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+        footer{
+            min-height: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 2rem 2.5rem;
+        }
+        div.ratings h2{
+            font-size: 2.5rem;
+        }
+        div.ratings a
+        {
+            color:#f1c40f;
+            font-size:20px;
+            align-content: center;
+        }
+        div.ratings a:hover
+        {
+            color:#f39c12;
+            text-decoration:none;
+        }
+        div p{
+            font-size: 1.5rem;
+            text-align: left;
+        }
+        div strong{
+            font-size: 2rem;
+        }
+        .info{
+
+            margin-bottom: 150px;
+            float: contour;
+        }
+        .footer{
+            position: fixed;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            height: 50px;
+            background-color: #eee;
+            z-index: 9999;
+        }
+        .top{
+            font-style: oblique;
+            font-size: 3.5em;
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="top"><h1>Fitness and Wellbeing</h1></div>
+<ul>
+        <li><a class="active" href="">Client page</a></li>
+        <li><a href="" id="1" class="btn2">Start new workout</a></li>
+        <li><a href="" id="2"class="btn1">Progress diary</a></li>
+        <li><a href="" id="3"class="btn1">View PT</a></li>
+        <li><a href="" id="4"class="btn1">Edit their profile</a></li>
+        <li><a href="" id="5"class="btn1">back</a></li>
+</ul>
+<section class="container-fluid px-0 ">
+    <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+        <div class="info" align="center">
+            <h1 >Overview</h1>
+            <strong>Name: Weibo Li</strong><p></p>
+            <strong>Hobbies: basketball</strong><p></p>
+            <strong>Movement data: 3 days</strong><p></p>
+            <strong>Courses being attended: </strong><p></p>
+            <strong>Contact info: 000000</strong><p></p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+        </div>
+    </div>
+</section>
+<!-- add a footer to contain about us and contact us links-->
+
+<footer class="footer">
+    <p>&copy Phyt App ltd</p>
+</footer>
+
+
+<!--<script type="text/javascript">
+
+    window.onload = function(){
+        var arr = document.getElementsByTagName('a');
+        for(var i = 0;i<arr.length;i++){
+            arr[i].onclick = function(){
+                if (this.id == '1' )
+                {
+                    document.getElementById("box1").style.display = 'block' ;
+                    document.getElementById("box2").style.display = 'none' ;
+                    document.getElementById("box3").style.display = 'none' ;
+                }
+                else if(this.id == '2')
+                {
+                    document.getElementById("box1").style.display = 'none' ;
+                    document.getElementById("box2").style.display = 'block' ;
+                    document.getElementById("box3").style.display = 'none' ;
+                }
+                else{
+                    document.getElementById("box1").style.display = 'none' ;
+                    document.getElementById("box2").style.display = 'none' ;
+                    document.getElementById("box3").style.display = 'block' ;
+                }
+
+                if(this.className == 'btn1'){
+                    this.className = 'btn2';
+                    var name = this.id;
+                    var btn = document.getElementsByClassName('btn2');
+                    for(var j=0;j<btn.length;j++){
+                        if(btn[j].id!=name){
+                            btn[j].className = 'btn1';
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>-->
+</body>
+</html>
