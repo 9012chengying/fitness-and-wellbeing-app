@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.Thymeleaf.org">
+
+    <head th:replace="fragments/Head :: Head">
+        <title>Add new exercise</title>
+    </head>
+
+
+    <body>
+    <!--Top navigation-->
+    <nav>
+        <span><a href="PtHomePage.html"><i class="fas fa-arrow-left"></i>Back to Home</a></span>
+
+        <span><div><img class="trainer-image" src="/images/trainer_img.jpg" alt="trainer profile image"></div>
+            <div>Joe Bloggs</div>
+                </span>
+
+        <span><a href="/trainer/exercises/add">Add Exercise <i class="fas fa-plus"></i></a></span>
+    </nav>
+
+    <header>
+        <h1>Phyt App</h1>
+        <h2>Exercise Library</h2>
+    </header>
+
+        <main>
+
+            <form id="exerciseForm" action="/trainer/exercises" method="post">
+                <div class="exercise-input">
+                    <label for="exerciseName">Exercise Name: </label>
+                    <input id="exerciseName" name="exerciseName" type="text">
+                </div>
+                <div class="exercise-input">
+                    <label for="exerciseDesc">Exercise Details: </label>
+                    <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10"></textarea>
+                </div>
+                <div class="exercise-input">
+                    <label for="exerciseCat">Exercise Category: </label>
+                    <select name="exerciseCat" id="exerciseCat">
+                        <option value="select">Select a category</option>
+                        <option value="core">Core</option>
+                        <option value="upperBody">Upper Body</option>
+                        <option value="lowerBody">Lower Body</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="drills">Drills</option>
+                    </select>
+                </div>
+                <div>
+                    <button onsubmit="" class="btn btn-primary btn-xl">Create</button>
+                    <button onsubmit="" class="btn btn-secondary btn-xl">Cancel</button>
+                </div>
+            </form>
+
+        </main>
+
+        <footer> </footer>
+
+        <script src="../static/js/exercise.js"></script>
+    </body>
+
+</html>

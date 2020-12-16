@@ -1,14 +1,18 @@
 package uk.ac.cf.nsa.web.phyt.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class ExerciseController {
 
-    @RequestMapping(path="/trainer/add-exercise")
+    @RequestMapping(path="/trainer/exercises")
+    public String trainerExercises(){
+        return "exercises";
+    }
+
+    @RequestMapping(path="/trainer/exercises/add")
     public String trainerAddExercise(){
-        String message = "Add new exercise";
-        return message;
+        return "CreateExercise";
     }
 }
