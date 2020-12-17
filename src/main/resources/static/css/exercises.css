@@ -9,23 +9,6 @@ a:hover{
     text-decoration: none;
 }
 
-nav{
-    background-color: orange;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 15rem;
-    font-size: 2rem;
-    padding: 2rem 2.5rem;
-    z-index: 1;
-}
-nav>span>a>i{
-    padding: 0 1rem;
-}
 .trainer-image{
     width: 50px;
     height: 50px;
@@ -35,26 +18,23 @@ header{
     margin-top: 16rem;
     min-height:10vh;
     background-color: white;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     padding: 2rem 2.5rem;
 }
-header>h1{
-    font-size: 3rem;
-    color: black;
-}
+
 header>h2{
     font-size: 2.8rem;
     padding: 20px 0;
 }
+
 main{
     margin-bottom: 12vh;
 }
+
+/*CSS for exercise.html*/
 .exercise-card{
     margin: 1rem;
-    max-height: 50vh;
+    min-height: 50vh;
     display:flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -63,18 +43,40 @@ main{
     border: #007bff solid 0.2rem;
     border-radius: 1rem;
 }
-
 .exercise-thumbnail{
     padding-right: 1rem;
     width: 215px;
     height: 150px;
-
 }
+
 .exercise-summary{
     padding: 1.5rem;
     flex-basis: 60%;
 }
 
+@media only screen and (max-width: 600px){
+    .exercise-card{
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1rem;
+    }
+    .exercise-thumbnail{
+        width: 50%;
+        height: auto;
+        margin: auto;
+    }
+
+    .exercise-summary{
+        font-size: 1.8rem;
+        padding: 1.5rem;
+    }
+}
+
+
+
+/*CSS for CreateExercise.html*/
 #message{
     text-align: center;
     font-size: 2rem;
@@ -101,5 +103,10 @@ main{
     width: 65%;
     margin: 0 0 2rem 2rem;
     justify-self: flex-end;
+}
+
+.exercise-buttons{
+    display: flex;
+    justify-content: center;
 }
 

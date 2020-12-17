@@ -28,10 +28,23 @@ p, a{
     font-size: 1.8rem;
 }
 
+/*Additional button class to make bootstrap buttons larger
+Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the-size-of-a-bootstrap-button/32869241
+*/
 .btn-xl {
     margin: 5px;
     min-width: 150px;
     padding: 10px 20px;
     font-size: 2rem;
     border-radius: 10px;
+}
+
+@media only screen and (max-width: 650px){
+    .btn-xl{
+        margin: 5px;
+        min-width: 50px;
+        padding: 5px 5px;
+        font-size: 1.6rem;
+        border-radius: 10px;
+    }
 }
