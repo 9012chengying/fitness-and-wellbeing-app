@@ -8,7 +8,7 @@ function createExercise(){
 
     //check all inputs fields have been completed before submitting
     if((name === "" || name === null) || (desc ==="" || desc === null) || cat ==="select" ){
-        message.innerHTML = "Please complete all the exercise details."
+        message.innerHTML = "Please complete all of the exercise details."
         message.style.color="red";
     }
     else {
