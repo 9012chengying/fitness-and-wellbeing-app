@@ -13,13 +13,14 @@
     </header>
 
         <!-- Displays message following input validation -->
-        <aside>
-            <p id="message"></p>
+        <aside class="flex-row">
+            <i id="success" class="far fa-thumbs-up fa-5x hide"></i><i id="error" class="fas fa-exclamation fa-5x hide"></i>
+            <p th:text="${message}" id="message"></p>
         </aside>
 
         <!-- Main input form -->
         <main>
-            <form id="exerciseForm" method="post">
+            <form id="exerciseForm" action="/trainer/exercises/add" method="post">
                 <div class="exercise-input">
                     <label for="exerciseName">Exercise Name: </label>
                     <input id="exerciseName" name="exerciseName" type="text">
@@ -40,13 +41,28 @@
                     </select>
                 </div>
                 <div class="exercise-input exercise-buttons">
-                    <button type="button" onclick="createExercise()" class="btn btn-primary btn-xl">Create</button>
+                    <button id="submit-button" type="submit" class="btn btn-primary btn-xl">Create</button>
                     <a href="/trainer/exercises"><button type="button" id="cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
                 </div>
             </form>
 
         </main>
 
-    </body>
 
+    </body>
+    <script>
+        //change colour of text depending on returned message
+        window.onload = function () {
+            let messElement=document.getElementById("message");
+            let message = messElement.innerText;
+            if (message === "Please complete all of the exercise details.") {
+                document.getElementById("error").classList.remove("hide");
+                messElement.style.color = "#FF0000";
+                messElement.style.fontWeight = "bold";
+            }
+            if(message === "Exercise successfully added"){
+              document.getElementById("success").classList.remove("hide");
+            }
+        }
+    </script>
 </html>

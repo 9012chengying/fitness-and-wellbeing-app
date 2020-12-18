@@ -30,8 +30,14 @@ header>h2{
 main{
     margin-bottom: 12vh;
 }
-
+.hide {
+    display: none;
+}
 /*CSS for exercise.html*/
+
+.fas{
+    color: red;
+}
 .exercise-card{
     margin: 1rem;
     min-height: 50vh;
@@ -77,10 +83,16 @@ main{
 
 
 /*CSS for CreateExercise.html*/
+
+aside{
+    width: 75%;
+    margin: auto;
+}
+
 #message{
     text-align: center;
     font-size: 2rem;
-    padding: 2rem 0;
+    padding: 2rem;
 }
 #exerciseForm{
     font-size: 1.8rem;
