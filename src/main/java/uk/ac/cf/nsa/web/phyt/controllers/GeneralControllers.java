@@ -16,6 +16,12 @@ public class GeneralControllers {
     public String trainerExercises(){
         return "exercises";
     }
+    
+    @RequestMapping(path="/Login/PersonalTrainer")
+    public String getPT(){
+        return "PtHomePage";
+    }
+
 
 
 }
