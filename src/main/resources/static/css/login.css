@@ -1,0 +1,74 @@
+
+body {
+    background-color: lightblue;
+    background-image: url('../images/background.jpg');
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+header {
+    margin-top: 16rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    min-height: 10vh;
+
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 2rem;
+    border-radius: 1rem;
+}
+
+header > h1 {
+    font-size: 8rem;
+    color: white;
+}
+
+header > h2 {
+    font-size: 8rem;
+    padding: 20px 0;
+    color: white;
+}
+
+.usernameinput{
+
+}
+
+.passwordinput{
+
+}
+.loginbutton {
+    margin: 4rem;
+    margin-top: 17rem;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 2rem 0;
+    padding-top: 2rem;
+    align-items: center;
+    border-radius: 20px;
+    background-color: orange;
+    opacity: 0.5;
+}
+
+.registerbutton {
+    background-color: transparent;
+    color: white;
+    border: 0;
+    float: right;
+    margin-right: 1rem;
+}
+
+footer {
+    color: white;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 2rem 2.5rem;
+    bottom: 0;
+}
