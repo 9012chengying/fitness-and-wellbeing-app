@@ -41,7 +41,7 @@
                     </select>
                 </div>
                 <div class="exercise-input exercise-buttons">
-                    <button id="submit-button" type="submit" class="btn btn-primary btn-xl">Create</button>
+                    <button id="submit-button" type="submit" onclick="dataStore()" class="btn btn-primary btn-xl">Create</button>
                     <a href="/trainer/exercises"><button type="button" id="cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
                 </div>
             </form>
@@ -59,9 +59,14 @@
                 document.getElementById("error").classList.remove("hide");
                 messElement.style.color = "#FF0000";
                 messElement.style.fontWeight = "bold";
+                document.getElementById("exerciseName").value = getCookie("Exercise Name");
+                document.getElementById("exerciseDesc").value = getCookie("Exercise Description");
+                document.getElementById("exerciseCat").value = getCookie("Exercise Category");
             }
-            if(message === "Exercise successfully added"){
+            if(message === "Exercise Successfully Added"){
               document.getElementById("success").classList.remove("hide");
+              messElement.style.color = "#0069d9";
+              messElement.style.fontWeight = "bold";
             }
         }
     </script>

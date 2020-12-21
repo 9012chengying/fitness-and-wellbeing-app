@@ -38,6 +38,10 @@ main{
 .fas{
     color: red;
 }
+
+.far, fa-thumbs-up{
+    color: #0069d9;
+}
 .exercise-card{
     margin: 1rem;
     min-height: 50vh;
