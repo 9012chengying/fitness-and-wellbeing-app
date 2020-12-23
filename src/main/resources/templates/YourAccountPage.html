@@ -14,6 +14,73 @@
 <nav th:replace="/fragments/Head::PTnavbar"></nav>
 <header class="DummyHeader"></header>
 
+<h2>Your Account</h2>
+<hr>
+<section class="container">
+    <div class="row ">
+       <div class="About col-md-6 ">
+
+        <form action="">
+            <h3>Personal information</h3>
+
+           <div class="input-group mb-3"> <input type="text"  class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="button-addon2">
+               <button class="btn btn-outline-secondary" type="button" id="updateFirstName">Update</button>
+        </div>
+           <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="button-addon2">
+               <button class="btn btn-outline-secondary" type="button" id="updateLastName">Update</button>
+           </div>
+           <div class="input-group mb-5"><input type="text" class="form-control" placeholder="Email (e.g John@Outlook.com)" aria-label="Email" aria-describedby="button-addon2">
+               <button class="btn btn-outline-secondary" type="button" id="updateEmail">Update</button>
+           </div>
+
+        </form>
+       </div>
+        <div class="something col-md-6 text-center ">
+            <form action="">
+                <h3>General Information</h3>
+                <div>
+                    <label for="About" >About</label>
+                    <input id="About" type="text" maxlength="400" placeholder="Use this to let your client know more about you">
+                </div>
+                <div>
+                    <label for="qualification">Qualifications</label>
+                  <select id ="qualification">
+                      <option value="Level2">Level-2 Gym Instructor</option>
+                      <option value="Level3">Level-3 Personal Trainer</option>
+
+                  </select>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</section>
+<hr>
+<section class="container py-2">
+    <div class="row ">
+        <div class="About col-md-6   text-center ">
+
+            <form action="">
+                <h3>Your info</h3>
+                <div><label for="emai">Email</label>
+                    <input type="email" id="emai" name="email" required>
+                </div>
+                <div><label for="firstNam">First Name</label>
+                    <input type="text" id="firstNam" name="firstName" required>
+                </div>
+                <div><label for="lastNam">Last name</label>
+                    <input type="text" id="lastNam" name="text" required>
+                </div>
+                <input type="submit" placeholder="Update Info" id="submitInf" value="Update Info">
+            </form>
+        </div>
+        <div class="something col-md-6 "><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti placeat recusandae, assumenda commodi quae inventore id, sunt optio vero ipsam accusamus libero cumque. Quae illum quaerat soluta expedita voluptatibus voluptates.
+        </p></div>
+    </div>
+
+</section>
+
 
 
 </body>

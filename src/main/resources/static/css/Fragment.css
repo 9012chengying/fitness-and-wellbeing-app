@@ -10,7 +10,7 @@
 
 body {
     /*font-family: 'Patua One', cursive;*/
-    background: url('/images/bodybuilda.jpg') center center no-repeat fixed;
+    background: url('/images/108395-orange-curve.jpg') center center no-repeat fixed;
     background-size: cover;
     /*width: 100%;*/
     /*z-index: -1;*/
@@ -21,7 +21,7 @@ body {
 /*}*/
 
 .DummyHeader {
-    padding-top: 160px;
+    padding-top: 130px;
 }
 
 h1 {
@@ -34,9 +34,14 @@ h1 {
 
 .nav-bar {
     position: fixed;
-    border-radius: 60px;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+
+
     margin-right: 100px;
-    background: rgba(255, 190, 51, 0.8);
+    /*background: rgba(255, 190, 51, 0.8);*/
+    background: rgba(255, 186, 1, 0.8);
+
     border-bottom: 4px #800 solid;
     width: 100%;
     z-index: 1;
