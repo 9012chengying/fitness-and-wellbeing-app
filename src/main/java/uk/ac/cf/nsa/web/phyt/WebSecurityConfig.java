@@ -18,16 +18,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and().csrf().disable()
                 .authorizeRequests()
                 .mvcMatchers("/css/**").permitAll()
+                .mvcMatchers("/js/**").permitAll()
                 .mvcMatchers("/public/**").permitAll()
-                .mvcMatchers("/trainer/**").authenticated()
+                .antMatchers("/trainer/**").hasRole("Trainer")
                 .and()
-                .formLogin();
+                .formLogin()
+                .and()
+                .logout();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("trainer").password("{noop}password").roles("Trainer");
-    }
+                .withUser("trainer").password("{noop}password").roles("Trainer")
+                .and()
+                .withUser("client").password("{noop}password1").roles("Client");
+       }
 }

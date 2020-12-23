@@ -1,3 +1,27 @@
+//COLLATES INPUT DATA FOR COOKIES IF CANCELS OR DELETES COOKIES IF SUBMITS DATA
+function listen(){
+    document.getElementById("exercise-submit-button").addEventListener('click' , deleteCookies);
+    document.getElementById("exercise-cancel").addEventListener('click', addExercise);
+    let exerciseName = getCookie("Exercise Name");
+    let exerciseDesc = getCookie("Exercise Description");
+    let exerciseCat = getCookie("Exercise Category");
+    document.getElementById("exerciseName").value = exerciseName;
+    document.getElementById("exerciseDesc").value = exerciseDesc;
+    document.getElementById("exerciseCat").value = exerciseCat;
+}
+
+function addExercise(){
+        let exerciseName = document.getElementById("exerciseName").value;
+        let exerciseDesc = document.getElementById("exerciseDesc").value;
+        let exerciseCat = document.getElementById("exerciseCat").value;
+        setCookie("Exercise Name", name, 1 );
+        setCookie("Exercise Description", desc, 1);
+        setCookie("Exercise Category", cat, 1);
+    }
+
+
+
+//****COOKIES*****
 
 //set up a cookie function to capture cookie data from form
 function setCookie(cookieName, cookieValue, exdays){
@@ -7,17 +31,8 @@ function setCookie(cookieName, cookieValue, exdays){
     document.cookie = cookieName+ "=" + cookieValue + ";" + expires + ";path=/trainer/exercises/add";
 }
 
-//set cookies from data input
-function dataStore(){
-    let exerciseName = document.getElementById("exerciseName").value;
-    let exerciseDesc = document.getElementById("exerciseDesc").value;
-    let exerciseCat = document.getElementById("exerciseCat").value;
-    setCookie("Exercise Name", exerciseName, 1 );
-    setCookie("Exercise Description", exerciseDesc, 1);
-    setCookie("Exercise Category", exerciseCat, 1);
-}
-
-//read cookie data back to client - From https://www.w3schools.com/js/js_cookies.asp
+//read cookie data back to client
+//From https://www.w3schools.com/js/js_cookies.asp
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -32,4 +47,11 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+//Delete cookies function
+function deleteCookies(){
+    document.cookie = "Exercise Name=; expires=Thu, 01 Jan 1901 00:00:00 UTC; path=/trainer/exercises/add;";
+    document.cookie = "Exercise Description=; expires=Thu, 01 Jan 1901 00:00:00 UTC; path=/trainer/exercises/add;";
+    document.cookie = "Exercise Category=; expires=Thu, 01 Jan 1901 00:00:00 UTC; path=/trainer/exercises/add;";
 }

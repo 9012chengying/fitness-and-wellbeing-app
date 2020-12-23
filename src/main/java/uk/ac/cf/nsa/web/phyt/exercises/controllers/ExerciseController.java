@@ -1,6 +1,7 @@
 package uk.ac.cf.nsa.web.phyt.exercises.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,56 +25,49 @@ public class ExerciseController {
         this.userRepo = userRepo;
     }
 
-    @RequestMapping(path="/login", method= RequestMethod.GET)
-    public ModelAndView showCreateExercise(@RequestParam(value="username", defaultValue="null") String username,
-                                           @RequestParam(value="password", defaultValue="null") String password) {
-        System.out.println(username + " " + password);
+
+    @RequestMapping(path = "/trainer/exercises/add", method= RequestMethod.POST)
+    public ModelAndView trainerAddExercise (ExerciseForm exerciseForm, BindingResult br) {
         ModelAndView mav = new ModelAndView();
-        System.out.println(username + " " + password);
-        if (userRepo.getUserRole(username, password) == "Trainer") {
+        if (br.hasErrors()) {
+            System.out.println(br.toString());
             mav.setViewName("CreateExercise");
             return mav;
         } else {
-            mav.setViewName("index");
+            exerciseRepo.addExercise((exerciseForm));
+            mav.setViewName("CreateExercise");
             return mav;
         }
     }
 
-    @RequestMapping(path="/trainer/exercises/create", method= RequestMethod.GET)
-    public ModelAndView createExercise(@RequestParam(value="username", defaultValue="null") String username,
-                                     @RequestParam(value="password", defaultValue="null") String password) {
+//    @RequestMapping(path="/login", method= RequestMethod.GET)
+//    public ModelAndView showCreateExercise(@RequestParam(value="username", defaultValue="null") String username,
+//                                           @RequestParam(value="password", defaultValue="null") String password) {
+//        System.out.println(username + " " + password);
+//        ModelAndView mav = new ModelAndView();
+//        System.out.println(username + " " + password);
+//        if (userRepo.getUserRole(username, password) == "Trainer") {
+//            mav.setViewName("CreateExercise");
+//            return mav;
+//        } else {
+//            mav.setViewName("index");
+//            return mav;
+//        }
+//    }
+
+    @RequestMapping(path="/trainer/exercises/add", method= RequestMethod.GET)
+    public ModelAndView createExercise() {
         ModelAndView mav = new ModelAndView();
-        System.out.println(username + " " + password);
-        if (userRepo.getUserRole(username, password) == "Trainer") {
+        //if (userRepo.getUserRole(username, password) == "Trainer") {
             mav.setViewName("CreateExercise");
             return mav;
-        } else {
-            mav.setViewName("index");
-            return "redirect: index";
-      }
+        //} else {
+          //  mav.setViewName("index");
+          //  return "redirect: index";
+     // }
     }
 
 
-    @RequestMapping(path = "/trainer/exercises/add", method=RequestMethod.POST)
-    public ModelAndView trainerAddExercise(ExerciseForm exerciseForm, BindingResult br) {
-        ModelAndView mav = new ModelAndView();
-         if (!exerciseForm.validate()) {
-             //mav.addObject("message", exerciseForm);
-             mav.setViewName("CreateExercise");
-         }
-        else if (br.hasErrors()) {
-            //mav.addObject("message", exerciseForm);
-            mav.setViewName("CreateExercise");
-        } else {
-            if (exerciseRepo.addExercise(exerciseForm)) {
-                mav.setViewName("AllExercises");
-                } else {
-                   // mav.addObject("message", exerciseForm);
-                    mav.setViewName("CreateExercise");
-                }
-            }
-        return mav;
-    }
 
 }
 

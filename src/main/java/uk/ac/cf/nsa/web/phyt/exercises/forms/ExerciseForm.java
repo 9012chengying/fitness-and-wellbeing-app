@@ -5,16 +5,17 @@ import uk.ac.cf.nsa.web.phyt.exercises.DTO.UserEntity;
 //Class for data received from the Create Exercise form
 public class ExerciseForm {
 
-    UserEntity user;
+    //UserEntity user;
     int userID;
     String exerciseName;
     String exerciseDesc;
     String exerciseCat;
 
     //Constructor
-    public ExerciseForm(UserEntity user, String exerciseName, String exerciseDesc, String exerciseCat) {
-        this.user = user;
-        this.userID = user.getUserID();
+    public ExerciseForm( String exerciseName, String exerciseDesc, String exerciseCat) {
+        //todo - figure out how to get  user entity from log in details
+        //this.user = user;
+        this.userID = 1;
         this.exerciseName = exerciseName;
         this.exerciseDesc = exerciseDesc;
         this.exerciseCat = exerciseCat;

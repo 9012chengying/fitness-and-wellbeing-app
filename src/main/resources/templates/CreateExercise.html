@@ -6,34 +6,27 @@
     <head th:replace="fragments/Head :: Head"> </head>
 
 
-    <body id="exercise-body">
+    <body id="exercise-body" onload="listen()">
 
     <header id="exercise-header">
         <h2>Create new exercise</h2>
     </header>
-
-        <!-- Displays message following input validation -->
-
-    <aside class="exercise-flex-row exercise-hide">
-        <i id="error-icon" class="fas fa-exclamation fa-5x "></i>
-        <p id="error-message">Please complete all of the exercise details.</p>
-    </aside>
 
         <!-- Main input form -->
         <main id="exercise-main">
             <form id="exerciseForm" action="/trainer/exercises/add" method="post">
                 <div class="exercise-input">
                     <label for="exerciseName">Exercise Name: </label>
-                    <input id="exerciseName" name="exerciseName" type="text">
+                    <input id="exerciseName" name="exerciseName" type="text" required>
                 </div>
                 <div class="exercise-input">
                     <label for="exerciseDesc">Exercise Details: </label>
-                    <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10"></textarea>
+                    <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10" required></textarea>
                 </div>
                 <div class="exercise-input">
                     <label for="exerciseCat">Exercise Category: </label>
-                    <select name="exerciseCat" id="exerciseCat">
-                        <option value="select">Select a category</option>
+                    <select name="exerciseCat" id="exerciseCat" required>
+                        <option value="">-- Please select a category --</option>
                         <option value="core">Core</option>
                         <option value="upperBody">Upper Body</option>
                         <option value="lowerBody">Lower Body</option>
@@ -42,8 +35,8 @@
                     </select>
                 </div>
                 <div class="exercise-input exercise-buttons">
-                    <button id="submit-button" type="submit" onclick="dataStore()" class="btn btn-primary btn-xl">Create</button>
-                    <a href="/trainer/exercises/all"><button type="button" id="cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
+                    <button id="exercise-submit-button" type="submit" class="btn btn-primary btn-xl">Create</button>
+                    <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
                 </div>
             </form>
 
@@ -51,24 +44,5 @@
 
 
     </body>
-    <script>
-       //change colour of text depending on returned message
-        window.onload = function () {
-            let messElement=document.getElementById("message");
-            let message = messElement.innerText;
-            if (message === "Please complete all of the exercise details.") {
-                document.getElementById("error").classList.remove("hide");
-                messElement.style.color = "#FF0000";
-                messElement.style.fontWeight = "bold";
-                document.getElementById("exerciseName").value = getCookie("Exercise Name");
-                document.getElementById("exerciseDesc").value = getCookie("Exercise Description");
-                document.getElementById("exerciseCat").value = getCookie("Exercise Category");
-            }
-            if(message === "Exercise Successfully Added"){
-              document.getElementById("success").classList.remove("hide");
-              messElement.style.color = "#0069d9";
-              messElement.style.fontWeight = "bold";
-            }
-        }
-    </script>
+
 </html>
