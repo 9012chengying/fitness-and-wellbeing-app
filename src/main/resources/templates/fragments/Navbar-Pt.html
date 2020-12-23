@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Phyt</title>
+</head>
+<body>
+<div th:fragment="PTnavbar">
+    <nav class="nav-bar">
+        <img src="/images/pt.jpg" class="img-fluid rounded-circle border border-3 border-warning " id="pt" alt="PT">
+
+        <input class="menu-btn" type="checkbox" id="menu-btn">
+        <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+        <h1>PHYT</h1>
+        <ul class="menu">
+            <li><a href="#" class="homes"><i class="fas fa-home active"></i>Home</a></li>
+            <li><a href="#"><i class="fas fa-dumbbell"></i>Create a workout</a></li>
+            <li><a th:href="@{/trainer/exercises}"><i class="fas fa-book"></i>Exercise library</a></li>
+
+            <li><a href="#"><i class="fas fa-users"></i>View Clients </a></li>
+            <li><a href="#"><i class="fas fa-user-cog lastlist"></i>Your Account </a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

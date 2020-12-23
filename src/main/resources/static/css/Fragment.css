@@ -8,13 +8,13 @@
 /*    color: rgb(54, 52, 52);*/
 /*}*/
 
-body {
-    /*font-family: 'Patua One', cursive;*/
-    background: url('/images/bodybuilda.jpg') center center no-repeat fixed;
-    background-size: cover;
-    /*width: 100%;*/
-    /*z-index: -1;*/
-}
+/*body {*/
+/*    !*font-family: 'Patua One', cursive;*!*/
+/*    background: url('/images/bodybuilda.jpg') center center no-repeat fixed;*/
+/*    background-size: cover;*/
+/*    !*width: 100%;*!*/
+/*    !*z-index: -1;*!*/
+/*}*/
 
 * {
     box-sizing: border-box;
