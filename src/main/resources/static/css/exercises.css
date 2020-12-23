@@ -30,18 +30,17 @@ header>h2{
 main{
     margin-bottom: 12vh;
 }
-.hide {
-    display: none;
+
+.exercise-flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
+
+
 /*CSS for exercise.html*/
 
-.fas{
-    color: red;
-}
-
-.far, fa-thumbs-up{
-    color: #0069d9;
-}
 .exercise-card{
     margin: 1rem;
     min-height: 50vh;
@@ -88,16 +87,33 @@ main{
 
 /*CSS for CreateExercise.html*/
 
+#error-icon{
+    color: red;
+}
+
+#success-icon{
+    color: #0069d9;
+}
+
 aside{
     width: 75%;
     margin: auto;
 }
 
-#message{
+#success-message{
     text-align: center;
     font-size: 2rem;
     padding: 2rem;
+    color: #0069d9;
 }
+
+#error-message{
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem;
+    color: red;
+}
+
 #exerciseForm{
     font-size: 1.8rem;
     width: 75%;

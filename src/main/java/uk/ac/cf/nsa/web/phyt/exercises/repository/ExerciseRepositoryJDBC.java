@@ -1,9 +1,9 @@
-package uk.ac.cf.nsa.web.phyt.repository;
+package uk.ac.cf.nsa.web.phyt.exercises.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.forms.ExerciseForm;
+import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 
 @Repository
 public class ExerciseRepositoryJDBC implements ExerciseRepository{
