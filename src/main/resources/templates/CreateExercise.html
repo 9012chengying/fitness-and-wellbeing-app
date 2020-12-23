@@ -6,21 +6,21 @@
     <head th:replace="fragments/Head :: Head"> </head>
 
 
-    <body>
+    <body id="exercise-body">
 
-    <header>
+    <header id="exercise-header">
         <h2>Create new exercise</h2>
     </header>
 
         <!-- Displays message following input validation -->
 
-    <aside class="exercise-flex-row hide">
+    <aside class="exercise-flex-row exercise-hide">
         <i id="error-icon" class="fas fa-exclamation fa-5x "></i>
         <p id="error-message">Please complete all of the exercise details.</p>
     </aside>
 
         <!-- Main input form -->
-        <main>
+        <main id="exercise-main">
             <form id="exerciseForm" action="/trainer/exercises/add" method="post">
                 <div class="exercise-input">
                     <label for="exerciseName">Exercise Name: </label>

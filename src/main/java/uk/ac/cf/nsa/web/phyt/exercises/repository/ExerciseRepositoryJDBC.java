@@ -19,7 +19,7 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository{
     public boolean addExercise(ExerciseForm exerciseForm){
         int rows = jdbcTemplate.update(
                 "insert into Exercises(trainer_id, exercise_name,exercise_desc,category) values(?,?,?,?)" ,
-                new Object[]{exerciseForm.getTrainerID(),exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat()});
+                new Object[]{exerciseForm.getUserID(),exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat()});
         return rows>0;
     };
 }

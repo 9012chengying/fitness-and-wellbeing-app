@@ -1,18 +1,20 @@
 package uk.ac.cf.nsa.web.phyt.exercises.forms;
 
+import uk.ac.cf.nsa.web.phyt.exercises.DTO.UserEntity;
 
 //Class for data received from the Create Exercise form
 public class ExerciseForm {
 
-    int trainerID;
+    UserEntity user;
+    int userID;
     String exerciseName;
     String exerciseDesc;
     String exerciseCat;
 
     //Constructor
-    public ExerciseForm(int trainerID, String exerciseName, String exerciseDesc, String exerciseCat) {
-        //TODO hardcoded trainer id for now - need to think about how to get trainer id for specific trainer
-        this.trainerID = trainerID;
+    public ExerciseForm(UserEntity user, String exerciseName, String exerciseDesc, String exerciseCat) {
+        this.user = user;
+        this.userID = user.getUserID();
         this.exerciseName = exerciseName;
         this.exerciseDesc = exerciseDesc;
         this.exerciseCat = exerciseCat;
@@ -20,8 +22,8 @@ public class ExerciseForm {
 
 
     //Getters
-    public int getTrainerID() {
-        return trainerID;
+    public int getUserID(){
+        return userID;
     }
 
     public String getExerciseName() {
@@ -40,7 +42,7 @@ public class ExerciseForm {
     @Override
     public String toString() {
         return "ExerciseForm{" +
-                "trainerID=" + trainerID +
+                "trainerID=" + userID +
                 ", exerciseName='" + exerciseName + '\'' +
                 ", exerciseDesc='" + exerciseDesc + '\'' +
                 ", exerciseCat='" + exerciseCat + '\'' +
