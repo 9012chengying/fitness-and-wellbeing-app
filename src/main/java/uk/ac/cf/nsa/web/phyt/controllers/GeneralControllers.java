@@ -21,6 +21,10 @@ public class GeneralControllers {
     public String getPT(){
         return "PtHomePage";
     }
+    @RequestMapping(path = "/PersonalTrainer/YourAccount")
+    public String getyourAccount(){
+        return "YourAccountPage";
+    }
 
 
 

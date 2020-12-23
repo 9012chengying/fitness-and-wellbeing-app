@@ -16,9 +16,9 @@ body {
     /*z-index: -1;*/
 }
 
-* {
-    box-sizing: border-box;
-}
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/
 
 .DummyHeader {
     padding-top: 160px;
