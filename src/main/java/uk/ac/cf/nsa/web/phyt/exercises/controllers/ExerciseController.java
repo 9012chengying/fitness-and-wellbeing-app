@@ -1,7 +1,6 @@
 package uk.ac.cf.nsa.web.phyt.exercises.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,26 +9,45 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.repository.ExerciseRepository;
-import uk.ac.cf.nsa.web.phyt.exercises.repository.UserRepository;
+//import uk.ac.cf.nsa.web.phyt.exercises.repository.UserRepository;
 
 
 @Controller
 public class ExerciseController {
 
     private ExerciseRepository exerciseRepo;
-    private UserRepository userRepo;
+    //private UserRepository userRepo;
 
     @Autowired
-    public ExerciseController(ExerciseRepository exerciseRepo, UserRepository userRepo) {
+    public ExerciseController(ExerciseRepository exerciseRepo) {
         this.exerciseRepo = exerciseRepo;
-        this.userRepo = userRepo;
+        //this.userRepo = userRepo;
     }
 
+    //TODO add object attribute to get exercises to populate template
     @RequestMapping (path="/trainer/exercises/all", method=RequestMethod.GET)
     public ModelAndView allExercises(){
         ModelAndView mav = new ModelAndView();
+        System.out.println(exerciseRepo.getAllExercises());
+        mav.addObject("exercises", exerciseRepo.getAllExercises());
         mav.setViewName("AllExercises");
         return mav;
+    }
+
+    @RequestMapping(path="trainer/exercises/filter", method=RequestMethod.GET)
+    public ModelAndView filterExercises(@RequestParam (value="categoryFilter", defaultValue="All") String exerciseCat) {
+        ModelAndView mav = new ModelAndView();
+        if(exerciseCat.equals("All")){
+            mav.addObject("exercises", exerciseRepo.getAllExercises());
+            mav.setViewName("AllExercises");
+            return mav;
+        } else {
+            System.out.println(exerciseRepo.filterExercises(exerciseCat));
+            mav.addObject("exercises", exerciseRepo.filterExercises(exerciseCat));
+            mav.setViewName("AllExercises");
+            return mav;
+        }
+
     }
 
     @RequestMapping(path="/trainer/exercises/add", method= RequestMethod.GET)
@@ -40,16 +58,13 @@ public class ExerciseController {
     }
 
     @RequestMapping(path = "/trainer/exercises/add", method= RequestMethod.POST)
-    public ModelAndView trainerAddExercise (ExerciseForm exerciseForm, BindingResult br) {
-        ModelAndView mav = new ModelAndView();
+    public String trainerAddExercise (ExerciseForm exerciseForm, BindingResult br) {
         if (br.hasErrors()) {
             System.out.println(br.toString());
-            mav.setViewName("CreateExercise");
-            return mav;
+            return br.toString();
         } else {
             exerciseRepo.addExercise((exerciseForm));
-            mav.setViewName("CreateExercise");
-            return mav;
+            return "redirect:all" ;
         }
     }
 

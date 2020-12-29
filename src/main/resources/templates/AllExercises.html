@@ -11,19 +11,35 @@
 
     <header>
         <h2>Exercise Library</h2>
+        <h3>View all of your created exercises in one place.</h3>
     </header>
 
-    <!--main list of exercises-->
-    <main>
+    <aside class="exercise-flex-row exercise-flex-row-space">
+        <form id="catFilter" action="/trainer/exercises/filter" method="get">
+            <label for="categoryFilter">Filter by exercise category</label>
+            <select name="categoryFilter" id="categoryFilter" onchange="this.form.submit()">
+                <option value="">-- Select a category --</option>
+                <option value="All">All</option>
+                <option value="Core">Core</option>
+                <option value="Upper body">Upper Body</option>
+                <option value="Lower body">Lower Body</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Drills">Drills</option>
+            </select>
+        </form>
+        <a href="/trainer/exercises/add"><button class="btn btn-warning btn-xl">Add new exercise</button></a>
+    </aside>
 
-        <!--TODO set up thymeleaf template to loop through exercise map-->
-        <div class="exercise-list">
+
+    <!--main list of exercises-->
+
+    <main>
+        <div class="exercise-list" th:each="exercise: ${exercises}">
             <div class="exercise-card">
-                <img class="exercise-thumbnail" src="/images/plank.jpg" alt="thumbnail image of client">
+                <img class="exercise-thumbnail" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}" >
                 <div class="exercise-summary">
-                    <p>Exercise: </p>
-                    <p>Category:</p>
-                    <p>Number of times used:  </p>
+                    <p>Exercise: </p><p th:text="${exercise.exerciseName}"></p>
+                    <p>Category:</p><p th:text="${exercise.exerciseCat}"></p>
                 </div>
                 <div>
                     <button class="btn btn-primary btn-xl">View Details</button>
@@ -31,9 +47,8 @@
                 </div>
             </div>
         </div>
-
-
     </main>
+
 
     <!-- add a footer to contain about us and contact us links-->
     <footer>

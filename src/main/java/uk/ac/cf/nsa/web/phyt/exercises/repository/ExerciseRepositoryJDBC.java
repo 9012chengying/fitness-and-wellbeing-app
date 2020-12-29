@@ -5,6 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.exercises.DTO.ExerciseEntity;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
+import uk.ac.cf.nsa.web.phyt.exercises.model.ExerciseMapper;
+
+import java.util.List;
 
 @Repository
 public class ExerciseRepositoryJDBC implements ExerciseRepository{
@@ -24,8 +27,19 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository{
         return rows>0;
     }
 
-    //TODO set up getAllExercises method
-    public ExerciseEntity getAllExercises(){
-        return null;
+
+    public List<ExerciseEntity> getAllExercises(){
+        return jdbcTemplate.query (
+             "SELECT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text  FROM phyt.exercises \n" +
+                     "LEFT JOIN Media\n" +
+                     "ON exercises.thumbnail_id = Media.id;", new ExerciseMapper()
+        );
+    }
+
+    public List<ExerciseEntity> filterExercises(String exerciseCat){
+        System.out.println(exerciseCat);
+        return jdbcTemplate.queryForList(
+                "select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.category= ?", new Object[]{exerciseCat}, new List<ExerciseEntity> , new ExerciseMapper()
+        );
     }
 }
