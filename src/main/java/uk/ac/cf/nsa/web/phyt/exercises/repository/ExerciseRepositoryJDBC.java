@@ -3,6 +3,7 @@ package uk.ac.cf.nsa.web.phyt.exercises.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import uk.ac.cf.nsa.web.phyt.exercises.DTO.ExerciseEntity;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 
 @Repository
@@ -21,5 +22,10 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository{
                 "insert into Exercises(trainer_id, exercise_name,exercise_desc,category) values(?,?,?,?)" ,
                 new Object[]{exerciseForm.getUserID(),exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat()});
         return rows>0;
-    };
+    }
+
+    //TODO set up getAllExercises method
+    public ExerciseEntity getAllExercises(){
+        return null;
+    }
 }
