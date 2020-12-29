@@ -25,6 +25,19 @@ public class ExerciseController {
         this.userRepo = userRepo;
     }
 
+    @RequestMapping (path="/trainer/exercises/all", method=RequestMethod.GET)
+    public ModelAndView allExercises(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("AllExercises");
+        return mav;
+    }
+
+    @RequestMapping(path="/trainer/exercises/add", method= RequestMethod.GET)
+    public ModelAndView createExercise() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("CreateExercise");
+        return mav;
+    }
 
     @RequestMapping(path = "/trainer/exercises/add", method= RequestMethod.POST)
     public ModelAndView trainerAddExercise (ExerciseForm exerciseForm, BindingResult br) {
@@ -55,17 +68,6 @@ public class ExerciseController {
 //        }
 //    }
 
-    @RequestMapping(path="/trainer/exercises/add", method= RequestMethod.GET)
-    public ModelAndView createExercise() {
-        ModelAndView mav = new ModelAndView();
-        //if (userRepo.getUserRole(username, password) == "Trainer") {
-            mav.setViewName("CreateExercise");
-            return mav;
-        //} else {
-          //  mav.setViewName("index");
-          //  return "redirect: index";
-     // }
-    }
 
 
 
