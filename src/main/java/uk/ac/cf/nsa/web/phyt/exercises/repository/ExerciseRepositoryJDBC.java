@@ -13,6 +13,7 @@ import java.util.List;
 public class ExerciseRepositoryJDBC implements ExerciseRepository{
 
     private JdbcTemplate jdbcTemplate;
+    private Object List;
 
     @Autowired
     public ExerciseRepositoryJDBC(JdbcTemplate aTemplate) {
@@ -40,6 +41,6 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository{
         System.out.println(exerciseCat);
         return jdbcTemplate.query(
                 "select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.category= ?", new Object[]{exerciseCat}, new ExerciseMapper()
-        );
+               );
     }
 }

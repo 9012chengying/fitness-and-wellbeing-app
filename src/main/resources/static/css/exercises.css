@@ -1,6 +1,6 @@
 #exercise-body{
-    background: url("");
     background-color: white;
+    opacity: 0.9;
 }
 
 a{
@@ -47,6 +47,19 @@ header{
     padding: 0 2rem;
 }
 
+@media only screen and (max-width: 600px){
+    .exercise-flex-row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .exercise-flex-row-space{
+        align-items: flex-start;
+        padding: 2rem;
+    }
+}
+
 /*Additional button class to make bootstrap buttons larger
 Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the-size-of-a-bootstrap-button/32869241
 */
@@ -58,18 +71,39 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     border-radius: 10px;
 }
 
-@media only screen and (max-width: 650px){
+@media only screen and (max-width: 600px){
     .btn-xl{
         margin: 5px;
         min-width: 50px;
-        padding: 5px 5px;
-        font-size: 1.6rem;
+        padding: 7px 7px;
+        font-size: 1.8rem;
         border-radius: 10px;
+    }
+
+    #filter-button>button{
+        width: 170px;
+        margin: 0 auto;
+        padding: 10px 10px;
     }
 }
 
 /*CSS for AllExercises*/
+#catFilter{
+    font-size: 1.8rem;
+    width: 50%;
+    margin: 20px auto;
+    padding: 2rem 1rem;
+}
 
+#catFilter-div{
+    width: 100%;
+    margin: auto;
+}
+
+.exercise-list{
+    width: 80%;
+    margin: auto;
+}
 .exercise-card{
     margin: 1rem;
     display:flex;
@@ -92,11 +126,37 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     flex-basis: 60%;
 }
 
-@media only screen and (max-width: 600px){
+.exercise-summary>p>span{
+    font-weight: normal;
+    font-size: 1.8rem;
+}
+.exercise-summary>p {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.exercise-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 900px){
+    .exercise-list{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 700px){
+    .exercise-card{
+        padding: 1rem 1.5rem;
+    }
+}
+@media only screen and (max-width: 625px){
+
     .exercise-card{
         display:flex;
         flex-direction: column;
-        min-height: 50vh;
         justify-content: flex-start;
         align-items: center;
         padding: 1rem;
@@ -108,19 +168,37 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     }
 
     .exercise-summary{
+        width: 75%;
         font-size: 1.8rem;
         padding: 1.5rem;
     }
+    .exercise-buttons{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
 }
+
+
 
 
 /*CSS for CreateExercise*/
-#exerciseForm, #catFilter{
+#exerciseForm{
     font-size: 1.8rem;
-    width: 75%;
+    width: 50%;
     margin: 20px auto;
     padding: 2rem 1rem;
 }
+
+#filter-button{
+    font-size: 1.8rem;
+    width: 17rem;
+    margin: 0 auto;
+}
+
+
 .exercise-input{
     width: 100%;
     display: flex;

@@ -16,18 +16,20 @@
 
     <aside class="exercise-flex-row exercise-flex-row-space">
         <form id="catFilter" action="/trainer/exercises/filter" method="get">
-            <label for="categoryFilter">Filter by exercise category</label>
-            <select name="categoryFilter" id="categoryFilter" onchange="this.form.submit()">
-                <option value="">-- Select a category --</option>
-                <option value="All">All</option>
-                <option value="Core">Core</option>
-                <option value="Upper body">Upper Body</option>
-                <option value="Lower body">Lower Body</option>
-                <option value="Cardio">Cardio</option>
-                <option value="Drills">Drills</option>
-            </select>
+            <div id="catFilter-div">
+                <label for="categoryFilter">Filter by exercise category</label>
+                <select name="categoryFilter" id="categoryFilter" onchange="this.form.submit()">
+                    <option value="">-- Select a category --</option>
+                    <option value="All">All</option>
+                    <option value="Core">Core</option>
+                    <option value="Upper body">Upper Body</option>
+                    <option value="Lower body">Lower Body</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Drills">Drills</option>
+                </select>
+            </div>
         </form>
-        <a href="/trainer/exercises/add"><button class="btn btn-warning btn-xl">Add new exercise</button></a>
+        <a id="filter-button" href="/trainer/exercises/add"><button class="btn btn-warning btn-xl">Add new exercise</button></a>
     </aside>
 
 
@@ -38,10 +40,10 @@
             <div class="exercise-card">
                 <img class="exercise-thumbnail" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}" >
                 <div class="exercise-summary">
-                    <p>Exercise: </p><p th:text="${exercise.exerciseName}"></p>
-                    <p>Category:</p><p th:text="${exercise.exerciseCat}"></p>
+                     <p>Exercise: <span th:text="${exercise.exerciseName}"></span> </p>
+                     <p>Category: <span th:text="${exercise.exerciseCat}"></span></p>
                 </div>
-                <div>
+                <div class="exercise-buttons">
                     <button class="btn btn-primary btn-xl">View Details</button>
                     <button class="btn btn-secondary btn-xl">Edit Details</button>
                 </div>
