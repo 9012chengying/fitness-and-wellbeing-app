@@ -1,6 +1,6 @@
 #exercise-body{
+    background-image: url("");
     background-color: white;
-    opacity: 0.9;
 }
 
 a{
@@ -13,11 +13,6 @@ a:hover{
     text-decoration: none;
 }
 
-.trainer-image{
-    width: 50px;
-    height: 50px;
-    margin: 0 20px;
-}
 header{
     margin-top: 16rem;
     min-height:10vh;
@@ -26,7 +21,7 @@ header{
     padding: 2rem 2.5rem;
 }
 
-#exercise-header>h2{
+.exercise-header>h2{
     font-size: 2.8rem;
     padding: 20px 0;
 }
@@ -47,7 +42,7 @@ header{
     padding: 0 2rem;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 625px){
     .exercise-flex-row{
         display: flex;
         flex-direction: column;
@@ -71,7 +66,7 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     border-radius: 10px;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 625px){
     .btn-xl{
         margin: 5px;
         min-width: 50px;
@@ -88,14 +83,14 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
 }
 
 /*CSS for AllExercises*/
-#catFilter{
+#filterForm{
     font-size: 1.8rem;
     width: 50%;
     margin: 20px auto;
     padding: 2rem 1rem;
 }
 
-#catFilter-div{
+#filterForm-div{
     width: 100%;
     margin: auto;
 }
@@ -148,11 +143,27 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     }
 }
 @media only screen and (max-width: 700px){
+    #filterForm{
+        font-size: 1.8rem;
+        width: 90%;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    #filterForm-div{
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
     .exercise-card{
         padding: 1rem 1.5rem;
     }
 }
 @media only screen and (max-width: 625px){
+
+    #filterForm-div{
+        align-items: center;
+    }
 
     .exercise-card{
         display:flex;

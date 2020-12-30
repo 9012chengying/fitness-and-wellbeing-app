@@ -9,14 +9,14 @@
 
     <!--Page heading-->
 
-    <header>
+    <header class="exercise-header">
         <h2>Exercise Library</h2>
         <h3>View all of your created exercises in one place.</h3>
     </header>
 
     <aside class="exercise-flex-row exercise-flex-row-space">
-        <form id="catFilter" action="/trainer/exercises/filter" method="get">
-            <div id="catFilter-div">
+        <form id="filterForm" action="/trainer/exercises/filter" method="get">
+            <div id="filterForm-div">
                 <label for="categoryFilter">Filter by exercise category</label>
                 <select name="categoryFilter" id="categoryFilter" onchange="this.form.submit()">
                     <option value="">-- Select a category --</option>
