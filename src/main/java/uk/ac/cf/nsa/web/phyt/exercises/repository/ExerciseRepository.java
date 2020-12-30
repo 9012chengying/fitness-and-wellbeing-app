@@ -13,4 +13,6 @@ public interface ExerciseRepository {
     List<ExerciseEntity> getAllExercises();
 
     List<ExerciseEntity> filterExercises(String exerciseCat);
+
+    ExerciseEntity viewExercise(int id);
 }

@@ -1,3 +1,31 @@
+
+//AllExercises - Get the data-id for the view button clicked & send action to the controller
+function viewExercise(element){
+    let id = element.getAttribute("data-id");
+    console.log(id);
+    element.parentElement.setAttribute("href", "/trainer/exercises/view?exerciseID="+id);
+    // let xhttp = new XMLHttpRequest();
+    // xhttp.open("GET", '/trainer/exercises/view?exerciseID='+id, true);
+    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xhttp.onreadystatechange = function() {
+    //     if (xhttp.readyState === 4) {
+    //         if (xhttp.status === 200) {
+    //             let text = xhttp.responseText;
+    //             console.log(text);
+    //         } else {
+    //             console.error(xhttp.statusText);
+    //         }
+    //     }
+    // };
+    // xhttp.send();
+}
+
+//AllExercises - Get the data-id for the view button clicked
+function editExercise(element){
+    let id = element.getAttribute("data-id");
+    console.log(id);
+}
+
 //COLLATES INPUT DATA FOR COOKIES IF CANCELS OR DELETES COOKIES IF SUBMITS DATA
 function listen(){
     document.getElementById("exercise-submit-button").addEventListener('click' , deleteCookies);

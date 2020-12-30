@@ -11,7 +11,8 @@
 
     <header class="exercise-header">
         <h2>Exercise Library</h2>
-        <h3>View all of your created exercises in one place.</h3>
+        <h3>A summary of all the exercises you have created.<br>
+        Click View Details to see full details of an exercise or Edit Details to make changes.</h3>
     </header>
 
     <aside class="exercise-flex-row exercise-flex-row-space">
@@ -36,16 +37,16 @@
     <!--main list of exercises-->
 
     <main>
-        <div class="exercise-list" th:each="exercise: ${exercises}">
-            <div class="exercise-card">
+        <div class="exercise-list" >
+            <div class="exercise-card" th:each="exercise: ${exercises}" >
                 <img class="exercise-thumbnail" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}" >
                 <div class="exercise-summary">
                      <p>Exercise: <span th:text="${exercise.exerciseName}"></span> </p>
                      <p>Category: <span th:text="${exercise.exerciseCat}"></span></p>
                 </div>
                 <div class="exercise-buttons">
-                    <button class="btn btn-primary btn-xl">View Details</button>
-                    <button class="btn btn-secondary btn-xl">Edit Details</button>
+                    <a href=""><button th:data-id="${exercise.exerciseID}" onclick="viewExercise(this)" class="btn btn-primary btn-xl">View Details</button></a>
+                    <button th:data-id="${exercise.exerciseID}" onclick="editExercise(this)" class="btn btn-secondary btn-xl">Edit Details</button>
                 </div>
             </div>
         </div>

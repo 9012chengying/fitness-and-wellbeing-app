@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+<body>
+
+    <!--Page heading-->
+    <header class="exercise-header">
+        <h2 th:text="${exercise.exerciseName}">Name of Exercise</h2>
+    </header>
+
+
+    <!--main details of exercise-->
+    <main class="exercise-container">
+        <!--thumbnail image-->
+        <img class="exercise-thumbnail" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
+
+        <!--exercise description-->
+        <div class="exercise-description">
+            <p th:text="${exercise.exerciseDesc}">Description of exercise</p>
+        </div>
+
+       <!--gallery of all exercise images
+        <div class="exercise-image-gallery" th:each="image: ${images}">
+            <img class="exercise-gallery-image" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
+        </div>
+
+       gallery of exercise videos
+        <div class="exercise-video-gallery"th:each="video: ${videos}">
+            <video class="exercise-gallery-video" src=""></video>
+        </div>-->
+
+        <div>
+            <button class="btn btn-primary btn-xl">Edit details</button>
+            <a href="/trainer/exercises/all"><button class="btn btn-secondary btn-xl">Back to library</button></a>
+        </div>
+    </main>
+
+
+<!-- add a footer to contain about us and contact us links-->
+<footer>
+    <p>&copy Phyt App ltd</p>
+</footer>
+</body>
+</html>

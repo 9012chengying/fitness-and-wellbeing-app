@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.repository.ExerciseRepository;
+
+import static java.lang.Integer.parseInt;
 //import uk.ac.cf.nsa.web.phyt.exercises.repository.UserRepository;
 
 
@@ -34,7 +36,7 @@ public class ExerciseController {
         return mav;
     }
 
-    @RequestMapping(path="trainer/exercises/filter", method=RequestMethod.GET)
+    @RequestMapping(path="/trainer/exercises/filter", method=RequestMethod.GET)
     public ModelAndView filterExercises(@RequestParam (value="categoryFilter", defaultValue="All") String exerciseCat) {
         ModelAndView mav = new ModelAndView();
         if(exerciseCat.equals("All")){
@@ -49,6 +51,17 @@ public class ExerciseController {
         }
 
     }
+
+    @RequestMapping(path="trainer/exercises/view", method= RequestMethod.GET)
+    public ModelAndView getExercise(@RequestParam(value="exerciseID", defaultValue="") String exerciseID){
+        int ID = Integer.parseInt(exerciseID);
+        System.out.println(ID);
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exercise", exerciseRepo.viewExercise(ID));
+        mav.setViewName("ViewExercise");
+        return mav;
+    }
+
 
     @RequestMapping(path="/trainer/exercises/add", method= RequestMethod.GET)
     public ModelAndView createExercise() {
