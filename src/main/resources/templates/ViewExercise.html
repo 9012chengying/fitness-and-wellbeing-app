@@ -23,15 +23,15 @@
             <p th:text="${exercise.exerciseDesc}">Description of exercise</p>
         </div>
 
-       <!--gallery of all exercise images
-        <div class="exercise-image-gallery" th:each="image: ${images}">
-            <img class="exercise-gallery-image" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
+       <!--gallery of all exercise images -->
+        <div class="exercise-image-gallery" >
+            <img class="exercise-gallery-image" th:each="image: ${images}" th:src="${image.src}" th:alt-title="${image.altText}">
         </div>
 
-       gallery of exercise videos
-        <div class="exercise-video-gallery"th:each="video: ${videos}">
-            <video class="exercise-gallery-video" src=""></video>
-        </div>-->
+       <!--gallery of exercise videos-->
+        <div class="exercise-video-gallery">
+            <iframe width="715" height="402" class="exercise-gallery-video" th:each="video: ${videos}" th:src="${video.src}" th:alt-title="${video.altText}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
 
         <div>
             <button class="btn btn-primary btn-xl">Edit details</button>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.repository.ExerciseRepository;
+import uk.ac.cf.nsa.web.phyt.exercises.repository.MediaRepository;
 
 import static java.lang.Integer.parseInt;
 //import uk.ac.cf.nsa.web.phyt.exercises.repository.UserRepository;
@@ -18,11 +19,12 @@ import static java.lang.Integer.parseInt;
 public class ExerciseController {
 
     private ExerciseRepository exerciseRepo;
-    //private UserRepository userRepo;
+    private MediaRepository mediaRepo;
 
     @Autowired
-    public ExerciseController(ExerciseRepository exerciseRepo) {
+    public ExerciseController(ExerciseRepository exerciseRepo, MediaRepository mediaR) {
         this.exerciseRepo = exerciseRepo;
+        this.mediaRepo = mediaR;
         //this.userRepo = userRepo;
     }
 
@@ -55,9 +57,10 @@ public class ExerciseController {
     @RequestMapping(path="trainer/exercises/view", method= RequestMethod.GET)
     public ModelAndView getExercise(@RequestParam(value="exerciseID", defaultValue="") String exerciseID){
         int ID = Integer.parseInt(exerciseID);
-        System.out.println(ID);
         ModelAndView mav = new ModelAndView();
         mav.addObject("exercise", exerciseRepo.viewExercise(ID));
+        mav.addObject("images", mediaRepo.getExerciseImages(ID));
+        mav.addObject("videos", mediaRepo.getExerciseVideos(ID));
         mav.setViewName("ViewExercise");
         return mav;
     }

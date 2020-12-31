@@ -39,7 +39,6 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository{
 
     @Override
     public List<ExerciseEntity> filterExercises(String exerciseCat){
-        System.out.println(exerciseCat);
         return jdbcTemplate.query(
                 "select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.category= ? order by exercises.created_at DESC;", new Object[]{exerciseCat}, new ExerciseMapper()
                );
