@@ -232,3 +232,44 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     justify-content: center;
 }
 
+/* CSS for ViewExercises */
+
+#exercise-name{
+    padding: 1rem 0;
+    border-bottom: #007bff solid 0.5rem;;
+}
+.exercise-container {
+    width: 80%;
+    margin: auto;
+}
+
+.exercise-container>.exercise-thumbnail {
+    width: 400px;
+    height: auto;
+    margin: auto;
+    padding: 2rem;
+}
+.exercise-container>.exercise-thumbnail>img{
+    width: inherit;
+    height: auto;
+}
+
+.exercise-description>p{
+    font-size: 1.8rem;
+    padding: 2rem 1rem;
+    text-align: justify;
+}
+
+.exercise-image-gallery {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+
+.exercise-gallery-image {
+    width: 250px;
+    height: auto;
+    margin: 0.5rem;
+
+}

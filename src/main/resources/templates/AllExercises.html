@@ -38,15 +38,15 @@
 
     <main>
         <div class="exercise-list" >
-            <div class="exercise-card" th:each="exercise: ${exercises}" >
+            <div class="exercise-card" th:data-id="${exercise.exerciseID}" th:each="exercise: ${exercises}" >
                 <img class="exercise-thumbnail" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}" >
                 <div class="exercise-summary">
                      <p>Exercise: <span th:text="${exercise.exerciseName}"></span> </p>
                      <p>Category: <span th:text="${exercise.exerciseCat}"></span></p>
                 </div>
                 <div class="exercise-buttons">
-                    <a href=""><button th:data-id="${exercise.exerciseID}" onclick="viewExercise(this)" class="btn btn-primary btn-xl">View Details</button></a>
-                    <button th:data-id="${exercise.exerciseID}" onclick="editExercise(this)" class="btn btn-secondary btn-xl">Edit Details</button>
+                    <a th:href="@{/trainer/exercises/view(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">View Details</button></a>
+                    <a th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-secondary btn-xl">Edit Details</button></a>
                 </div>
             </div>
         </div>

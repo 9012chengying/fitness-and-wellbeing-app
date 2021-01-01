@@ -1,16 +1,4 @@
 
-//AllEXERCISES - Get the data-id for the view button clicked & set href to send get request with ID
-function viewExercise(element){
-    let id = element.getAttribute("data-id");
-    //console.log(id);
-    element.parentElement.setAttribute("href", "/trainer/exercises/view?exerciseID="+id);
-}
-
-//AllEXERCISES  - Get the data-id for the view button clicked
-function editExercise(element){
-    let id = element.getAttribute("data-id");
-    //console.log(id);
-}
 
 //CREATE EXERCISE - COLLATES INPUT DATA FOR COOKIES IF CANCELS OR DELETES COOKIES IF SUBMITS DATA
 function listen(){

@@ -61,6 +61,7 @@ public class ExerciseEntity {
     public String getThumbnailAlt() {
         return thumbnailAlt;
     }
+
     public void setThumbnailAlt(String thumbnailAlt) {
         this.thumbnailAlt = thumbnailAlt;
     }

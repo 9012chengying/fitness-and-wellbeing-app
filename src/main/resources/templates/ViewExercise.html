@@ -9,17 +9,21 @@
 
     <!--Page heading-->
     <header class="exercise-header">
-        <h2 th:text="${exercise.exerciseName}">Name of Exercise</h2>
+        <h2 id="exercise-name" th:text="${exercise.exerciseName}">Name of Exercise</h2>
     </header>
 
 
     <!--main details of exercise-->
     <main class="exercise-container">
         <!--thumbnail image-->
-        <img class="exercise-thumbnail" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
+        <div class="exercise-thumbnail">
+            <img  th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
+        </div>
+
 
         <!--exercise description-->
         <div class="exercise-description">
+            <h3>Exercise Description</h3>
             <p th:text="${exercise.exerciseDesc}">Description of exercise</p>
         </div>
 
