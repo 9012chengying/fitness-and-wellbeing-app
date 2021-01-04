@@ -34,7 +34,7 @@ public class ExerciseController {
     @GetMapping(path="/filter")
     public ModelAndView filterExercises(@RequestParam (value="categoryFilter", defaultValue="All") String exerciseCat) {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("exercises", exerciseService.getExerciseByCategory(exerciseCat));
+        mav.addObject("exercises", exerciseService.listExercisesByCategory(exerciseCat));
         mav.setViewName("AllExercises");
         return mav;
     }
@@ -65,8 +65,11 @@ public class ExerciseController {
             System.out.println(br.toString());
             return br.toString();
         } else {
-            exerciseService.createNewExercise((exerciseForm));
-            return "redirect:all" ;
+            if (exerciseService.createNewExercise(exerciseForm)) {
+                return "redirect:all";
+            } else {
+                return "redirect:add";
+            }
         }
     }
 

@@ -1,11 +1,9 @@
 package uk.ac.cf.nsa.web.phyt.exercises.data.DTO;
 
-import org.springframework.web.servlet.ModelAndView;
-import uk.ac.cf.nsa.web.phyt.exercises.data.repository.ExerciseRepository;
 
 import java.util.*;
 
-//Exercise entity class to capture exercise data from database
+//Exercise class to capture exercise data from database
 public class Exercise {
 
     private int exerciseID;
@@ -18,6 +16,17 @@ public class Exercise {
     private List<Video> videos;
 
     //Exercise constructor
+    public Exercise(){
+        this.exerciseID = 0;
+        this.exerciseName = null;
+        this.exerciseDesc = null;
+        this.exerciseCat = null;
+        this.thumbnailSrc = null;
+        this.thumbnailAlt = null;
+        images = null;
+        videos = null;
+    }
+
     public Exercise(int exerciseID, String exerciseName, String exerciseDesc, String exerciseCat, String thumbnailSrc, String thumbnailAlt) {
         this.exerciseID = exerciseID;
         this.exerciseName = exerciseName;

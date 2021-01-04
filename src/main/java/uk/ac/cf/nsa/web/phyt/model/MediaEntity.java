@@ -8,6 +8,12 @@ public class MediaEntity {
     String Type;
     int exerciseID;
 
+    public MediaEntity(String src, String altText, String Type, int exerciseID){
+        this.src = src;
+        this.altText = altText;
+        this.Type = Type;
+        this.exerciseID = exerciseID;
+    }
     public MediaEntity(int id, String src, String altText, String Type, int exerciseID) {
         this.id = id;
         this.src = src;

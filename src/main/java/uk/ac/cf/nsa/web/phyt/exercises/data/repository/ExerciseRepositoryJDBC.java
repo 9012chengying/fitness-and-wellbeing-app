@@ -1,11 +1,15 @@
 package uk.ac.cf.nsa.web.phyt.exercises.data.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Image;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Video;
 import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.ExerciseMapper;
-import uk.ac.cf.nsa.web.phyt.exercises.data.repository.ExerciseRepository;
+import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.ImageMapper;
+import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.VideoMapper;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 
 import java.util.List;
@@ -13,8 +17,7 @@ import java.util.List;
 @Repository
 public class ExerciseRepositoryJDBC implements ExerciseRepository {
 
-    private JdbcTemplate jdbcTemplate;
-    private Object List;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public ExerciseRepositoryJDBC(JdbcTemplate aTemplate) {
@@ -52,5 +55,27 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
                 new ExerciseMapper()
         );
         return exercise;
+    }
+
+
+    public boolean addImage(ExerciseForm exerciseForm){
+        return false;
+    }
+
+    public boolean addVideo(ExerciseForm exerciseForm){
+        return false;
+    }
+
+
+    public List<Image> getExerciseImages(int ID) throws DataAccessException {
+        String sql = "SELECT id, img_src, alt_text, type, exercise_id FROM media WHERE exercise_id=? AND type='Image';";
+        return jdbcTemplate.query(
+                sql, new Object[]{ID}, new ImageMapper());
+    }
+
+    public List<Video> getExerciseVideos(int ID){
+        return jdbcTemplate.query(
+                "SELECT id, img_src, alt_text, type, exercise_id FROM media WHERE exercise_id=? AND type='Video';", new Object[]{ID}, new VideoMapper()
+        );
     }
 }

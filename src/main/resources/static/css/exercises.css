@@ -1,5 +1,5 @@
 #exercise-body{
-    background-image: url("");
+    background-image: none;
     background-color: white;
 }
 
@@ -173,9 +173,10 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
         padding: 1rem;
     }
     .exercise-thumbnail{
-        width: 50%;
+        width: 75%;
         height: auto;
         margin: auto;
+        padding-right: 0;
     }
 
     .exercise-summary{
@@ -224,7 +225,7 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     justify-self: flex-end;
 }
 
-.exercise-buttons{
+.exercise-input>.exercise-buttons{
     display: flex;
     justify-content: center;
 }

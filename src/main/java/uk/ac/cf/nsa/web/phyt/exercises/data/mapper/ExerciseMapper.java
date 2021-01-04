@@ -1,6 +1,5 @@
 package uk.ac.cf.nsa.web.phyt.exercises.data.mapper;
 
-
 import org.springframework.jdbc.core.RowMapper;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 
