@@ -192,9 +192,6 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
 
 }
 
-
-
-
 /*CSS for CreateExercise*/
 #exerciseForm{
     font-size: 1.8rem;
@@ -266,10 +263,25 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     justify-content: space-evenly;
 
 }
-
 .exercise-gallery-image {
     width: 250px;
     height: auto;
     margin: 0.5rem;
+}
 
+.exercise-video-gallery{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.exercise-gallery-video{
+    width: 500px;
+    height: 300px;
+}
+#viewExercise-buttons {
+    padding: 2rem 0;
+    width:100%;
+    display: flex;
+    justify-content: center;
 }

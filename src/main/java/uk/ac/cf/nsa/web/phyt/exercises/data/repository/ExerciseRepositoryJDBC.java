@@ -1,16 +1,17 @@
-package uk.ac.cf.nsa.web.phyt.exercises.repository;
+package uk.ac.cf.nsa.web.phyt.exercises.data.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.exercises.DTO.ExerciseEntity;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
+import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.ExerciseMapper;
+import uk.ac.cf.nsa.web.phyt.exercises.data.repository.ExerciseRepository;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
-import uk.ac.cf.nsa.web.phyt.exercises.model.ExerciseMapper;
 
 import java.util.List;
 
 @Repository
-public class ExerciseRepositoryJDBC implements ExerciseRepository{
+public class ExerciseRepositoryJDBC implements ExerciseRepository {
 
     private JdbcTemplate jdbcTemplate;
     private Object List;
@@ -29,7 +30,7 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository{
     }
 
 
-    public List<ExerciseEntity> getAllExercises(){
+    public List<Exercise> getAllExercises(){
         return jdbcTemplate.query (
              "SELECT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text  FROM phyt.exercises \n" +
                      "LEFT JOIN Media\n" +
@@ -38,18 +39,18 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository{
     }
 
     @Override
-    public List<ExerciseEntity> filterExercises(String exerciseCat){
+    public List<Exercise> getExercisesByCategory(String exerciseCat){
         return jdbcTemplate.query(
                 "select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.category= ? order by exercises.created_at DESC;", new Object[]{exerciseCat}, new ExerciseMapper()
                );
     }
 
 
-    public ExerciseEntity viewExercise(int id){
-        ExerciseEntity exerciseEntity = (ExerciseEntity) jdbcTemplate.queryForObject("select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.id= ?;",
+    public Exercise getExerciseByID(int id){
+        Exercise exercise = (Exercise) jdbcTemplate.queryForObject("select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.id= ?;",
                 new Object[]{id},
                 new ExerciseMapper()
         );
-        return exerciseEntity;
+        return exercise;
     }
 }

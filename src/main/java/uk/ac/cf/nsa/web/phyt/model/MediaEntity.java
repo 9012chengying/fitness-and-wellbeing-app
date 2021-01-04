@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.exercises.DTO;
+package uk.ac.cf.nsa.web.phyt.model;
 
 public class MediaEntity {
 

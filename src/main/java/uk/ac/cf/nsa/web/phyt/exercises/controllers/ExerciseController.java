@@ -3,83 +3,69 @@ package uk.ac.cf.nsa.web.phyt.exercises.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
-import uk.ac.cf.nsa.web.phyt.exercises.repository.ExerciseRepository;
-import uk.ac.cf.nsa.web.phyt.exercises.repository.MediaRepository;
-
-import static java.lang.Integer.parseInt;
-//import uk.ac.cf.nsa.web.phyt.exercises.repository.UserRepository;
+import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
 
 
 @Controller
+@RequestMapping(path ="/trainer/exercises")
 public class ExerciseController {
 
-    private ExerciseRepository exerciseRepo;
-    private MediaRepository mediaRepo;
+    //Use ExerciseManagementService methods to access appropriate data
+    private final ExerciseManagementService exerciseService;
 
     @Autowired
-    public ExerciseController(ExerciseRepository exerciseRepo, MediaRepository mediaR) {
-        this.exerciseRepo = exerciseRepo;
-        this.mediaRepo = mediaR;
-        //this.userRepo = userRepo;
+    public ExerciseController(ExerciseManagementService exerciseService) {
+        this.exerciseService = exerciseService;
     }
 
-    //TODO add object attribute to get exercises to populate template
-    @RequestMapping (path="/trainer/exercises/all", method=RequestMethod.GET)
+    //List all exercises
+    @GetMapping(path="/all")
     public ModelAndView allExercises(){
         ModelAndView mav = new ModelAndView();
-        System.out.println(exerciseRepo.getAllExercises());
-        mav.addObject("exercises", exerciseRepo.getAllExercises());
+        mav.addObject("exercises", exerciseService.listAllExercises());
         mav.setViewName("AllExercises");
         return mav;
     }
 
-    @RequestMapping(path="/trainer/exercises/filter", method=RequestMethod.GET)
+    //Filter exercises by category
+    @GetMapping(path="/filter")
     public ModelAndView filterExercises(@RequestParam (value="categoryFilter", defaultValue="All") String exerciseCat) {
         ModelAndView mav = new ModelAndView();
-        if(exerciseCat.equals("All")){
-            mav.addObject("exercises", exerciseRepo.getAllExercises());
-            mav.setViewName("AllExercises");
-            return mav;
-        } else {
-            System.out.println(exerciseRepo.filterExercises(exerciseCat));
-            mav.addObject("exercises", exerciseRepo.filterExercises(exerciseCat));
-            mav.setViewName("AllExercises");
-            return mav;
-        }
-
+        mav.addObject("exercises", exerciseService.getExerciseByCategory(exerciseCat));
+        mav.setViewName("AllExercises");
+        return mav;
     }
 
-    @RequestMapping(path="trainer/exercises/view", method= RequestMethod.GET)
+    //View an individual exercise
+    @GetMapping(path="/view")
     public ModelAndView getExercise(@RequestParam(value="exerciseID", defaultValue="") String exerciseID){
-        int ID = Integer.parseInt(exerciseID);
         ModelAndView mav = new ModelAndView();
-        mav.addObject("exercise", exerciseRepo.viewExercise(ID));
-        mav.addObject("images", mediaRepo.getExerciseImages(ID));
-        mav.addObject("videos", mediaRepo.getExerciseVideos(ID));
+        mav.addObject("exercise", exerciseService.viewExercise(exerciseID));
+        mav.addObject("images", exerciseService.viewExercise(exerciseID).getImages());
+        mav.addObject("videos", exerciseService.viewExercise(exerciseID).getVideos());
         mav.setViewName("ViewExercise");
         return mav;
     }
 
-
-    @RequestMapping(path="/trainer/exercises/add", method= RequestMethod.GET)
+    //Show 'Create Exercise' Form
+    @GetMapping(path="/add")
     public ModelAndView createExercise() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("CreateExercise");
         return mav;
     }
 
-    @RequestMapping(path = "/trainer/exercises/add", method= RequestMethod.POST)
+    //Create new exercise in database
+    @PostMapping(path = "/add")
     public String trainerAddExercise (ExerciseForm exerciseForm, BindingResult br) {
         if (br.hasErrors()) {
             System.out.println(br.toString());
             return br.toString();
         } else {
-            exerciseRepo.addExercise((exerciseForm));
+            exerciseService.createNewExercise((exerciseForm));
             return "redirect:all" ;
         }
     }

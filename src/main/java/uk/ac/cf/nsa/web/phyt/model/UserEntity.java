@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.exercises.DTO;
+package uk.ac.cf.nsa.web.phyt.model;
 
 //User entity class to capture user data from database following log in
 public class UserEntity {

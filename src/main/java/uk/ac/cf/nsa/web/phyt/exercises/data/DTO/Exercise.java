@@ -1,7 +1,12 @@
-package uk.ac.cf.nsa.web.phyt.exercises.DTO;
+package uk.ac.cf.nsa.web.phyt.exercises.data.DTO;
+
+import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cf.nsa.web.phyt.exercises.data.repository.ExerciseRepository;
+
+import java.util.*;
 
 //Exercise entity class to capture exercise data from database
-public class ExerciseEntity {
+public class Exercise {
 
     private int exerciseID;
     private String exerciseName;
@@ -9,16 +14,19 @@ public class ExerciseEntity {
     private String exerciseCat;
     private String thumbnailSrc;
     private String thumbnailAlt;
+    private List<Image> images;
+    private List<Video> videos;
 
-    //TODO add lists for images and videos
-
-    public ExerciseEntity(int exerciseID, String exerciseName, String exerciseDesc, String exerciseCat, String thumbnailSrc, String thumbnailAlt) {
+    //Exercise constructor
+    public Exercise(int exerciseID, String exerciseName, String exerciseDesc, String exerciseCat, String thumbnailSrc, String thumbnailAlt) {
         this.exerciseID = exerciseID;
         this.exerciseName = exerciseName;
         this.exerciseDesc = exerciseDesc;
         this.exerciseCat = exerciseCat;
         this.thumbnailSrc = thumbnailSrc;
         this.thumbnailAlt = thumbnailAlt;
+        images = null;
+        videos = null;
     }
 
     //getters & setters
@@ -66,4 +74,19 @@ public class ExerciseEntity {
         this.thumbnailAlt = thumbnailAlt;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
+    public List<Video> getVideos() {
+        return videos;
+    }
+
+    public void setVideos(List<Video> videos) {
+        this.videos = videos;
+    }
 }

@@ -1,7 +1,5 @@
 package uk.ac.cf.nsa.web.phyt.exercises.forms;
 
-import uk.ac.cf.nsa.web.phyt.exercises.DTO.UserEntity;
-
 //Class for data received from the Create Exercise form
 public class ExerciseForm {
 

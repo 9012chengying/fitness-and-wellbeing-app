@@ -1,8 +1,8 @@
-package uk.ac.cf.nsa.web.phyt.exercises.model;
+package uk.ac.cf.nsa.web.phyt.exercises.data.mapper;
 
 
 import org.springframework.jdbc.core.RowMapper;
-import uk.ac.cf.nsa.web.phyt.exercises.DTO.ImageEntity;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Image;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class ImageMapper implements RowMapper {
 
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new ImageEntity(
+        return new Image(
                 rs.getInt("id"),
                 rs.getString("img_src"),
                 rs.getString("alt_text"),
