@@ -36,7 +36,7 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
 
     public List<Exercise> getAllExercises(){
         return jdbcTemplate.query (
-             "SELECT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text  FROM phyt.exercises \n" +
+             "SELECT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at FROM phyt.exercises \n" +
                      "LEFT JOIN Media\n" +
                      "ON exercises.thumbnail_id = Media.id order by exercises.created_at DESC;", new ExerciseMapper()
         );

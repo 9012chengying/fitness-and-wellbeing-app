@@ -8,6 +8,7 @@ import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Video;
 import uk.ac.cf.nsa.web.phyt.exercises.data.repository.ExerciseRepository;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -27,7 +28,14 @@ public class ExerciseManagementService {
 
     //Return a list of all exercises for a Trainer
     public List<Exercise> listAllExercises() {
-        return exerciseRepo.getAllExercises();
+        List<Exercise> allExercises = exerciseRepo.getAllExercises();
+
+        for (int i=0; i<allExercises.size(); i++){
+            Exercise exercise = allExercises.get(i);
+            Timestamp createdDate = exercise.getCreatedDate();
+            exercise.dateConverter(createdDate);
+        }
+        return allExercises;
     }
 
     //Return list of exercises based on category

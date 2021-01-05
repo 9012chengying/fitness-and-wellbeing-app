@@ -1,6 +1,8 @@
 package uk.ac.cf.nsa.web.phyt.exercises.data.DTO;
 
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 //Exercise class to capture exercise data from database
@@ -14,8 +16,11 @@ public class Exercise {
     private String thumbnailAlt;
     private List<Image> images;
     private List<Video> videos;
+    private Timestamp createdDate;
+    private String dateStr;
 
-    //Exercise constructor
+    //Exercise constructors
+
     public Exercise(){
         this.exerciseID = 0;
         this.exerciseName = null;
@@ -25,9 +30,11 @@ public class Exercise {
         this.thumbnailAlt = null;
         images = null;
         videos = null;
+        createdDate = null;
+        dateStr = null;
     }
 
-    public Exercise(int exerciseID, String exerciseName, String exerciseDesc, String exerciseCat, String thumbnailSrc, String thumbnailAlt) {
+    public Exercise(int exerciseID, String exerciseName, String exerciseDesc, String exerciseCat, String thumbnailSrc, String thumbnailAlt, Timestamp createdDate) {
         this.exerciseID = exerciseID;
         this.exerciseName = exerciseName;
         this.exerciseDesc = exerciseDesc;
@@ -36,6 +43,8 @@ public class Exercise {
         this.thumbnailAlt = thumbnailAlt;
         images = null;
         videos = null;
+        this.createdDate = createdDate;
+        dateStr = null;
     }
 
     //getters & setters
@@ -97,5 +106,31 @@ public class Exercise {
 
     public void setVideos(List<Video> videos) {
         this.videos = videos;
+    }
+
+    public Timestamp getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Timestamp createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getDateStr() {
+        return dateStr;
+    }
+
+    public void setDateStr(String dateStr) {
+        this.dateStr = dateStr;
+    }
+
+    //Method to convert createdDate to String
+    public String dateConverter(Timestamp date){
+        String dateInString = null;
+        Date date1 = new Date(date.getTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+        dateInString = dateFormat.format(date1);
+        this.setDateStr(dateInString);
+        return dateInString;
     }
 }
