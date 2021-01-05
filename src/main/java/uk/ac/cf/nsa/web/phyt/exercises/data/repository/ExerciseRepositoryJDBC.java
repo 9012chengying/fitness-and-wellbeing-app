@@ -36,7 +36,8 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
 
     public List<Exercise> getAllExercises(){
         return jdbcTemplate.query (
-             "SELECT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at FROM phyt.exercises \n" +
+             "SELECT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+                     "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  FROM phyt.exercises \n" +
                      "LEFT JOIN Media\n" +
                      "ON exercises.thumbnail_id = Media.id order by exercises.created_at DESC;", new ExerciseMapper()
         );
@@ -45,13 +46,15 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
     @Override
     public List<Exercise> getExercisesByCategory(String exerciseCat){
         return jdbcTemplate.query(
-                "select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.category= ? order by exercises.created_at DESC;", new Object[]{exerciseCat}, new ExerciseMapper()
+                "select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\" from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.category= ? order by exercises.created_at DESC;", new Object[]{exerciseCat}, new ExerciseMapper()
                );
     }
 
 
     public Exercise getExerciseByID(int id){
-        Exercise exercise = (Exercise) jdbcTemplate.queryForObject("select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.id= ?;",
+        Exercise exercise = (Exercise) jdbcTemplate.queryForObject("select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.id= ?;",
                 new Object[]{id},
                 new ExerciseMapper()
         );

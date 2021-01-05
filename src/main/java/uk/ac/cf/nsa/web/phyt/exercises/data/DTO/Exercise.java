@@ -18,6 +18,8 @@ public class Exercise {
     private List<Video> videos;
     private Timestamp createdDate;
     private String dateStr;
+    int imageCount;
+    int videoCount;
 
     //Exercise constructors
 
@@ -28,23 +30,27 @@ public class Exercise {
         this.exerciseCat = null;
         this.thumbnailSrc = null;
         this.thumbnailAlt = null;
-        images = null;
-        videos = null;
-        createdDate = null;
-        dateStr = null;
+        this.images = null;
+        this.videos = null;
+        this.createdDate = null;
+        this.dateStr = null;
+        this.imageCount = 0;
+        this.videoCount = 0;
     }
 
-    public Exercise(int exerciseID, String exerciseName, String exerciseDesc, String exerciseCat, String thumbnailSrc, String thumbnailAlt, Timestamp createdDate) {
+    public Exercise(int exerciseID, String exerciseName, String exerciseDesc, String exerciseCat, String thumbnailSrc, String thumbnailAlt, Timestamp createdDate, int imgCount, int vidCount) {
         this.exerciseID = exerciseID;
         this.exerciseName = exerciseName;
         this.exerciseDesc = exerciseDesc;
         this.exerciseCat = exerciseCat;
         this.thumbnailSrc = thumbnailSrc;
         this.thumbnailAlt = thumbnailAlt;
-        images = null;
-        videos = null;
+        this.images = null;
+        this.videos = null;
         this.createdDate = createdDate;
-        dateStr = null;
+        this.dateStr = null;
+        this.imageCount = imgCount;
+        this.videoCount = vidCount;
     }
 
     //getters & setters
@@ -124,6 +130,22 @@ public class Exercise {
         this.dateStr = dateStr;
     }
 
+    public int getImageCount() {
+        return imageCount;
+    }
+
+    public void setImageCount(int imageCount) {
+        this.imageCount = imageCount;
+    }
+
+    public int getVideoCount() {
+        return videoCount;
+    }
+
+    public void setVideoCount(int videoCount) {
+        this.videoCount = videoCount;
+    }
+
     //Method to convert createdDate to String
     public String dateConverter(Timestamp date){
         String dateInString = null;
@@ -133,4 +155,6 @@ public class Exercise {
         this.setDateStr(dateInString);
         return dateInString;
     }
+
+
 }

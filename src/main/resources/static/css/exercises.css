@@ -143,6 +143,9 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     }
 }
 @media only screen and (max-width: 700px){
+    .exercise-card {
+       max-height: 60rem;
+    }
     #filterForm{
         font-size: 1.8rem;
         width: 90%;
@@ -161,11 +164,14 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
 }
 @media only screen and (max-width: 625px){
 
+
+
     #filterForm-div{
         align-items: center;
     }
 
     .exercise-card{
+        max-height: 60rem;
         display:flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -180,9 +186,18 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     }
 
     .exercise-summary{
-        width: 75%;
-        font-size: 1.8rem;
-        padding: 1.5rem;
+        width: 80%;
+        padding: 0.5rem;
+    }
+
+    .exercise-summary>p {
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+    .exercise-summary>p>span{
+        font-weight: normal;
+        font-size: 1.6rem;
     }
     .exercise-buttons{
         display: flex;
