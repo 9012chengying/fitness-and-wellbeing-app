@@ -18,6 +18,7 @@ public class ExerciseTest {
 
     @Test
     public void dateConverterTest(){
+
         //Set createdDate on new Exercise
         exercise.setCreatedDate(Timestamp.valueOf("2020-12-29 17:12:34"));
         Timestamp testDate = exercise.getCreatedDate();

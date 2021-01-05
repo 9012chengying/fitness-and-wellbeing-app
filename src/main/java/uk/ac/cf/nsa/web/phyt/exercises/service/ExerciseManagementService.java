@@ -44,7 +44,13 @@ public class ExerciseManagementService {
         if (exerciseCat.equals("All")) {
             return listAllExercises();
         } else {
-            return exerciseRepo.getExercisesByCategory(exerciseCat);
+            List<Exercise> allExercises = exerciseRepo.getExercisesByCategory(exerciseCat);
+            for (int i=0; i<allExercises.size(); i++){
+                Exercise exercise = allExercises.get(i);
+                Timestamp createdDate = exercise.getCreatedDate();
+                exercise.dateConverter(createdDate);
+            }
+            return allExercises;
         }
     }
 
