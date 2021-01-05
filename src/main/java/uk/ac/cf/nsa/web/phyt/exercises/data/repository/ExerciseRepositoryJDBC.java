@@ -29,6 +29,7 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
         int rows = jdbcTemplate.update(
                 "insert into Exercises(trainer_id, exercise_name,exercise_desc,category) values(?,?,?,?)" ,
                 new Object[]{exerciseForm.getUserID(),exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat()});
+        System.out.println(rows>0);
         return rows>0;
     }
 

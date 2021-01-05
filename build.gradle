@@ -22,10 +22,6 @@ dependencies {
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.4.2')
     testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    
-    //added Mockito dependencies to be able to use Mock injections for unit testing services
-    testCompile group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.6.28'
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.6.28'
     //testImplementation 'org.springframework.security:spring-security-test'
 }
 
