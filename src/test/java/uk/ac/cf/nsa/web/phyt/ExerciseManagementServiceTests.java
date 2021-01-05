@@ -38,7 +38,7 @@ public class ExerciseManagementServiceTests {
 
     @Test
     public void viewExerciseTest(){
-        
+
         // (exerciseManagementService.viewExercise("1") );
 
     }
