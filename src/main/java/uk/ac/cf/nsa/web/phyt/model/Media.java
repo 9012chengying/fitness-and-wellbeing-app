@@ -1,6 +1,6 @@
 package uk.ac.cf.nsa.web.phyt.model;
 
-public class MediaEntity {
+public class Media {
 
     int id;
     String src;
@@ -8,13 +8,13 @@ public class MediaEntity {
     String Type;
     int exerciseID;
 
-    public MediaEntity(String src, String altText, String Type, int exerciseID){
+    public Media(String src, String altText, String Type, int exerciseID){
         this.src = src;
         this.altText = altText;
         this.Type = Type;
         this.exerciseID = exerciseID;
     }
-    public MediaEntity(int id, String src, String altText, String Type, int exerciseID) {
+    public Media(int id, String src, String altText, String Type, int exerciseID) {
         this.id = id;
         this.src = src;
         this.altText = altText;

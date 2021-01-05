@@ -3,7 +3,7 @@ package uk.ac.cf.nsa.web.phyt.exercises.forms;
 //Class for data received from the Create Exercise form
 public class ExerciseForm {
 
-    //UserEntity user;
+    //User user;
     int userID;
     String exerciseName;
     String exerciseDesc;

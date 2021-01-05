@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt;
+package uk.ac.cf.nsa.web.phyt.exerciseTests;
 
 
 import org.junit.jupiter.api.Test;
@@ -7,12 +7,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
+import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+
+//TESTS FOR THE EXERCISE MANAGEMENT SERVICE
+
 public class ExerciseManagementServiceTests {
 
 
@@ -32,9 +34,8 @@ public class ExerciseManagementServiceTests {
         testExerciseForm.setExerciseCat("Lower body");
         System.out.println(testExerciseForm.toString());
 
-        //Test adding the new exercise
+        //Test adding the new exercise - should return true when created
         boolean exerciseCreated = exerciseManagementService.createNewExercise(testExerciseForm);
-
 
         //Verify the test
         assertTrue(exerciseCreated);
@@ -49,17 +50,47 @@ public class ExerciseManagementServiceTests {
         //assign output from viewExercise with exercise ID = 1 , to testExercise object
         testExercise = exerciseManagementService.viewExercise("1");
 
-        //verify that testExercise name equals Plank
+        //verify that testExercise has name of Plank and Category of Core
         assertEquals("Plank", testExercise.getExerciseName());
+        assertEquals("Core", testExercise.getExerciseCat());
     }
 
     @Test
     public void listAllExercisesTest(){
 
+        //create a new exercise test list
+        List<Exercise> testList;
+
+        //assign output from listAllExercises to new list
+        testList = exerciseManagementService.listAllExercises();
+
+        //verify that the list is not empty
+        assertNotNull(testList);
     }
 
     @Test
+    public void listExercisesByCategory(){
+
+        //create a new exercise test list
+        List<Exercise> testListByCat;
+
+        //assign output from listExercisesByCategory to test list
+        testListByCat = exerciseManagementService.listExercisesByCategory("Cardio");
+
+        //verify list not empty
+        assertNotNull(testListByCat);
+
+        //verify that category for each item in list is Cardio
+        for (int i = 0; i<testListByCat.size(); i++) {
+            assertEquals("Cardio", testListByCat.get(i).getExerciseCat());
+        }
+
+    }
+
+    //todo - write test for adding an image to an exercise
+    @Test
     public void addNewImageTest(){
+
 
     }
 }
