@@ -1,4 +1,7 @@
-#exercise-body{
+
+/* DESKTOP CSS */
+
+.exercise-body{
     background-image: none;
     background-color: white;
 }
@@ -13,12 +16,12 @@ a:hover{
     text-decoration: none;
 }
 
-header{
+.exercise-header{
     margin-top: 16rem;
     min-height:10vh;
     background-color: white;
     text-align: center;
-    padding: 2rem 2.5rem;
+    padding: 2rem 0;
 }
 
 .exercise-header>h2{
@@ -137,14 +140,20 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     justify-content: flex-end;
 }
 
+/* MEDIA QUERIES FOR RESPONSIVENESS */
+
 @media only screen and (max-width: 900px){
+    /* All Exercises Page*/
     .exercise-list{
         width: 100%;
     }
 }
+
 @media only screen and (max-width: 700px){
+
+    /* All Exercises Page */
     .exercise-card {
-       max-height: 60rem;
+        max-height: 60rem;
     }
     #filterForm{
         font-size: 1.8rem;
@@ -162,9 +171,8 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
         padding: 1rem 1.5rem;
     }
 }
+
 @media only screen and (max-width: 625px){
-
-
 
     #filterForm-div{
         align-items: center;
@@ -208,6 +216,7 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
 
 }
 
+
 /*CSS for CreateExercise*/
 #exerciseForm{
     font-size: 1.8rem;
@@ -245,56 +254,75 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     justify-content: center;
 }
 
-/* CSS for ViewExercises */
+/* CSS for View Exercise Page */
+
 
 #exercise-name{
     padding: 1rem 0;
     border-bottom: #007bff solid 0.5rem;;
 }
-.exercise-container {
-    width: 80%;
+
+.exercise-container, .exercise-image-gallery, .exercise-video-gallery  {
+    width: 100%;
     margin: auto;
+    padding: 1rem;
+}
+
+.exercise-container>h3{
+    padding: 1rem 0.5rem;
 }
 
 .exercise-container>.exercise-thumbnail {
-    width: 400px;
+    display: flex;
+    justify-content: center;
+    width: 80%;
     height: auto;
     margin: auto;
-    padding: 2rem;
+    padding-bottom: 1.5rem;
 }
+
 .exercise-container>.exercise-thumbnail>img{
-    width: inherit;
+    width: 300px;
     height: auto;
 }
 
+.exercise-description{
+    width: 100%;
+    padding: 1rem;
+}
+
+.exercise-description>h3{
+    padding-bottom: 0.5rem;
+}
 .exercise-description>p{
-    font-size: 1.8rem;
-    padding: 2rem 1rem;
+    font-size: 1.6rem;
     text-align: justify;
 }
 
 .exercise-image-gallery {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 .exercise-gallery-image {
-    width: 250px;
+    display: inline-block;
+    width: 90%;
     height: auto;
-    margin: 0.5rem;
+    margin-right: 1rem;
 }
 
 .exercise-video-gallery{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 .exercise-gallery-video{
-    width: 500px;
-    height: 300px;
+    width: 100%;
+    height: 200px;
+    margin-right: 1rem;
 }
+
 #viewExercise-buttons {
     padding: 2rem 0;
     width:100%;

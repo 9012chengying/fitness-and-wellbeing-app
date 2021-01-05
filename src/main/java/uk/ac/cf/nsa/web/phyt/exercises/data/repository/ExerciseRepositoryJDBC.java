@@ -77,7 +77,7 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
                 sql, new Object[]{ID}, new ImageMapper());
     }
 
-    public List<Video> getExerciseVideos(int ID){
+    public List<Video> getExerciseVideos(int ID) throws DataAccessException {
         return jdbcTemplate.query(
                 "SELECT id, img_src, alt_text, type, exercise_id FROM media WHERE exercise_id=? AND type='Video';", new Object[]{ID}, new VideoMapper()
         );

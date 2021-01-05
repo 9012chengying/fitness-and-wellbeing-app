@@ -2,11 +2,14 @@ package uk.ac.cf.nsa.web.phyt.exercises.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
+
+import javax.swing.text.EditorKit;
 
 
 @Controller
@@ -73,6 +76,25 @@ public class ExerciseController {
         }
     }
 
+    @GetMapping(path="/edit")
+    public ModelAndView editExercise(@RequestParam(value="exerciseID", defaultValue="") String exerciseID){
+        ModelAndView mav = new ModelAndView();
+
+        //todo ExerciseManagementService to edit exercise
+        System.out.println("Exercise" + exerciseID + " will be edited");
+        mav.setViewName("EditExercise");
+        return mav;
+    }
+
+    //Delete an exercise from database
+    @GetMapping(path="/delete")
+    public String deleteExercise(@RequestParam(value="exerciseID", defaultValue="") String exerciseID) {
+
+        //todo ExerciseManagementService to delete an exercise
+        System.out.println("Exercise " + exerciseID + " will be deleted");
+
+        return "redirect:all";
+    }
 //    @RequestMapping(path="/login", method= RequestMethod.GET)
 //    public ModelAndView showCreateExercise(@RequestParam(value="username", defaultValue="null") String username,
 //                                           @RequestParam(value="password", defaultValue="null") String password) {

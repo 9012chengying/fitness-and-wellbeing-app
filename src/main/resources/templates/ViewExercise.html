@@ -5,7 +5,7 @@
 
 <head th:replace="fragments/Head::Head"> </head>
 
-<body>
+<body class="exercise-body">
 
     <!--Page heading-->
     <header class="exercise-header">
@@ -40,8 +40,9 @@
         </div>
 
         <div id="viewExercise-buttons">
-            <button class="btn btn-primary btn-xl">Edit details</button>
+            <a th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">Edit details</button></a>
             <a href="/trainer/exercises/all"><button class="btn btn-secondary btn-xl">Back to library</button></a>
+            <a th:href="@{/trainer/exercises/delete(exerciseID=${exercise.exerciseID})}"><button class="btn btn-xl btn-danger">Delete Exercise</button></a>
         </div>
     </main>
 
