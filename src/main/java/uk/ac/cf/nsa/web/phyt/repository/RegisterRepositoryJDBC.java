@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.forms.UserForm;
+import uk.ac.cf.nsa.web.phyt.model.RegisterMapper;
 
 import java.util.List;
 
@@ -27,7 +28,12 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
     }
 
     @Override
-    public List<UserEntity> getAllUsers() {
+    public UserEntity getUserInfo(String username) {
+        String sql="SELECT userid, username,password, name, email FROM t_user where username = ?";
+        List<UserEntity> list = jdbcTemplate.query(sql,new Object[]{username}, new RegisterMapper());
+        if (list!=null&&list.size()!=0){
+            return list.get(0);
+        }
         return null;
     }
 }
