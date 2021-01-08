@@ -16,9 +16,9 @@ function addExercise(){
         let exerciseName = document.getElementById("exerciseName").value;
         let exerciseDesc = document.getElementById("exerciseDesc").value;
         let exerciseCat = document.getElementById("exerciseCat").value;
-        setCookie("Exercise Name", name, 1 );
-        setCookie("Exercise Description", desc, 1);
-        setCookie("Exercise Category", cat, 1);
+        setCookie("Exercise Name", exerciseName, 1 );
+        setCookie("Exercise Description", exerciseDesc, 1);
+        setCookie("Exercise Category", exerciseCat, 1);
     }
 
 
