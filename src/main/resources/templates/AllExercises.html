@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+    <body>
+
+    <!--Page heading-->
+
+    <header>
+        <h2>Exercise Library</h2>
+    </header>
+
+    <!--main list of exercises-->
+    <main>
+
+        <div class="exercise-list">
+            <div class="exercise-card">
+                <img class="exercise-thumbnail" src="/images/plank.jpg" alt="thumbnail image of client">
+                <div class="exercise-summary">
+                    <p>Exercise: </p>
+                    <p>Category:</p>
+                    <p>Number of times used:  </p>
+                </div>
+                <div>
+                    <button class="btn btn-primary btn-xl">View Details</button>
+                    <button class="btn btn-secondary btn-xl">Edit Details</button>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <!-- add a footer to contain about us and contact us links-->
+    <footer>
+        <p>&copy Phyt App ltd</p>
+    </footer>
+    </body>
+</html>
