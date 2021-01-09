@@ -3,8 +3,8 @@ package uk.ac.cf.nsa.web.phyt.exercises.forms;
 //LoginForm class to capture data from login form
 public class LoginForm {
 
-    String username;
-    String password;
+    private String username;
+    private String password;
 
     public LoginForm(String username, String password) {
         this.username = username;
