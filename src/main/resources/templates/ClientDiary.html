@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.Thymeleaf.org">
+<head th:replace="fragments/Head::Head">
+    <meta charset="UTF-8">
+    <title>Client Diary</title>
+</head>
+<body>
+    <main>
+        <table>
+            <tr th:each="workout: ${workouts}">
+                <td th:text="${workout.id}"></td>
+                <td> (workout length)</td>
+                <td th:text="${workout.completed}"></td>
+                <td th:text="${workout.completedDate}"></td>
+            </tr>
+        </table>
+    </main>
+</body>
+</html>
