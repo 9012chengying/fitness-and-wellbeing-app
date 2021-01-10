@@ -30,6 +30,12 @@ public class RegisterController {
             return "redirect:info/"+userForm.getUsername();
     }
 
+    @RequestMapping(path = "/update/user")
+    public String trainerUpdate(UserForm userForm) {
+        registerRepository.updateUser(userForm);
+        return "redirect:/register/info/"+userForm.getUsername();
+    }
+
     @RequestMapping(path="/register/info/{username}")
     public ModelAndView trainerInfo(@PathVariable("username") String username) {
         ModelAndView mav = new ModelAndView();
@@ -37,4 +43,19 @@ public class RegisterController {
         mav.setViewName("PtHomePage");
         return mav;
     }
+
+    @RequestMapping(path="/update/info")
+    public ModelAndView trainerUpdateInfo(String username) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("info", registerRepository.getUserInfo(username));
+        mav.setViewName("update");
+        return mav;
+    }
+
+    @RequestMapping(path = "/user/delete")
+    public String deleteUser(String username) {
+        boolean success= registerRepository.deleteUser(username);
+            return "redirect:/register";
+    }
+
 }

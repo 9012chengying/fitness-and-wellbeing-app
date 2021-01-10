@@ -36,4 +36,18 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
         }
         return null;
     }
+
+    @Override
+    public boolean deleteUser(String userName) {
+        int rows =   jdbcTemplate.update("delete from t_user where  username = ?",userName);
+        return rows>0;
+    }
+
+    @Override
+    public boolean updateUser(UserForm userForm) {
+        int rows = jdbcTemplate.update(
+                "update t_user set name=?,email=? where username=?" ,
+                new Object[]{ userForm.getName(), userForm.getEmail(),userForm.getUsername()});
+        return rows>0;
+    }
 }

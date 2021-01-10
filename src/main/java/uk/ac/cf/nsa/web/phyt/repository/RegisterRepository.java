@@ -10,4 +10,8 @@ public interface RegisterRepository {
     boolean registerUser(UserForm userForm);
 
     UserEntity getUserInfo(String username);
+
+    boolean deleteUser(String userName);
+
+    boolean updateUser(UserForm userForm);
 }
