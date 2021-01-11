@@ -47,7 +47,7 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
     public List<Exercise> getExercisesByCategory(String exerciseCat){
         return jdbcTemplate.query(
                 "select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
-                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\" from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.category= ? order by exercises.created_at DESC;", new Object[]{exerciseCat}, new ExerciseMapper()
+                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\" from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.category= ? order by exercises.created_at DESC;", new ExerciseMapper(),  new Object[]{exerciseCat}
                );
     }
 
