@@ -7,10 +7,17 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GeneralController {
 
-    @RequestMapping(path="/Client")
+    @RequestMapping(path="/client/diary")
     public ModelAndView clientProfile() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("ClientID");
+        mav.setViewName("ClientID"); //Once a login is added this needs to change to ClientDiary
+        return mav;
+    }
+
+    @RequestMapping(path="/client/diary/workout")
+    public ModelAndView previousWorkout() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("PreviousWorkoutDetails");
         return mav;
     }
 }
