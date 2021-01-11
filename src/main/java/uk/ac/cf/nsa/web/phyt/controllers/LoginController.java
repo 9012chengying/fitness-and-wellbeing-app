@@ -18,9 +18,9 @@ public class LoginController {
     /**
      * init
      */
-    @RequestMapping(path = "/LoginPage")
+    @RequestMapping(path = "/")
     public String initLogin() {
-        return "LoginPage";
+        return "redirect:LoginPage";
     }
 
     /**
