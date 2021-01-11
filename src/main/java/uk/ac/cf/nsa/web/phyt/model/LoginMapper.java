@@ -1,9 +1,7 @@
 package uk.ac.cf.nsa.web.phyt.model;
 
-
 import org.springframework.jdbc.core.RowMapper;
 import uk.ac.cf.nsa.web.phyt.DTO.UserDTO;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

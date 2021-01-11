@@ -3,10 +3,13 @@ package uk.ac.cf.nsa.web.phyt.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cf.nsa.web.phyt.DTO.UserDTO;
 import uk.ac.cf.nsa.web.phyt.forms.UserForm;
 import uk.ac.cf.nsa.web.phyt.repository.LoginRepository;
-
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -26,18 +29,25 @@ public class LoginController {
     /**
      * login
      */
-    @RequestMapping(path = "/LoginPage")
+    @RequestMapping(value = "/LoginPage", method = RequestMethod.POST)
     public String login(UserForm user, Model model, HttpSession session) {
-        System.out.println(user.getUsername());
-        if ("zhangsan".equals(user.getUsername())
-                && "123456".equals(user.getPassword())) {
-            // login success, sava info into session
+        // get username and password
+        String username= user.getUsername();
+        String password= user.getPassword();
+        if (username !=null&&username.equals("") && password !=null &&password.equals("")){
             session.setAttribute("user", user);
             // redirect
             return "redirect:main";
         }
         model.addAttribute("msg", "Error, please enter again! ");
         return "login";
+    }
+
+    @RequestMapping(value = "/Login", method = RequestMethod.GET)
+    public ModelAndView  showLogin(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("LoginPage");
+        return mav;
     }
 
     /**
@@ -55,6 +65,14 @@ public class LoginController {
     public String logout(HttpSession session) {
         // clear session
         session.invalidate();
-        return "login";
+        return "redirect:LoginPage";
+    }
+
+    @RequestMapping(path="/register/info/{username}")
+    public ModelAndView trainerInfo(@PathVariable("username") String username) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("info", loginRepository.getUserInfo(username));
+        mav.setViewName("PtHomePage");
+        return mav;
     }
 }
