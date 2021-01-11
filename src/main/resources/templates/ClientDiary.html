@@ -6,6 +6,7 @@
 <link href="/css/workouts.css" rel="stylesheet"/> <!--to be inserted into Head.html but don't want merge error-->
 
 <body>
+
     <header>
         <h3>Workout Diary</h3>
     </header>
@@ -16,14 +17,16 @@
                     <img src="../static/images/deadlift.jpg">
                 </div>
                 <div id="workoutDetails" class="col-6">
-                    <span id="workoutNumber">Workout: <span th:text="${workout.id}"></span></span> <!--This won't be the workout id - maybe list of exercises, maybe client's workout id-->
+                    <span>Workout: <span th:text="${workout.id}"></span></span> <!--This won't be the workout id - maybe list of exercises, maybe client's workout id-->
                     <br>
-                    <span id="workoutLength">Workout Length: 00:35:26</span> <!--look at reformatting time-->
+                    <span>Workout Length: <span th:text="${workout.workoutLength}"></span></span> <!--look at reformatting time-->
                     <br>
-                    <span id="dateCompleted">Date Completed: <span th:text="${workout.completedDate}"></span></span> <!--look at reformatting date. this will be date set if workout is not completed. maybe due by date as well?-->
+                    <span th:if="${workout.completed} == true">Date Completed: <span th:text="${workout.completedDate}"></span></span> <!--look at reformatting date-->
+                    <span th:if="${workout.completed} == false">Date Set: ....</span> <!--get created date from trainer's database-->
                 </div>
                 <div id="workoutButton" class="col-3">
-                    <button onclick="location.href='/client/diary/workout'" type="button">Workout Details</button> <!--Need to add path to specific workout-->
+                    <button onclick="location.href='/client/diary/workout'" type="button" th:if="${workout.completed} == true">Workout Details</button> <!--Need to add path to specific workout-->
+                    <button onclick="location.href='/client/startworkout'" type="button" th:if="${workout.completed} == false">Start Workout</button>
                 </div>
                 <br>
             </div>
