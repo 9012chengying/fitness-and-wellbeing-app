@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.exercises.repository;
+package uk.ac.cf.nsa.web.phyt.exercises.data.repository;
 
 
 public interface UserRepository {
