@@ -3,16 +3,27 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<!--Fragment for Head of pages includes all meta items and style links -->
 
-<head th:fragment="Head">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
-    <link href="/css/main.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/login.css">
-    <link href="/css/exercises.css" rel="stylesheet"/>
-    <title>Phyt App</title>
-</head>
+    <head th:fragment="Head">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Bootstrap CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!--Icons - fontawesome kit-->
+        <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
+
+        <!--Javascript Scripts-->
+        <script src="/js/exercise.js"></script>
+
+        <!--Stylesheets-->
+        <link href="/css/main.css" rel="stylesheet" />
+        <link href="/css/Ptcss.css" rel="stylesheet" />
+        <link href="/css/exercises.css" rel="stylesheet" />
+
+        <title>Phyt</title>
+    </head>
+
+
 </html>
