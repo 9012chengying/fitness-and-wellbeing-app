@@ -1,11 +1,12 @@
-package uk.ac.cf.nsa.web.phyt.exercises.repository;
+package uk.ac.cf.nsa.web.phyt.exercises.data.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import uk.ac.cf.nsa.web.phyt.exercises.data.repository.UserRepository;
 
 @Repository
-public class UserRepositoryJDBC implements UserRepository{
+public class UserRepositoryJDBC implements UserRepository {
 
     private JdbcTemplate jdbcTemplate;
 

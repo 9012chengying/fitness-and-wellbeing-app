@@ -1,4 +1,6 @@
-//COLLATES INPUT DATA FOR COOKIES IF CANCELS OR DELETES COOKIES IF SUBMITS DATA
+
+
+//CREATE EXERCISE - COLLATES INPUT DATA FOR COOKIES IF CANCELS OR DELETES COOKIES IF SUBMITS DATA
 function listen(){
     document.getElementById("exercise-submit-button").addEventListener('click' , deleteCookies);
     document.getElementById("exercise-cancel").addEventListener('click', addExercise);
