@@ -1,16 +1,26 @@
-package uk.ac.cf.nsa.web.phyt.exercises.forms;
+package uk.ac.cf.nsa.web.phyt.forms;
 
-//LoginForm class to capture data from login form
-public class LoginForm {
 
+public class UserForm {
+
+    private int userID;
     private String username;
     private String password;
 
-    public LoginForm(String username, String password) {
+
+    public UserForm(int userID,String username, String password) {
+        this.userID = userID;
         this.username = username;
         this.password = password;
     }
 
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
     public String getUsername() {
         return username;
     }
@@ -26,4 +36,6 @@ public class LoginForm {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
