@@ -55,8 +55,8 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
     public Exercise getExerciseByID(int id){
         Exercise exercise = (Exercise) jdbcTemplate.queryForObject("select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
                         "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.id= ?;",
-                new Object[]{id},
-                new ExerciseMapper()
+
+                new ExerciseMapper(), new Object[]{id}
         );
         return exercise;
     }
@@ -74,12 +74,12 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
     public List<Image> getExerciseImages(int ID) throws DataAccessException {
         String sql = "SELECT id, img_src, alt_text, type, exercise_id FROM media WHERE exercise_id=? AND type='Image';";
         return jdbcTemplate.query(
-                sql, new Object[]{ID}, new ImageMapper());
+                sql,new ImageMapper(), new Object[]{ID});
     }
 
     public List<Video> getExerciseVideos(int ID) throws DataAccessException {
         return jdbcTemplate.query(
-                "SELECT id, img_src, alt_text, type, exercise_id FROM media WHERE exercise_id=? AND type='Video';", new Object[]{ID}, new VideoMapper()
+                "SELECT id, img_src, alt_text, type, exercise_id FROM media WHERE exercise_id=? AND type='Video';", new VideoMapper(), new Object[]{ID}
         );
     }
 }
