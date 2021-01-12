@@ -43,7 +43,7 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value = "/Login", method = RequestMethod.GET)
+    @RequestMapping(value = "/LoginPage", method = RequestMethod.GET)
     public ModelAndView  showLogin(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("LoginPage");

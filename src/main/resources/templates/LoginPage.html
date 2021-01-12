@@ -87,21 +87,23 @@
     <h2>PHYT</h2>
 </header>
 <div id="center">
-    <form name="myform" onsubmit="return validateform( )" enctype="multipart/form-data" action="LoginPage"
+    <form name="myform" onsubmit="return validateform( )" enctype="multipart/form-data" action="/LoginPage"
           method="post" id="myform">
         <div class="usernameinput">
             <input class="form-control" id="username" name="username" type="text" style="font-size:40px"
-            placeholder="Username" autocomplete="off">
+                   placeholder="Username" autocomplete="off">
         </div>
         <div class="input-group">
             <input class="form-control" id="password" name="password" type="password" style="font-size:40px"
-            placeholder="Password" autocomplete="off">
-            <span class="input-group-btn"><input class="btn btn-default" id="passwordeye" style="font-size:40px" type="button"
-             value="show/hide"></span>
+                   placeholder="Password" autocomplete="off">
+            <span class="input-group-btn">
+                <input class="btn btn-default" id="passwordeye" style="font-size:40px" type="button"
+                                                 value="show/hide"></span>
         </div>
-        <div class="loginbutton">
-            <a class="btn  btn-lg btn-block" style="font-size:40px" href="PtHomePage.html">Login</a>
+        <div class="loginbutton" action="/LoginPage" method="post">
+            <input class="btn  btn-lg btn-block" style="font-size:40px" type = "submit" value = "login" >
         </div>
+
         <div class="registerbutton">
             <a class="btn btn-lg " style="font-size:30px" href="register.html">Register</a>
         </div>
