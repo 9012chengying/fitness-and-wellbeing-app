@@ -12,8 +12,9 @@ public class WorkoutDTO {
     private int reps;
     private boolean completed;
     private Date completedDate;
+    private Date createdDate;
 
-    public WorkoutDTO(int id, int clientID, int exerciseLength, int restLength, int repRest, int reps, boolean completed, Date completedDate) {
+    public WorkoutDTO(int id, int clientID, int exerciseLength, int restLength, int repRest, int reps, boolean completed, Date completedDate, Date createdDate) {
         this.id = id;
         this.clientID = clientID;
         this.exerciseLength = exerciseLength;
@@ -22,6 +23,7 @@ public class WorkoutDTO {
         this.reps = reps;
         this.completed = completed;
         this.completedDate = completedDate;
+        this.createdDate = createdDate;
     }
 
     public int getId() {
@@ -54,6 +56,10 @@ public class WorkoutDTO {
 
     public Date getCompletedDate() {
         return completedDate;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
     public String workoutLength() {

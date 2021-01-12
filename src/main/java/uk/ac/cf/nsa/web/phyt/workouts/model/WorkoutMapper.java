@@ -19,7 +19,8 @@ public class WorkoutMapper implements RowMapper {
                 rs.getInt("rep_rest"),
                 rs.getInt("reps"),
                 rs.getBoolean("completed"),
-                rs.getDate("completed_at")
+                rs.getDate("completed_at"),
+                rs.getDate("created_at")
         );
     }
 }

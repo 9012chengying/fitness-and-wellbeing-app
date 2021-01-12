@@ -12,27 +12,24 @@
     </header>
     <main>
         <div class="container">
-            <div id="workoutSummary" class="row" th:each="workout: ${workouts}"> <!--workouts need to be ordered in reverse completed order with incomplete at the top-->
+            <div id="workoutSummary" class="row" th:each="workout: ${workouts}"> <!--workouts need to be ordered in created order - newest at top-->
                 <div id="workoutThumbnail" class="col-3">
-                    <img src="../static/images/deadlift.jpg">
+                    <img src="../static/images/deadlift.jpg"> <!--image should come from media database-->
                 </div>
                 <div id="workoutDetails" class="col-6">
-                    <span>Workout: <span th:text="${workout.id}"></span></span> <!--This won't be the workout id - maybe list of exercises, maybe client's workout id-->
+                    <span>Date Set: </span> <span th:text="${workout.createdDate}"></span>
                     <br>
-                    <span>Workout Length: <span th:text="${workout.workoutLength}"></span></span> <!--look at reformatting time-->
-                    <br>
-                    <span th:if="${workout.completed} == true">Date Completed: <span th:text="${workout.completedDate}"></span></span> <!--look at reformatting date-->
-                    <span th:if="${workout.completed} == false">Date Set: ....</span> <!--get created date from trainer's database-->
+                    <span>Workout Length: <span th:text="${workout.workoutLength}"></span></span>
+                    <span th:if="${workout.completed} == true"><br>Date Completed: <span th:text="${workout.completedDate}"></span></span>
                 </div>
                 <div id="workoutButton" class="col-3">
-                    <button onclick="location.href='/client/diary/previousWorkout'" type="button" th:if="${workout.completed} == true">Workout Details</button> <!--Need to add path to specific workout-->
+                    <button onclick="location.href='/client/diary/previousWorkout'" type="button" th:if="${workout.completed} == true">Workout Details</button>
                     <button onclick="location.href='/client/newWorkout'" type="button" th:if="${workout.completed} == false">Start Workout</button>
                 </div>
                 <br>
             </div>
         </div>
         <br><br>
-
     </main>
 
 
