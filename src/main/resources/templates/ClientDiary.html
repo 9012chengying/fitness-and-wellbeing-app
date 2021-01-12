@@ -14,13 +14,14 @@
         <div class="container">
             <div id="workoutSummary" class="row" th:each="workout: ${workouts}"> <!--workouts need to be ordered in created order - newest at top-->
                 <div id="workoutThumbnail" class="col-3">
-                    <img src="../static/images/deadlift.jpg"> <!--image should come from media database-->
+                    <img th:src="${workout.imageSrc}" th:alt="${workout.altText}">
                 </div>
                 <div id="workoutDetails" class="col-6">
-                    <span>Date Set: </span> <span th:text="${workout.createdDate}"></span>
+                    <span>Date Set: </span> <b th:text="${workout.createdDate}"></b>
                     <br>
-                    <span>Workout Length: <span th:text="${workout.workoutLength}"></span></span>
-                    <span th:if="${workout.completed} == true"><br>Date Completed: <span th:text="${workout.completedDate}"></span></span>
+                    <span>Workout Length: <b th:text="${workout.workoutLength}"></b></span>
+                    <span th:if="${workout.completed} == true"><br>Date Completed: <b th:text="${workout.completedDate}"></b></span>
+                    <span th:if="${workout.completed} == false"><br>Complete By: <b th:text="${workout.dueDate}"></b></span>
                 </div>
                 <div id="workoutButton" class="col-3">
                     <button onclick="location.href='/client/diary/previousWorkout'" type="button" th:if="${workout.completed} == true">Workout Details</button>

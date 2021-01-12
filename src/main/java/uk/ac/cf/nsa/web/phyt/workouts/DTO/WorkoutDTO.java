@@ -1,7 +1,6 @@
 package uk.ac.cf.nsa.web.phyt.workouts.DTO;
 
 import java.sql.Date;
-import java.sql.Time;
 
 public class WorkoutDTO {
     private int id;
@@ -10,20 +9,29 @@ public class WorkoutDTO {
     private int restLength;
     private int repRest;
     private int reps;
+    private Date dueDate;
     private boolean completed;
     private Date completedDate;
     private Date createdDate;
+    private String imageSrc;
+    private String altText;
+    private String type;
+    //private List<Integer> exerciseID;
 
-    public WorkoutDTO(int id, int clientID, int exerciseLength, int restLength, int repRest, int reps, boolean completed, Date completedDate, Date createdDate) {
+    public WorkoutDTO(int id, int clientID, int exerciseLength, int restLength, int repRest, int reps, Date dueDate, boolean completed, Date completedDate, Date createdDate, String imageSrc, String altText, String type) {
         this.id = id;
         this.clientID = clientID;
         this.exerciseLength = exerciseLength;
         this.restLength = restLength;
         this.repRest = repRest;
         this.reps = reps;
+        this.dueDate = dueDate;
         this.completed = completed;
         this.completedDate = completedDate;
         this.createdDate = createdDate;
+        this.imageSrc = imageSrc;
+        this.altText = altText;
+        this.type = type;
     }
 
     public int getId() {
@@ -50,6 +58,10 @@ public class WorkoutDTO {
         return reps;
     }
 
+    public Date getDueDate() {
+        return dueDate;
+    }
+
     public boolean isCompleted() {
         return completed;
     }
@@ -61,6 +73,23 @@ public class WorkoutDTO {
     public Date getCreatedDate() {
         return createdDate;
     }
+
+    public String getImageSrc() {
+        return imageSrc;
+    }
+
+    public String getAltText() {
+        return altText;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    /*public int exerciseCount() {
+        return exerciseID.size();
+    }
+     */
 
     public String workoutLength() {
         int totalRepLength = 4  * (exerciseLength + restLength); //4 needs to be replaced by exercise count
