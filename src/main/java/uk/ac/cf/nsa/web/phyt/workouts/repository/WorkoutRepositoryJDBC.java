@@ -18,13 +18,6 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
         jdbcTemplate = aTemplate;
     }
 
-    /*@Override
-    public List<WorkoutDTO> clientWorkoutDiary(int clientID) {
-        return (List<WorkoutDTO>) jdbcTemplate.query(
-                "select id, client_id, exercise_length, exercise_rest, rep_rest, reps, thumbnail_id, completed, completed_at, created_at from Workouts where client_id=?",
-                new WorkoutMapper(), clientID);
-    }*/
-
     @Override
     public List<WorkoutDTO> clientWorkoutDiary(int clientID) {
         return (List<WorkoutDTO>) jdbcTemplate.query(
