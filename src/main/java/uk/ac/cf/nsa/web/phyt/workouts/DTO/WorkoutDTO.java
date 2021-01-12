@@ -64,10 +64,13 @@ public class WorkoutDTO {
         int mm = remainder / 60;
         int ss = remainder % 60;
         if (hh == 0) {
-            return mm + ":" + ss;
+            if (ss < 10) {
+                return mm + ":0" + ss;
+            } else {
+                return mm + ":" + ss;
+            }
         } else {
             return hh + ":" + mm + ":" + ss;
         }
     }
-
 }
