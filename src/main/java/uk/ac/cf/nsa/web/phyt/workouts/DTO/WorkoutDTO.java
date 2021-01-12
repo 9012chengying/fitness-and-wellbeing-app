@@ -6,18 +6,18 @@ import java.sql.Time;
 public class WorkoutDTO {
     private int id;
     private int clientID;
-    private Time exerciseLength;
-    private Time exerciseRest;
-    private Time repRest;
+    private int exerciseLength;
+    private int restLength;
+    private int repRest;
     private int reps;
     private boolean completed;
     private Date completedDate;
 
-    public WorkoutDTO(int id, int clientID, Time exerciseLength, Time exerciseRest, Time repRest, int reps, boolean completed, Date completedDate) {
+    public WorkoutDTO(int id, int clientID, int exerciseLength, int restLength, int repRest, int reps, boolean completed, Date completedDate) {
         this.id = id;
         this.clientID = clientID;
         this.exerciseLength = exerciseLength;
-        this.exerciseRest = exerciseRest;
+        this.restLength = restLength;
         this.repRest = repRest;
         this.reps = reps;
         this.completed = completed;
@@ -32,15 +32,15 @@ public class WorkoutDTO {
         return clientID;
     }
 
-    public Time getExerciseLength() {
+    public int getExerciseLength() {
         return exerciseLength;
     }
 
-    public Time getExerciseRest() {
-        return exerciseRest;
+    public int getRestLength() {
+        return restLength;
     }
 
-    public Time getRepRest() {
+    public int getRepRest() {
         return repRest;
     }
 
@@ -55,4 +55,19 @@ public class WorkoutDTO {
     public Date getCompletedDate() {
         return completedDate;
     }
+
+    public String workoutLength() {
+        int totalRepLength = 4  * (exerciseLength + restLength); //4 needs to be replaced by exercise count
+        int totalWorkoutLengthInSeconds = reps * (totalRepLength + repRest);
+        int hh = totalWorkoutLengthInSeconds / 3600;
+        int remainder = totalWorkoutLengthInSeconds % 3600;
+        int mm = remainder / 60;
+        int ss = remainder % 60;
+        if (hh == 0) {
+            return mm + ":" + ss;
+        } else {
+            return hh + ":" + mm + ":" + ss;
+        }
+    }
+
 }

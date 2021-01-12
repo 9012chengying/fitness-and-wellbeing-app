@@ -14,10 +14,17 @@ public class GeneralController {
         return mav;
     }
 
-    @RequestMapping(path="/client/diary/workout")
+    @RequestMapping(path="/client/diary/previousWorkout")
     public ModelAndView previousWorkout() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("PreviousWorkoutDetails");
+        return mav;
+    }
+
+    @RequestMapping(path="/client/newWorkout")
+    public ModelAndView newWorkoutPreview() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("ClientWorkoutPreview");
         return mav;
     }
 }

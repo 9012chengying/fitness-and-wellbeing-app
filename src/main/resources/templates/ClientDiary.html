@@ -25,8 +25,8 @@
                     <span th:if="${workout.completed} == false">Date Set: ....</span> <!--get created date from trainer's database-->
                 </div>
                 <div id="workoutButton" class="col-3">
-                    <button onclick="location.href='/client/diary/workout'" type="button" th:if="${workout.completed} == true">Workout Details</button> <!--Need to add path to specific workout-->
-                    <button onclick="location.href='/client/startworkout'" type="button" th:if="${workout.completed} == false">Start Workout</button>
+                    <button onclick="location.href='/client/diary/previousWorkout'" type="button" th:if="${workout.completed} == true">Workout Details</button> <!--Need to add path to specific workout-->
+                    <button onclick="location.href='/client/newWorkout'" type="button" th:if="${workout.completed} == false">Start Workout</button>
                 </div>
                 <br>
             </div>

@@ -14,9 +14,9 @@ public class WorkoutMapper implements RowMapper {
         return new WorkoutDTO(
                 rs.getInt("id"),
                 rs.getInt("client_id"),
-                rs.getTime("exercise_length"),
-                rs.getTime("exercise_rest"),
-                rs.getTime("rep_rest"),
+                rs.getInt("exercise_length"),
+                rs.getInt("exercise_rest"),
+                rs.getInt("rep_rest"),
                 rs.getInt("reps"),
                 rs.getBoolean("completed"),
                 rs.getDate("completed_at")
