@@ -1,0 +1,45 @@
+/*ClientDiary*/
+
+h3 {
+    text-align: center;
+}
+
+#workoutSummary {
+    margin: 3% 2%;
+    padding: 2%;
+    align-items: center;
+    border: #007bff solid 0.2rem;
+    border-radius: 10px;
+}
+
+#workoutDetails {
+    font-size: 10px;
+}
+
+#workoutThumbnail {
+    text-align: center;
+}
+
+img {
+    border-radius: 30px;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 60px;
+    margin: auto;
+}
+
+button {
+    font-size: 10px;
+    border-radius: 8px;
+    margin: auto;
+    padding: 1px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+}
+
+button:hover {
+    background-color: lightsteelblue;
+}
+
+/*Need to adjust for widescreen*/
