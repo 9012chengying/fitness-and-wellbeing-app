@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.forms;
+package uk.ac.cf.nsa.web.phyt.users.forms;
 
 
 public class UserForm {

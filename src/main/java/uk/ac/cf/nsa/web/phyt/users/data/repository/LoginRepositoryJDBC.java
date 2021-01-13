@@ -1,13 +1,11 @@
-package uk.ac.cf.nsa.web.phyt.repository;
+package uk.ac.cf.nsa.web.phyt.users.data.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.DTO.UserDTO;
-import uk.ac.cf.nsa.web.phyt.forms.UserForm;
-import uk.ac.cf.nsa.web.phyt.model.LoginMapper;
-
-import java.util.List;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
+import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
+import uk.ac.cf.nsa.web.phyt.users.data.mapper.LoginMapper;
 
 @Repository
 public class LoginRepositoryJDBC implements LoginRepository {

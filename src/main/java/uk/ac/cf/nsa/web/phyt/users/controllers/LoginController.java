@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.controllers;
+package uk.ac.cf.nsa.web.phyt.users.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.cf.nsa.web.phyt.DTO.UserDTO;
-import uk.ac.cf.nsa.web.phyt.forms.UserForm;
-import uk.ac.cf.nsa.web.phyt.repository.LoginRepository;
+import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
+import uk.ac.cf.nsa.web.phyt.users.data.repository.LoginRepository;
 import javax.servlet.http.HttpSession;
 
 @Controller
