@@ -22,9 +22,9 @@ public class LoginController {
     private UserService userService;
 
     //sets redirect to login page if user goes doesn't enter a specific route
-    @RequestMapping(path = "/")
-    public String initLogin() {
-        return "redirect:login";
+    @RequestMapping(path = "/" , method=RequestMethod.GET)
+    public String getHomepage() {
+        return "index";
     }
 
 
@@ -35,16 +35,13 @@ public class LoginController {
     }
 
     //Deals with the Post request when user enters log in details
-    @RequestMapping(path="/login", method = RequestMethod.POST)
-    public ModelAndView login(UserForm user) {
-        ModelAndView mav = new ModelAndView();
+    @RequestMapping(path="/loginuser", method = RequestMethod.POST)
+    public String login(UserForm user) {
         // get username user form
         String username= user.getUsername();
         //Send request to database to check credentials
         userService.loadUserByUsername(username);
-        mav.addObject("name", username);
-        mav.setViewName("TrainerHome");
-        return mav;
+        return "user-logged-in";
     }
 
 

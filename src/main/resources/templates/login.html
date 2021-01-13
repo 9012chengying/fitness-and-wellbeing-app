@@ -15,7 +15,7 @@
 
 <main class="container main-content">
 
-    <form name="login-form" action="@{/LoginPage}" method="post" id="login-form">
+    <form name="login-form" th:action="@{/loginuser}" method="post" id="login-form">
         <div th:if="${param.error}">
             <h3 class="alert alert-danger"> Invalid username or password</h3>
         </div>
