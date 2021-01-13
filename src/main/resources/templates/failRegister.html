@@ -24,52 +24,26 @@
 <div class="brand ">PHYT</div>
 
 
-    <div class="nav-links">
+ <!--   <div class="nav-links">
         <ul>
-            <li><a href="/trainer" class="homes"><i class="fas fa-home active"></i>Home</a></li>
-            <li>  <a href="/trainer/exercises/all"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
+            <li><a href="home page.html" class="homes"><i class="fas fa-home active"></i>Home</a></li>
+            <li>  <a href="exercises.html"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
             <li> <a href="#"><i class="fas fa-book"></i>Bookings</a></li>
             <li><a href="clients.html"><i class="fas fa-users"></i>View Clients </a></li>
             <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>
-
         </ul>
-    </div>
+    </div>-->
 </nav>
 
 <section class="container-fluid px-0 sec" >
     <div class="row  stuff">
         <div class="col-md-6 ">
-            <img src="/images/OCTOBERFIT.jpg" alt="pt" class="pt-image img-fluid rounded-circle ">
+<!--            <img src="/images/OCTOBERFIT.jpg" alt="pt" class="pt-image img-fluid rounded-circle ">-->
             <div class="ratings col-12 text-center" >
-                <h2>Ratings</h2>
-                <a href="#">
-                    <span class="fa fa-star"></span>
-                </a>
-                <a href="#">
-                    <span class="fa fa-star"></span>
-                </a>
-                <a href="#">
-                    <span class="fa fa-star"></span>
-                </a>
-                <a href="#">
-                    <span class="fa fa-star"></span>
-                </a>
-                <a href="#">
-                    <span class="fa fa-star"></span>
-                </a>
+                <h2>The user name is registered,<a href="/register">back to register</a></h2>
             </div>
         </div>
-        <div class="col-md-6 info">
-            <h1 >Overview</h1>
-            <strong>About: </strong> <p>Personal trainer </p>
-            <strong>User Name: </strong>  <p th:text="${info.username}"></p>
-            <strong>Name: </strong><p th:text="${info.name}"></p>
-            <strong>Email: </strong><p th:text="${info.email}"></p>
-<!--            <strong>Contact info: </strong> <p>02920195111</p>-->
-            <a th:href="@{/update/info(username=${info.username})}">Update User</a>
-            <br>
-            <a th:href="@{/user/delete(username=${info.username})}">Delete Current User</a>
-        </div>
+
     </div>
 
 

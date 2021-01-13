@@ -26,12 +26,11 @@
 
     <div class="nav-links">
         <ul>
-            <li><a href="/trainer" class="homes"><i class="fas fa-home active"></i>Home</a></li>
-            <li>  <a href="/trainer/exercises/all"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
+            <li><a href="home page.html" class="homes"><i class="fas fa-home active"></i>Home</a></li>
+            <li>  <a href="exercises.html"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
             <li> <a href="#"><i class="fas fa-book"></i>Bookings</a></li>
             <li><a href="clients.html"><i class="fas fa-users"></i>View Clients </a></li>
             <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>
-
         </ul>
     </div>
 </nav>
@@ -61,14 +60,43 @@
         </div>
         <div class="col-md-6 info">
             <h1 >Overview</h1>
-            <strong>About: </strong> <p>Personal trainer </p>
-            <strong>User Name: </strong>  <p th:text="${info.username}"></p>
-            <strong>Name: </strong><p th:text="${info.name}"></p>
-            <strong>Email: </strong><p th:text="${info.email}"></p>
-<!--            <strong>Contact info: </strong> <p>02920195111</p>-->
-            <a th:href="@{/update/info(username=${info.username})}">Update User</a>
-            <br>
-            <a th:href="@{/user/delete(username=${info.username})}">Delete Current User</a>
+            <form action="/update/user" class="form-horizontal" method="post" onsubmit="return update();">
+                <strong>About: </strong> <p>Personal trainer </p>
+                <strong>User Name: </strong>
+                <div class="form-group">
+               <input id="username" name="username" th:value="${info.username}" readonly/>
+                </div>
+                    <strong>Name: </strong>
+                <div class="form-group">
+                    <input  id="name" name="name" placeholder="name" autocomplete="off" th:value="${info.name}"/>
+                </div>
+                <strong>Email: </strong>
+                <div class="form-group">
+                    <input id="email" name="email" placeholder="email" type="email" autocomplete="off" th:value="${info.email}"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="update" />
+                </div>
+                <script>
+                    function isEmail(str) {
+                        var reg = /^[a-zA-Z0-9_-]{6,}@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+                        return reg.test(str);
+                    }
+                    function update() {
+                        var name = $('#name').val();
+                        var email = $('#email').val();
+                        if (name.length < 2||name.length > 20) {
+                            alert('Name should be 2 to 20 characters');
+                            return false;
+                        }
+                        if (!isEmail(email)){
+                            alert('Invalid email');
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
+            </form>
         </div>
     </div>
 
