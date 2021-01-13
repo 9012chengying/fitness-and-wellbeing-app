@@ -21,7 +21,11 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
     @Override
     public List<WorkoutDTO> clientWorkoutDiary(int clientID) {
         return (List<WorkoutDTO>) jdbcTemplate.query(
-                "SELECT workouts.id, workouts.client_id, workouts.exercise_length, workouts.exercise_rest, workouts.rep_rest, workouts.reps, workouts.completed, workouts.completed_at, workouts.created_at, workouts.complete_by, media.img_src, media.alt_text, media.type FROM Workouts INNER JOIN Media ON Workouts.thumbnail_id=Media.id WHERE client_id=?",
+                "SELECT workouts.id, workouts.client_id, count(ExerciseWorkoutLink.exercise_id) as exercise_count, workouts.exercise_length, workouts.exercise_rest, " +
+                        "workouts.rep_rest, workouts.reps, workouts.completed, workouts.completed_at, workouts.created_at, workouts.complete_by, media.img_src, media.alt_text, " +
+                        "media.type FROM Workouts INNER JOIN Media ON Workouts.thumbnail_id=Media.id INNER JOIN ExerciseWorkoutLink ON Workouts.id=ExerciseWorkoutLink.workout_id " +
+                        "WHERE client_id=? GROUP BY workouts.id, workouts.client_id, workouts.exercise_length, workouts.exercise_rest, workouts.rep_rest, workouts.reps, " +
+                        "workouts.completed, workouts.completed_at, workouts.created_at, workouts.complete_by, media.img_src, media.alt_text, media.type",
                 new WorkoutMapper(), clientID);
     }
 }

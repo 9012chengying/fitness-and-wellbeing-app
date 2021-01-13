@@ -21,7 +21,7 @@
                     <br>
                     <span>Workout Length: </span><b th:text="${workout.workoutLength}"></b>
                     <br>
-                    <span>Number of Exercises: </span><!--<b th:text="${workout.exerciseCount}"></b>--> <!--need to get exercise count-->
+                    <span>Number of Exercises: </span><b th:text="${workout.exerciseCount}"></b>
                     <span th:if="${workout.completed} == true"><br>Date Completed: <b th:text="${workout.completedDate}"></b></span>
                     <span th:if="${workout.completed} == false"><br>Complete By: <b th:text="${workout.dueDate}"></b></span>
                 </div>

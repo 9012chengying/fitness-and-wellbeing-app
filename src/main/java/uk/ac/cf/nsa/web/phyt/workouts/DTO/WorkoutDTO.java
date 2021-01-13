@@ -5,6 +5,7 @@ import java.sql.Date;
 public class WorkoutDTO {
     private int id;
     private int clientID;
+    private int exerciseCount;
     private int exerciseLength;
     private int restLength;
     private int repRest;
@@ -18,9 +19,10 @@ public class WorkoutDTO {
     private String type;
     //private List<Integer> exerciseID;
 
-    public WorkoutDTO(int id, int clientID, int exerciseLength, int restLength, int repRest, int reps, Date dueDate, boolean completed, Date completedDate, Date createdDate, String imageSrc, String altText, String type) {
+    public WorkoutDTO(int id, int clientID, int exerciseCount, int exerciseLength, int restLength, int repRest, int reps, Date dueDate, boolean completed, Date completedDate, Date createdDate, String imageSrc, String altText, String type) {
         this.id = id;
         this.clientID = clientID;
+        this.exerciseCount = exerciseCount;
         this.exerciseLength = exerciseLength;
         this.restLength = restLength;
         this.repRest = repRest;
@@ -40,6 +42,10 @@ public class WorkoutDTO {
 
     public int getClientID() {
         return clientID;
+    }
+
+    public int getExerciseCount() {
+        return exerciseCount;
     }
 
     public int getExerciseLength() {
@@ -86,13 +92,8 @@ public class WorkoutDTO {
         return type;
     }
 
-    /*public int exerciseCount() {
-        return exerciseID.size();
-    }
-     */
-
     public String workoutLength() {
-        int totalRepLength = 4  * (exerciseLength + restLength); //4 needs to be replaced by exercise count
+        int totalRepLength = exerciseCount  * (exerciseLength + restLength);
         int totalWorkoutLengthInSeconds = reps * (totalRepLength + repRest);
         int hh = totalWorkoutLengthInSeconds / 3600;
         int remainder = totalWorkoutLengthInSeconds % 3600;
