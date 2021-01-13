@@ -19,10 +19,10 @@ public class WorkoutMapper implements RowMapper {
                 rs.getInt("exercise_rest"),
                 rs.getInt("rep_rest"),
                 rs.getInt("reps"),
-                rs.getDate("complete_by"),
+                rs.getString("complete_by"),
                 rs.getBoolean("completed"),
-                rs.getDate("completed_at"),
-                rs.getDate("created_at"),
+                rs.getString("completed_at"),
+                rs.getString("created_at"),
                 rs.getString("img_src"),
                 rs.getString("alt_text"),
                 rs.getString("type")
