@@ -1,17 +1,22 @@
 package uk.ac.cf.nsa.web.phyt.exercises.forms;
 
-import uk.ac.cf.nsa.web.phyt.exercises.DTO.UserEntity;
-
 //Class for data received from the Create Exercise form
 public class ExerciseForm {
 
-    //UserEntity user;
+    //User user;
     int userID;
     String exerciseName;
     String exerciseDesc;
     String exerciseCat;
 
-    //Constructor
+    //Constructors
+    public ExerciseForm (){
+        this.userID = 1;
+        this.exerciseName = null;
+        this.exerciseDesc = null;
+        this.exerciseCat = null;
+    }
+
     public ExerciseForm( String exerciseName, String exerciseDesc, String exerciseCat) {
         //todo - figure out how to get  user entity from log in details
         //this.user = user;
@@ -21,8 +26,7 @@ public class ExerciseForm {
         this.exerciseCat = exerciseCat;
     }
 
-
-    //Getters
+    //Getters & Setters
     public int getUserID(){
         return userID;
     }
@@ -39,6 +43,17 @@ public class ExerciseForm {
         return exerciseCat;
     }
 
+    public void setExerciseName(String exerciseName) {
+        this.exerciseName = exerciseName;
+    }
+
+    public void setExerciseDesc(String exerciseDesc) {
+        this.exerciseDesc = exerciseDesc;
+    }
+
+    public void setExerciseCat(String exerciseCat) {
+        this.exerciseCat = exerciseCat;
+    }
 
     @Override
     public String toString() {
