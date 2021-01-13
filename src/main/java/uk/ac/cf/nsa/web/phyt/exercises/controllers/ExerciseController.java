@@ -9,20 +9,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
-import uk.ac.cf.nsa.web.phyt.exercises.repository.ExerciseRepository;
-import uk.ac.cf.nsa.web.phyt.exercises.repository.UserRepository;
+import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
 
 
 @Controller
 public class ExerciseController {
 
-    private ExerciseRepository exerciseRepo;
-    private UserRepository userRepo;
+    private ExerciseManagementService exerciseManagementService;
 
     @Autowired
-    public ExerciseController(ExerciseRepository exerciseRepo, UserRepository userRepo) {
-        this.exerciseRepo = exerciseRepo;
-        this.userRepo = userRepo;
+    public ExerciseController(ExerciseManagementService exerciseManagementService) {
+        this.exerciseManagementService = exerciseManagementService;
     }
 
     @RequestMapping (path="/trainer/exercises/all", method=RequestMethod.GET)
