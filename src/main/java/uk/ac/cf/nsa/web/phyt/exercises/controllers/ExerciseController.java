@@ -1,24 +1,29 @@
 package uk.ac.cf.nsa.web.phyt.exercises.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
+import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
 
 @Controller
 @RequestMapping(path ="/trainer/exercises")
+@PreAuthorize("hasRole('ROLE_trainer')")
 public class ExerciseController {
 
     //Use ExerciseManagementService methods to access appropriate data
     private final ExerciseManagementService exerciseService;
+    private final UserService userService;
 
     @Autowired
-    public ExerciseController(ExerciseManagementService exerciseService) {
+    public ExerciseController(ExerciseManagementService exerciseService, UserService userService) {
         this.exerciseService = exerciseService;
+        this.userService = userService;
     }
 
     //List all exercises

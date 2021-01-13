@@ -16,6 +16,7 @@ public class ExerciseManagementService {
 
     private final ExerciseRepository exerciseRepo;
 
+
     @Autowired
     public ExerciseManagementService(ExerciseRepository exerciseR) {
         this.exerciseRepo = exerciseR;

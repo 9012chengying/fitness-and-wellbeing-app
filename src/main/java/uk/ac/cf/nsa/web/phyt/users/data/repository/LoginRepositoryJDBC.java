@@ -27,7 +27,7 @@ public class LoginRepositoryJDBC implements LoginRepository {
     @Override
     public UserDTO findByUserName(String username) {
         UserDTO UserDTO = (UserDTO) jdbcTemplate.queryForObject(
-        "SELECT id,user_name,user_password FROM user where user_name = ?",
+        "SELECT id,user_name,user_password, user_role FROM user where user_name = ?",
          new LoginMapper(),new Object[]{username});
         return UserDTO;
     }

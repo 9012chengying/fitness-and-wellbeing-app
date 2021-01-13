@@ -12,7 +12,8 @@ public class LoginMapper implements RowMapper {
         return new UserDTO(
                 rs.getInt("id"),
                 rs.getString("user_name"),
-                rs.getString("user_password")
+                rs.getString("user_password"),
+                rs.getString("user_role")
         );
 
     }

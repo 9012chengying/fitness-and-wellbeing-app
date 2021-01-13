@@ -19,7 +19,13 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("trainer"));
+        if(null == this.user.getRole()){
+            return Collections.emptySet();
+        } else if(this.user.getRole().equalsIgnoreCase("trainer")){
+            return Collections.singleton(new SimpleGrantedAuthority("trainer"));
+        } else {
+            return Collections.singleton(new SimpleGrantedAuthority("client"));
+        }
     }
 
     @Override
