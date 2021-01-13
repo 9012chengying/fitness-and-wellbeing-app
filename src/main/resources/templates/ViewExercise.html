@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+<body class="exercise-body">
+
+    <!--Page heading-->
+    <header class="exercise-header">
+        <h2 id="exercise-name" th:text="${exercise.exerciseName}">Name of Exercise</h2>
+    </header>
+
+
+    <!--main details of exercise-->
+    <main class="exercise-container">
+        <!--thumbnail image-->
+        <div class="exercise-thumbnail">
+            <img  th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
+        </div>
+
+
+        <!--exercise description-->
+        <div class="exercise-description">
+            <h3>Exercise Description</h3>
+            <p th:text="${exercise.exerciseDesc}">Description of exercise</p>
+        </div>
+
+       <!--gallery of all exercise images -->
+        <h3>Image Gallery</h3>
+        <div class="exercise-image-gallery" >
+            <img class="exercise-gallery-image" th:each="image: ${images}" th:src="${image.src}" th:alt-title="${image.altText}">
+        </div>
+
+       <!--gallery of exercise videos-->
+        <h3>Videos</h3>
+        <div class="exercise-video-gallery">
+            <iframe class="exercise-gallery-video" th:each="video: ${videos}" th:src="${video.src}" th:alt-title="${video.altText}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div id="viewExercise-buttons">
+            <a th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">Edit details</button></a>
+            <a href="/trainer/exercises/all"><button class="btn btn-secondary btn-xl">Back to library</button></a>
+            <a th:href="@{/trainer/exercises/delete(exerciseID=${exercise.exerciseID})}"><button class="btn btn-xl btn-danger">Delete Exercise</button></a>
+        </div>
+    </main>
+
+
+<!-- add a footer to contain about us and contact us links-->
+<footer>
+    <p>&copy Phyt App ltd</p>
+</footer>
+</body>
+</html>
