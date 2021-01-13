@@ -9,45 +9,42 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 import uk.ac.cf.nsa.web.phyt.users.data.repository.LoginRepository;
+import uk.ac.cf.nsa.web.phyt.users.service.UserService;
+
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
 
     @Autowired
-    private LoginRepository loginRepository;
+    private UserService userService;
 
-    /**
-     * init
-     */
+    //sets redirect to login page if user goes doesn't enter a specific route
     @RequestMapping(path = "/")
     public String initLogin() {
         return "redirect:LoginPage";
     }
 
-    /**
-     * login
-     */
-    @RequestMapping(value = "/LoginPage", method = RequestMethod.POST)
-    public String login(UserForm user, Model model, HttpSession session) {
-        // get username and password
-        String username= user.getUsername();
-        String password= user.getPassword();
-        if (username !=null&&username.equals("") && password !=null &&password.equals("")){
-            session.setAttribute("user", user);
-            // redirect
-            return "redirect:main";
-        }
-        model.addAttribute("msg", "Error, please enter again! ");
-        return "login";
-    }
 
-    @RequestMapping(value = "/LoginPage", method = RequestMethod.GET)
+    //Gets the login page and displays on browser
+    @RequestMapping(path="/LoginPage", method = RequestMethod.GET)
     public ModelAndView  showLogin(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("LoginPage");
         return mav;
     }
+
+    //Deals with the Post request when user enters log in details
+    @RequestMapping(path="/LoginPage", method = RequestMethod.POST)
+    public String login(UserForm user) {
+        // get username user form
+        String username= user.getUsername();
+
+        //Send request to database to check credentials
+        userService.loadUserByUsername(username);
+        return "redirect:trainer/exercises/all";
+    }
+
 
     /**
      * jump to main
@@ -67,11 +64,11 @@ public class LoginController {
         return "redirect:LoginPage";
     }
 
-    @RequestMapping(path="/register/info/{username}")
-    public ModelAndView trainerInfo(@PathVariable("username") String username) {
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("info", loginRepository.getUserInfo(username));
-        mav.setViewName("PtHomePage");
-        return mav;
-    }
+//    @RequestMapping(path="/register/info/{username}")
+//    public ModelAndView trainerInfo(@PathVariable("username") String username) {
+//        ModelAndView mav = new ModelAndView();
+//        mav.addObject("info", loginRepository.getUserInfo(username));
+//        mav.setViewName("PtHomePage");
+//        return mav;
+//    }
 }

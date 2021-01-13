@@ -7,7 +7,7 @@ import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 
 public interface LoginRepository {
 
-    boolean registerUser(UserForm userForm);
+    //boolean registerUser(UserForm userForm);
 
-    UserDTO getUserInfo(String username);
+    UserDTO findByUserName(String username);
 }

@@ -10,12 +10,9 @@ public class LoginMapper implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new UserDTO(
-                rs.getInt("userID"),
-                rs.getString("firstName"),
-                rs.getString("lastName"),
-                rs.getString("role"),
-                rs.getString("username"),
-                rs.getString("password")
+                rs.getInt("id"),
+                rs.getString("user_name"),
+                rs.getString("user_password")
         );
 
     }

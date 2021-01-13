@@ -15,7 +15,10 @@ public class TrainerDTO extends User {
     List<ClientDTO> clients;
 
     public TrainerDTO(int UserID, String firstName, String lastName, String role, String userName, String password) {
-        super(UserID, firstName, lastName, role, userName, password);
+        super(UserID, userName, password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.role = role;
     }
 
 
@@ -29,32 +32,32 @@ public class TrainerDTO extends User {
         UserID = userID;
     }
 
-    @Override
+
     public String getFirstName() {
         return firstName;
     }
 
-    @Override
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    @Override
+
     public String getLastName() {
         return lastName;
     }
 
-    @Override
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    @Override
+
     public String getRole() {
         return role;
     }
 
-    @Override
+
     public void setRole(String role) {
         this.role = role;
     }

@@ -17,18 +17,18 @@ public class LoginRepositoryJDBC implements LoginRepository {
         jdbcTemplate = aTemplate;
     }
 
-    public boolean registerUser(UserForm userForm){
-        int rows = jdbcTemplate.update(
-                "SELECT from t_user(username,password) values(?,?,?,?)" ,
-                new Object[]{userForm.getUsername(), userForm.getPassword()});
-        return rows>0;
-    }
+//    public boolean registerUser(UserForm userForm){
+//        int rows = jdbcTemplate.update(
+//                "SELECT from t_user(username,password) values(?,?,?,?)" ,
+//                new Object[]{userForm.getUsername(), userForm.getPassword()});
+//        return rows>0;
+//    }
 
     @Override
-    public UserDTO getUserInfo(String username) {
+    public UserDTO findByUserName(String username) {
         UserDTO UserDTO = (UserDTO) jdbcTemplate.queryForObject(
-        "SELECT userID,username,password FROM t_user where username = ?",
-        new Object[]{username}, new LoginMapper());
+        "SELECT id,user_name,user_password FROM user where user_name = ?",
+         new LoginMapper(),new Object[]{username});
         return UserDTO;
     }
 

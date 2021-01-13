@@ -4,18 +4,12 @@ package uk.ac.cf.nsa.web.phyt.model;
 public class User {
 
     int UserID;
-    String firstName;
-    String lastName;
-    String role;
     String userName;
     String password;
 
     //Constructor of User object
-    public User (int UserID, String firstName, String lastName, String role, String userName, String password){
+    public User (int UserID, String userName, String password){
         this.UserID = UserID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.role = role;
         this.userName = userName;
         this.password = password;
     }
@@ -28,30 +22,6 @@ public class User {
 
     public void setUserID(int userID) {
         UserID = userID;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getUserName() {
