@@ -21,10 +21,10 @@ public class UserPrincipal implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if(null == this.user.getRole()){
             return Collections.emptySet();
-        } else if(this.user.getRole().equalsIgnoreCase("trainer")){
-            return Collections.singleton(new SimpleGrantedAuthority("trainer"));
+        } else if(this.user.getRole().equalsIgnoreCase("Trainer")){
+            return Collections.singleton(new SimpleGrantedAuthority("Trainer"));
         } else {
-            return Collections.singleton(new SimpleGrantedAuthority("client"));
+            return Collections.singleton(new SimpleGrantedAuthority("Client"));
         }
     }
 

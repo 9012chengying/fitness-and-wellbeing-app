@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
 @Configuration
@@ -29,10 +30,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userService);
         provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance()); //Below password encoder is a plain text encoder - shouldn't be used in production
+        provider.setAuthoritiesMapper(authMapper());
         return provider;
     };
 
-    //Map database roles to ROLE types
+    //Map database roles to ROLE types and puts to uppercase
     @Bean
     public GrantedAuthoritiesMapper authMapper(){
         SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
@@ -52,15 +54,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers( "/css/*", "/js/*", "/public/*").permitAll()
-               // .antMatchers("/trainer/**").hasRole("Trainer")
+                .antMatchers("/trainer/**").hasRole("Trainer")
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic();
-//                .formLogin()
-//                    .loginPage("/LoginPage") //sets a custom login page
-//                    .permitAll()
-//                .and()
-//                .logout();
+                .formLogin()
+                    .loginPage("/login").permitAll()  //Sets custom login page
+                .and()
+                .logout().invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/logout-success").permitAll();
     }
 //
 //    @Autowired

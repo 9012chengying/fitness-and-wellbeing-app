@@ -13,21 +13,20 @@
         <h3>Please login or register to use the app.</h3>
     </header>
 
-<main id="center">
+<main class="container main-content">
 
-    <div class="login-message">
-        <h3></h3>
-    </div>
+    <form name="login-form" action="@{/LoginPage}" method="post" id="login-form">
+        <div th:if="${param.error}">
+            <h3 class="alert alert-danger"> Invalid username or password</h3>
+        </div>
 
-    <form name="login-form" action="/LoginPage" method="post" id="login-form">
-
-        <div class="username-input">
-            <label class="login-label" for="username"><input class="form-control" id="username" name="username" type="text" style="font-size:40px"
+        <div class="form-group row">
+            <label class="col-sm-6" for="username"><input class="form-control" id="username" name="username" type="text" style="font-size:40px"
                                          placeholder="Username" autocomplete="off" required></label>
         </div>
 
-        <div class="input-group">
-            <label class="login-label" for="password"><input class="form-control" id="password" name="password" type="password"
+        <div class="form-group row">
+            <label class="col-sm-6" for="password"><input class="form-control" id="password" name="password" type="password"
                                          placeholder="Password" autocomplete="off" required></label>
             <span class="input-group-btn">
                 <input class="btn btn-default" id="passwordeye" style="font-size:40px" type="button"

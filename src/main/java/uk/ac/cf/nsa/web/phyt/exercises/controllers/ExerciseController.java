@@ -12,8 +12,9 @@ import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
 
 @Controller
+@PreAuthorize("hasRole('ROLE_TRAINER')")
 @RequestMapping(path ="/trainer/exercises")
-@PreAuthorize("hasRole('ROLE_trainer')")
+
 public class ExerciseController {
 
     //Use ExerciseManagementService methods to access appropriate data
@@ -28,6 +29,7 @@ public class ExerciseController {
 
     //List all exercises
     @GetMapping(path = "/all")
+
     public ModelAndView allExercises() {
         ModelAndView mav = new ModelAndView();
         mav.addObject("exercises", exerciseService.listAllExercises());
