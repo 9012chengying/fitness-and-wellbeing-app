@@ -42,4 +42,92 @@ button:hover {
     background-color: lightsteelblue;
 }
 
+#startWorkoutButton {
+    color: #007bff;
+    background-color: white;
+    border: solid #007bff 0.1rem;
+}
+
 /*Need to adjust for widescreen*/
+
+/*Client Workout Preview*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+}
+
+.backArrow {
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    margin-left: 10px;
+    transition: width 1s;
+}
+
+.backArrow:hover {
+    color: blue;
+}
+
+header {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    padding: 2%;
+    background-color: cornflowerblue;
+}
+
+.exerciseThumbnailsBlock {
+    text-align: center;
+}
+
+.exerciseNamesBlock {
+    text-align: center;
+}
+
+.exerciseName {
+    clear: both;
+    margin-right: 1%;
+    margin-left: 1%;
+    display: inline-block;
+    border-radius: 8px;
+    width: 20%;
+    text-align: center;
+}
+
+.workoutDescription {
+    display: block;
+    padding: 1%;
+    height: 180px;
+    background-color: cornflowerblue;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+footer {
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.startButton {
+    text-decoration: none;
+    color: cornflowerblue;
+    font-size: 40px;
+    padding: 0.5%;
+    border: 3px solid cornflowerblue;
+    border-radius: 8px;
+    width: 250px;
+}
+
+.startButton:hover {
+    background-color: cornflowerblue;
+    color: white;
+}

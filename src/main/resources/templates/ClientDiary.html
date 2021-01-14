@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.Thymeleaf.org">
 
-<head th:replace="fragments/Head::Head"></head>
+<head th:insert="fragments/Head::Head"></head>
 
 <body>
 
@@ -25,7 +25,7 @@
                 </div>
                 <div id="workoutButton" class="col-3">
                     <button onclick="location.href='/client/diary/previousWorkout'" type="button" th:if="${workout.completed} == true">Workout Details</button>
-                    <button onclick="location.href='/client/newWorkout'" type="button" th:if="${workout.completed} == false">Start Workout</button>
+                    <button onclick="location.href='/client/newWorkout'" type="button" th:if="${workout.completed} == false" id="startWorkoutButton">Start Workout</button>
                 </div>
                 <br>
             </div>
@@ -33,6 +33,6 @@
         <br><br>
     </main>
 
-
+    <footer th:insert="fragments/Footer::Footer"></footer>
 </body>
 </html>
