@@ -4,7 +4,7 @@ function deleteExercise() {
 
     //obtains exercise-id from the data-id in the exercise container
     let params = document.getElementById("exercise-container").getAttribute("data-id").valueOf();
-    
+
     //Opens new request to the delete URL including the exercise id as a paramater
     let xhttp = new XMLHttpRequest();
     xhttp.open("DELETE", '/trainer/exercises/delete/'+params, true);
