@@ -2,7 +2,7 @@ package uk.ac.cf.nsa.web.phyt.workouts.DTO;
 
 import java.sql.Date;
 
-public class WorkoutDTO {
+public class WorkoutSummaryDTO {
     private int id;
     private int clientID;
     private int exerciseCount;
@@ -18,7 +18,7 @@ public class WorkoutDTO {
     private String altText;
     private String type;
 
-    public WorkoutDTO(int id, int clientID, int exerciseCount, int exerciseLength, int restLength, int repRest, int reps, String dueDate, boolean completed, String completedDate, String createdDate, String imageSrc, String altText, String type) {
+    public WorkoutSummaryDTO(int id, int clientID, int exerciseCount, int exerciseLength, int restLength, int repRest, int reps, String dueDate, boolean completed, String completedDate, String createdDate, String imageSrc, String altText, String type) {
         this.id = id;
         this.clientID = clientID;
         this.exerciseCount = exerciseCount;

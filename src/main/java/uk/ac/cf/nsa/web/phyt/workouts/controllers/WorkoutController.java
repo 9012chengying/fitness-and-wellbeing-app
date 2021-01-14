@@ -25,4 +25,20 @@ public class WorkoutController {
         mav.setViewName("ClientDiary");
         return mav;
     }
+
+    @RequestMapping(path="/client/diary/previousWorkout")
+    public ModelAndView previousWorkout(@RequestParam(value="workoutID", defaultValue="null") int workoutID) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject(workoutRepository.viewWorkout(workoutID));
+        mav.setViewName("PreviousWorkoutDetails");
+        return mav;
+    }
+
+    @RequestMapping(path="/client/newWorkout")
+    public ModelAndView newWorkout(@RequestParam(value="workoutID", defaultValue="null") int workoutID) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exercises", workoutRepository.viewWorkout(workoutID));
+        mav.setViewName("ClientWorkoutPreview");
+        return mav;
+    }
 }
