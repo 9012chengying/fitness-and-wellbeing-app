@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.Thymeleaf.org">
-<head th:replace="fragments/Head::Head">
-    <link rel="stylesheet" href="../static/css/footer.css">
+<html>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -214,7 +213,6 @@
     </style>
 </head>
 
-
 <body class="md-skin">
 <form action="/register/user" class="form-horizontal" method="post" onsubmit="return register();">
     <div id="loginbox">
@@ -248,9 +246,9 @@
             <input type="submit" class="btn btn-primary btn-block" value="register" />
         </div>
 
-<!--        <footer class="footer">-->
-<!--            <p>&copy Phyt App ltd</p>-->
-<!--        </footer>-->
+        <footer class="footer">
+            <p>&copy Phyt App ltd</p>
+        </footer>
     </div>
     <script>
         function showImg(obj) {
@@ -303,6 +301,4 @@
     </style>
 </form>
 </body>
-
-<footer th:replace="fragments/Footer::Footer"></footer>
 </html>
