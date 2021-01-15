@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/css/**").permitAll()
                 .mvcMatchers("/js/**").permitAll()
                 .mvcMatchers("/public/**").permitAll()
-                .antMatchers("/trainer/**").hasRole("Trainer")
+                //.antMatchers("/trainer/**").hasRole("Trainer")
                 .and()
                 .formLogin()
                 .and()

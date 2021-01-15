@@ -1,94 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/Head::Head"><title>Phyt</title>
-<style>
-    .navbar {
-        overflow: hidden;
-        background-color: orange;
-    }
 
-    .navbar a {
-        margin: auto;
-        font-size: 40px;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-    .dropdown {
-        overflow: hidden;
-        text-align: center;
-    }
-
-    .dropdown .dropbtn {
-        font-size: 60px;
-        border: none;
-        outline: none;
-        color: black;
-        padding: 50px 100px;
-        background-color: inherit;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: orange;
-        width: 99%;
-        text-align: center;
-    }
-
-    .dropdown-content a {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        font-family: Calibri;
-        display: block;
-        text-align: center;
-    }
-
-    .dropdown-content a:hover {
-        background-color: darkorange;
-    }
-
-    .show {
-        display:block;
-    }
-
-</style>
 </head>
 <body>
-    <div class="navbar" th:fragment="ptNavbar">
-        <div class="dropdown">
-            <button onclick="showNavbar()" class="dropbtn">PHYT</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="/trainer">Home</a>
-                <a href="#">Create a Workout</a>
-                <a href="/trainer/exercises/all">Exercise Library</a>
-                <a href="#">View Clients</a>
-                <a href="#">Account Details</a>
-            </div>
+
+<nav th:fragment="ptNavbar" class="fixed-top navbar-light">
+    <div class="navbar">
+        <a class="navbar-brand" href="/userInfo">PHYT</a>
+        <div class="nav-icon" onclick="showNavbar()">
+            <div></div>
         </div>
+
     </div>
+    <div id="ptNavBar" class="nav-items show">
+        <a href="#">View Clients</a>
+        <a th:href="@{/trainer/exercises/all}">Exercise Library</a>
+        <a th:href="@{/trainer/exercises/add}">Create a Workout</a>
+        <a href="/userInfo">Account Details</a>
+    </div>
+</nav>
 
-<script>
-    function showNavbar() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
 
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i=0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-</script>
 </body>
 </html>
