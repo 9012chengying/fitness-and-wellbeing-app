@@ -3,10 +3,13 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:insert="/fragments/Head::Head">
+
 <!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>-->
     <meta charset="UTF-8">
+
     <title>YourAccount</title>
 </head>
+
 
 
 
@@ -17,31 +20,54 @@
 <h2>Your Account</h2>
 <hr>
 <section class="container">
-    <div class="row ">
-       <div class="About col-md-6 ">
+    <div class="row " id="gett">
+       <div class="About col-md-6 text-center">
 
-        <form action="">
+        <form th:action="@{..//PtPersonalInfo}"  th:object="${PersonalTrainer}" class="personalInfo" method="GET"  id="form1"  >
             <h3>Personal information</h3>
 
-           <div class="input-group mb-3"> <input type="text"  class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="button-addon2">
-               <button class="btn btn-outline-secondary" type="button" id="updateFirstName">Update</button>
+           <div class="input-group mb-3"><input type="text"   th:field="*{firstName}" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="button-addon2">
+<!--               <button class="btn btn-outline-secondary" type="button" id="updateFirstName">Update</button>-->
         </div>
-           <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="button-addon2">
-               <button class="btn btn-outline-secondary" type="button" id="updateLastName">Update</button>
+           <div class="input-group mb-3"> <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="button-addon2">
+<!--               <button class="btn btn-outline-secondary" type="button" id="updateLastName">Update</button>-->
            </div>
-           <div class="input-group mb-5"><input type="text" class="form-control" placeholder="Email (e.g John@Outlook.com)" aria-label="Email" aria-describedby="button-addon2">
-               <button class="btn btn-outline-secondary" type="button" id="updateEmail">Update</button>
+           <div class="input-group mb-5"><input type="email" th:field="*{email}"  class="form-control" placeholder="Email (e.g John@Outlook.com)" aria-label="Email" aria-describedby="button-addon2">
+<!--               <button class="btn btn-outline-secondary" type="button" id="updateEmail">Update</button>-->
            </div>
+<!--          <input type="submit" id="submitpersonal">-->
+            <input type="button" value="Save Changes" id="post" th:onClick="sendData()" />
+            <script th:inline="javascript">
+                function sendData()
+                {
+                    $.ajax(
+                        {
+                            type: "GET",
+                            data: $("#form1").serialize(),
+                            // cache: false,
+                            url: "..//PtPersonalInfo",
+                            success: function()
+                            {
+                                alert("Updated changes");
+                            },
+                            error: function()
+                            {
+                                alert("Error - Data not saved");
+                            }
 
+                        });
+                }
+            </script>
         </form>
        </div>
-        <div class="something col-md-6 text-center ">
+        <div class="col-md-6 text-center" id="general">
             <form action="">
                 <h3>General Information</h3>
-                <div>
-                    <label for="About" >About</label>
-                    <input id="About" type="text" maxlength="400" placeholder="Use this to let your client know more about you">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">About you</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
+
                 <div>
                     <label for="qualification">Qualifications</label>
                   <select id ="qualification">
@@ -56,31 +82,30 @@
     </div>
 
 </section>
-<hr>
-<section class="container py-2">
-    <div class="row ">
-        <div class="About col-md-6   text-center ">
+<!--<hr>-->
+<!--<section class="container py-2">-->
+<!--    <div class="row ">-->
+<!--        <div class="About col-md-6   text-center ">-->
 
-            <form action="">
-                <h3>Your info</h3>
-                <div><label for="emai">Email</label>
-                    <input type="email" id="emai" name="email" required>
-                </div>
-                <div><label for="firstNam">First Name</label>
-                    <input type="text" id="firstNam" name="firstName" required>
-                </div>
-                <div><label for="lastNam">Last name</label>
-                    <input type="text" id="lastNam" name="text" required>
-                </div>
-                <input type="submit" placeholder="Update Info" id="submitInf" value="Update Info">
-            </form>
-        </div>
-        <div class="something col-md-6 "><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti placeat recusandae, assumenda commodi quae inventore id, sunt optio vero ipsam accusamus libero cumque. Quae illum quaerat soluta expedita voluptatibus voluptates.
-        </p></div>
-    </div>
+<!--            <form action="">-->
+<!--                <h3>Your info</h3>-->
+<!--                <div><label for="emai">Email</label>-->
+<!--                    <input type="email" id="emai" name="email" required>-->
+<!--                </div>-->
+<!--                <div><label for="firstNam">First Name</label>-->
+<!--                    <input type="text" id="firstNam" name="firstName" required>-->
+<!--                </div>-->
+<!--                <div><label for="lastNam">Last name</label>-->
+<!--                    <input type="text" id="lastNam" name="text" required>-->
+<!--                </div>-->
+<!--                <input type="submit" placeholder="Update Info" id="submitInf" value="Update Info">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <div class="something col-md-6 "><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti placeat recusandae, assumenda commodi quae inventore id, sunt optio vero ipsam accusamus libero cumque. Quae illum quaerat soluta expedita voluptatibus voluptates.-->
+<!--        </p></div>-->
+<!--    </div>-->
 
-</section>
-
+<!--</section>-->
 
 
 </body>

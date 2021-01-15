@@ -14,6 +14,7 @@
 <!--    <link href="/css/main.css" rel="stylesheet" />-->
 <!--    <link rel="stylesheet" href="/css/login.css">-->
     <link href="/css/Fragment.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!--    <link href="/css/exercises.css" rel="stylesheet" />-->
     <title>Phyt App</title>
 </head>
@@ -26,12 +27,12 @@
         <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
         <h1>PHYT</h1>
         <ul class="menu">
-            <li><a href="#" class="homes"><i class="fas fa-home active"></i>Home</a></li>
+            <li><a th:href="@{/Login/PersonalTrainer}" class="homes"><i class="fas fa-home active"></i>Home</a></li>
             <li>  <a href="#"><i class="fas fa-dumbbell"></i>Create a workout</a></li>
             <li> <a th:href="@{/trainer/exercises}"><i class="fas fa-book"></i>Exercise library</a></li>
 
             <li><a href="#"><i class="fas fa-users"></i>View Clients </a></li>
-            <li><a href="#"><i class="fas fa-user-cog lastlist"></i>Your Account </a></li>
+            <li><a th:href="@{/Login/PersonalTrainer/YourAccount}"><i class="fas fa-user-cog lastlist"></i>Your Account </a></li>
         </ul>
     </nav>
 </div>
