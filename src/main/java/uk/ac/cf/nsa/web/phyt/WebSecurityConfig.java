@@ -1,22 +1,14 @@
 package uk.ac.cf.nsa.web.phyt;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
-import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-//import uk.ac.cf.nsa.web.phyt.users.service.UserService;
+
 
 @Configuration
 @EnableWebSecurity
@@ -24,6 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
+    //sets in memory authentication for trainer & user roles - temporary logins for demo purposes
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -33,50 +26,38 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("client").password("{noop}password1").roles("USER");
     }
 
+    //configure security on pages, login and logout
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.csrf().disable();
 
-        // The pages does not require login
+        // Public pages that do not require authorisation
         http.authorizeRequests().antMatchers("/","/public/**", "/login", "/logout", "/register").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/register").permitAll();
 
-        // /userInfo page requires login as ROLE_USER or ROLE_TRAINER.
-        // If no login, it will redirect to /login page.
+        //userInfo page requires login as ROLE_USER or ROLE_TRAINER.
         http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('ROLE_USER', 'ROLE_TRAINER')");
 
-        // For TRAINERS only.
+        // Access to routes starting /trainer  - For TRAINERS only.
         http.authorizeRequests().antMatchers("/trainer/**").access("hasRole('ROLE_TRAINER')");
 
-        http.authorizeRequests().antMatchers("/user/**").access("hasRole('ROLE_USER')");
-
-        // When the user has logged in as XX.
-        // But access a page that requires role YY,
-        // AccessDeniedException will be thrown.
-//        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+        //Access to routes starting /client - For USER only
+        http.authorizeRequests().antMatchers("/client/**").access("hasRole('ROLE_USER')");
 
         // Config for Login Form
-        http.authorizeRequests().and().formLogin()//
-                // Submit URL of login page.
-                .loginProcessingUrl("/j_spring_security_check") // Submit URL
-                .loginPage("/login")//
-                .defaultSuccessUrl("/userInfo")//
-                .failureUrl("/login?error=true")//
-                .usernameParameter("username")//
+        http.authorizeRequests().and().formLogin()
+                //Submit URL of login page.
+                .loginProcessingUrl("/phyt_security_check")
+                .loginPage("/login")
+                .defaultSuccessUrl("/userInfo")
+                //if login fails - login page displays error message
+                .failureUrl("/login?error=true")
+                .usernameParameter("username")
                 .passwordParameter("password")
-                // Config for Logout Page
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/public/menu");
+
+                //Configuration for Logout Page - goes back to login with logout message displayed
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout=true");
 
     }
-//
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("trainer").password("{noop}password").roles("Trainer")
-//                .and()
-//                .withUser("client").password("{noop}password1").roles("Client");
-//       }
 
 }

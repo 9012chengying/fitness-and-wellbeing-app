@@ -17,16 +17,16 @@ a:hover{
 }
 
 .exercise-header{
-    margin-top: 16rem;
+    margin-top: 15rem;
     min-height:10vh;
     background-color: white;
     text-align: center;
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .exercise-header>h2{
     font-size: 2.8rem;
-    padding: 20px 0;
+    padding: 1rem 0;
 }
 
 #exercise-main{
@@ -348,7 +348,7 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     position: fixed;
     z-index: 1;
     left: 0;
-    top: 0;
+    top: 17vh;
     width: 100%;
     height: 100%;
     overflow: auto;

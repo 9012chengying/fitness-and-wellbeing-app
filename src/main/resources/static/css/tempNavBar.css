@@ -1,6 +1,6 @@
 nav {
     background-color: orange;
-    min-height: 15vh;
+    height: 16vh;
 }
 
 .navbar-brand {
@@ -9,11 +9,10 @@ nav {
     text-align: center;
     padding: 14px 16px;
     font-weight: bold;
-
 }
 
 .navbar {
-    padding-top: 3rem;
+    padding-top: 2rem;
 }
 
 .nav-items a {
@@ -26,7 +25,7 @@ nav {
 }
 
 .nav-icon {
-    margin: 1em;
+    margin: 0;
     width: 60px;
 }
 

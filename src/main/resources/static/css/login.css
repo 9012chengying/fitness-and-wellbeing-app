@@ -11,23 +11,32 @@
 
 .login-main-content{
     width: 90%;
-    margin: 1rem auto;
+    margin: auto;
     background-color: black;
     opacity: 0.8;
     padding: 2rem 1rem;
     border-radius: 5px;
+    height: auto;
+}
+
+.login-message {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
 }
 
 .login-header {
-    margin-top: 16rem;
+    margin-top: 1rem;
     min-height:10vh;
     background-color: transparent;
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 1rem;
 }
 
 .login-header > h1 {
-    font-size: 7rem;
+    font-size: 4rem;
     color: white;
     padding-bottom: 1rem;
 }

@@ -6,10 +6,16 @@
 <head th:replace="fragments/Head::Head"> </head>
 
 <body>
-<h1>Your name is:
-    <span th:text="${name}"></span> </h1>
+        <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
 
-<h1>Your role is: <span th:text="${role}"></span></h1><span th:text="${role}"></span>
+        <header>
+            <h1>Welcome,
+                <span th:text="${name}"></span> </h1>
+        </header>
+
+        <main>
+            <h2>Placeholder for Client Overview</h2>
+        </main>
 
 </body>
 </html>

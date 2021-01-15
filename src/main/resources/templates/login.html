@@ -15,15 +15,16 @@
 
 <main class="container login-main-content">
 
-    <div th:if="${param.error}">
-        Invalid username and password.
-    </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
+    <div class="login-message">
+        <div th:if="${param.error}">
+            Invalid username or password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
     </div>
 
-
-    <form th:action="@{/j_spring_security_check}" method="post">
+    <form th:action="@{/phyt_security_check}" method="post">
 
         <div class="form-group row">
             <label id="username-input" for="username">User Name:
@@ -44,17 +45,13 @@
             <button class="btn btn-xl btn-primary" type="submit">Login</button>
         </div>
     </form>
-
     <div class="register-button">
         <h3>Click here to register </h3>
         <a href="/register">
             <button class="btn btn-xl btn-warning"> Register </button>
         </a>
     </div>
-
-
 </main>
-
 <footer> </footer>
 </body>
 </html>
