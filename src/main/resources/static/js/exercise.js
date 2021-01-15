@@ -1,4 +1,16 @@
 
+//VIEW EXERCISE PAGE
+//Function to display modal
+function openModal(){
+    document.getElementById("deleteExerciseModal").style.display= "block";
+}
+//Function to close modals
+function closeModal(){
+    document.getElementById("deleteExerciseModal").style.display= "none";
+    document.getElementById("successMessageModal").style.display="none";
+    document.getElementById("failedMessageModal").style.display="none";
+}
+
 
 //CREATE EXERCISE - COLLATES INPUT DATA FOR COOKIES IF CANCELS OR DELETES COOKIES IF SUBMITS DATA
 function listen(){

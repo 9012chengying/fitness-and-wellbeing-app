@@ -23,11 +23,11 @@ public class ExerciseManagementServiceTests {
 
 
     @Test
-    public void createNewExerciseTest(){
+    public void createNewExerciseTest() {
 
         ExerciseForm testExerciseForm;
 
-         //Create an exercise
+        //Create an exercise
         testExerciseForm = new ExerciseForm();
         testExerciseForm.setExerciseName("Alternate Leg Lunges");
         testExerciseForm.setExerciseDesc("Description of lunges");
@@ -43,7 +43,7 @@ public class ExerciseManagementServiceTests {
 
 
     @Test
-    public void viewExerciseTest(){
+    public void viewExerciseTest() {
 
         Exercise testExercise;
 
@@ -56,7 +56,7 @@ public class ExerciseManagementServiceTests {
     }
 
     @Test
-    public void listAllExercisesTest(){
+    public void listAllExercisesTest() {
 
         //create a new exercise test list
         List<Exercise> testList;
@@ -69,7 +69,7 @@ public class ExerciseManagementServiceTests {
     }
 
     @Test
-    public void listExercisesByCategory(){
+    public void listExercisesByCategory() {
 
         //create a new exercise test list
         List<Exercise> testListByCat;
@@ -81,16 +81,41 @@ public class ExerciseManagementServiceTests {
         assertNotNull(testListByCat);
 
         //verify that category for each item in list is Cardio
-        for (int i = 0; i<testListByCat.size(); i++) {
+        for (int i = 0; i < testListByCat.size(); i++) {
             assertEquals("Cardio", testListByCat.get(i).getExerciseCat());
         }
 
     }
 
-    //todo - write test for adding an image to an exercise
-    @Test
-    public void addNewImageTest(){
+    /*
+    DELETE EXERCISE TESTS
+     */
 
+    @Test //Test that a success message is returned if an exercise is not deleted
+    public void deleteExerciseTestHappyPath() {
 
+        String exerciseID = "21"; //**Check database for an existing record and change ID if required**
+
+        //delete exercise using Exercise ID & return a string message
+        String exerciseDeleted = exerciseManagementService.deleteExercise(exerciseID);
+
+        //verify exercise deleted
+        assertEquals("success", exerciseDeleted);
     }
+
+    @Test //Test that a failed message is returned if exercise is not deleted
+    public void deleteExerciseTestExceptionPath() {
+
+        String exerciseID = "30";
+
+        //Try to delete exercise using Exercise ID & return a string message
+        String exerciseDeleted = exerciseManagementService.deleteExercise(exerciseID);
+
+        //verify exercise not deleted
+        assertEquals("failed", exerciseDeleted);
+    }
+
 }
+
+
+
