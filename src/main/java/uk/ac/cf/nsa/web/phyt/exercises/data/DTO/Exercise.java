@@ -3,7 +3,9 @@ package uk.ac.cf.nsa.web.phyt.exercises.data.DTO;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.List;
+import java.util.Date;
+
 
 //Exercise class to capture exercise data from database
 public class Exercise {

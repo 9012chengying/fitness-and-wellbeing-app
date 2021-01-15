@@ -23,30 +23,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    UserService userService;
-
-//    @Bean
-//    public DaoAuthenticationProvider authenticationProvider(){
-//        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-//        provider.setUserDetailsService(userService);
-//        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance()); //Below password encoder is a plain text encoder - shouldn't be used in production
-//        provider.setAuthoritiesMapper(authMapper());
-//        return provider;
-//    };
-
-//    //Map database roles to ROLE types and puts to uppercase
-//    @Bean
-//    public GrantedAuthoritiesMapper authMapper(){
-//        SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
-//        authorityMapper.setConvertToUpperCase(true);
-//        return authorityMapper;
-//    }
-//
-//    @Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authenticationProvider());
-//    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -102,4 +78,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .withUser("client").password("{noop}password1").roles("Client");
 //       }
+
 }

@@ -36,31 +36,36 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
 
     public List<Exercise> getAllExercises(){
         return jdbcTemplate.query (
-             "SELECT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+             "SELECT distinct exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, thumbnail_img, thumbnail_alt, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
                      "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  FROM phyt.exercises \n" +
                      "LEFT JOIN Media\n" +
-                     "ON exercises.thumbnail_id = Media.id order by exercises.created_at DESC;", new ExerciseMapper()
+                     "ON exercises.id = Media.exercise_id order by exercises.created_at DESC;", new ExerciseMapper()
         );
     }
 
     @Override
     public List<Exercise> getExercisesByCategory(String exerciseCat){
         return jdbcTemplate.query(
-                "select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
-                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\" from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.category= ? order by exercises.created_at DESC;", new ExerciseMapper(),  new Object[]{exerciseCat}
+                "SELECT DISTINCT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, thumbnail_img, thumbnail_alt, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\" from phyt.exercises left join Media on exercises.id = Media.exercise_id where exercises.category= ? order by exercises.created_at DESC;", new ExerciseMapper(),  new Object[]{exerciseCat}
                );
     }
 
 
     public Exercise getExerciseByID(int id){
-        Exercise exercise = (Exercise) jdbcTemplate.queryForObject("select exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, media.img_src, media.alt_text, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
-                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  from phyt.exercises left join Media on exercises.thumbnail_id = Media.id where exercises.id= ?;",
+        Exercise exercise = (Exercise) jdbcTemplate.queryForObject("select distinct exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, thumbnail_img, thumbnail_alt, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  from phyt.exercises left join Media on exercises.id = Media.exercise_id where exercises.id= ?;",
 
                 new ExerciseMapper(), new Object[]{id}
         );
         return exercise;
     }
 
+    //Request to database to delete exercise by id
+    public boolean deleteExercise(int id) {
+        int row = jdbcTemplate.update("Delete FROM exercises WHERE exercises.id=?;", new Object[]{id});
+        return row==1;
+    }
 
     public boolean addImage(ExerciseForm exerciseForm){
         return false;
