@@ -3,6 +3,7 @@ package uk.ac.cf.nsa.web.phyt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
@@ -15,54 +16,74 @@ import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMap
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import uk.ac.cf.nsa.web.phyt.users.service.UserService;
+//import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    UserService userService;
+//    @Autowired
+//    UserService userService;
 
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userService);
-        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance()); //Below password encoder is a plain text encoder - shouldn't be used in production
-        provider.setAuthoritiesMapper(authMapper());
-        return provider;
-    };
+//    @Bean
+//    public DaoAuthenticationProvider authenticationProvider(){
+//        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+//        provider.setUserDetailsService(userService);
+//        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance()); //Below password encoder is a plain text encoder - shouldn't be used in production
+//        provider.setAuthoritiesMapper(authMapper());
+//        return provider;
+//    };
 
-    //Map database roles to ROLE types and puts to uppercase
-    @Bean
-    public GrantedAuthoritiesMapper authMapper(){
-        SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
-        authorityMapper.setConvertToUpperCase(true);
-        return authorityMapper;
-    }
+//    //Map database roles to ROLE types and puts to uppercase
+//    @Bean
+//    public GrantedAuthoritiesMapper authMapper(){
+//        SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
+//        authorityMapper.setConvertToUpperCase(true);
+//        return authorityMapper;
+//    }
+//
+//    @Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(authenticationProvider());
+//    }
+
 
     @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
+    protected void configure(HttpSecurity http) throws Exception {
 
+        http.csrf().disable();
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception{
-        http
-                .cors().and().csrf().disable()
-                .authorizeRequests()
-                .antMatchers( "/", "/css/*", "/js/*", "/public/*").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                    .loginPage("/login").permitAll()  //Sets custom login page
-                .and()
-                .logout().invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/logout-success").permitAll();
+        // The pages does not require login
+        http.authorizeRequests().antMatchers("/","/public/**", "/login", "/logout", "/register").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/public/register").permitAll();
+
+        // /userInfo page requires login as ROLE_USER or ROLE_TRAINER.
+        // If no login, it will redirect to /login page.
+        http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('ROLE_USER', 'ROLE_TRAINER')");
+
+        // For TRAINERS only.
+        http.authorizeRequests().antMatchers("/trainer/**").access("hasRole('ROLE_TRAINER')");
+
+        http.authorizeRequests().antMatchers("/user/**").access("hasRole('ROLE_USER')");
+
+        // When the user has logged in as XX.
+        // But access a page that requires role YY,
+        // AccessDeniedException will be thrown.
+//        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+
+        // Config for Login Form
+        http.authorizeRequests().and().formLogin()//
+                // Submit URL of login page.
+                .loginProcessingUrl("/phyt_security_check") // Submit URL
+                .loginPage("/login")//
+                .defaultSuccessUrl("/userInfo")//
+                .failureUrl("/login?error=true")//
+                .usernameParameter("username")//
+                .passwordParameter("password")
+                // Config for Logout Page
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/public/menu");
+
     }
 //
 //    @Autowired

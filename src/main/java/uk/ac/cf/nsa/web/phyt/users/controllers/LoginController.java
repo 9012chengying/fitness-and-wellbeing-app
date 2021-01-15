@@ -1,7 +1,10 @@
 package uk.ac.cf.nsa.web.phyt.users.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 import uk.ac.cf.nsa.web.phyt.users.data.repository.LoginRepository;
-import uk.ac.cf.nsa.web.phyt.users.service.UserService;
+//import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,30 +22,47 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
-    private UserService userService;
+    //private UserService userService;
 
     //sets redirect to login page if user goes doesn't enter a specific route
     @RequestMapping(path = "/" , method=RequestMethod.GET)
     public String getHomepage() {
-        return "index";
+        return "redirect:/login";
     }
 
 
     //Gets the login page and displays on browser
     @RequestMapping(path="/login", method = RequestMethod.GET)
-    public String getLoginPage(Model model){
+    public String getLoginPage(){
         return "login";
     }
 
-    //Deals with the Post request when user enters log in details
-    @RequestMapping(path="/loginuser", method = RequestMethod.POST)
-    public String login(UserForm user) {
-        // get username user form
-        String username= user.getUsername();
-        //Send request to database to check credentials
-        userService.loadUserByUsername(username);
-        return "user-logged-in";
+    @RequestMapping(path="/userInfo")
+    public ModelAndView userAccountInfo() {
+        ModelAndView mav = new ModelAndView();
+        System.out.println("GeneralController --- /userAccountInfo    getting info ");
+        String name = "NOT Logged On";
+        String role = "Trainer";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+            //role = authentication.getRole();
+            name = currentUserName;
+        }
+        mav.addObject("role", role);
+        mav.addObject("name", name);
+        mav.setViewName("User");
+        return mav;
     }
+//    //Deals with the Post request when user enters log in details
+//    @RequestMapping(path="/loginuser", method = RequestMethod.POST)
+//    public String login(UserForm user) {
+//        // get username user form
+//        String username= user.getUsername();
+//        //Send request to database to check credentials
+//        //userService.loadUserByUsername(username);
+//        return "user-logged-in";
+//    }
 
 
     /**

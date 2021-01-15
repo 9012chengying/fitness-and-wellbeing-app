@@ -8,6 +8,15 @@
     height: 100vh;
 }
 
+.login-main-content{
+    width: 90%;
+    margin: 1rem auto;
+    background-color: black;
+    opacity: 0.8;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+}
+
 .login-header {
     margin-top: 16rem;
     min-height:10vh;
@@ -26,49 +35,40 @@
     color: white;
 }
 
+.row {
+    margin: 0;
+    justify-content: center;
+}
+
 #login-form{
-    margin: 2rem auto;
-    width: 90%;
+    margin: auto;
+    width: 100%;
     padding-top: 2rem;
 }
 
-.username-input{
-    width: 100%;
+#username-input, #password-input{
+    color: white;
+    font-size: 2rem;
+    width: 60%;
     margin: auto;
 }
 
-.password-input{
-
-}
-.loginbutton {
-    margin: 4rem;
-    margin-top: 17rem;
-    max-height: 50vh;
+.login-buttons {
+    margin-top: 1rem;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    padding: 2rem 0;
-    padding-top: 2rem;
+    justify-content: center;
+    padding: 2rem;
     align-items: center;
-    border-radius: 20px;
-    background-color: orange;
-    opacity: 0.5;
 }
 
-.registerbutton {
-    background-color: transparent;
-    color: white;
-    border: 0;
-    float: right;
-    margin-right: 1rem;
-}
-
-footer {
-    color: white;
-    min-height: 10vh;
+.register-button{
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    padding: 2rem 2.5rem;
-    bottom: 0;
+    width: 100%;
+    align-items: center;
+    padding-top: 2rem;
+}
+.register-button>h3{
+    color: white;
 }
