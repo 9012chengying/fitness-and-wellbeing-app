@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,15 +39,17 @@ public class LoginController {
     }
 
     @RequestMapping(path="/userInfo")
-    public ModelAndView userAccountInfo() {
+    public ModelAndView userAccountInfo(Authentication authentication) {
         ModelAndView mav = new ModelAndView();
         System.out.println("GeneralController --- /userAccountInfo    getting info ");
         String name = "NOT Logged On";
-        String role = "Trainer";
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String role = null;
+       authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            for (GrantedAuthority authority : authentication.getAuthorities()) {
+                role = authority.getAuthority();
+            }
             String currentUserName = authentication.getName();
-            //role = authentication.getRole();
             name = currentUserName;
         }
         mav.addObject("role", role);
