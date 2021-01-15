@@ -42,6 +42,13 @@ button:hover {
     background-color: lightsteelblue;
 }
 
+button a {
+    text-decoration-line: none;
+    font-size: 13px;
+    margin: auto;
+    padding: 3px;
+}
+
 #startWorkoutButton {
     color: #007bff;
     background-color: white;
@@ -88,6 +95,8 @@ header {
 
 .exerciseNamesBlock {
     text-align: center;
+    display: inline-block;
+    width: 100%;
 }
 
 .exerciseName {
@@ -96,7 +105,6 @@ header {
     margin-left: 1%;
     display: inline-block;
     border-radius: 8px;
-    width: 20%;
     text-align: center;
 }
 

@@ -18,11 +18,8 @@
             <img src="../static/images/lunges.png">
             <img src="../static/images/deadlift2.png">
         </div>
-        <div class="exerciseNamesBlock">
-            <div class="exerciseName">Jog</div>
-            <div class="exerciseName">Jump Rope</div>
-            <div class="exerciseName">Lunges</div>
-            <div class="exerciseName">Deadlift</div>
+        <div class="exerciseNamesBlock" th:each="exercise: ${exercises}">
+            <div class="exerciseName" th:text="${exercise.exerciseName}"></div>
         </div>
         <br>
         <div class="workoutDescription">
@@ -34,13 +31,11 @@
             <span class="criteria">Need 5kg Dumbbells, 8kg Kettlebell</span><br>
         </div>
         <br><br>
-        <footer>
             <a href="Workout.html" class="startButton">Start Workout</a> <!--change name to match html file-->
-        </footer>
         <br><br>
     </main>
 
-    <footer th:insert="fragments/Footer::Footer"></footer>
+    <!--<footer th:replace="fragments/Footer::Footer"></footer>-->
 
 </body>
 </html>

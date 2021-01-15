@@ -24,8 +24,8 @@
                     <span th:if="${workout.completed} == false"><br>Complete By: <b th:text="${workout.dueDate}"></b></span>
                 </div>
                 <div id="workoutButton" class="col-3">
-                    <button onclick="location.href='/client/diary/previousWorkout'" type="button" th:if="${workout.completed} == true">Workout Details</button>
-                    <button onclick="location.href='/client/newWorkout'" type="button" th:if="${workout.completed} == false" id="startWorkoutButton">Start Workout</button>
+                    <button type="button" th:if="${workout.completed} == true"><a th:href="@{/client/diary/previousWorkout/(workoutID=${workout.id})}">Workout Details</a></button>
+                    <button type="button" th:if="${workout.completed} == false" id="startWorkoutButton"><a th:href="@{/client/newWorkout/(workoutID=${workout.id})}">Start Workout</a></button> <!--needs to be whole button that leads to link-->
                 </div>
                 <br>
             </div>
@@ -33,6 +33,6 @@
         <br><br>
     </main>
 
-    <footer th:insert="fragments/Footer::Footer"></footer>
+    <!--<footer th:replace="fragments/Footer::Footer"></footer>-->
 </body>
 </html>
