@@ -7,44 +7,109 @@
 
 <body class="exercise-body">
 
-    <!--Page heading-->
-    <header class="exercise-header">
-        <h2 id="exercise-name" th:text="${exercise.exerciseName}">Name of Exercise</h2>
-    </header>
+<!--Page heading-->
+<header class="exercise-header">
+    <h2 id="exercise-name" th:text="${exercise.exerciseName}">Name of Exercise</h2>
+</header>
 
-
-    <!--main details of exercise-->
-    <main class="exercise-container">
-        <!--thumbnail image-->
-        <div class="exercise-thumbnail">
-            <img  th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
+<!-- Modal to display success message when exercise is deleted-->
+<div id="successMessageModal" class="modal">
+    <!-- Modal - from bootstrap https://getbootstrap.com/docs/4.0/components/modal/ -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="success-modal-header" class="modal-header">
+                <h4 class="modal-title" id="Success-Message">Success!</h4>
+                <button class="closeIcon close" type="button" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>The exercise has been successfully deleted</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="/trainer/exercises/all"><button type="button" class="btn btn-primary">View Exercises</button></a>
+            </div>
         </div>
+    </div>
+</div>
 
-
-        <!--exercise description-->
-        <div class="exercise-description">
-            <h3>Exercise Description</h3>
-            <p th:text="${exercise.exerciseDesc}">Description of exercise</p>
+<!-- Modal to display failed message when exercise is not deleted-->
+<div id="failedMessageModal" class="modal">
+    <!-- Modal - from bootstrap https://getbootstrap.com/docs/4.0/components/modal/ -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="Failed-Message">Something went wrong</h4>
+                <button class="close closeIcon" type="button" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>We've been unable to delete the exercise, please try again or view your exercises!</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="closeButton btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Close</button>
+                <a href="/trainer/exercises/all"><button type="button" class="btn btn-primary">View Exercises</button></a>
+            </div>
         </div>
+    </div>
+</div>
 
-       <!--gallery of all exercise images -->
-        <h3>Image Gallery</h3>
-        <div class="exercise-image-gallery" >
-            <img class="exercise-gallery-image" th:each="image: ${images}" th:src="${image.src}" th:alt-title="${image.altText}">
-        </div>
+<!-- Modal to display warning message that they are requesting exercise be deleted-->
+<div id="deleteExerciseModal" class="modal">
+    <!-- Modal - from bootstrap https://getbootstrap.com/docs/4.0/components/modal/ -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="delete-Exercise-warning">Delete Exercise</h4>
+                <button id="closeIcon" type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>You are about to delete this exercise</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Cancel</button>
+                <button onclick="deleteExercise()" type="button" class="btn btn-primary">Delete</button>
 
-       <!--gallery of exercise videos-->
-        <h3>Videos</h3>
-        <div class="exercise-video-gallery">
-            <iframe class="exercise-gallery-video" th:each="video: ${videos}" th:src="${video.src}" th:alt-title="${video.altText}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
+    </div>
+</div>
 
-        <div id="viewExercise-buttons">
-            <a th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">Edit details</button></a>
-            <a href="/trainer/exercises/all"><button class="btn btn-secondary btn-xl">Back to library</button></a>
-            <a th:href="@{/trainer/exercises/delete(exerciseID=${exercise.exerciseID})}"><button class="btn btn-xl btn-danger">Delete Exercise</button></a>
-        </div>
-    </main>
+<!--main details of exercise-->
+<main id="exercise-container" class="exercise-container" th:data-id="${exercise.exerciseID}">
+    <!--thumbnail image-->
+    <div class="exercise-thumbnail">
+        <img  th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
+    </div>
+
+
+    <!--exercise description-->
+    <div class="exercise-description">
+        <h3>Exercise Description</h3>
+        <p th:text="${exercise.exerciseDesc}">Description of exercise</p>
+    </div>
+
+    <!--gallery of all exercise images -->
+    <h3>Image Gallery</h3>
+    <div class="exercise-image-gallery" >
+        <img class="exercise-gallery-image" th:each="image: ${images}" th:src="${image.src}" th:alt-title="${image.altText}">
+    </div>
+
+    <!--gallery of exercise videos-->
+    <h3>Videos</h3>
+    <div class="exercise-video-gallery">
+        <iframe class="exercise-gallery-video" th:each="video: ${videos}" th:src="${video.src}" th:alt-title="${video.altText}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div id="viewExercise-buttons">
+        <a th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">Edit details</button></a>
+        <a href="/trainer/exercises/all"><button class="btn btn-secondary btn-xl">Back to library</button></a>
+        <button id="triggerModal" class="btn btn-xl btn-danger" onclick ="openModal()">Delete Exercise</button>
+    </div>
+</main>
 
 
 <!-- add a footer to contain about us and contact us links-->
