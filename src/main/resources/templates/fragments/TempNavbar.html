@@ -4,10 +4,11 @@
 </head>
 <body>
 
+<!--Nav bar fragment for PT pages -->
 <nav th:fragment="ptNavbar" class="fixed-top navbar-light">
     <div class="navbar">
         <a class="navbar-brand" href="/userInfo">PHYT</a>
-        <div class="nav-icon" onclick="showNavbar()">
+        <div class="nav-icon" onclick="showPTNavbar()">
             <div></div>
         </div>
 
@@ -20,6 +21,23 @@
     </div>
 </nav>
 
+
+<!-- Nav Bar fragment for Client pages -->
+<nav th:fragment="clientNavbar" class="fixed-top navbar-light">
+    <div class="navbar">
+        <a class="navbar-brand" href="/userInfo">PHYT</a>
+        <div class="nav-icon" onclick="showClientNavbar()">
+            <div></div>
+        </div>
+
+    </div>
+    <div id="clientNavBar" class="nav-items show">
+        <a href="#">View Workouts</a>
+        <a th:href="#">View Diary</a>
+        <a th:href="#">View PT Info</a>
+        <a href="/userInfo">Account Details</a>
+    </div>
+</nav>
 
 </body>
 </html>
