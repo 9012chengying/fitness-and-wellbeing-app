@@ -14,4 +14,11 @@ public class GeneralController {
         mav.setViewName("ClientID"); //Once a login is added this needs to change to ClientDiary
         return mav;
     }
+
+    @RequestMapping(path="/client/workout/timer")
+    public ModelAndView startTimer() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("Timer"); //Once a login is added this needs to change to ClientDiary
+        return mav;
+    }
 }

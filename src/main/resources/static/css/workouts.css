@@ -1,5 +1,13 @@
 /*ClientDiary*/
 
+header {
+    margin-top: 12rem;
+    min-height:10vh;
+    background-color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
 h3 {
     text-align: center;
 }
@@ -59,7 +67,7 @@ button a {
 
 /*Client Workout Preview*/
 
-* {
+/** {
     margin: 0;
     padding: 0;
 }
@@ -138,4 +146,4 @@ footer {
 .startButton:hover {
     background-color: cornflowerblue;
     color: white;
-}
+}*/

@@ -26,7 +26,7 @@ public class WorkoutController {
         return mav;
     }
 
-    @RequestMapping(path="/client/diary/previousWorkout")
+    @RequestMapping(path="/client/diary/details")
     public ModelAndView previousWorkout(@RequestParam(value="workoutID", defaultValue="null") int workoutID) {
         ModelAndView mav = new ModelAndView();
         mav.addObject(workoutRepository.viewWorkout(workoutID));
@@ -34,7 +34,7 @@ public class WorkoutController {
         return mav;
     }
 
-    @RequestMapping(path="/client/newWorkout")
+    @RequestMapping(path="/client/workout/view")
     public ModelAndView newWorkout(@RequestParam(value="workoutID", defaultValue="null") int workoutID) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("exercises", workoutRepository.viewWorkout(workoutID));

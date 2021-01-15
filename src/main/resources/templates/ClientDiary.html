@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.Thymeleaf.org">
 
-<head th:insert="fragments/Head::Head"></head>
+<head th:replace="fragments/Head::Head"></head>
 
 <body>
+
+    <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
 
     <header>
         <h3>Workout Diary</h3>
     </header>
+
     <main>
         <div class="container">
             <div id="workoutSummary" class="row" th:each="workout: ${workouts}">
@@ -24,8 +27,8 @@
                     <span th:if="${workout.completed} == false"><br>Complete By: <b th:text="${workout.dueDate}"></b></span>
                 </div>
                 <div id="workoutButton" class="col-3">
-                    <button type="button" th:if="${workout.completed} == true"><a th:href="@{/client/diary/previousWorkout/(workoutID=${workout.id})}">Workout Details</a></button>
-                    <button type="button" th:if="${workout.completed} == false" id="startWorkoutButton"><a th:href="@{/client/newWorkout/(workoutID=${workout.id})}">Start Workout</a></button> <!--needs to be whole button that leads to link-->
+                    <button type="button" th:if="${workout.completed} == true"><a th:href="@{/client/diary/details/(workoutID=${workout.id})}">Workout Details</a></button>
+                    <button type="button" th:if="${workout.completed} == false" id="startWorkoutButton"><a th:href="@{/client/workout/view/(workoutID=${workout.id})}">Start Workout</a></button> <!--needs to be whole button that leads to link-->
                 </div>
                 <br>
             </div>
@@ -34,5 +37,6 @@
     </main>
 
     <!--<footer th:replace="fragments/Footer::Footer"></footer>-->
+
 </body>
 </html>
