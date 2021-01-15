@@ -48,6 +48,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        auth.authenticationProvider(authenticationProvider());
 //    }
 
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .withUser("trainer").password("{noop}password").roles("TRAINER")
+                .and()
+                .withUser("client").password("{noop}password1").roles("USER");
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -56,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // The pages does not require login
         http.authorizeRequests().antMatchers("/","/public/**", "/login", "/logout", "/register").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.POST,"/public/register").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/register").permitAll();
 
         // /userInfo page requires login as ROLE_USER or ROLE_TRAINER.
         // If no login, it will redirect to /login page.
@@ -75,7 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Config for Login Form
         http.authorizeRequests().and().formLogin()//
                 // Submit URL of login page.
-                .loginProcessingUrl("/phyt_security_check") // Submit URL
+                .loginProcessingUrl("/j_spring_security_check") // Submit URL
                 .loginPage("/login")//
                 .defaultSuccessUrl("/userInfo")//
                 .failureUrl("/login?error=true")//
