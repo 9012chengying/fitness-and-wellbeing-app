@@ -38,13 +38,15 @@ public class LoginController {
         return "login";
     }
 
+
+    //
     @RequestMapping(path="/userInfo")
     public ModelAndView userAccountInfo(Authentication authentication) {
         ModelAndView mav = new ModelAndView();
         System.out.println("GeneralController --- /userAccountInfo    getting info ");
         String name = "NOT Logged On";
         String role = null;
-       authentication = SecurityContextHolder.getContext().getAuthentication();
+        authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             for (GrantedAuthority authority : authentication.getAuthorities()) {
                 role = authority.getAuthority();
@@ -57,40 +59,7 @@ public class LoginController {
         mav.setViewName("User");
         return mav;
     }
-//    //Deals with the Post request when user enters log in details
-//    @RequestMapping(path="/loginuser", method = RequestMethod.POST)
-//    public String login(UserForm user) {
-//        // get username user form
-//        String username= user.getUsername();
-//        //Send request to database to check credentials
-//        //userService.loadUserByUsername(username);
-//        return "user-logged-in";
-//    }
 
 
-    /**
-     * jump to main
-     */
-    @RequestMapping(path = "/main")
-    public String toMain() {
-        return "main";
-    }
 
-    /**
-     * logout
-     */
-    @RequestMapping("/logout")
-    public String logout(HttpSession session) {
-        // clear session
-        session.invalidate();
-        return "redirect:LoginPage";
-    }
-
-//    @RequestMapping(path="/register/info/{username}")
-//    public ModelAndView trainerInfo(@PathVariable("username") String username) {
-//        ModelAndView mav = new ModelAndView();
-//        mav.addObject("info", loginRepository.getUserInfo(username));
-//        mav.setViewName("PtHomePage");
-//        return mav;
-//    }
 }
