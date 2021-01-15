@@ -1,27 +1,26 @@
 package uk.ac.cf.nsa.web.phyt.exercises.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
-import uk.ac.cf.nsa.web.phyt.exercises.repository.ExerciseRepository;
-import uk.ac.cf.nsa.web.phyt.exercises.repository.UserRepository;
+import org.springframework.web.bind.annotation.*;
+import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
 
 @RestController
+@RequestMapping(path ="/trainer/exercises")
 public class ExerciseRestController {
 
-    private ExerciseRepository exerciseRepo;
-    private UserRepository userRepo;
+    //Use ExerciseManagementService methods to manage exercise data
+    private final ExerciseManagementService exerciseService;
 
     @Autowired
-    public ExerciseRestController(ExerciseRepository exerciseRepo, UserRepository userRepo) {
-        this.exerciseRepo = exerciseRepo;
-        this.userRepo = userRepo;
+    public ExerciseRestController(ExerciseManagementService exerciseService) {
+        this.exerciseService = exerciseService;
     }
 
+    //Delete an exercise from database
+    @DeleteMapping(path="/delete/{exerciseID}")
+    public String deleteExercise(@PathVariable String exerciseID) {
 
+        //Returns either a success or failed message String
+        return exerciseService.deleteExercise(exerciseID);
+    }
 }
-
