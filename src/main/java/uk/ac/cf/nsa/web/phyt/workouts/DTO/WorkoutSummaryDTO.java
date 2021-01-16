@@ -1,7 +1,5 @@
 package uk.ac.cf.nsa.web.phyt.workouts.DTO;
 
-import java.sql.Date;
-
 public class WorkoutSummaryDTO {
     private int id;
     private int clientID;

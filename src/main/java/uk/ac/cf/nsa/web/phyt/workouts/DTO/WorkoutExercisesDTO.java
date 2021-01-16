@@ -1,7 +1,5 @@
 package uk.ac.cf.nsa.web.phyt.workouts.DTO;
 
-import java.util.List;
-
 public class WorkoutExercisesDTO {
     private int workoutID;
     private int clientID;
@@ -90,8 +88,4 @@ public class WorkoutExercisesDTO {
     public int getExerciseThumbnailID() {
         return exerciseThumbnailID;
     }
-
-    /*public int exerciseCount() {
-        return
-    }*/
 }
