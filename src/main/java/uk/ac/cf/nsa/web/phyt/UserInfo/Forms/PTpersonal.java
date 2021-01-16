@@ -1,6 +1,6 @@
 package uk.ac.cf.nsa.web.phyt.UserInfo.Forms;
 
-public class PersonalTrainer {
+public class PTpersonal {
     private int ptID = 1;
     private String firstName;
     private String lastName;
