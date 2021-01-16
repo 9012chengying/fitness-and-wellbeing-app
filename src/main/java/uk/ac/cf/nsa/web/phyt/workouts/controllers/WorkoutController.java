@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cf.nsa.web.phyt.workouts.DTO.WorkoutSummaryDTO;
 import uk.ac.cf.nsa.web.phyt.workouts.repository.WorkoutRepository;
+
+import java.lang.reflect.Field;
 
 @Controller
 @RequestMapping(path="/client/workout")
 public class WorkoutController {
-
     private WorkoutRepository workoutRepository;
 
     @Autowired
@@ -20,14 +22,14 @@ public class WorkoutController {
     }
 
     @GetMapping(path="")
-    public ModelAndView latestWorkout(/*@RequestParam(value="clientID", defaultValue="null") int clientID*/) {
+    public ModelAndView latestWorkout(/*@RequestParam(value="clientID", defaultValue="null") int clientID*/) { //client ID should come from login - this is just to get it to work for now
         ModelAndView mav = new ModelAndView();
-        if (workoutRepository.incompleteWorkout(3) == null) {
+        int workoutID = workoutRepository.findIncompleteWorkoutID(3); //client ID should come from login - this is just to get it to work for now
+        if (workoutID == -1) { //this doesn't work - need to figure out how to deal with null SQL query
             mav.setViewName("NoNewWorkouts");
         } else {
-            //int workoutID = (int) workoutRepository.incompleteWorkout(3);
-            mav.addObject("exercises", workoutRepository.incompleteWorkout(3));
-            //mav.addObject("workouts", workoutRepository.workoutDetailsByWorkoutID(workoutID));
+            mav.addObject("workouts", workoutRepository.newWorkout(workoutID));
+            mav.addObject("exercises", workoutRepository.newWorkoutDetails(workoutID));
             mav.setViewName("ClientWorkoutPreview");
         }
         return mav;

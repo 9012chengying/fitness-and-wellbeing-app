@@ -3,8 +3,10 @@ package uk.ac.cf.nsa.web.phyt.workouts.repository;
 public interface WorkoutRepository {
 
     public Object clientWorkoutDiary(int clientID);
-    public Object viewWorkout(int workoutID);
-    public Object workoutDetailsByWorkoutID(int workoutID);
+    public Object newWorkout(int workoutID);
+    public Object newWorkoutDetails(int workoutID);
+    public int findIncompleteWorkoutID(int clientID);
     public Object incompleteWorkout(int clientID);
+    public Object incompleteWorkoutDetails(int clientID);
 
 }
