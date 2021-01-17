@@ -24,7 +24,7 @@ public class WorkoutController {
         if (workoutID == -1) { //this doesn't work - need to figure out how to deal with null SQL query
             mav.setViewName("NoNewWorkouts");
         } else {
-            mav.addObject("workouts", workoutRepository.newWorkout(workoutID));
+            mav.addObject("workout", workoutRepository.newWorkout(workoutID));
             mav.addObject("exercises", workoutRepository.newWorkoutDetails(workoutID));
             mav.setViewName("ClientWorkoutPreview");
         }

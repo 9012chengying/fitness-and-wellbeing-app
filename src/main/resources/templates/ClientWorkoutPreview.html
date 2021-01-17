@@ -3,53 +3,39 @@
 
 <head th:replace="fragments/Head::Head"></head>
 
-<style>
-    .exerciseNamesBlock .exerciseCategoryBlock .exerciseEquipmentBlock{
-        display: inline-block;
-    }
-
-    .exerciseName .exerciseCategory .exerciseEquipment {
-        display: inline-block;
-    }
-
-    .exerciseNamesBlock {
-        width: 80%;
-    }
-</style>
-
 <body>
 
     <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
 
     <header>
-        <h2>Preview Workout</h2>
+        <h3 th:if="${workout.completed} == true"><b>Workout Completed <br><span th:text="${workout.completedDate}"></span></b></h3>
+        <h3 th:if="${workout.completed} == false"><b>Complete by <span th:text="${workout.dueDate}"></span></b></h3>
     </header>
-
+    <br>
     <main>
-        <div class="container">
-            <div class="exerciseThumbnailsBlock">  <!--need to create new database query for media-->
-                <img src="../static/images/jog.PNG">
-                <img src="../static/images/jumpRope.png">
-                <img src="../static/images/lunges.png">
-                <img src="../static/images/deadlift2.png">
+        <div class="workoutPreview container">
+            <div class="exerciseThumbnailNameBlock">
+                <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
+                    <img th:src="${exercise.thumbnailSrc}" th:alt="${exercise.altText}">
+                    <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
+                </figure>
             </div>
-            <div class="exerciseNamesBlock" th:each="exercise: ${exercises}">
-                <div class="exerciseName" th:text="${exercise.exerciseName}"></div>
-            </div>
-            <br>
+            <br><br>
             <div class="workoutDescription">
-                <span>Workout Length is <b th:text="${workouts.workoutLength}"></b></span><br>
-                <span>Set On </span><b th:text="${workouts.createdDate}"></b><br> <!--look at how placement of span affects html-->
-                <span>Complete By </span><b th:text="${workouts.dueDate}"></b><br>
-                <div class="exerciseCategoriesBlock" th:each="exercise: ${exercises}">
-                    <span class="exerciseCategory" th:text="${exercise.exerciseCategory}"></span><span>, </span>
-                </div> <!--need to figure out how to combine all the categories but with no repeats-->
+                <span>Workout Length is <b th:text="${workout.workoutLength}"></b></span><br>
+                <span th:if="${workout.completed} == false">Set on <b th:text="${workout.createdDate}"></b></span><br>
+                <span>Focus on <span class="exerciseCategoriesBlock" th:each="exercise: ${exercises}">
+                    <b class="exerciseCategory" th:text="${exercise.exerciseCategory}"></b><span>, </span></span>
+                </span> <!--need to figure out how to combine all the categories but with no repeats and get rid of last comma-->
                 <br>
-                <span>Need </span><b th:text="${workouts.equipment}"></b><br> <!--data is entered when building workout at the moment. Maybe find a way to link it to each exercise? Or check off options as opposed to manually entering-->
+                <span>Need <b th:text="${workout.equipment}"></b></span> <!--data is entered when building workout at the moment. Maybe find a way to link it to each exercise? Or check off options as opposed to manually entering-->
                 <br>
             </div>
             <br><br>
-                <a href="/client/workout/timer" class="btn btn-primary">Start Workout</a> <!--link will link to workoutID once timer starts getting set up-->
+            <a href="/client/workout/timer"> <!--will link to workoutID once timer starts getting set up-->
+                <button th:if="${workout.completed} == false" class="timerButton btn btn-primary">Start Workout</button>
+                <button th:if="${workout.completed} == true" class="timerButton btn btn-primary">Repeat Workout</button>
+            </a>
             <br><br>
         </div>
     </main>
