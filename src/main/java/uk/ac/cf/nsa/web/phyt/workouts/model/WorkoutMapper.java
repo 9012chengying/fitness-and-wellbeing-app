@@ -1,17 +1,17 @@
 package uk.ac.cf.nsa.web.phyt.workouts.model;
 
 import org.springframework.jdbc.core.RowMapper;
-import uk.ac.cf.nsa.web.phyt.workouts.DTO.WorkoutSummaryDTO;
+import uk.ac.cf.nsa.web.phyt.workouts.DTO.WorkoutDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class WorkoutSummaryMapper implements RowMapper {
+public class WorkoutMapper implements RowMapper {
 
 
     @Override
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new WorkoutSummaryDTO(
+        return new WorkoutDTO(
                 rs.getInt("id"),
                 rs.getInt("client_id"),
                 rs.getInt("exercise_count"),

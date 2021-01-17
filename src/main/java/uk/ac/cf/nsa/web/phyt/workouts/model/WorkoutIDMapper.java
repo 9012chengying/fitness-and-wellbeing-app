@@ -1,7 +1,6 @@
 package uk.ac.cf.nsa.web.phyt.workouts.model;
 
 import org.springframework.jdbc.core.RowMapper;
-import uk.ac.cf.nsa.web.phyt.workouts.DTO.WorkoutExercisesDTO;
 import uk.ac.cf.nsa.web.phyt.workouts.DTO.WorkoutIDDTO;
 
 import java.sql.ResultSet;

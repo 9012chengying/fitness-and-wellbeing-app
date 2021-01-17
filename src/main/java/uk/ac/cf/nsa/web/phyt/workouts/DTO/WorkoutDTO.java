@@ -1,6 +1,6 @@
 package uk.ac.cf.nsa.web.phyt.workouts.DTO;
 
-public class WorkoutSummaryDTO {
+public class WorkoutDTO {
     private int id;
     private int clientID;
     private int exerciseCount;
@@ -17,7 +17,7 @@ public class WorkoutSummaryDTO {
     private String altText;
     private String type;
 
-    public WorkoutSummaryDTO(int id, int clientID, int exerciseCount, int exerciseLength, int restLength, int repRest, int reps, String equipment, String dueDate, boolean completed, String completedDate, String createdDate, String imageSrc, String altText, String type) {
+    public WorkoutDTO(int id, int clientID, int exerciseCount, int exerciseLength, int restLength, int repRest, int reps, String equipment, String dueDate, boolean completed, String completedDate, String createdDate, String imageSrc, String altText, String type) {
         this.id = id;
         this.clientID = clientID;
         this.exerciseCount = exerciseCount;
