@@ -5,13 +5,19 @@
 
 <head th:replace="fragments/Head::Head"> </head>
 
-<body class="exercise-body">
+<body>
 
 <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
 
-<header class="exercise-header">
-    <h1>Place holder for edit template</h1>
+
+<header>
+    <h1>Welcome,
+        <span th:text="${name}"></span> </h1>
 </header>
+
+<main>
+    <h2>Placeholder for Trainer Overview</h2>
+</main>
 
 
 </body>

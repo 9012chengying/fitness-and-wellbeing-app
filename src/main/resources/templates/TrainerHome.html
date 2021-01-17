@@ -5,14 +5,12 @@
 
 <head th:replace="fragments/Head::Head"> </head>
 
-<body class="exercise-body">
 
-<nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
-
-<header class="exercise-header">
-    <h1>Place holder for edit template</h1>
-</header>
-
+<body>
+    <header class="exercise-header">
+        <h2>Welcome to Phyt</h2>
+        <h3 th:attribute="name"></h3>
+    </header>
 
 </body>
 </html>
