@@ -21,10 +21,10 @@ body {
 /*}*/
 
 .DummyHeader {
-    padding-top: 130px;
+    padding-top: 100px;
 }
 
-h1 {
+#NAVtitle{
     font-weight: normal;
     display: block;
     color: black;
@@ -40,7 +40,7 @@ h1 {
 
     margin-right: 100px;
     /*background: rgba(255, 190, 51, 0.8);*/
-    background: rgba(255, 186, 1, 0.8);
+    background: rgba(255, 186, 1, 0.9);
 
     border-bottom: 4px #800 solid;
     width: 100%;
@@ -71,7 +71,7 @@ h1 {
 
 .menu a:hover {
     margin: 0 30px;
-    background: rgba(233, 193, 107, 0.8);
+    background: rgba(233, 193, 107, 0.9);
     border: 1px solid #800;
     border-radius: 60px;
     overflow: hidden;
@@ -129,8 +129,8 @@ h1 {
     width: 100%;
     position: absolute;
     border-radius: 15px;
-    /* transition: all .2s ease-out;  */
     top: -15px;
+
 }
 
 .nav-bar .menu-btn {
@@ -177,7 +177,7 @@ h1 {
     .nav-bar .menu-icon {
         display: none;
     }
-    h1 {
+    #NAVtitle {
         font-weight: normal;
         display: none;
         color: black;
@@ -190,7 +190,7 @@ h1 {
     .nav-bar li a {
         font-size: 1.5rem;
     }
-    h1 {
+    #NAVtitle {
         margin-top: 20px;
     }
 }
@@ -199,12 +199,24 @@ h1 {
     body {
         background-size: cover;
     }
-    h1 {
+    .NAVtitle {
         font-size: 2.5rem;
         margin-top: 20px;
     }
     #pt {
         height: 130px;
         width: 130px;
+    }
+    .nav-bar li a:hover {
+       color: white;
+        /*transition: color 0.25s;*/
+        transition:All ease-out 0.25s ;
+        border: none;
+        background: none;
+        font-size: 2rem;
+    }
+    .nav-bar li a {
+        margin-bottom: 4.5px;
+
     }
 }

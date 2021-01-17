@@ -12,11 +12,11 @@
 <body>
 <div th:fragment="PTnavbar">
     <nav class="nav-bar">
-        <img src="images/pt.jpg" class="img-fluid rounded-circle border border-3 border-warning " id="pt" alt="PT">
+        <img src="/images/pt.jpg" class="img-fluid rounded-circle border border-3 border-warning " id="pt" alt="PT">
 
         <input class="menu-btn" type="checkbox" id="menu-btn">
         <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
-        <h1>PHYT</h1>
+        <h1 id="NAVtitle">PHYT</h1>
         <ul class="menu">
             <li><a href="#" class="homes"><i class="fas fa-home active"></i>Home</a></li>
             <li><a th:href="@{/trainer/exercises/add}"><i class="fas fa-dumbbell"></i>Create a workout</a></li>
