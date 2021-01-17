@@ -8,6 +8,7 @@ public class WorkoutSummaryDTO {
     private int restLength;
     private int repRest;
     private int reps;
+    private String equipment;
     private String dueDate;
     private boolean completed;
     private String completedDate;
@@ -16,7 +17,7 @@ public class WorkoutSummaryDTO {
     private String altText;
     private String type;
 
-    public WorkoutSummaryDTO(int id, int clientID, int exerciseCount, int exerciseLength, int restLength, int repRest, int reps, String dueDate, boolean completed, String completedDate, String createdDate, String imageSrc, String altText, String type) {
+    public WorkoutSummaryDTO(int id, int clientID, int exerciseCount, int exerciseLength, int restLength, int repRest, int reps, String equipment, String dueDate, boolean completed, String completedDate, String createdDate, String imageSrc, String altText, String type) {
         this.id = id;
         this.clientID = clientID;
         this.exerciseCount = exerciseCount;
@@ -24,6 +25,7 @@ public class WorkoutSummaryDTO {
         this.restLength = restLength;
         this.repRest = repRest;
         this.reps = reps;
+        this.equipment = equipment;
         this.dueDate = dueDate;
         this.completed = completed;
         this.completedDate = completedDate;
@@ -59,6 +61,10 @@ public class WorkoutSummaryDTO {
 
     public int getReps() {
         return reps;
+    }
+
+    public String getEquipment() {
+        return equipment;
     }
 
     public String getDueDate() {

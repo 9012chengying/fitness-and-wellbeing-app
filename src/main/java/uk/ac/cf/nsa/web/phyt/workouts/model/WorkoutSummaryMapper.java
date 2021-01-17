@@ -19,6 +19,7 @@ public class WorkoutSummaryMapper implements RowMapper {
                 rs.getInt("exercise_rest"),
                 rs.getInt("rep_rest"),
                 rs.getInt("reps"),
+                rs.getString("equipment"),
                 rs.getString("complete_by"),
                 rs.getBoolean("completed"),
                 rs.getString("completed_at"),

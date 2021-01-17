@@ -6,7 +6,5 @@ public interface WorkoutRepository {
     public Object newWorkout(int workoutID);
     public Object newWorkoutDetails(int workoutID);
     public int findIncompleteWorkoutID(int clientID);
-    public Object incompleteWorkout(int clientID);
-    public Object incompleteWorkoutDetails(int clientID);
 
 }

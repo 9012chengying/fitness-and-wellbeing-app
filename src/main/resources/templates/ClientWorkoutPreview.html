@@ -1,38 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.Thymeleaf.org">
 
-<head th:insert="fragments/Head::Head"></head>
+<head th:replace="fragments/Head::Head"></head>
+
+<style>
+    .exerciseNamesBlock .exerciseCategoryBlock .exerciseEquipmentBlock{
+        display: inline-block;
+    }
+
+    .exerciseName .exerciseCategory .exerciseEquipment {
+        display: inline-block;
+    }
+
+    .exerciseNamesBlock {
+        width: 80%;
+    }
+</style>
 
 <body>
-    <nav>
-        <a href="ClientPage1.html" class="backArrow">&larr;</a>
-    </nav>
+
+    <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+
     <header>
-        <h1>Preview Workout</h1>
+        <h2>Preview Workout</h2>
     </header>
-    <br>
+
     <main>
-        <div class="exerciseThumbnailsBlock">
-            <img src="../static/images/jog.PNG">
-            <img src="../static/images/jumpRope.png">
-            <img src="../static/images/lunges.png">
-            <img src="../static/images/deadlift2.png">
+        <div class="container">
+            <div class="exerciseThumbnailsBlock">  <!--need to create new database query for media-->
+                <img src="../static/images/jog.PNG">
+                <img src="../static/images/jumpRope.png">
+                <img src="../static/images/lunges.png">
+                <img src="../static/images/deadlift2.png">
+            </div>
+            <div class="exerciseNamesBlock" th:each="exercise: ${exercises}">
+                <div class="exerciseName" th:text="${exercise.exerciseName}"></div>
+            </div>
+            <br>
+            <div class="workoutDescription">
+                <span>Workout Length is <b th:text="${workouts.workoutLength}"></b></span><br>
+                <span>Set On </span><b th:text="${workouts.createdDate}"></b><br> <!--look at how placement of span affects html-->
+                <span>Complete By </span><b th:text="${workouts.dueDate}"></b><br>
+                <div class="exerciseCategoriesBlock" th:each="exercise: ${exercises}">
+                    <span class="exerciseCategory" th:text="${exercise.exerciseCategory}"></span><span>, </span>
+                </div> <!--need to figure out how to combine all the categories but with no repeats-->
+                <br>
+                <span>Need </span><b th:text="${workouts.equipment}"></b><br> <!--data is entered when building workout at the moment. Maybe find a way to link it to each exercise? Or check off options as opposed to manually entering-->
+                <br>
+            </div>
+            <br><br>
+                <a href="/client/workout/timer" class="btn btn-primary">Start Workout</a> <!--link will link to workoutID once timer starts getting set up-->
+            <br><br>
         </div>
-        <div class="exerciseNamesBlock" th:each="exercise: ${exercises}">
-            <div class="exerciseName" th:text="${exercise.exerciseName}"></div>
-        </div>
-        <br>
-        <div class="workoutDescription">
-            <span class="criteria">Workout Number 15</span><br>
-            <span class="criteria">30 Minutes</span><br>
-            <span class="criteria">Set On 10/12/20</span><br>
-            <span class="criteria">Complete By 13/12/20</span><br>
-            <span class="criteria">Full-Body Workout</span><br>
-            <span class="criteria">Need 5kg Dumbbells, 8kg Kettlebell</span><br>
-        </div>
-        <br><br>
-            <a href="Workout.html" class="startButton">Start Workout</a> <!--change name to match html file-->
-        <br><br>
     </main>
 
     <!--<footer th:replace="fragments/Footer::Footer"></footer>-->

@@ -4,12 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.cf.nsa.web.phyt.workouts.DTO.WorkoutSummaryDTO;
 import uk.ac.cf.nsa.web.phyt.workouts.repository.WorkoutRepository;
-
-import java.lang.reflect.Field;
 
 @Controller
 @RequestMapping(path="/client/workout")
