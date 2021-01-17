@@ -28,10 +28,9 @@ p, a{
     font-size: 1.8rem;
 }
 
-main {
-    /*margin-top: 12vh;*/ /*body main too low when this is implemented*/
+header {
+    margin-top: 17vh;
 }
-
 /*Additional button class to make bootstrap buttons larger
 Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the-size-of-a-bootstrap-button/32869241
 */
