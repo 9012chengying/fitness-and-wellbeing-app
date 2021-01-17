@@ -8,7 +8,7 @@
     <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
 
     <header>
-        <h3>Workout Diary</h3>
+        <h2>Workout Diary</h2>
     </header>
 
     <main>
@@ -23,12 +23,12 @@
                     <span>Workout Length: </span><b th:text="${workout.workoutLength}"></b>
                     <br>
                     <span>Number of Exercises: </span><b th:text="${workout.exerciseCount}"></b>
-                    <span th:if="${workout.completed} == true"><br>Date Completed: <b th:text="${workout.completedDate}"></b></span>
-                    <span th:if="${workout.completed} == false"><br>Complete By: <b th:text="${workout.dueDate}"></b></span>
+                    <span th:if="${workout.completed} == true"><br>Completed At: <b th:text="${workout.completedDate}"></b></span> <!--doesn't fit on one line-->
+                    <b th:if="${workout.completed} == false"><br>Complete By: <b th:text="${workout.dueDate}"></b></b>
                 </div>
                 <div id="workoutButton" class="col-3">
-                    <button type="button" th:if="${workout.completed} == true"><a th:href="@{/client/diary/details/(workoutID=${workout.id})}">Workout Details</a></button>
-                    <button type="button" th:if="${workout.completed} == false" id="startWorkoutButton"><a th:href="@{/client/workout/view/(workoutID=${workout.id})}">Start Workout</a></button> <!--needs to be whole button that leads to link-->
+                    <button type="button" th:if="${workout.completed} == true" id="previousWorkoutButton"><a th:href="@{/client/diary/completed(workoutID=${workout.id})}">Workout Details</a></button> <!--nigel wants client to be able to run routine again - possibly have this on the same page as new workout-->
+                    <button type="button" th:if="${workout.completed} == false" id="newWorkoutButton"><a th:href="@{/client/diary/new(workoutID=${workout.id})}">New Workout</a></button>
                 </div>
                 <br>
             </div>
