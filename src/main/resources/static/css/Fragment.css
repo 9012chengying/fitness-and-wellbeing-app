@@ -78,12 +78,8 @@ body {
     transition:All ease-out 0.25s ;
     border: none;
     background: none;
-    font-size: 2rem;
 }
-.nav-bar li a {
-    margin-bottom: 4.5px;
 
-}
 .nav-bar li:hover{
     background-color: #ffc13c;
 }
@@ -165,6 +161,10 @@ body {
         padding-right: 10px;
         font-size: 2.5rem;
     }
+    .nav-bar li:hover {
+        background: none;
+
+    }
     .menu a:hover {
         outline: none;
         color: white;
@@ -205,6 +205,7 @@ body {
     #NAVtitle {
         margin-top: 20px;
     }
+
 }
 
 @media(max-width: 600px) {
