@@ -1,43 +1,21 @@
-/*html {*/
-/*    margin: auto;*/
-/*    padding: 0;*/
-/*    width: auto;*/
-/*}*/
-
-/*p {*/
-/*    color: rgb(54, 52, 52);*/
-/*}*/
-
-body {
-    font-family: 'Patua One', cursive;
-    /*background: url('/images/108395-orange-curve.jpg') center center no-repeat fixed;*/
-    /*background-size: cover;*/
-    /*width: 100%;*/
-    /*z-index: -1;*/
-}
-
-/** {*/
-/*    box-sizing: border-box;*/
-/*}*/
-
 .DummyHeader {
-    padding-top: 100px;
+    padding-top: 105px;
 }
 
 #NAVtitle{
     font-weight: normal;
     display: block;
     color: black;
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
- padding-left: 5px;
+    padding-left: 5px;
 }
 
 .nav-bar {
     position: fixed;
+    top:0;
     /*border-top-left-radius: 60px;*/
     /*border-bottom-left-radius: 60px;*/
-
 
     margin-right: 100px;
     /*background: rgba(255, 190, 51, 0.8);*/
@@ -78,12 +56,8 @@ body {
     transition:All ease-out 0.25s ;
     border: none;
     background: none;
-    font-size: 2rem;
 }
-.nav-bar li a {
-    margin-bottom: 4.5px;
 
-}
 .nav-bar li:hover{
     background-color: #ffc13c;
 }
@@ -163,7 +137,11 @@ body {
     }
     .nav-bar li a {
         padding-right: 10px;
-        font-size: 2.5rem;
+        font-size: 2rem;
+    }
+    .nav-bar li:hover {
+        background: none;
+
     }
     .menu a:hover {
         outline: none;
@@ -193,7 +171,7 @@ body {
         font-weight: normal;
         display: none;
         color: black;
-        font-size: 4rem;
+        font-size: 3rem;
         text-align: center;
     }
 }
@@ -202,9 +180,17 @@ body {
     .nav-bar li a {
         font-size: 1.5rem;
     }
+
     #NAVtitle {
         margin-top: 20px;
     }
+}
+@media(max-width: 2100px) {
+    .nav-bar li a {
+        font-size: 1.2rem;
+    }
+
+
 }
 
 @media(max-width: 600px) {
@@ -212,28 +198,23 @@ body {
         background-size: cover;
     }
     .NAVtitle {
-        font-size: 2.5rem;
+        font-size: 2rem;
         margin-top: 20px;
     }
     #pt {
-        height: 130px;
-        width: 130px;
+        height: 105px;
+        width: 105px;
     }
     .nav-bar li a:hover {
-       color: white;
+        color: white;
         /*transition: color 0.25s;*/
         transition:All ease-out 0.25s ;
         border: none;
         background: none;
-        font-size: 2rem;
     }
-    .nav-bar li a {
-        margin-bottom: 4.5px;
+    .nav-bar li:hover{
+        background-color: #ffc13c;
 
     }
- .nav-bar li:hover{
-     background-color: #ffc13c;
-
- }
 
 }
