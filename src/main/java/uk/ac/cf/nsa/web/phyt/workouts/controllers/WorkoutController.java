@@ -31,6 +31,15 @@ public class WorkoutController {
         return mav;
     }
 
+    @GetMapping(path="/exercise")
+    public ModelAndView viewExercise(int exerciseID) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exercise",workoutRepository.);
+        mav.setViewName("ClientExerciseView");
+        return mav;
+    }
+
+
     @GetMapping(path="/timer")
     public ModelAndView startTimer() {
         ModelAndView mav = new ModelAndView();

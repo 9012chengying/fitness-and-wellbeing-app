@@ -71,4 +71,9 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
         }
     }
 
+    @Override
+    public Object viewExerciseById(int exerciseID) {
+
+    }
+
 }

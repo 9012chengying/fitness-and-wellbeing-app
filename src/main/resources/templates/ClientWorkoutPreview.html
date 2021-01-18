@@ -16,7 +16,7 @@
         <div class="workoutPreview container">
             <div class="exerciseThumbnailNameBlock">
                 <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
-                    <img th:src="${exercise.thumbnailSrc}" th:alt="${exercise.altText}">
+                    <a th:href="@{/client/diary/workout/exercise(exerciseID=${exercise.id})}"><img th:src="${exercise.thumbnailSrc}" th:alt="${exercise.altText}"></a>
                     <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
                 </figure>
             </div>
