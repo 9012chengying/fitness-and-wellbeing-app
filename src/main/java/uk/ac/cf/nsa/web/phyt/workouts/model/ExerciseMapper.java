@@ -17,9 +17,7 @@ public class ExerciseMapper implements RowMapper {
                 rs.getString("exercise_name"),
                 rs.getString("category"),
                 rs.getString("equipment"),
-                rs.getInt("thumbnail_id"),
-                rs.getString("img_src"),
-                rs.getString("alt_text"),
-                rs.getString("type"));
+                rs.getString("thumbnail_img"),
+                rs.getString("thumbnail_alt"));
     }
 }
