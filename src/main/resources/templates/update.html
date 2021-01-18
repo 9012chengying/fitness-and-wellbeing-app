@@ -66,9 +66,13 @@
                 <div class="form-group">
                <input id="username" name="username" th:value="${info.username}" readonly/>
                 </div>
-                    <strong>Name: </strong>
+                <strong>Firstname: </strong>
                 <div class="form-group">
-                    <input  id="name" name="name" placeholder="name" autocomplete="off" th:value="${info.name}"/>
+                    <input  id="firstname" name="firstname" placeholder="firstname" autocomplete="off" th:value="${info.firstname}"/>
+                </div>
+                <strong>Lastname: </strong>
+                <div class="form-group">
+                    <input  id="lastname" name="lastname" placeholder="lastname" autocomplete="off" th:value="${info.lastname}"/>
                 </div>
                 <strong>Email: </strong>
                 <div class="form-group">
@@ -83,10 +87,15 @@
                         return reg.test(str);
                     }
                     function update() {
-                        var name = $('#name').val();
+                        var firstname = $('#firstname').val();
+                        var lastname = $('#lastname').val();
                         var email = $('#email').val();
-                        if (name.length < 2||name.length > 20) {
-                            alert('Name should be 2 to 20 characters');
+                        if (firstname.length < 2||firstname.length > 20) {
+                            alert('Firstname should be 2 to 20 characters');
+                            return false;
+                        }
+                        if (lastname.length < 2||lastname.length > 20) {
+                            alert('Lastname should be 2 to 20 characters');
                             return false;
                         }
                         if (!isEmail(email)){

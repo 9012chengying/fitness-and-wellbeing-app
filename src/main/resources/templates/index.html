@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
 
+<head th:replace="fragments/Head::Head"> </head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!--Bootstrap CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!--Icons - fontawesome kit-->
-    <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
-
-    <!--Javascript Scripts-->
-    <script src="/static/js/exercise.js"></script>
-
-    <!--Stylesheets-->
-    <link href="/static/css/main.css" rel="stylesheet" />
-    <link href="/static/css/Ptcss.css" rel="stylesheet" />
-    <link href="/static/css/exercises.css" rel="stylesheet" />
-
-    <title>Phyt</title>
-</head>
 <body>
 
-<h1>HOME PAGE PLACEHOLDER FOR REDIRECTS</h1>
+    <main class="container">
+
+        <div class="jumbotron">
+            <h1 class="display-4">PHYT</h1>
+            <p class="lead">Welcome to the future of Personal Training and Coaching.</p>
+            <hr class="my-4">
+            <p>Please log in to access your space.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" th:href="@{/login}" role="button">Log in</a>
+            </p>
+        </div>
+
+    </main>
+
+
 </body>
 </html>

@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.Thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/Head::Head"> </head>
 
     <body class="exercise-body">
-    <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
+    <div th:replace="fragments/Navbar-Pt::PTnavbar"></div>
+<!--    <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>-->
 
     <!--Page heading-->
-
     <header class="exercise-header">
         <h2>Exercise Library</h2>
         <h3>Click View Details to see full details of an exercise or Edit Details to make changes.</h3>
     </header>
+
 
     <aside class="exercise-flex-row exercise-flex-row-space">
         <form id="filterForm" action="/trainer/exercises/filter" method="get">

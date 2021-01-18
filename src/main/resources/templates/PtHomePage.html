@@ -26,11 +26,12 @@
 
     <div class="nav-links">
         <ul>
-            <li><a href="home page.html" class="homes"><i class="fas fa-home active"></i>Home</a></li>
-            <li>  <a href="AllExercises.html"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
+            <li><a href="/trainer" class="homes"><i class="fas fa-home active"></i>Home</a></li>
+            <li>  <a href="/trainer/exercises/all"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
             <li> <a href="#"><i class="fas fa-book"></i>Bookings</a></li>
             <li><a href="clients.html"><i class="fas fa-users"></i>View Clients </a></li>
             <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>
+
         </ul>
     </div>
 </nav>
@@ -62,7 +63,8 @@
             <h1 >Overview</h1>
             <strong>About: </strong> <p>Personal trainer </p>
             <strong>User Name: </strong>  <p th:text="${info.username}"></p>
-            <strong>Name: </strong><p th:text="${info.name}"></p>
+            <strong>Firstname: </strong><p th:text="${info.firstname}"></p>
+            <strong>Lastname: </strong><p th:text="${info.lastname}"></p>
             <strong>Email: </strong><p th:text="${info.email}"></p>
 <!--            <strong>Contact info: </strong> <p>02920195111</p>-->
             <a th:href="@{/update/info(username=${info.username})}">Update User</a>
