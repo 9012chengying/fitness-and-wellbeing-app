@@ -46,7 +46,7 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
     @Override
     public boolean updateUser(UserForm userForm) {
         int rows = jdbcTemplate.update(
-                "update user set firstname=?,lastname=?,email=? where user_name=?" ,
+                "update user set first_name=?,last_name=?,email=? where user_name=?" ,
                 new Object[]{ userForm.getFirstname(),userForm.getLastname(),userForm.getEmail(),userForm.getUsername()});
         return rows>0;
     }
