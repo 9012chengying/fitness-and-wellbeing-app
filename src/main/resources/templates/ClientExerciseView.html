@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+    <body class="exercise-body">
+
+    <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+    <!--Page heading-->
+    <header class="exercise-header">
+        <h2 id="exercise-name" th:text="${exercise.name}">Name of Exercise</h2>
+    </header>
+
+    <!--main details of exercise-->
+    <main id="exercise-container" class="exercise-container" th:data-id="${exercise.id}">
+
+        <!--gallery of all exercise images -->
+        <div class="exercise-image-gallery">
+            <img class="exercise-gallery-image" th:each="image: ${media}" th:if="${image.type} == 'Image'" th:src="${image.src}" th:alt-title="${image.altText}">
+        </div>
+
+        <!--exercise description-->
+        <div class="exercise-description">
+            <h3>Exercise Description</h3>
+            <p th:text="${exercise.description}">Description of exercise</p>
+        </div>
+
+        <!--gallery of exercise videos-->
+        <div class="exercise-video-gallery" >
+            <iframe class="exercise-gallery-video" th:each="video: ${media}" th:if="${video.type} == 'Video'" th:src="${video.src}" th:alt-title="${video.altText}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div id="viewExercise-buttons">
+            <a href="/trainer/exercises/all"><button class="btn btn-secondary btn-xl">Back to Workout</button></a>
+        </div>
+    </main>
+
+    <!--<footer th:replace="fragments/Footer::Footer"></footer>-->
+
+    </body>
+</html>

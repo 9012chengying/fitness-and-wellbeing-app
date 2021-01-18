@@ -7,7 +7,7 @@
 
     <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
 
-    <header>
+    <header class="alignHeader">
         <h3 th:if="${workout.completed} == true"><b>Workout Completed <br><span th:text="${workout.completedDate}"></span></b></h3>
         <h3 th:if="${workout.completed} == false"><b>Complete by <span th:text="${workout.dueDate}"></span></b></h3>
     </header>
@@ -16,7 +16,7 @@
         <div class="workoutPreview container">
             <div class="exerciseThumbnailNameBlock">
                 <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
-                    <a th:href="@{/client/diary/workout/exercise(exerciseID=${exercise.id})}"><img th:src="${exercise.thumbnailSrc}" th:alt="${exercise.altText}"></a>
+                    <a th:href="@{/client/workout/exercise(exerciseID=${exercise.exerciseID})}"><img th:src="${exercise.thumbnailImg}" th:alt="${exercise.thumbnailAlt}"></a>
                     <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
                 </figure>
             </div>
