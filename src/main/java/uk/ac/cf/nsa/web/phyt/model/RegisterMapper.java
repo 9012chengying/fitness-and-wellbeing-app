@@ -12,10 +12,11 @@ public class RegisterMapper implements RowMapper {
     @Override
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new UserEntity(
-                rs.getInt("userid"),
-                rs.getString("username"),
-                rs.getString("password"),
-                rs.getString("name"),
+                rs.getInt("id"),
+                rs.getString("user_name"),
+                rs.getString("user_password"),
+                rs.getString("first_name"),
+                rs.getString("last_name"),
                 rs.getString("email"));
     }
 }

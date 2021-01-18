@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+
+<body class="body-login">
+
+    <header class="login-header">
+        <h1>WELCOME TO PHYT</h1>
+        <h3>Please login or register to use the app.</h3>
+    </header>
+
+<main class="container login-main-content">
+
+    <div class="login-message">
+        <div th:if="${param.error}">
+            Invalid username or password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+    </div>
+
+    <form th:action="@{/phyt_security_check}" method="post">
+
+        <div class="form-group row">
+            <label id="username-input" for="username">User Name:
+                <input class="form-control" id="username" name="username" type="text" placeholder="Username" autocomplete="off" />
+            </label>
+        </div>
+
+        <div class="form-group row">
+            <label id ="password-input" for="password">Password:
+                <input class="form-control" id="password" name="password" type="password" placeholder="Password" autocomplete="off"/>
+            </label>
+           <!-- <span class="input-group-btn">
+                <input class="btn btn-default" id="passwordeye" style="font-size:40px" type="button"
+                                                 value="show/hide"></span>-->
+        </div>
+
+        <div class="login-buttons">
+            <button class="btn btn-xl btn-primary" type="submit">Login</button>
+        </div>
+    </form>
+    <div class="register-button">
+        <h3>Click here to register </h3>
+        <a href="/register">
+            <button class="btn btn-xl btn-warning"> Register </button>
+        </a>
+    </div>
+</main>
+<footer> </footer>
+</body>
+</html>
