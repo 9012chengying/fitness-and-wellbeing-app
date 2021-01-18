@@ -22,14 +22,14 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
 
     public boolean registerUser(UserForm userForm){
         int rows = jdbcTemplate.update(
-                "insert into t_user(username,password,name,email) values(?,?,?,?)" ,
-                new Object[]{userForm.getUsername(), userForm.getPassword(), userForm.getName(), userForm.getEmail()});
+                "insert into user(user_name,user_password,first_name,last_name,email) values(?,?,?,?,?)" ,
+                new Object[]{userForm.getUsername(), userForm.getPassword(), userForm.getFirstname(),userForm.getLastname(), userForm.getEmail()});
         return rows>0;
     }
 
     @Override
     public UserEntity getUserInfo(String username) {
-        String sql="SELECT userid, username,password, name, email FROM t_user where username = ?";
+        String sql="SELECT id, user_name,user_password,first_name,last_name, email FROM user where user_name = ?";
         List<UserEntity> list = jdbcTemplate.query(sql,new Object[]{username}, new RegisterMapper());
         if (list!=null&&list.size()!=0){
             return list.get(0);
@@ -39,15 +39,15 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
 
     @Override
     public boolean deleteUser(String userName) {
-        int rows =   jdbcTemplate.update("delete from t_user where  username = ?",userName);
+        int rows =   jdbcTemplate.update("delete from user where  user_name = ?",userName);
         return rows>0;
     }
 
     @Override
     public boolean updateUser(UserForm userForm) {
         int rows = jdbcTemplate.update(
-                "update t_user set name=?,email=? where username=?" ,
-                new Object[]{ userForm.getName(), userForm.getEmail(),userForm.getUsername()});
+                "update user set first_name=?,last_name=?,email=? where user_name=?" ,
+                new Object[]{ userForm.getFirstname(),userForm.getLastname(),userForm.getEmail(),userForm.getUsername()});
         return rows>0;
     }
 }

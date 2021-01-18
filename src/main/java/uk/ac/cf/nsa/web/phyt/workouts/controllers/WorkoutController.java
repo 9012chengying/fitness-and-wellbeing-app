@@ -20,7 +20,7 @@ public class WorkoutController {
     @GetMapping(path="")
     public ModelAndView latestWorkout(/*@RequestParam(value="clientID", defaultValue="null") int clientID*/) { //client ID should come from login - this is just to get it to work for now
         ModelAndView mav = new ModelAndView();
-        int workoutID = workoutRepository.findIncompleteWorkoutID(3); //client ID should come from login - this is just to get it to work for now
+        int workoutID = workoutRepository.findIncompleteWorkoutID(2); //client ID should come from login - this is just to get it to work for now
         if (workoutID == -1) { //this doesn't work - need to figure out how to deal with null SQL query
             mav.setViewName("NoNewWorkouts");
         } else {

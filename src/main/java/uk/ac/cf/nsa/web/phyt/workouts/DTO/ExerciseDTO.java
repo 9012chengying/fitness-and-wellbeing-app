@@ -6,21 +6,17 @@ public class ExerciseDTO {
     private String exerciseName;
     private String exerciseCategory;
     private String exerciseEquipment;
-    private int thumbnailID;
-    private String thumbnailSrc;
-    private String altText;
-    private String mediaType; //not sure if this is necessary
+    private String thumbnailImg;
+    private String thumbnailAlt;
 
-    public ExerciseDTO(int workoutID, int exerciseID, String exerciseName, String exerciseCategory, String exerciseEquipment, int thumbnailID, String thumbnailSrc, String altText, String mediaType) {
+    public ExerciseDTO(int workoutID, int exerciseID, String exerciseName, String exerciseCategory, String exerciseEquipment, String thumbnailImg, String thumbnailAlt) {
         this.workoutID = workoutID;
         this.exerciseID = exerciseID;
         this.exerciseName = exerciseName;
         this.exerciseCategory = exerciseCategory;
         this.exerciseEquipment = exerciseEquipment;
-        this.thumbnailID = thumbnailID;
-        this.thumbnailSrc = thumbnailSrc;
-        this.altText = altText;
-        this.mediaType = mediaType;
+        this.thumbnailImg = thumbnailImg;
+        this.thumbnailAlt = thumbnailAlt;
     }
 
     public int getWorkoutID() {
@@ -43,19 +39,11 @@ public class ExerciseDTO {
         return exerciseEquipment;
     }
 
-    public int getThumbnailID() {
-        return thumbnailID;
+    public String getThumbnailImg() {
+        return thumbnailImg;
     }
 
-    public String getThumbnailSrc() {
-        return thumbnailSrc;
-    }
-
-    public String getAltText() {
-        return altText;
-    }
-
-    public String getMediaType() {
-        return mediaType;
+    public String getThumbnailAlt() {
+        return thumbnailAlt;
     }
 }

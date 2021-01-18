@@ -52,9 +52,7 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
     @Override
     public List<ExerciseDTO> newWorkoutDetails(int workoutID) {
         return (List<ExerciseDTO>) jdbcTemplate.query(
-                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_id, " +
-                        "media.img_src, media.alt_text, media.type FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id INNER JOIN Media ON " +
-                        "Exercises.thumbnail_id=Media.id WHERE workout_id=?",
+                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
                 new ExerciseMapper(), workoutID);
     }
 
