@@ -1,5 +1,3 @@
-
-
 .DummyHeader {
     padding-top: 105px;
 }
@@ -18,7 +16,6 @@
     top:0;
     /*border-top-left-radius: 60px;*/
     /*border-bottom-left-radius: 60px;*/
-
 
     margin-right: 100px;
     /*background: rgba(255, 190, 51, 0.8);*/
@@ -140,7 +137,7 @@
     }
     .nav-bar li a {
         padding-right: 10px;
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     .nav-bar li:hover {
         background: none;
@@ -181,11 +178,18 @@
 
 @media(max-width: 2100px) {
     .nav-bar li a {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
+
     #NAVtitle {
         margin-top: 20px;
     }
+}
+@media(max-width: 2100px) {
+    .nav-bar li a {
+        font-size: 1.2rem;
+    }
+
 
 }
 
@@ -207,11 +211,6 @@
         transition:All ease-out 0.25s ;
         border: none;
         background: none;
-        /*font-size: 2rem;*/
-    }
-    .nav-bar li a {
-        margin-bottom: 4.5px;
-
     }
     .nav-bar li:hover{
         background-color: #ffc13c;
