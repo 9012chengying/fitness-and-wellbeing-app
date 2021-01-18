@@ -1,21 +1,22 @@
 
+/*CSS FOR EXERCISE PAGES
+    - ViewExercise
+    - EditExercise
+    - AllExercises
+    - CreateExercise
+*/
+
 /* DESKTOP CSS */
 
+/*CSS FOR ALL PAGES */
+
+/*Sets body background to white with no image*/
 .exercise-body{
     background-image: none;
     background-color: white;
 }
 
-a{
-    color: black;
-    text-decoration: none;
-}
-
-a:hover{
-    color: #007bff;
-    text-decoration: none;
-}
-
+/*Sets header below nav bar & styles header*/
 .exercise-header{
     margin-top: 15rem;
     min-height:10vh;
@@ -29,33 +30,15 @@ a:hover{
     padding: 1rem 0;
 }
 
-#exercise-main{
-    margin-bottom: 12vh;
+
+.exercise-link{
+    color: black;
+    text-decoration: none;
 }
 
-.exercise-flex-row{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.exercise-flex-row-space{
-    justify-content: space-between;
-    padding: 0 2rem;
-}
-
-@media only screen and (max-width: 625px){
-    .exercise-flex-row{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .exercise-flex-row-space{
-        align-items: flex-start;
-        padding: 2rem;
-    }
+.exercise-link:hover{
+    color: #007bff;
+    text-decoration: none;
 }
 
 /*Additional button class to make bootstrap buttons larger
@@ -69,23 +52,21 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     border-radius: 10px;
 }
 
-@media only screen and (max-width: 625px){
-    .btn-xl{
-        margin: 5px;
-        min-width: 50px;
-        padding: 7px 7px;
-        font-size: 1.8rem;
-        border-radius: 10px;
-    }
 
-    #filter-button>button{
-        width: 170px;
-        margin: 0 auto;
-        padding: 10px 10px;
-    }
+/* ************************* */
+/*CSS FOR AllExercises PAGE */
+
+.exercise-flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.exercise-flex-row-space{
+    justify-content: space-between;
+    padding: 0 2rem;
 }
 
-/*CSS for AllExercises*/
 #filterForm{
     font-size: 1.8rem;
     width: 50%;
@@ -113,10 +94,11 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     border: #007bff solid 0.2rem;
     border-radius: 1rem;
 }
+
 .exercise-thumbnail{
     padding-right: 1rem;
     width: 215px;
-    height: 150px;
+    height: 150px !important;
 }
 
 .exercise-summary{
@@ -140,84 +122,9 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     justify-content: flex-end;
 }
 
-/* MEDIA QUERIES FOR RESPONSIVENESS */
+/* ************************* */
+/*CSS FOR CreateExercise PAGE*/
 
-@media only screen and (max-width: 900px){
-    /* All Exercises Page*/
-    .exercise-list{
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width: 700px){
-
-    /* All Exercises Page */
-    .exercise-card {
-        max-height: 60rem;
-    }
-    #filterForm{
-        font-size: 1.8rem;
-        width: 90%;
-        margin: 0 auto;
-        padding: 2rem 1rem;
-    }
-
-    #filterForm-div{
-        display:flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .exercise-card{
-        padding: 1rem 1.5rem;
-    }
-}
-
-@media only screen and (max-width: 625px){
-
-    #filterForm-div{
-        align-items: center;
-    }
-
-    .exercise-card{
-        max-height: 60rem;
-        display:flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 1rem;
-    }
-    .exercise-thumbnail{
-        width: 75%;
-        height: auto;
-        margin: auto;
-        padding-right: 0;
-    }
-
-    .exercise-summary{
-        width: 80%;
-        padding: 0.5rem;
-    }
-
-    .exercise-summary>p {
-        font-size: 1.6rem;
-        font-weight: bold;
-    }
-
-    .exercise-summary>p>span{
-        font-weight: normal;
-        font-size: 1.6rem;
-    }
-    .exercise-buttons{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
-
-}
-
-
-/*CSS for CreateExercise*/
 #exerciseForm{
     font-size: 1.8rem;
     width: 50%;
@@ -250,13 +157,12 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
 }
 
 .exercise-input>.exercise-buttons{
-    display: flex;
+    flex-direction: row;
     justify-content: center;
 }
 
-
-
-/* CSS for View Exercise Page */
+/* ************************* */
+/* CSS FOR ViewExercise PAGE */
 
 #exercise-name{
     padding: 1rem 0;
@@ -365,3 +271,112 @@ Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the
     background-color: #4CAF50;
     color: black;
 }
+
+
+/* ******************************** */
+
+/* MEDIA QUERIES FOR RESPONSIVENESS */
+
+/*Specific Styling for devices with screen width less than 900px*/
+@media only screen and (max-width: 900px){
+
+    /* All Exercises Page*/
+    .exercise-list{
+        width: 100%;
+    }
+}
+
+/*Specific Styling for devices with screen width less than 700px*/
+@media only screen and (max-width: 700px){
+
+    /* All Exercises Page */
+    .exercise-card {
+        max-height: 60rem;
+    }
+    #filterForm{
+        font-size: 1.8rem;
+        width: 90%;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    #filterForm-div{
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .exercise-card{
+        padding: 1rem 1.5rem;
+    }
+}
+
+/*Specific Styling for devices with screen width less than 625px*/
+@media only screen and (max-width: 625px){
+
+    .btn-xl{
+        margin: 5px;
+        min-width: 50px;
+        padding: 7px 7px;
+        font-size: 1.8rem;
+        border-radius: 10px;
+    }
+
+    #filter-button>button{
+        width: 170px;
+        margin: 0 auto;
+        padding: 10px 10px;
+    }
+
+    .exercise-flex-row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .exercise-flex-row-space{
+        align-items: flex-start;
+        padding: 2rem;
+    }
+
+    #filterForm-div{
+        align-items: center;
+    }
+
+    .exercise-card{
+        max-height: 60rem;
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1rem;
+    }
+    .exercise-thumbnail{
+        width: 75%;
+        height: auto;
+        margin: auto;
+        padding-right: 0;
+    }
+
+    .exercise-summary{
+        width: 80%;
+        padding: 0.5rem;
+    }
+
+    .exercise-summary>p {
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+    .exercise-summary>p>span{
+        font-weight: normal;
+        font-size: 1.6rem;
+    }
+    .exercise-buttons{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
