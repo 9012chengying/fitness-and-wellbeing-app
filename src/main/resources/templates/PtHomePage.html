@@ -61,14 +61,14 @@
         <div class="col-md-6 info">
             <h1 >Overview</h1>
             <strong>About: </strong> <p>Personal trainer </p>
-            <strong>User Name: </strong>  <p th:text="${info.username}"></p>
+            <strong>User Name: </strong> <br><p th:text="${info.username}"></p>
             <strong>Firstname: </strong><p th:text="${info.firstname}"></p>
             <strong>Lastname: </strong><p th:text="${info.lastname}"></p>
             <strong>Email: </strong><p th:text="${info.email}"></p>
 <!--            <strong>Contact info: </strong> <p>02920195111</p>-->
-            <a th:href="@{/update/info(username=${info.username})}">Update User</a>
+            <a th:href="@{/update/info(username=${info.username})}"><p>Update User</p></a>
             <br>
-            <a th:href="@{/user/delete(username=${info.username})}">Delete Current User</a>
+            <a th:href="@{/user/delete(username=${info.username})}"><p>Delete Current User</p></a>
         </div>
     </div>
 
