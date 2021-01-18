@@ -1,49 +1,37 @@
 package uk.ac.cf.nsa.web.phyt.workouts.DTO;
 
 public class ExerciseDTO {
-    private int workoutID;
-    private int exerciseID;
-    private String exerciseName;
-    private String exerciseCategory;
-    private String exerciseEquipment;
-    private String thumbnailImg;
-    private String thumbnailAlt;
+    private int id;
+    private String name;
+    private String description;
+    private String category;
+    private String equipment;
 
-    public ExerciseDTO(int workoutID, int exerciseID, String exerciseName, String exerciseCategory, String exerciseEquipment, String thumbnailImg, String thumbnailAlt) {
-        this.workoutID = workoutID;
-        this.exerciseID = exerciseID;
-        this.exerciseName = exerciseName;
-        this.exerciseCategory = exerciseCategory;
-        this.exerciseEquipment = exerciseEquipment;
-        this.thumbnailImg = thumbnailImg;
-        this.thumbnailAlt = thumbnailAlt;
+    public ExerciseDTO(int id, String name, String description, String category, String equipment) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.equipment = equipment;
     }
 
-    public int getWorkoutID() {
-        return workoutID;
+    public int getId() {
+        return id;
     }
 
-    public int getExerciseID() {
-        return exerciseID;
+    public String getName() {
+        return name;
     }
 
-    public String getExerciseName() {
-        return exerciseName;
+    public String getDescription() {
+        return description;
     }
 
-    public String getExerciseCategory() {
-        return exerciseCategory;
+    public String getCategory() {
+        return category;
     }
 
-    public String getExerciseEquipment() {
-        return exerciseEquipment;
-    }
-
-    public String getThumbnailImg() {
-        return thumbnailImg;
-    }
-
-    public String getThumbnailAlt() {
-        return thumbnailAlt;
+    public String getEquipment() {
+        return equipment;
     }
 }
