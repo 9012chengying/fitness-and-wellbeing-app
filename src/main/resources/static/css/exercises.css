@@ -10,373 +10,401 @@
 
 /*CSS FOR ALL PAGES */
 
-/*Sets body background to white with no image*/
-.exercise-body{
-    background-image: none;
-    background-color: white;
-}
-
-/*Sets header below nav bar & styles header*/
-.exercise-header{
-    margin-top: 15rem;
-    min-height:10vh;
-    background-color: white;
-    text-align: center;
-    padding: 1rem 0;
-}
-
-.exercise-header>h2{
-    font-size: 2.8rem;
-    padding: 1rem 0;
-}
-
-
-.exercise-link{
-    color: black;
-    text-decoration: none;
-}
-
-.exercise-link:hover{
-    color: #007bff;
-    text-decoration: none;
-}
-
-/*Additional button class to make bootstrap buttons larger
-Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the-size-of-a-bootstrap-button/32869241
-*/
-.btn-xl {
-    margin: 5px;
-    min-width: 150px;
-    padding: 10px 20px;
-    font-size: 2rem;
-    border-radius: 10px;
-}
-
-
-/* ************************* */
-/*CSS FOR AllExercises PAGE */
-
-.exercise-flex-row{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-.exercise-flex-row-space{
-    justify-content: space-between;
-    padding: 0 2rem;
-}
-
-#filterForm{
-    font-size: 1.8rem;
-    width: 50%;
-    margin: 20px auto;
-    padding: 2rem 1rem;
-}
-
-#filterForm-div{
-    width: 100%;
-    margin: auto;
-}
-
-.exercise-list{
-    width: 80%;
-    margin: auto;
-}
-.exercise-card{
-    margin: 1rem;
-    display:flex;
-    max-height: 50vh;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 1rem 3rem;
-    align-items: center;
-    border: #007bff solid 0.2rem;
-    border-radius: 1rem;
-}
-
-.exercise-thumbnail{
-    padding-right: 1rem;
-    width: 215px;
-    height: 150px !important;
-}
-
-.exercise-summary{
-    padding: 1.5rem;
-    flex-basis: 60%;
-}
-
-.exercise-summary>p>span{
-    font-weight: normal;
-    font-size: 1.8rem;
-}
-.exercise-summary>p {
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.exercise-buttons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-/* ************************* */
-/*CSS FOR CreateExercise PAGE*/
-
-#exerciseForm{
-    font-size: 1.8rem;
-    width: 50%;
-    margin: 20px auto;
-    padding: 2rem 1rem;
-}
-
-#filter-button{
-    font-size: 1.8rem;
-    width: 17rem;
-    margin: 0 auto;
-}
-
-
-.exercise-input{
-    width: 100%;
-    display: flex;
-}
-
-.exercise-input>label{
-    width: 35%;
-    text-align: right;
-    margin-right: 1rem;
-}
-
-.exercise-input>input, .exercise-input>select, .exercise-input>textarea{
-    width: 65%;
-    margin: 0 0 2rem 2rem;
-    justify-self: flex-end;
-}
-
-.exercise-input>.exercise-buttons{
-    flex-direction: row;
-    justify-content: center;
-}
-
-/* ************************* */
-/* CSS FOR ViewExercise PAGE */
-
-#exercise-name{
-    padding: 1rem 0;
-    border-bottom: #007bff solid 0.5rem;;
-}
-
-.exercise-container, .exercise-image-gallery, .exercise-video-gallery  {
-    width: 100%;
-    margin: auto;
-    padding: 1rem;
-}
-
-.exercise-container>h3{
-    padding: 1rem 0.5rem;
-}
-
-.exercise-container>.exercise-thumbnail {
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    height: auto;
-    margin: auto;
-    padding-bottom: 1.5rem;
-}
-
-.exercise-container>.exercise-thumbnail>img{
-    width: 300px;
-    height: auto;
-}
-
-.exercise-description{
-    width: 100%;
-    padding: 1rem;
-}
-
-.exercise-description>h3{
-    padding-bottom: 0.5rem;
-}
-.exercise-description>p{
-    font-size: 1.6rem;
-    text-align: justify;
-}
-
-.exercise-image-gallery {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-}
-.exercise-gallery-image {
-    display: inline-block;
-    width: 90%;
-    height: auto;
-    margin-right: 1rem;
-}
-
-.exercise-video-gallery{
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-}
-
-.exercise-gallery-video{
-    width: 100%;
-    height: 200px;
-    margin-right: 1rem;
-}
-
-#viewExercise-buttons {
-    padding: 2rem 0;
-    width:100%;
-    display: flex;
-    justify-content: center;
-}
-
-.viewExercise-buttons {
-    padding: 2rem 0;
-    width:100%;
-    display: flex;
-    justify-content: center;
-}
-
-.viewExercise-buttons>a{
-    margin-left: 1rem;
-}
-
-/* The Modal (background) - Code used from W3Schools https://www.w3schools.com/howto/howto_css_modals.asp */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 17vh;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-header {
-    background-color: red;
-    color: white;
-}
-
-#success-modal-header{
-    background-color: #4CAF50;
-    color: black;
-}
-
-
-/* ******************************** */
-
-/* MEDIA QUERIES FOR RESPONSIVENESS */
-
-/*Specific Styling for devices with screen width less than 900px*/
-@media only screen and (max-width: 900px){
-
-    /* All Exercises Page*/
-    .exercise-list{
-        width: 100%;
+    /*Sets body background to white with no image*/
+    .exercise-body{
+        background-image: none;
+        background-color: white;
     }
-}
 
-/*Specific Styling for devices with screen width less than 700px*/
-@media only screen and (max-width: 700px){
-
-    /* All Exercises Page */
-    .exercise-card {
-        max-height: 60rem;
+    /*Sets header below nav bar & styles header*/
+    .exercise-header{
+        margin-top: 15rem;
+        min-height:10vh;
+        background-color: white;
+        text-align: center;
+        padding: 1rem 0;
     }
+
+    .exercise-header>h2{
+        font-size: 2.8rem;
+        padding: 1rem 0;
+    }
+
+
+    .exercise-link{
+        color: black;
+        text-decoration: none;
+    }
+
+    .exercise-link:hover{
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    /*Additional button class to make bootstrap buttons larger
+    Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the-size-of-a-bootstrap-button/32869241
+    */
+    .btn-xl {
+        margin: 5px;
+        min-width: 150px;
+        padding: 10px 20px;
+        font-size: 2rem;
+        border-radius: 10px;
+    }
+
+
+/* ************************* */
+    /*CSS FOR AllExercises PAGE */
+
+    .exercise-flex-row{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .exercise-flex-row-space{
+        padding: 0 2rem;
+    }
+
     #filterForm{
         font-size: 1.8rem;
-        width: 90%;
-        margin: 0 auto;
+        width: 50%;
+        margin: 20px 0;
         padding: 2rem 1rem;
     }
 
     #filterForm-div{
-        display:flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .exercise-card{
-        padding: 1rem 1.5rem;
-    }
-}
-
-/*Specific Styling for devices with screen width less than 625px*/
-@media only screen and (max-width: 625px){
-
-    .btn-xl{
-        margin: 5px;
-        min-width: 50px;
-        padding: 7px 7px;
-        font-size: 1.8rem;
-        border-radius: 10px;
-    }
-
-    #filter-button>button{
-        width: 170px;
-        margin: 0 auto;
-        padding: 10px 10px;
-    }
-
-    .exercise-flex-row{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .exercise-flex-row-space{
-        align-items: flex-start;
-        padding: 2rem;
-    }
-
-    #filterForm-div{
-        align-items: center;
-    }
-
-    .exercise-card{
-        max-height: 60rem;
-        display:flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 1rem;
-    }
-    .exercise-thumbnail{
-        width: 75%;
-        height: auto;
+        width: 100%;
         margin: auto;
-        padding-right: 0;
+    }
+
+    .exercise-list{
+        width: 80%;
+        margin: auto;
+    }
+    .exercise-card{
+        margin: 1rem;
+        display:flex;
+        max-height: 50vh;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 1rem 3rem;
+        align-items: center;
+        border: #007bff solid 0.2rem;
+        border-radius: 1rem;
+    }
+
+    .exercise-thumbnail{
+        padding-right: 1rem;
+        width: 215px;
+        height: 150px !important;
     }
 
     .exercise-summary{
-        width: 80%;
-        padding: 0.5rem;
-    }
-
-    .exercise-summary>p {
-        font-size: 1.6rem;
-        font-weight: bold;
+        padding: 1.5rem;
+        flex-basis: 60%;
     }
 
     .exercise-summary>p>span{
         font-weight: normal;
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
+    .exercise-summary>p {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
     .exercise-buttons{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
+        justify-content: flex-end;
+    }
+
+/* ************************* */
+    /*CSS FOR CreateExercise PAGE*/
+
+    #exerciseForm{
+        font-size: 1.8rem;
+        width: 70%;
+        margin: 20px auto;
+    }
+
+    .exercise-input{
+        width: 100%;
+        display: flex;
+    }
+
+    .exercise-input>label{
+        width: 35%;
+        text-align: right;
+        margin-right: 1rem;
+    }
+
+    .exercise-input>input, .exercise-input>select, .exercise-input>textarea{
+        width: 65%;
+        margin: 0 0 2rem 2rem;
+        justify-self: flex-end;
+    }
+
+    .create-exercise-buttons{
+        display: flex;
         justify-content: center;
     }
-}
+
+
+/* ************************* */
+    /* CSS FOR ViewExercise PAGE */
+
+    #exercise-name{
+        padding: 1rem 0;
+        border-bottom: #007bff solid 0.5rem;;
+    }
+
+    .exercise-container, .exercise-image-gallery, .exercise-video-gallery  {
+        width: 100%;
+        margin: auto;
+        padding: 1rem;
+    }
+
+    .exercise-container>h3{
+        padding: 1rem 0.5rem;
+    }
+
+    .exercise-container>.exercise-thumbnail {
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        height: auto;
+        margin: auto;
+        padding-bottom: 1.5rem;
+    }
+
+    .exercise-container>.exercise-thumbnail>img{
+        width: 300px;
+        height: auto;
+    }
+
+    .exercise-description{
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .exercise-description>h3{
+        padding-bottom: 0.5rem;
+    }
+    .exercise-description>p{
+        font-size: 1.6rem;
+        text-align: justify;
+    }
+
+    .exercise-image-gallery {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    .exercise-gallery-image {
+        display: inline-block;
+        width: 90%;
+        height: auto;
+        margin-right: 1rem;
+    }
+
+    .exercise-video-gallery{
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+
+    .exercise-gallery-video{
+        width: 100%;
+        height: 200px;
+        margin-right: 1rem;
+    }
+
+    #viewExercise-buttons {
+        padding: 2rem 0;
+        width:100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .viewExercise-buttons {
+        padding: 2rem 0;
+        width:100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .viewExercise-buttons>a{
+        margin-left: 1rem;
+    }
+
+    /* The Modal (background) - Code used from W3Schools https://www.w3schools.com/howto/howto_css_modals.asp */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 17vh;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-header {
+        background-color: red;
+        color: white;
+    }
+
+    #success-modal-header{
+        background-color: #4CAF50;
+        color: black;
+    }
+
+
+/* ******************************** */
+
+    /* MEDIA QUERIES FOR RESPONSIVENESS */
+
+    /*Specific Styling for devices with screen width less than 900px*/
+        @media only screen and (max-width: 900px){
+
+            /* All Exercises Page*/
+            .exercise-list{
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 800px) {
+            #exerciseForm{
+                font-size: 1.6rem;
+                width: 90%;
+                margin: 1.5rem auto;
+            }
+            .exercise-input{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            .exercise-input>label{
+                width: 100%;
+                text-align: left;
+                margin-right: 1rem;
+            }
+            .exercise-input>input, .exercise-input>select, .exercise-input>textarea{
+                width: 100%;
+                margin: 0 0 2rem 0;
+            }
+        }
+
+    /*Specific Styling for devices with screen width less than 700px*/
+        @media only screen and (max-width: 700px){
+
+            /* All Exercises Page */
+            .exercise-card {
+                max-height: 60rem;
+            }
+            #filterForm{
+                font-size: 1.8rem;
+                width: 90%;
+                margin: 0 auto;
+                padding: 2rem 1rem;
+            }
+
+            #filterForm-div{
+                display:flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .exercise-card{
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        @media only screen and (max-width: 650px){
+            .create-exercise-buttons{
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+
+    /*Specific Styling for devices with screen width less than 625px*/
+        @media only screen and (max-width: 625px){
+
+            .btn-xl{
+                margin: 5px;
+                min-width: 50px;
+                padding: 7px 7px;
+                font-size: 1.8rem;
+                border-radius: 10px;
+            }
+
+            #filter-button{
+                font-size: 1.8rem;
+                width:100%;
+                margin: auto;
+                text-align: center;
+            }
+
+            #filter-button>button{
+                width: 170px;
+                margin: 0 auto;
+                padding: 10px 10px;
+            }
+
+            .exercise-flex-row{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .exercise-flex-row-space{
+                align-items: flex-start;
+                padding: 2rem;
+            }
+
+            #filterForm-div{
+                align-items: center;
+            }
+
+            .exercise-card{
+                max-height: 60rem;
+                display:flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 1rem;
+            }
+            .exercise-thumbnail{
+                width: 75%;
+                height: auto;
+                margin: auto;
+                padding-right: 0;
+            }
+
+            .exercise-summary{
+                width: 80%;
+                padding: 0.5rem;
+            }
+
+            .exercise-summary>p {
+                font-size: 1.6rem;
+                font-weight: bold;
+            }
+
+            .exercise-summary>p>span{
+                font-weight: normal;
+                font-size: 1.6rem;
+            }
+            .exercise-buttons{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+    }
 
 
