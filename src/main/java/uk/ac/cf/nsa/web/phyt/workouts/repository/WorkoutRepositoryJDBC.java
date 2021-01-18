@@ -1,6 +1,7 @@
 package uk.ac.cf.nsa.web.phyt.workouts.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.workouts.DTO.*;
@@ -56,13 +57,13 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
     //query for discovering workoutID for client's oldest incomplete workout
     @Override
     public int findIncompleteWorkoutID(int clientID) {
-        WorkoutIDDTO workoutIDDTO = (WorkoutIDDTO) jdbcTemplate.queryForObject(
-                "SELECT id, client_id, completed FROM Workouts WHERE client_id=? AND completed=false ORDER BY created_at LIMIT 1",
-                new WorkoutIDMapper(), clientID);
-        if (workoutIDDTO == null) { //this doesn't work - NEED TO FIX
-            return -1;
-        } else {
+        try {
+            WorkoutIDDTO workoutIDDTO = (WorkoutIDDTO) jdbcTemplate.queryForObject(
+                    "SELECT id, client_id, completed FROM Workouts WHERE client_id=? AND completed=false ORDER BY created_at LIMIT 1",
+                    new WorkoutIDMapper(), clientID);
             return workoutIDDTO.getWorkoutID();
+        } catch (EmptyResultDataAccessException e) {
+            return -1;
         }
     }
 
@@ -80,5 +81,4 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
                 "SELECT media.exercise_id, media.type, media.img_src, media.alt_text FROM media INNER JOIN exercises on exercises.id=media.exercise_id WHERE exercise_id=?",
                 new ExerciseMediaMapper(), exerciseID);
     }
-
 }

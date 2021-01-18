@@ -22,7 +22,7 @@ public class DiaryController {
     @GetMapping(path="")
     public ModelAndView viewDiary(/*@RequestParam (value="clientID", defaultValue="null") int intClientID*/) {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("workouts", workoutRepository.clientWorkoutDiary(3));
+        mav.addObject("workouts", workoutRepository.clientWorkoutDiary(2));
         mav.setViewName("ClientDiary");
         return mav;
     }

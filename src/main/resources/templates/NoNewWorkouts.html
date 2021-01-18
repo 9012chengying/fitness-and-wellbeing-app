@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"></head>
+
+<body>
+
+    <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+
+    <header class="alignHeader">
+        <h2 class="workoutHeader">No New Workouts</h2>
+    </header>
+
+    <br><br>
+
+    <div class="center">
+        <div class="centerText">All set workouts have been completed.</div><br>
+        <div class="centerText">You can go to your diary to repeat any previous workouts.</div>
+    </div>
+
+    <br><br><br>
+
+    <div id="viewExercise-buttons">
+        <a href="/client/diary/"><button class="btn btn-primary btn-xl">Workout Diary</button></a>
+    </div>
+
+</body>
+
+</html>
+

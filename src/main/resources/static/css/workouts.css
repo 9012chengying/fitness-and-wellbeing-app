@@ -42,7 +42,7 @@
 
 /*Client Workout Preview*/
 
-.workoutPreview {
+.workoutPreview, .centerText {
     text-align: center;
 }
 
