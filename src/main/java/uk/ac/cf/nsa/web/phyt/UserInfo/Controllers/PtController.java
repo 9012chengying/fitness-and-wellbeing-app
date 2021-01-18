@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import uk.ac.cf.nsa.web.phyt.UserInfo.Forms.GeneralinfoPT;
 import uk.ac.cf.nsa.web.phyt.UserInfo.Forms.PersonalTrainer;
 import uk.ac.cf.nsa.web.phyt.UserInfo.Repository.ptRepo;
 
 @Controller
-@RequestMapping(path ="/Login")
+@RequestMapping(path ="/Loginuser")
 public class PtController {
 
     private final ptRepo personaltRepo;
@@ -31,7 +32,7 @@ public class PtController {
     public String getyourDetails(Model model){
 
         model.addAttribute("PersonalTrainer",new PersonalTrainer());
-
+        model.addAttribute("Generalinfo", new GeneralinfoPT());
         return "YourAccountPage";
     }
 
@@ -45,13 +46,23 @@ public class PtController {
 //        return mav;
 //     }
 
-    @GetMapping("/PtPersonalInfo")
-    public String submitDetails(PersonalTrainer personalTrainer,Model model){
+    @GetMapping(value = {"/PtPersonalInfo"})
+    public String submitDetails(PersonalTrainer personalTrainer, GeneralinfoPT generalinfoPT,Model model){
+        model.addAttribute("PersonalTrainer",personalTrainer);
+        model.addAttribute("Generalinfo", generalinfoPT);
 
+        personaltRepo.updatePtInfo(personalTrainer);
+
+return "PtHomePage";
+    }
+    @GetMapping("/PtGeneralInfo")
+    public String submitDetails2(GeneralinfoPT generalinfoPT, PersonalTrainer personalTrainer, Model model){
+        model.addAttribute("Generalinfo", generalinfoPT);
         model.addAttribute("PersonalTrainer",personalTrainer);
 
-       personaltRepo.updatePtInfo(personalTrainer);
-return "YourAccountPage";
+        personaltRepo.updatePtGeneral(generalinfoPT);
+        return "PtHomePage";
+
     }
 
 

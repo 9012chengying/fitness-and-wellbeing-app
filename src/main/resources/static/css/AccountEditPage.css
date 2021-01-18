@@ -6,8 +6,11 @@
 /*}*/
 
 body{
-    height: 100%;
-    width: auto;
+    /*height: 100%;*/
+    /*width: auto;*/
+    font-family: 'Patua One', cursive;
+    background: url('/images/108395-orange-curve.jpg') center center no-repeat fixed;
+    background-size: cover;
 }
 
 form{
@@ -16,6 +19,9 @@ form{
     border-radius: 15px;
     height: 100%;
 
+}
+div #Textarea1{
+    resize: none;
 }
 
 form:hover{

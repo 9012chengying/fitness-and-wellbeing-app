@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr"
-      xmlns:th="http://www.Thymeleaf.org">
-<head>
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/Head::Head">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/Ptcss.css">
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script src="/js/PTJS.js"></script>
+<!--    <script src="/js/PTJS.js"></script>-->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
@@ -15,26 +15,27 @@
 </head>
 <body>
 <!--Top navigation-->
-<a href="#" class="toggle-btn">
-<!--    <i class="fas fa-bars"></i>-->
-</a>
-
-<nav class="nav-bar">
-
-<div class="brand ">PHYT</div>
+<div th:insert="/fragments/Navbar-Pt::PTnavbar" class="nav-bar"></div>
+<!--<a href="#" class="toggle-btn">-->
+<!--&lt;!&ndash;    <i class="fas fa-bars"></i>&ndash;&gt;-->
+<!--</a>-->
 
 
-    <div class="nav-links">
-        <ul>
-            <li><a href="/trainer" class="homes"><i class="fas fa-home active"></i>Home</a></li>
-            <li>  <a href="/trainer/exercises/all"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
-            <li> <a href="#"><i class="fas fa-book"></i>Bookings</a></li>
-            <li><a href="clients.html"><i class="fas fa-users"></i>View Clients </a></li>
-            <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>
 
-        </ul>
-    </div>
-</nav>
+<!--<div class="brand ">PHYT</div>-->
+
+
+<!--    <div class="nav-links">-->
+<!--        <ul>-->
+<!--            <li><a href="/trainer" class="homes"><i class="fas fa-home active"></i>Home</a></li>-->
+<!--            <li>  <a href="/trainer/exercises/all"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>-->
+<!--            <li> <a href="#"><i class="fas fa-book"></i>Bookings</a></li>-->
+<!--            <li><a href="clients.html"><i class="fas fa-users"></i>View Clients </a></li>-->
+<!--            <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>-->
+
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
 
 <section class="container-fluid px-0 sec" >
     <div class="row  stuff">
@@ -61,14 +62,14 @@
         </div>
         <div class="col-md-6 info">
             <h1 >Overview</h1>
-            <strong>About: </strong> <p>Personal trainer </p>
-            <strong>User Name: </strong>  <p th:text="${info.username}"></p>
-            <strong>Name: </strong><p th:text="${info.name}"></p>
-            <strong>Email: </strong><p th:text="${info.email}"></p>
-<!--            <strong>Contact info: </strong> <p>02920195111</p>-->
-            <a th:href="@{/update/info(username=${info.username})}">Update User</a>
-            <br>
-            <a th:href="@{/user/delete(username=${info.username})}">Delete Current User</a>
+<!--            <strong>About: </strong> <p>Personal trainer </p>-->
+<!--            <strong>User Name: </strong>  <p th:text="${info.username}"></p>-->
+<!--            <strong>Name: </strong><p th:text="${info.name}"></p>-->
+<!--            <strong>Email: </strong><p th:text="${info.email}"></p>-->
+<!--&lt;!&ndash;            <strong>Contact info: </strong> <p>02920195111</p>&ndash;&gt;-->
+<!--            <a th:href="@{/update/info(username=${info.username})}">Update User</a>-->
+<!--            <br>-->
+<!--            <a th:href="@{/user/delete(username=${info.username})}">Delete Current User</a>-->
         </div>
     </div>
 

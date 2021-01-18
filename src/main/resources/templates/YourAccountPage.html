@@ -14,7 +14,7 @@
 
 
 <body>
-<nav th:replace="/fragments/Head::PTnavbar"></nav>
+<nav th:replace="/fragments/Navbar-Pt::PTnavbar"></nav>
 <header class="DummyHeader"></header>
 
 <h2>Your Account</h2>
@@ -37,46 +37,54 @@
            </div>
 <!--          <input type="submit" id="submitpersonal">-->
             <input type="button" value="Save Changes" id="post" th:onClick="sendData()" />
-            <script th:inline="javascript">
-                function sendData()
-                {
-                    $.ajax(
-                        {
-                            type: "GET",
-                            data: $("#form1").serialize(),
-                            // cache: false,
-                            url: "..//PtPersonalInfo",
-                            success: function()
-                            {
-                                alert("Updated changes");
-                            },
-                            error: function()
-                            {
-                                alert("Error - Data not saved");
-                            }
 
-                        });
-                }
-            </script>
         </form>
        </div>
         <div class="col-md-6 text-center" id="general">
-            <form action="">
+
+            <form th:action="@{..//PtGeneralInfo}" th:object="${Generalinfo}"  method="get" id="form2">
                 <h3>General Information</h3>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">About you</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="Textarea1" >About you</label>
+                    <textarea class="form-control" id="Textarea1" rows="3" th:field="*{about}"></textarea>
                 </div>
 
                 <div>
                     <label for="qualification">Qualifications</label>
-                  <select id ="qualification">
-                      <option value="Level2">Level-2 Gym Instructor</option>
-                      <option value="Level3">Level-3 Personal Trainer</option>
-
+                  <select id ="qualification" th:field="*{qualifications}">
+                      <option value="Level-2 Gym Instructor">Level-2 Gym Instructor</option>
+                      <option value="Level-3 Personal Trainer">Level-3 Personal Trainer</option>
                   </select>
                 </div>
+                <div>
+                    <label for="location">Location</label>
+                    <input type="text" id="location" th:field="*{location}" required>
+                </div>
 
+                <input type="button" value="Save Changes" th:onclick="sendData2()">
+
+<!--<script th:inline="javascript">-->
+<!--    function sendData2()-->
+<!--    {-->
+<!--        $.ajax(-->
+<!--            {-->
+<!--                type: "GET",-->
+<!--                data: $("#form2").serialize(),-->
+<!--                // cache: false,-->
+<!--                url: "..//PtGeneralInfo",-->
+<!--                success: function()-->
+<!--                {-->
+<!--                    alert("Updated changes");-->
+<!--                },-->
+<!--                error: function()-->
+<!--                {-->
+<!--                    alert("Error - Data not saved");-->
+<!--                }-->
+
+<!--            });-->
+<!--    }-->
+
+<!--</script>-->
             </form>
         </div>
     </div>
@@ -106,7 +114,48 @@
 <!--    </div>-->
 
 <!--</section>-->
+<script th:inline="javascript">
+    function sendData()
+    {
+        $.ajax(
+            {
+                type: "GET",
+                data: $("#form1").serialize(),
+                // cache: false,
+                url: "..//PtPersonalInfo",
+                success: function()
+                {
+                    alert("Updated changes");
+                },
+                error: function()
+                {
+                    alert("Error - Data not saved");
+                }
 
+            });
+    }
+    function sendData2()
+    {
+        $.ajax(
+            {
+                type: "GET",
+                data: $("#form2").serialize(),
+                // cache: false,
+                url: "..//PtGeneralInfo",
+                success: function()
+                {
+                    alert("Updated changes");
+                },
+                error: function()
+                {
+                    alert("Error - Data not saved");
+                }
+
+            });
+    }
+
+
+</script>
 
 </body>
 </html>
