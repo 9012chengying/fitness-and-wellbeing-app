@@ -3,41 +3,39 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<!--Fragment for Head of pages includes all meta items and style links -->
+    <head th:fragment="Head">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head th:fragment="Head">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/AccountEditPage.css">
-<!--    <link href="/css/main.css" rel="stylesheet" />-->
-<!--    <link rel="stylesheet" href="/css/login.css">-->
-    <link href="/css/Fragment.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!--    <link href="/css/exercises.css" rel="stylesheet" />-->
-    <title>Phyt App</title>
-</head>
+        <!--Bootstrap CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<div th:fragment="PTnavbar">
-    <nav class="nav-bar">
-        <img src="/images/pt.jpg" class="img-fluid rounded-circle border border-3 border-warning "  id="pt" alt="PT">
+        <!--Icons - fontawesome kit-->
+        <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
 
-        <input class="menu-btn" type="checkbox" id="menu-btn">
-        <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
-        <h1>PHYT</h1>
-        <ul class="menu">
-            <li><a th:href="@{/Login/PersonalTrainer}" class="homes"><i class="fas fa-home active"></i>Home</a></li>
-            <li>  <a href="#"><i class="fas fa-dumbbell"></i>Create a workout</a></li>
-            <li> <a th:href="@{/trainer/exercises}"><i class="fas fa-book"></i>Exercise library</a></li>
+        <!--Javascript Scripts-->
+        <script src="/js/jquery-2.2.3.min.js" type="text/javascript"></script>
+        <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/js/exercise.js"></script>
+        <script src="/js/login.js"></script>
+        <script src="/js/tempNavBar.js"></script>
+        <script src="/js/ExerciseAjax.js"></script>
 
-            <li><a href="#"><i class="fas fa-users"></i>View Clients </a></li>
-            <li><a th:href="@{/Login/PersonalTrainer/YourAccount}"><i class="fas fa-user-cog lastlist"></i>Your Account </a></li>
-        </ul>
-    </nav>
-</div>
+        <!--Stylesheets-->
+        <link href="/css/Fragment.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet" />
+        <link href="/css/register.css" rel="stylesheet"/>
+        <link href="/css/Ptcss.css" rel="stylesheet" />
+        <link href="/css/login.css" rel="stylesheet">
+        <link href="/css/exercises.css" rel="stylesheet" />
+        <link href="/css/ClientPage1.css" rel="stylesheet"/>
+        <link href="/css/workouts.css" rel="stylesheet"/>
+        <link href="/css/footer.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/tempNavBar.css">
 
-
+        <title>Phyt</title>
+    </head>
 
 
 </html>

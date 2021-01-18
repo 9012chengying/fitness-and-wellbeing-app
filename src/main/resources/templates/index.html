@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+<body>
+
+    <main class="container">
+
+        <div class="jumbotron">
+            <h1 class="display-4">PHYT</h1>
+            <p class="lead">Welcome to the future of Personal Training and Coaching.</p>
+            <hr class="my-4">
+            <p>Please log in to access your space.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" th:href="@{/login}" role="button">Log in</a>
+            </p>
+        </div>
+
+    </main>
+
+
+</body>
+</html>

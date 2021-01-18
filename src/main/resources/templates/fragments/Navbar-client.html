@@ -2,9 +2,8 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <link href="/css/Fragment.css" rel="stylesheet">
+
+<head th:replace="fragments/Head :: Head">
     <title>Phyt</title>
 </head>
 <body>
@@ -14,11 +13,12 @@
 
         <input class="menu-btn" type="checkbox" id="menu-btn">
         <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
-        <h1>PHYT</h1>
+        <h1 id="NAVtitle">PHYT</h1>
         <ul class="menu">
             <li><a href="#" class="homes"><i class="fas fa-home active"></i>Home</a></li>
-            <li>  <a href="#"><i class="fas fa-dumbbell"></i>View Diary</a></li>
-            <li> <a href="#" ><i class="fas fa-book"></i>Trainer Profile</a></li>
+            <li><a th:href="@{/client/workout/view}" class="homes"><i class="fas fa-dumbbell"></i>Start a workout</a></li>
+            <li>  <a th:href="@{/client/diary}"><i class="fas fa-book"></i>View Diary</a></li>
+            <li> <a href="#" ><i class="fas fa-user"></i>Trainer Profile</a></li>
             <li><a href="#"><i class="fas fa-user-cog lastlist"></i>Your Account </a></li>
         </ul>
     </nav>

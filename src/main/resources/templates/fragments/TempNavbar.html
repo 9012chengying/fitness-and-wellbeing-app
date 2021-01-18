@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+</head>
+<body>
+
+<!--Nav bar fragment for PT pages -->
+<nav th:fragment="ptNavbar" class="fixed-top navbar-light">
+    <div class="navbar">
+        <a class="navbar-brand" href="/userInfo">PHYT</a>
+        <div class="nav-icon" onclick="showPTNavbar()">
+            <div></div>
+        </div>
+
+    </div>
+    <div id="ptNavBar" class="nav-items show">
+        <a href="">View Clients</a>
+        <a th:href="@{/trainer/exercises/all}">Exercise Library</a>
+        <a href="">Create a Workout</a>
+        <a href="/userInfo">Account Details</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+
+<!-- Nav Bar fragment for Client pages -->
+<nav th:fragment="clientNavbar" class="fixed-top navbar-light">
+    <div class="navbar">
+        <a class="navbar-brand" href="/userInfo">PHYT</a>
+        <div class="nav-icon" onclick="showClientNavbar()">
+            <div></div>
+        </div>
+
+    </div>
+    <div id="clientNavBar" class="nav-items show">
+        <a th:href="@{/client/workout/view}">Start Workout</a>
+        <a th:href="@{/client/diary}">View Diary</a>
+        <a href="#">View PT Info</a>
+        <a href="/userInfo">Account Details</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+</body>
+</html>

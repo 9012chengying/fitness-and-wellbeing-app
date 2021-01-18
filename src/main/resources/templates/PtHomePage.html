@@ -1,22 +1,83 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head th:insert="/fragments/Head::Head">
+      xmlns:th="http://www.Thymeleaf.org">
+<head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/Ptcss.css">
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="/js/PTJS.js"></script>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
     <title>PT Homepage</title>
 </head>
 <body>
-<nav th:insert="/fragments/Head::PTnavbar"></nav>
-<header class="DummyHeader"></header>
+<!--Top navigation-->
+<a href="#" class="toggle-btn">
+<!--    <i class="fas fa-bars"></i>-->
+</a>
+
+<nav class="nav-bar">
+
+<div class="brand ">PHYT</div>
 
 
+    <div class="nav-links">
+        <ul>
+            <li><a href="/trainer" class="homes"><i class="fas fa-home active"></i>Home</a></li>
+            <li>  <a href="/trainer/exercises/all"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
+            <li> <a href="#"><i class="fas fa-book"></i>Bookings</a></li>
+            <li><a href="clients.html"><i class="fas fa-users"></i>View Clients </a></li>
+            <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<section class="container-fluid px-0 sec" >
+    <div class="row  stuff">
+        <div class="col-md-6 ">
+            <img src="/images/OCTOBERFIT.jpg" alt="pt" class="pt-image img-fluid rounded-circle ">
+            <div class="ratings col-12 text-center" >
+                <h2>Ratings</h2>
+                <a href="#">
+                    <span class="fa fa-star"></span>
+                </a>
+                <a href="#">
+                    <span class="fa fa-star"></span>
+                </a>
+                <a href="#">
+                    <span class="fa fa-star"></span>
+                </a>
+                <a href="#">
+                    <span class="fa fa-star"></span>
+                </a>
+                <a href="#">
+                    <span class="fa fa-star"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 info">
+            <h1 >Overview</h1>
+            <strong>About: </strong> <p>Personal trainer </p>
+            <strong>User Name: </strong>  <p th:text="${info.username}"></p>
+            <strong>Name: </strong><p th:text="${info.name}"></p>
+            <strong>Email: </strong><p th:text="${info.email}"></p>
+<!--            <strong>Contact info: </strong> <p>02920195111</p>-->
+            <a th:href="@{/update/info(username=${info.username})}">Update User</a>
+            <br>
+            <a th:href="@{/user/delete(username=${info.username})}">Delete Current User</a>
+        </div>
+    </div>
+
+
+
+
+
+</section>
+<!-- add a footer to contain about us and contact us links-->
 <footer>
     <p>&copy Phyt App ltd</p>
 </footer>

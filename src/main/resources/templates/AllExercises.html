@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+    <body class="exercise-body">
+    <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
+
+    <!--Page heading-->
+    <header class="exercise-header">
+        <h2>Exercise Library</h2>
+        <h3>Click View Details to see full details of an exercise or Edit Details to make changes.</h3>
+    </header>
+
+
+    <aside class="exercise-flex-row exercise-flex-row-space">
+        <form id="filterForm" action="/trainer/exercises/filter" method="get">
+            <div id="filterForm-div">
+                <label for="categoryFilter">Filter by exercise category</label>
+                <select name="categoryFilter" id="categoryFilter" onchange="this.form.submit()">
+                    <option value="">-- Select a category --</option>
+                    <option value="All">All</option>
+                    <option value="Core">Core</option>
+                    <option value="Upper body">Upper Body</option>
+                    <option value="Lower body">Lower Body</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Drills">Drills</option>
+                </select>
+            </div>
+        </form>
+        <a id="filter-button" href="/trainer/exercises/add"><button class="btn btn-warning btn-xl">Add new exercise</button></a>
+    </aside>
+
+
+    <!--main list of exercises-->
+
+    <main>
+        <div class="exercise-list" >
+            <div class="exercise-card" th:data-id="${exercise.exerciseID}" th:each="exercise: ${exercises}" >
+                <img class="exercise-thumbnail" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}" >
+                <div class="exercise-summary">
+                    <p>Exercise: <span th:text="${exercise.exerciseName}"></span> </p>
+                    <p>Category: <span th:text="${exercise.exerciseCat}"></span></p>
+                    <p>Date created: <span th:text="${exercise.dateStr}"></span></p>
+                    <p>Number of images: <span th:text="${exercise.imageCount}"></span></p>
+                    <p>Number of videos: <span th:text="${exercise.videoCount}"></span></p>
+                </div>
+                <div class="exercise-buttons">
+                    <a th:href="@{/trainer/exercises/view(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">View Details</button></a>
+                    <a th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-secondary btn-xl">Edit Details</button></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- add a footer to contain about us and contact us links-->
+    <footer>
+        <p>&copy Phyt App ltd</p>
+    </footer>
+    </body>
+</html>
