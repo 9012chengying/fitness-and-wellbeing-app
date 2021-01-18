@@ -65,6 +65,8 @@ return "PtHomePage";
 
     }
 
+    //TODO Add mapping so trainer can change profile image
+
 
 
 
