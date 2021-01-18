@@ -6,6 +6,11 @@
     padding: 2rem 0;
 }
 
+.workoutHeader {
+    padding: 1rem 0;
+    border-bottom: #007bff solid 0.5rem;;
+}
+
 /*ClientDiary*/
 
 #workoutSummary {

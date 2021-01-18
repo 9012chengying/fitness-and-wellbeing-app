@@ -9,8 +9,8 @@
 
     <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
 
-    <header class="exercise-header">
-        <h2 id="exercise-name" th:text="${exercise.name}">Name of Exercise</h2>
+    <header class="alignHeader">
+        <h2 class="workoutHeader" th:text="${exercise.name}">Name of Exercise</h2>
     </header>
 
     <main id="exercise-container" class="exercise-container" th:data-id="${exercise.id}">
