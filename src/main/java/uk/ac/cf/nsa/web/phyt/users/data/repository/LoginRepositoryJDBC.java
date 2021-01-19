@@ -3,8 +3,8 @@ package uk.ac.cf.nsa.web.phyt.users.data.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.TrainerDTO;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
-import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 import uk.ac.cf.nsa.web.phyt.users.data.mapper.LoginMapper;
 
 @Repository
@@ -25,10 +25,11 @@ public class LoginRepositoryJDBC implements LoginRepository {
 //    }
 
     @Override
-    public UserDTO findByUserName(String username) {
-        UserDTO userDTO = (UserDTO) jdbcTemplate.queryForObject(
-        "SELECT id,user_name,user_password, user_role FROM user where user_name = ?",
+    public TrainerDTO findByUserName(String username) {
+        TrainerDTO userDTO = (TrainerDTO) jdbcTemplate.queryForObject(
+        "SELECT id,user_name,user_password, first_name, last_name, email FROM user where user_name = ?",
          new LoginMapper(),new Object[]{username});
+        System.out.println(userDTO.toString());
         return userDTO;
     }
 

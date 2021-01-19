@@ -1,8 +1,8 @@
-package uk.ac.cf.nsa.web.phyt.repository;
+package uk.ac.cf.nsa.web.phyt.users.data.repository;
 
 
-import uk.ac.cf.nsa.web.phyt.DTO.UserEntity;
-import uk.ac.cf.nsa.web.phyt.forms.UserForm;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
+import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 
 
 public interface RegisterRepository {

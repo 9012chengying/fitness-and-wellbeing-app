@@ -15,9 +15,10 @@
     height: 60px;
 }
 
-h3 {
-    font-weight: 600;
-    font-size: 16px
+.register-message{
+    color: red;
+    font-size: 1.6rem;
+    text-align: left;
 }
 
 .form-horizontal .form-group {

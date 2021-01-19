@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("trainer").password("{noop}password").roles("TRAINER")
+                .withUser("trainer2").password("{noop}password2").roles("TRAINER")
                 .and()
                 .withUser("client").password("{noop}password1").roles("USER");
     }
@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/register").permitAll();
 
         //userInfo page requires login as ROLE_USER or ROLE_TRAINER.
-        http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('ROLE_USER', 'ROLE_TRAINER')");
+        http.authorizeRequests().antMatchers("/home").access("hasAnyRole('ROLE_USER', 'ROLE_TRAINER')");
 
         // Access to routes starting /trainer  - For TRAINERS only.
         http.authorizeRequests().antMatchers("/trainer/**").access("hasRole('ROLE_TRAINER')");
@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Submit URL of login page.
                 .loginProcessingUrl("/phyt_security_check")
                 .loginPage("/login")
-                .defaultSuccessUrl("/userInfo")
+                .defaultSuccessUrl("/home")
                 //if login fails - login page displays error message
                 .failureUrl("/login?error=true")
                 .usernameParameter("username")

@@ -5,15 +5,18 @@ import uk.ac.cf.nsa.web.phyt.model.User;
 public class UserDTO extends User {
 
     int UserID;
-    String userName;
-    String password;
-    String role;
+    private String userName;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String email;
 
     //Constructor of User object
-    public UserDTO (int UserID, String userName, String password, String role){
-
+    public UserDTO (int UserID, String userName, String password, String firstName, String lastName, String email){
         super(UserID, userName, password);
-        this.role = role;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 
     @Override
@@ -46,11 +49,39 @@ public class UserDTO extends User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "UserID=" + UserID +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

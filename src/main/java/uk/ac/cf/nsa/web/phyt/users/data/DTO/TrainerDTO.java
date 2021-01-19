@@ -7,18 +7,18 @@ import java.util.List;
 public class TrainerDTO extends User {
 
     int UserID;
-    String firstName;
-    String lastName;
-    String role ;
-    String userName;
-    String password;
-    List<ClientDTO> clients;
+    private String userName;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String email;
 
-    public TrainerDTO(int UserID, String firstName, String lastName, String role, String userName, String password) {
+    //Constructor of User object
+    public TrainerDTO (int UserID, String userName, String password, String firstName, String lastName, String email){
         super(UserID, userName, password);
         this.firstName = firstName;
         this.lastName = lastName;
-        this.role = role;
+        this.email = email;
     }
 
 
@@ -53,15 +53,6 @@ public class TrainerDTO extends User {
     }
 
 
-    public String getRole() {
-        return role;
-    }
-
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     @Override
     public String getUserName() {
         return userName;
@@ -82,11 +73,24 @@ public class TrainerDTO extends User {
         this.password = password;
     }
 
-    public List<ClientDTO> getClients() {
-        return clients;
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setClients(List<ClientDTO> clients) {
-        this.clients = clients;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "TrainerDTO{" +
+                "UserID=" + UserID +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

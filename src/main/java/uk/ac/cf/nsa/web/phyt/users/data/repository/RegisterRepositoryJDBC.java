@@ -1,10 +1,10 @@
-package uk.ac.cf.nsa.web.phyt.repository;
+package uk.ac.cf.nsa.web.phyt.users.data.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.DTO.UserEntity;
-import uk.ac.cf.nsa.web.phyt.forms.UserForm;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
+import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 import uk.ac.cf.nsa.web.phyt.model.RegisterMapper;
 
 import java.util.List;
@@ -22,8 +22,8 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
 
     public boolean registerUser(UserForm userForm){
         int rows = jdbcTemplate.update(
-                "insert into user(user_name,user_password,first_name,last_name,email) values(?,?,?,?,?)" ,
-                new Object[]{userForm.getUsername(), userForm.getPassword(), userForm.getFirstname(),userForm.getLastname(), userForm.getEmail()});
+                "insert into user(user_name,user_password,first_name,last_name,email, user_role) values(?,?,?,?,?,?)",
+                new Object[]{userForm.getUsername(), userForm.getPassword(), userForm.getFirstname(),userForm.getLastname(), userForm.getEmail(), userForm.getRole()});
         return rows>0;
     }
 

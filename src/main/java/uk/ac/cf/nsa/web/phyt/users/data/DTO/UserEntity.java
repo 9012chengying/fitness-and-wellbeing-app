@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.DTO;
+package uk.ac.cf.nsa.web.phyt.users.data.DTO;
 
 public class UserEntity {
 
