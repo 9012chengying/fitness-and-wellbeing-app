@@ -1,14 +1,13 @@
 package uk.ac.cf.nsa.web.phyt.exercises.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
-//import uk.ac.cf.nsa.web.phyt.users.service.UserService;
+
 
 
 @Controller
@@ -18,12 +17,10 @@ public class ExerciseController {
 
     //Use ExerciseManagementService methods to access appropriate data
     private final ExerciseManagementService exerciseService;
-    //private final UserService userService;
 
     @Autowired
     public ExerciseController(ExerciseManagementService exerciseService) {
         this.exerciseService = exerciseService;
-        //this.userService = userService;
     }
 
     //List all exercises
@@ -79,6 +76,7 @@ public class ExerciseController {
         }
     }
 
+    //Edit existing exercise
     @GetMapping(path = "/edit")
     public ModelAndView getEditExercise(@RequestParam(value = "exerciseID", defaultValue = "") String exerciseID) {
         ModelAndView mav = new ModelAndView();
@@ -100,30 +98,6 @@ public class ExerciseController {
             return mav;
         }
     }
-
-    //Delete an exercise from database
-    @GetMapping(path = "/delete")
-    public String deleteExercise(@RequestParam(value = "exerciseID", defaultValue = "") String exerciseID) {
-
-        //todo ExerciseManagementService to delete an exercise
-        System.out.println("Exercise " + exerciseID + " will be deleted");
-
-        return "redirect:all";
-    }
-//    @RequestMapping(path="/login", method= RequestMethod.GET)
-//    public ModelAndView showCreateExercise(@RequestParam(value="username", defaultValue="null") String username,
-//                                           @RequestParam(value="password", defaultValue="null") String password) {
-//        System.out.println(username + " " + password);
-//        ModelAndView mav = new ModelAndView();
-//        System.out.println(username + " " + password);
-//        if (userRepo.getUserRole(username, password) == "Trainer") {
-//            mav.setViewName("CreateExercise");
-//            return mav;
-//        } else {
-//            mav.setViewName("index");
-//            return mav;
-//        }
-//    }
 
 }
 
