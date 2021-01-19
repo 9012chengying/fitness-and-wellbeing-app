@@ -27,4 +27,5 @@ function workoutComplete(workoutLength) {
     //congratulations you've completed the workout message
     //automatically updates database to show completed
     //sends message to trainer
+    console.log("workout complete initiated");
 }

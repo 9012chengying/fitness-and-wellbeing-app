@@ -112,4 +112,10 @@ public class WorkoutDTO {
             return hh + ":" + mm + ":" + ss;
         }
     }
+
+    public int workoutLengthMilliseconds() {
+        int totalRepLength = exerciseCount  * (exerciseLength + restLength);
+        int totalWorkoutLengthInSeconds = reps * (totalRepLength + repRest);
+        return totalWorkoutLengthInSeconds * 1000;
+    }
 }

@@ -4,7 +4,8 @@
 <head th:replace="fragments/Head::Head"></head>
 
 <script th:inline="javascript">
-    let workoutLength = "${}";
+    let workoutLength = [[${workout.workoutLengthMilliseconds}]];
+    console.log(workoutLength);
 </script>
 
 <body onload="workoutComplete(workoutLength)">

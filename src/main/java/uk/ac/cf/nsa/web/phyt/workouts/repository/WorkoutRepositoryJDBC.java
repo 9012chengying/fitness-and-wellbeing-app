@@ -34,7 +34,7 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
 
     //queries for client workout preview page
     @Override
-    public WorkoutDTO newWorkout(int workoutID) {
+    public WorkoutDTO workoutOverview(int workoutID) {
         WorkoutDTO workoutDTO = (WorkoutDTO) jdbcTemplate.queryForObject( //need to change so that workout thumbnail is in workout table
                 "SELECT workouts.id, workouts.client_id, count(ExerciseWorkoutLink.exercise_id) as exercise_count, workouts.exercise_length, workouts.exercise_rest, " +
                         "workouts.rep_rest, workouts.reps, workouts.equipment, workouts.completed, date_format(workouts.completed_at, '%H:%i %d-%b-%y') AS completed_at, date_format(workouts.created_at, '%d-%b-%y') " +
@@ -47,7 +47,7 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
     }
 
     @Override
-    public List<ExerciseWorkoutDTO> newWorkoutDetails(int workoutID) {
+    public List<ExerciseWorkoutDTO> workoutExerciseDetails(int workoutID) {
         return (List<ExerciseWorkoutDTO>) jdbcTemplate.query(
                 "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
                         "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
