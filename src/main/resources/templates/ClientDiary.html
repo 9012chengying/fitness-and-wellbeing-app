@@ -20,7 +20,7 @@
                 <div id="workoutDetails" class="col-5">
                     <span>Set: </span><b th:text="${workout.createdDate}"></b>
                     <br>
-                    <span>Length: </span><b th:text="${workout.workoutLength}"></b>
+                    <span>Length: </span><b th:text="${workout.workoutLengthFormat}"></b>
                     <br>
                     <span>Exercises: </span><b th:text="${workout.exerciseCount}"></b>
                     <b th:if="${workout.completed} == true"><br>Completed</b>

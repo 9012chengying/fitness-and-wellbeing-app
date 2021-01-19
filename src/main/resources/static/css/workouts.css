@@ -90,4 +90,10 @@
     border-radius: 8px;
 }
 
+/*Timer*/
+
+#stopButton, #resetButton {
+    display:none;
+}
+
 /*Need to adjust for widescreen*/

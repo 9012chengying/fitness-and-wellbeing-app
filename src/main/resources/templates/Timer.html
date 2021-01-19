@@ -4,19 +4,27 @@
 <head th:replace="fragments/Head::Head"></head>
 
 <script th:inline="javascript">
-    let workoutLength = [[${workout.workoutLengthMilliseconds}]];
-    console.log(workoutLength);
+    let workoutLength = [[${workout.workoutLength}]] * 1000;
+    let exerciseCount = [[${workout.exerciseCount}]] * 1000;
+    let exerciseLength = [[${workout.exerciseLength}]] * 1000;
+    let restLength = [[${workout.restLength}]] * 1000;
+    let repRest = [[${workout.repRest}]] * 1000;
+    let reps = [[${workout.reps}]] * 1000;
 </script>
 
-<body onload="workoutComplete(workoutLength)">
+<body>
 
 <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
 
 <header>Timer</header> <!--change header-->
 
-<div id="timer">
-    <span id="minutes"></span>:<span id="seconds"></span>
-</div>
+<div id="statusHeader"></div>
+
+<div id="sec"></div>
+
+<button id="startButton">Start</button>
+<button id="stopButton">Stop</button>
+<button id="resetButton">Reset</button>
 
 </body>
 </html>
