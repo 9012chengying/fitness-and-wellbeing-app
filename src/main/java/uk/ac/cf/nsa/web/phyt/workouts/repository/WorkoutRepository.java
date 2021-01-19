@@ -6,5 +6,7 @@ public interface WorkoutRepository {
     public Object newWorkout(int workoutID);
     public Object newWorkoutDetails(int workoutID);
     public int findIncompleteWorkoutID(int clientID);
+    public Object viewExerciseByID(int exerciseID);
+    public Object mediaByExerciseID(int exerciseID);
 
 }
