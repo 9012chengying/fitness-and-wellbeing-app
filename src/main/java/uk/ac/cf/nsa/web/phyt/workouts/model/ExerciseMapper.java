@@ -8,16 +8,14 @@ import java.sql.SQLException;
 
 public class ExerciseMapper implements RowMapper {
 
-
     @Override
     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new ExerciseDTO(
-                rs.getInt("workout_id"),
-                rs.getInt("exercise_id"),
+                rs.getInt("id"),
                 rs.getString("exercise_name"),
+                rs.getString("exercise_desc"),
                 rs.getString("category"),
-                rs.getString("equipment"),
-                rs.getString("thumbnail_img"),
-                rs.getString("thumbnail_alt"));
+                rs.getString("equipment")
+        );
     }
 }

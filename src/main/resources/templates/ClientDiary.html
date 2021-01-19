@@ -7,8 +7,8 @@
 
     <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
 
-    <header>
-        <h2>My Workout Diary</h2>
+    <header class="alignHeader">
+        <h2 class="workoutHeader">My Workout Diary</h2>
     </header>
 
     <main>
@@ -18,7 +18,7 @@
                     <img th:src="${workout.imageSrc}" th:alt="${workout.altText}">
                 </div>
                 <div id="workoutDetails" class="col-5">
-                    <span>Date Set: </span><b th:text="${workout.createdDate}"></b>
+                    <span>Set: </span><b th:text="${workout.createdDate}"></b>
                     <br>
                     <span>Length: </span><b th:text="${workout.workoutLength}"></b>
                     <br>

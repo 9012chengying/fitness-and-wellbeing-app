@@ -7,28 +7,28 @@
 
     <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
 
-    <header>
-        <h3 th:if="${workout.completed} == true"><b>Workout Completed <br><span th:text="${workout.completedDate}"></span></b></h3>
-        <h3 th:if="${workout.completed} == false"><b>Complete by <span th:text="${workout.dueDate}"></span></b></h3>
+    <header class="alignHeader">
+        <h2 class="workoutHeader" th:if="${workout.completed} == true">Workout Completed <br><span th:text="${workout.completedDate}"></span></h2>
+        <h2 class="workoutHeader" th:if="${workout.completed} == false">Complete by <span th:text="${workout.dueDate}"></span></h2>
     </header>
     <br>
     <main>
         <div class="workoutPreview container">
             <div class="exerciseThumbnailNameBlock">
                 <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
-                    <img th:src="${exercise.thumbnailImg}" th:alt="${exercise.thumbnailAlt}">
+                    <a th:href="@{/client/workout/exercise(exerciseID=${exercise.exerciseID})}" onclick="openWin(this)"><img th:src="${exercise.thumbnailImg}" th:alt="${exercise.thumbnailAlt}"></a>
                     <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
                 </figure>
             </div>
             <br><br>
             <div class="workoutDescription">
-                <span>Workout Length is <b th:text="${workout.workoutLength}"></b></span><br>
-                <span th:if="${workout.completed} == false">Set on <b th:text="${workout.createdDate}"></b></span><br>
+                <span>Workout Length is <span class="font-weight-bold" th:text="${workout.workoutLength}"></span></span><br>
+                <span th:if="${workout.completed} == false">Set on <span class="font-weight-bold"  th:text="${workout.createdDate}"></span></span><br>
                 <span>Focus on <span class="exerciseCategoriesBlock" th:each="exercise: ${exercises}">
-                    <b class="exerciseCategory" th:text="${exercise.exerciseCategory}"></b><span>, </span></span>
+                    <span class="exerciseCategory font-weight-bold" th:text="${exercise.exerciseCategory}"></span><span>, </span></span>
                 </span> <!--need to figure out how to combine all the categories but with no repeats and get rid of last comma-->
                 <br>
-                <span>Need <b th:text="${workout.equipment}"></b></span> <!--data is entered when building workout at the moment. Maybe find a way to link it to each exercise? Or check off options as opposed to manually entering-->
+                <span>Need <span class="font-weight-bold" th:text="${workout.equipment}"></span></span> <!--data is entered when building workout at the moment. Maybe find a way to link it to each exercise? Or check off options as opposed to manually entering-->
                 <br>
             </div>
             <br><br>
