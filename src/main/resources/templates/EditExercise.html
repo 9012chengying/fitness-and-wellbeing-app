@@ -3,16 +3,48 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.Thymeleaf.org">
 
-<head th:replace="fragments/Head::Head"> </head>
+<head th:replace="fragments/Head :: Head"> </head>
 
-<body class="exercise-body">
+
+<body class="exercise-body" onload="listen()">
 
 <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
 
 <header class="exercise-header">
-    <h1>Place holder for edit template</h1>
+    <h2>Edit exercise</h2>
 </header>
+
+<!-- Main input form -->
+<main id="exercise-main">
+    <form id="exerciseForm" action="/trainer/exercises/edit" method="post">
+        <div class="exercise-input">
+            <label for="exerciseName">Exercise Name: </label>
+            <input id="exerciseName" name="exerciseName" type="text" required>
+        </div>
+        <div class="exercise-input">
+            <label for="exerciseDesc">Exercise Details: </label>
+            <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10" required></textarea>
+        </div>
+        <div class="exercise-input">
+            <label for="exerciseCat">Exercise Category: </label>
+            <select name="exerciseCat" id="exerciseCat" required>
+                <option value="">-- Please select a category --</option>
+                <option value="Core">Core</option>
+                <option value="Upper body">Upper Body</option>
+                <option value="Lower body">Lower Body</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Drills">Drills</option>
+            </select>
+        </div>
+        <div class="exercise-input exercise-buttons">
+            <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Save</button>
+            <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
+        </div>
+    </form>
+
+</main>
 
 
 </body>
+
 </html>
