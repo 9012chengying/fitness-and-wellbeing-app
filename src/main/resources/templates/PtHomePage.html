@@ -1,45 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr"
-      xmlns:th="http://www.Thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/Ptcss.css">
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script src="/js/PTJS.js"></script>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/Head::head">
     <title>PT Homepage</title>
 </head>
-<body>
+<body class="ptHomepage">
 <!--Top navigation-->
-<a href="#" class="toggle-btn">
-<!--    <i class="fas fa-bars"></i>-->
-</a>
 
-<nav class="nav-bar">
+<div th:insert="fragments/Navbar-Pt::PTnavbar"></div>
+<div class="DummyHeader"></div>
 
-<div class="brand ">PHYT</div>
-
-
-    <div class="nav-links">
-        <ul>
-            <li><a href="/trainer" class="homes"><i class="fas fa-home active"></i>Home</a></li>
-            <li>  <a href="/trainer/exercises/all"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
-            <li> <a href="#"><i class="fas fa-book"></i>Bookings</a></li>
-            <li><a href="clients.html"><i class="fas fa-users"></i>View Clients </a></li>
-            <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>
-
-        </ul>
-    </div>
-</nav>
 
 <section class="container-fluid px-0 sec" >
     <div class="row  stuff">
         <div class="col-md-6 ">
-            <img src="/images/OCTOBERFIT.jpg" alt="pt" class="pt-image img-fluid rounded-circle ">
+            <div class="ptimg"><img src="/images/pt.jpg" alt="pt" class="img-fluid rounded-circle "></div>
             <div class="ratings col-12 text-center" >
                 <h2>Ratings</h2>
                 <a href="#">
@@ -60,7 +35,7 @@
             </div>
         </div>
         <div class="col-md-6 info">
-            <h1 >Overview</h1>
+            <h1 class="overviewTitle">Overview</h1>
             <strong>About: </strong> <p>Personal trainer </p>
             <strong>User Name: </strong>  <p th:text="${info.username}"></p>
             <strong>Firstname: </strong><p th:text="${info.firstname}"></p>
@@ -79,8 +54,8 @@
 
 </section>
 <!-- add a footer to contain about us and contact us links-->
-<footer>
-    <p>&copy Phyt App ltd</p>
+<footer th:replace="/fragments/Footer::Footer">
+
 </footer>
 </body>
 </html>
