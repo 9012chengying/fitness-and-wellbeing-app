@@ -1,81 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.Thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>ClientPage</title>
-    <link rel="stylesheet" href="/css/ClientPage1.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/Ptcss.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="/js/PTJS.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <title>Client Homepage</title>
 </head>
 <body>
-<div class="top"><h1>Fitness and Wellbeing</h1></div>
-<ul>
-        <li><a class="active" href="#">Client page</a></li>
-        <li><a href="ClientWorkoutPreview.html" id="1" class="btn2">Start new workout</a></li>
-        <li><a href="#" id="2" class="btn1">Progress diary</a></li>
-        <li><a href="PtHomePage.html" id="3" class="btn1">View PT</a></li>
-        <li><a href="#" id="4" class="btn1">Edit their profile</a></li>
-        <li><a href="home page.html" id="5" class="btn1">back</a></li>
-</ul>
-<section class="container-fluid px-0 ">
-    <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-        <div class="info" align="center">
+<!--Top navigation-->
+<a href="#" class="toggle-btn">
+    <!--    <i class="fas fa-bars"></i>-->
+</a>
+
+<nav class="nav-bar">
+
+    <div class="brand ">PHYT</div>
+
+
+    <div class="nav-links">
+        <ul>
+            <li><a href="home page.html" class="homes"><i class="fas fa-home active"></i>Home</a></li>
+            <li><a href="#"><i class="fas fa-dumbbell"></i>Start new workout</a></li>
+            <li><a href="#"><i class="fas fa-book"></i>Progress diary</a></li>
+            <li><a href="#"><i class="fas fa-users"></i>View PT</a></li>
+            <li><a href="#"><i class="fas fa-user-cog"></i>back </a></li>
+        </ul>
+    </div>
+
+</nav>
+
+<section class="container-fluid px-0 sec" >
+    <div class="row  stuff">
+        <div class="col-md-6 ">
+            <img src="/images/1.png" alt="pt" class="pt-image img-fluid rounded-circle ">
+        </div>
+        <div class="col-md-6 info">
             <h1 >Overview</h1>
-            <div><img src="../static/images/user.png"></div>
-            <strong>Name: Weibo Li</strong><p></p>
-            <strong>Hobbies: basketball</strong><p></p>
-            <strong>Movement data: 3 days</strong><p></p>
-            <strong>Courses being attended: </strong><p></p>
-            <strong>Contact info: 000000</strong><p></p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
+            <strong>About: </strong> <p>Client </p>
+            <strong>User Name: </strong>
+            <strong>Firstname: </strong>
+            <strong>Lastname: </strong>
+            <strong>Email: </strong>
         </div>
     </div>
+
+
 </section>
-<!-- add a footer to contain about us and contact us links-->
-
-<!--<script type="text/javascript">
-
-    window.onload = function(){
-        var arr = document.getElementsByTagName('a');
-        for(var i = 0;i<arr.length;i++){
-            arr[i].onclick = function(){
-                if (this.id == '1' )
-                {
-                    document.getElementById("box1").style.display = 'block' ;
-                    document.getElementById("box2").style.display = 'none' ;
-                    document.getElementById("box3").style.display = 'none' ;
-                }
-                else if(this.id == '2')
-                {
-                    document.getElementById("box1").style.display = 'none' ;
-                    document.getElementById("box2").style.display = 'block' ;
-                    document.getElementById("box3").style.display = 'none' ;
-                }
-                else{
-                    document.getElementById("box1").style.display = 'none' ;
-                    document.getElementById("box2").style.display = 'none' ;
-                    document.getElementById("box3").style.display = 'block' ;
-                }
-
-                if(this.className == 'btn1'){
-                    this.className = 'btn2';
-                    var name = this.id;
-                    var btn = document.getElementsByClassName('btn2');
-                    for(var j=0;j<btn.length;j++){
-                        if(btn[j].id!=name){
-                            btn[j].className = 'btn1';
-                        }
-                    }
-                }
-            }
-        }
-    }
-</script>-->
 </body>
 </html>
