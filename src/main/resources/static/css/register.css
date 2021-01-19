@@ -1,66 +1,18 @@
-
-body {
-    margin: 0
-}
-
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: #fff
-}
-
-h1 {
-    margin: .67em 0;
-    font-size: 2em
-}
-
-h1 {
-    font-size: 36px
-}
-
-h1, h2, h3 {
-    margin-top: 20px;
-    margin-bottom: 10px
-}
-
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.1;
-    color: inherit
-}
-
-button, input, optgroup, select, textarea {
-    margin: 0;
-    font: inherit;
-    color: inherit
-}
-
-button, input, select, textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit
+.trainer-register-form {
+    width: 90%;
+    margin: auto;
 }
 
 #loginbox {
     margin: 0 auto;
     padding-top: 60px;
-    width: 400px;
+    width: 100%;
     text-align: center
 }
 
 #loginbox .logo-name {
     width: 100%;
     height: 60px;
-
 }
 
 h3 {
@@ -192,14 +144,4 @@ p {
 .form-control:focus {
     border-color: #1ab394
 }
-.footer{
-    position: fixed;
-    left: 0px;
-    bottom: 0px;
-    width: 100%;
-    height: 50px;
-    background-color: #eee;
-    z-index: 9999;
-}
-
 

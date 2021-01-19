@@ -22,10 +22,10 @@ public class RegisterController {
 
     @RequestMapping(path = "/register/user")
     public String trainerAdd(UserForm userForm) {
-        UserEntity user = registerRepository.getUserInfo(userForm.getUsername());
-        if (user!=null){
-            return "failRegister";
-        }
+            UserEntity user = registerRepository.getUserInfo(userForm.getUsername());
+            if (user!=null){
+                return "failRegister";
+            }
             registerRepository.registerUser(userForm);
             return "redirect:info/"+userForm.getUsername();
     }
