@@ -16,19 +16,19 @@
 
 <!-- Main input form -->
 <main id="exercise-main">
-    <form id="exerciseForm" action="/trainer/exercises/edit" method="post">
+    <form id="exerciseForm" th:action="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}" th:object="${ExerciseForm}" method="post">
         <div class="exercise-input">
             <label for="exerciseName">Exercise Name: </label>
-            <input id="exerciseName" name="exerciseName" type="text" required>
+            <input id="exerciseName" name="exerciseName" type="text" th:value="${exercise.exerciseName}">
         </div>
         <div class="exercise-input">
             <label for="exerciseDesc">Exercise Details: </label>
-            <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10" required></textarea>
+            <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10" value="" th:text="${exercise.exerciseDesc}"></textarea>
         </div>
         <div class="exercise-input">
             <label for="exerciseCat">Exercise Category: </label>
             <select name="exerciseCat" id="exerciseCat" required>
-                <option value="">-- Please select a category --</option>
+                <option th:value="${exercise.exerciseCat}" th:text="${exercise.exerciseCat}"> </option>
                 <option value="Core">Core</option>
                 <option value="Upper body">Upper Body</option>
                 <option value="Lower body">Lower Body</option>
@@ -36,6 +36,7 @@
                 <option value="Drills">Drills</option>
             </select>
         </div>
+
         <div class="edit-exercise-buttons">
             <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Save</button>
             <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>

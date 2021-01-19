@@ -81,9 +81,7 @@ public class ExerciseController {
     @GetMapping(path = "/edit")
     public ModelAndView editExercise(@RequestParam(value = "exerciseID", defaultValue = "") String exerciseID) {
         ModelAndView mav = new ModelAndView();
-
-        //todo ExerciseManagementService to edit exercise
-        System.out.println("Exercise" + exerciseID + " will be edited");
+        mav.addObject("exercise", exerciseService.viewExercise(exerciseID));
         mav.setViewName("EditExercise");
         return mav;
     }
