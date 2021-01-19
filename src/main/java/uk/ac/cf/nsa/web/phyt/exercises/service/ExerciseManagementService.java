@@ -73,6 +73,11 @@ public class ExerciseManagementService {
         return selectedExercise;
     }
 
+    //Edit exercise details
+    public Exercise editExercise(ExerciseForm exerciseForm){
+        //TODO Write code after tests
+        return null;
+    }
 
     public String deleteExercise(String exerciseID) {
 
