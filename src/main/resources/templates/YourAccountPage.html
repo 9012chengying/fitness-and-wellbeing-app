@@ -26,16 +26,17 @@
         <form th:action="@{..//PtPersonalInfo}"  th:object="${PersonalTrainer}" class="personalInfo" method="GET"  id="form1"  >
             <h3>Personal information</h3>
 
-           <div class="input-group mb-3"><input type="text"   th:field="*{firstName}" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="button-addon2">
-<!--               <button class="btn btn-outline-secondary" type="button" id="updateFirstName">Update</button>-->
+           <div class="input-group mb-3"><input type="text"   th:field="*{firstName}" class="form-control" placeholder="First Name" aria-label="First Name">
         </div>
-           <div class="input-group mb-3"> <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="button-addon2">
-<!--               <button class="btn btn-outline-secondary" type="button" id="updateLastName">Update</button>-->
+           <div class="input-group mb-3"> <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" aria-label="Last Name">
            </div>
-           <div class="input-group mb-5"><input type="email" th:field="*{email}"  class="form-control" placeholder="Email (e.g John@Outlook.com)" aria-label="Email" aria-describedby="button-addon2">
-<!--               <button class="btn btn-outline-secondary" type="button" id="updateEmail">Update</button>-->
+           <div class="input-group mb-3"><input type="email" th:field="*{email}"  class="form-control" placeholder="Email (e.g John@Outlook.com)" aria-label="Email">
            </div>
-<!--          <input type="submit" id="submitpersonal">-->
+            <div class="input-group mb-3"><input type="text" th:field="*{username}"  class="form-control" placeholder="Username" aria-label="Email">
+            </div>
+            <div class="input-group mb-3"><input type="password" th:field="*{password}"  class="form-control" placeholder="Password" aria-label="Email" >
+            </div>
+<!--            <input type="submit" id="submitpersonal">-->
             <input type="button" value="Save Changes" id="post" th:onClick="sendData()" />
 
         </form>

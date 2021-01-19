@@ -18,9 +18,9 @@ public class ptRepoJdbc implements ptRepo {
 
     @Override
     public boolean updatePtInfo(PersonalTrainer personalTrainer) {
-        String sql = "UPDATE user set first_name = ?,last_name = ?,email = ? WHERE id = 1";
+        String sql = "UPDATE user set first_name = ?,last_name = ?,email = ?,user_name=? ,user_password=? WHERE id = 1";
 
-        int update = jdbcTemplate.update(sql,new Object[] {personalTrainer.getFirstName(),personalTrainer.getLastName(),personalTrainer.getEmail()});
+        int update = jdbcTemplate.update(sql,new Object[] {personalTrainer.getFirstName(),personalTrainer.getLastName(),personalTrainer.getEmail(),personalTrainer.getUsername(),personalTrainer.getPassword()});
 return update >0;
     }
 

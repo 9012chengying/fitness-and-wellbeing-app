@@ -13,7 +13,7 @@ body{
     background-size: cover;
 }
 
-form{
+#form1,#form2{
     background-color: rgba(255, 255, 255, 0.5);
     border: solid 2px #800;
     border-radius: 15px;
@@ -24,7 +24,7 @@ div #Textarea1{
     resize: none;
 }
 
-form:hover{
+#form1:hover,#form2:hover{
     border: solid 2px white;
     transition: border 0.25s ;
 }
@@ -32,6 +32,7 @@ form:hover{
 #submitInfo{
     margin: 5px 0;
 }
+
 
 
 
