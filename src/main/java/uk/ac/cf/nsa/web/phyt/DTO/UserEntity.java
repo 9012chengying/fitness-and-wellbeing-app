@@ -5,14 +5,16 @@ public class UserEntity {
     private int userId;
     private String username;
     private String password;
-    private String name;
+    private String firstname;
+    private String lastname;
     private String email;
 
-    public UserEntity(int userId, String username, String password, String name, String email) {
+    public UserEntity(int userId, String username, String password, String firstname, String lastname, String email) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
     }
 
@@ -40,12 +42,20 @@ public class UserEntity {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {

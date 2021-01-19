@@ -1,7 +1,5 @@
 package uk.ac.cf.nsa.web.phyt.workouts.DTO;
 
-import java.sql.Date;
-
 public class WorkoutDTO {
     private int id;
     private int clientID;
@@ -10,6 +8,7 @@ public class WorkoutDTO {
     private int restLength;
     private int repRest;
     private int reps;
+    private String equipment;
     private String dueDate;
     private boolean completed;
     private String completedDate;
@@ -18,7 +17,7 @@ public class WorkoutDTO {
     private String altText;
     private String type;
 
-    public WorkoutDTO(int id, int clientID, int exerciseCount, int exerciseLength, int restLength, int repRest, int reps, String dueDate, boolean completed, String completedDate, String createdDate, String imageSrc, String altText, String type) {
+    public WorkoutDTO(int id, int clientID, int exerciseCount, int exerciseLength, int restLength, int repRest, int reps, String equipment, String dueDate, boolean completed, String completedDate, String createdDate, String imageSrc, String altText, String type) {
         this.id = id;
         this.clientID = clientID;
         this.exerciseCount = exerciseCount;
@@ -26,6 +25,7 @@ public class WorkoutDTO {
         this.restLength = restLength;
         this.repRest = repRest;
         this.reps = reps;
+        this.equipment = equipment;
         this.dueDate = dueDate;
         this.completed = completed;
         this.completedDate = completedDate;
@@ -61,6 +61,10 @@ public class WorkoutDTO {
 
     public int getReps() {
         return reps;
+    }
+
+    public String getEquipment() {
+        return equipment;
     }
 
     public String getDueDate() {

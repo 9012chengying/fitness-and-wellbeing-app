@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+<head th:replace="fragments/Head::Head">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -227,8 +229,12 @@
 <!--            <span style="color:red;" id="pwdSpan"></span>-->
         </div>
         <div class="form-group">
-            <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="name" name="name" placeholder="name" autocomplete="off" />
+            <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="firstname" name="firstname" placeholder="firstname" autocomplete="off" />
 <!--            <span style="color:red;" id="nameSpan"></span>-->
+        </div>
+        <div class="form-group">
+            <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="lastname" name="lastname" placeholder="lastname" autocomplete="off" />
+            <!--            <span style="color:red;" id="nameSpan"></span>-->
         </div>
         <div class="form-group">
             <input class="form-control" data-val="true"  data-val-required="mandatory" id="email" name="email" placeholder="email" type="email" autocomplete="off"/>
@@ -273,7 +279,8 @@
         function register() {
             var username = $('#username').val();
             var password = $('#password').val();
-            var name = $('#name').val();
+            var firstname = $('#firstname').val();
+            var lastname = $('#lastname').val();
             var email = $('#email').val();
             if (username.length < 2||username.length > 20) {
                 alert('Username should be 2 to 20 characters');
@@ -283,8 +290,12 @@
                 alert('Password length cannot be less than 6 characters');
                 return false;
             }
-            if (name.length < 2||name.length > 20) {
-                alert('Name should be 2 to 20 characters');
+            if (firstname.length < 2||firstname.length > 20) {
+                alert('First name should be 2 to 20 characters');
+                return false;
+            }
+            if (lastname.length < 2||lastname.length > 20) {
+                alert('Last name should be 2 to 20 characters');
                 return false;
             }
             if (!isEmail(email)){
@@ -301,4 +312,5 @@
     </style>
 </form>
 </body>
+<footer th:replace="fragments/Footer::Footer"></footer>>
 </html>

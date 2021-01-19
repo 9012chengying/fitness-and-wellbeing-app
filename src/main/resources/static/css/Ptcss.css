@@ -1,0 +1,54 @@
+
+.ptHomepage{
+    margin:0;
+    padding: 0;
+
+}
+
+.overviewTitle{
+    text-align: center;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+}
+.sec{
+   margin: auto;
+}
+.ptimg img{
+
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 50%;
+
+}
+img.pt-image{
+    height: auto;
+    border-radius: 50%;
+}
+
+div.ratings h2{
+    font-size: 1.5rem;
+}
+div.ratings a
+{
+    color:#f1c40f;
+    font-size:20px;
+    align-content: flex-start;
+}
+div.ratings a:hover
+{
+    color: #f39c12;
+    text-decoration:none;
+}
+.info p{
+    font-size: 1rem;
+    text-align: left;
+}
+div strong{
+    font-size: 1.5rem;
+}
+div.info{
+
+    margin: 0;
+    padding: 0;
+}
