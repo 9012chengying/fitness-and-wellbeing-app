@@ -1,6 +1,7 @@
 package uk.ac.cf.nsa.web.phyt.exercises.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -79,11 +80,25 @@ public class ExerciseController {
     }
 
     @GetMapping(path = "/edit")
-    public ModelAndView editExercise(@RequestParam(value = "exerciseID", defaultValue = "") String exerciseID) {
+    public ModelAndView getEditExercise(@RequestParam(value = "exerciseID", defaultValue = "") String exerciseID) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("exercise", exerciseService.viewExercise(exerciseID));
         mav.setViewName("EditExercise");
         return mav;
+    }
+
+    @PostMapping(path="/edit")
+    public  ModelAndView updateExercise(ExerciseForm exerciseForm, BindingResult br){
+        ModelAndView mav = new ModelAndView();
+        if (br.hasErrors()) {
+            System.out.println(br.toString());
+            mav.setViewName("EditExercise");
+            return mav;
+        } else {
+            mav.addObject("exercise",exerciseService.editExercise(exerciseForm));
+            mav.setViewName("ViewExercise");
+            return mav;
+        }
     }
 
     //Delete an exercise from database
