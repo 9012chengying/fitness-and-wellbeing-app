@@ -67,6 +67,14 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
         return row==1;
     }
 
+    //Request to database to update an exercise by id
+    public boolean updateExercise(ExerciseForm exerciseForm){
+        int row = jdbcTemplate.update(
+                "UPDATE Exercises SET exercise_name=? ,exercise_desc=? ,category=? WHERE id=?" ,
+                new Object[]{exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat(), exerciseForm.getExerciseID()});;
+        return row > 0;
+    }
+
     public boolean addImage(ExerciseForm exerciseForm){
         return false;
     }

@@ -75,8 +75,15 @@ public class ExerciseManagementService {
 
     //Edit exercise details
     public Exercise editExercise(ExerciseForm exerciseForm){
-        //TODO Write code after tests
-        return null;
+
+        //Run update query on exercise using form
+        exerciseRepo.updateExercise(exerciseForm);
+
+        //Convert int ID into String to be used in viewExercise method
+        int id = exerciseForm.getExerciseID();
+        String ID = String.valueOf(id);
+        return viewExercise(ID);
+
     }
 
     public String deleteExercise(String exerciseID) {
