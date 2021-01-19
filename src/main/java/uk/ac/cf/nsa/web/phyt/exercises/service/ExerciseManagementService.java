@@ -16,6 +16,7 @@ public class ExerciseManagementService {
 
     private final ExerciseRepository exerciseRepo;
 
+
     @Autowired
     public ExerciseManagementService(ExerciseRepository exerciseR) {
         this.exerciseRepo = exerciseR;
@@ -72,6 +73,20 @@ public class ExerciseManagementService {
         return selectedExercise;
     }
 
+
+    public String deleteExercise(String exerciseID) {
+
+        //parse exerciseID String to an integer to use in repo query.
+        int ID = Integer.parseInt(exerciseID);
+
+        //get result from repository query
+        boolean result = exerciseRepo.deleteExercise(ID);
+        if(!result) {
+            return  "failed";
+        } else {
+            return  "success";
+        }
+    }
 
     //Add a new image to an exercise
     public boolean addNewImage(Image image) {

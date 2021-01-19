@@ -61,6 +61,11 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
         return exercise;
     }
 
+    //Request to database to delete exercise by id
+    public boolean deleteExercise(int id) {
+        int row = jdbcTemplate.update("Delete FROM exercises WHERE exercises.id=?;", new Object[]{id});
+        return row==1;
+    }
 
     public boolean addImage(ExerciseForm exerciseForm){
         return false;

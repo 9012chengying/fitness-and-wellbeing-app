@@ -1,138 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="StyleSheet.css"> <!--change name to match CSS file-->
-    <title>View Workout</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: Arial;
-        }
+<html lang="en" xmlns:th="http://www.Thymeleaf.org">
 
-        body {
-            width: 100%;
-        }
+<head th:replace="fragments/Head::Head"></head>
 
-        .backArrow {
-            color: black;
-            text-decoration: none;
-            font-size: 30px;
-            margin-left: 10px;
-            transition: width 1s;
-        }
-
-        .backArrow:hover {
-            color: blue;
-        }
-
-        header {
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            color: white;
-            padding: 2%;
-            background-color: cornflowerblue;
-
-        }
-
-        .exerciseThumbnailsBlock {
-            text-align: center;
-        }
-
-        img {
-            margin-right: 1%;
-            margin-left: 1%;
-            display: inline-block;
-            border: 3px solid cornflowerblue;
-            border-radius: 10px;
-            width: 20%;
-        }
-
-        .exerciseNamesBlock {
-            text-align: center;
-        }
-
-        .exerciseName {
-            clear: both;
-            margin-right: 1%;
-            margin-left: 1%;
-            display: inline-block;
-            border-radius: 8px;
-            width: 20%;
-            text-align: center;
-        }
-
-        .workoutDescription {
-            display: block;
-            padding: 1%;
-            height: 180px;
-            background-color: cornflowerblue;
-            font-size: 25px;
-            color: white;
-            text-align: center;
-        }
-
-        footer {
-            clear: both;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-        .startButton {
-            text-decoration: none;
-            color: cornflowerblue;
-            font-size: 40px;
-            padding: 0.5%;
-            border: 3px solid cornflowerblue;
-            border-radius: 8px;
-            width: 250px;
-        }
-
-        .startButton:hover {
-            background-color: cornflowerblue;
-            color: white;
-        }
-
-    </style>
-</head>
 <body>
-    <nav>
-        <a href="ClientPage1.html" class="backArrow">&larr;</a>
-    </nav>
-    <header>
-        <h1>Preview Workout</h1>
+
+    <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+
+    <header class="alignHeader">
+        <h2 class="workoutHeader" th:if="${workout.completed} == true">Workout Completed <br><span th:text="${workout.completedDate}"></span></h2>
+        <h2 class="workoutHeader" th:if="${workout.completed} == false">Complete by <span th:text="${workout.dueDate}"></span></h2>
     </header>
     <br>
     <main>
-        <div class="exerciseThumbnailsBlock">
-            <img src="../static/images/jog.PNG">
-            <img src="../static/images/jumpRope.png">
-            <img src="../static/images/lunges.png">
-            <img src="../static/images/deadlift2.png">
+        <div class="workoutPreview container">
+            <div class="exerciseThumbnailNameBlock">
+                <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
+                    <a th:href="@{/client/workout/exercise(exerciseID=${exercise.exerciseID})}" onclick="openWin(this)"><img th:src="${exercise.thumbnailImg}" th:alt="${exercise.thumbnailAlt}"></a>
+                    <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
+                </figure>
+            </div>
+            <br><br>
+            <div class="workoutDescription">
+                <span>Workout Length is <span class="font-weight-bold" th:text="${workout.workoutLength}"></span></span><br>
+                <span th:if="${workout.completed} == false">Set on <span class="font-weight-bold"  th:text="${workout.createdDate}"></span></span><br>
+                <span>Focus on <span class="exerciseCategoriesBlock" th:each="exercise: ${exercises}">
+                    <span class="exerciseCategory font-weight-bold" th:text="${exercise.exerciseCategory}"></span><span>, </span></span>
+                </span> <!--need to figure out how to combine all the categories but with no repeats and get rid of last comma-->
+                <br>
+                <span>Need <span class="font-weight-bold" th:text="${workout.equipment}"></span></span> <!--data is entered when building workout at the moment. Maybe find a way to link it to each exercise? Or check off options as opposed to manually entering-->
+                <br>
+            </div>
+            <br><br>
+            <a href="/client/workout/timer"> <!--will link to workoutID once timer starts getting set up-->
+                <button th:if="${workout.completed} == false" class="timerButton btn btn-primary">Start Workout</button>
+                <button th:if="${workout.completed} == true" class="timerButton btn btn-primary">Repeat Workout</button>
+            </a>
+            <br><br>
         </div>
-        <div class="exerciseNamesBlock">
-            <div class="exerciseName">Jog</div>
-            <div class="exerciseName">Jump Rope</div>
-            <div class="exerciseName">Lunges</div>
-            <div class="exerciseName">Deadlift</div>
-        </div>
-        <br>
-        <div class="workoutDescription">
-            <span class="criteria">Workout Number 15</span><br>
-            <span class="criteria">30 Minutes</span><br>
-            <span class="criteria">Set On 10/12/20</span><br>
-            <span class="criteria">Complete By 13/12/20</span><br>
-            <span class="criteria">Full-Body Workout</span><br>
-            <span class="criteria">Need 5kg Dumbbells, 8kg Kettlebell</span><br>
-        </div>
-        <br><br>
-        <footer>
-            <a href="Workout.html" class="startButton">Start Workout</a> <!--change name to match html file-->
-        </footer>
-        <br><br>
     </main>
+
+    <!--<footer th:replace="fragments/Footer::Footer"></footer>-->
+
 </body>
 </html>
