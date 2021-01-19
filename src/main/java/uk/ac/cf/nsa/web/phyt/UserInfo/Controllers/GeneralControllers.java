@@ -1,7 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.UserInfo;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+package uk.ac.cf.nsa.web.phyt.UserInfo.Controllers;
 
 //@Controller
 //public class GeneralControllers {

@@ -9,7 +9,7 @@ import uk.ac.cf.nsa.web.phyt.UserInfo.Forms.PersonalTrainer;
 import uk.ac.cf.nsa.web.phyt.UserInfo.Repository.ptRepo;
 
 @Controller
-@RequestMapping(path ="/Loginuser")
+@RequestMapping(path ="/trainer")
 public class PtController {
 
     private final ptRepo personaltRepo;
@@ -19,7 +19,7 @@ public class PtController {
         this.personaltRepo = personaltRepo;
     }
 
-    @GetMapping(path="/PersonalTrainer")
+    @GetMapping(path="/")
     public String getPT(){
         return "PtHomePage";
     }
@@ -28,7 +28,7 @@ public class PtController {
 //    public String PTAccountedit(){
 //        return "YourAccountPage";
 //    }
-    @GetMapping(path = "/PersonalTrainer/YourAccount")
+    @GetMapping(path = "/YourAccount")
     public String getyourDetails(Model model){
 
         model.addAttribute("PersonalTrainer",new PersonalTrainer());
@@ -46,14 +46,14 @@ public class PtController {
 //        return mav;
 //     }
 
-    @GetMapping(value = {"/PtPersonalInfo"})
+    @GetMapping("/PtPersonalInfo")
     public String submitDetails(PersonalTrainer personalTrainer, GeneralinfoPT generalinfoPT,Model model){
         model.addAttribute("PersonalTrainer",personalTrainer);
         model.addAttribute("Generalinfo", generalinfoPT);
 
         personaltRepo.updatePtInfo(personalTrainer);
 
-return "PtHomePage";
+return "YourAccountPage";
     }
     @GetMapping("/PtGeneralInfo")
     public String submitDetails2(GeneralinfoPT generalinfoPT, PersonalTrainer personalTrainer, Model model){
@@ -61,7 +61,7 @@ return "PtHomePage";
         model.addAttribute("PersonalTrainer",personalTrainer);
 
         personaltRepo.updatePtGeneral(generalinfoPT);
-        return "PtHomePage";
+        return "YourAccountPage";
 
     }
 

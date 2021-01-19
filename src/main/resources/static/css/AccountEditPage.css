@@ -5,10 +5,9 @@
 /*    !*margin:0 3px;*!*/
 /*}*/
 
-body{
+.accountedit{
     /*height: 100%;*/
     /*width: auto;*/
-    font-family: 'Patua One', cursive;
     background: url('/images/108395-orange-curve.jpg') center center no-repeat fixed;
     background-size: cover;
 }
@@ -33,11 +32,9 @@ div #Textarea1{
     margin: 5px 0;
 }
 
-
-
-
-
-
+form .genBtn{
+    bottom: 0;
+}
 label{
     /*display: block;*/
     font-weight: bold;

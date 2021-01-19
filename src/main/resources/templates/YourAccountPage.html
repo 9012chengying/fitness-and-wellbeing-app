@@ -10,82 +10,57 @@
     <title>YourAccount</title>
 </head>
 
-
-
-
-<body>
+<body class="accountedit">
 <nav th:replace="/fragments/Navbar-Pt::PTnavbar"></nav>
 <header class="DummyHeader"></header>
 
 <h2>Your Account</h2>
 <hr>
 <section class="container">
-    <div class="row " id="gett">
+    <div class="row " id="get">
        <div class="About col-md-6 text-center">
 
-        <form th:action="@{..//PtPersonalInfo}"  th:object="${PersonalTrainer}" class="personalInfo" method="GET"  id="form1"  >
+        <form th:action="@{/trainer/PtPersonalInfo}"  th:object="${PersonalTrainer}" class="personalInfo" method="GET"  id="form1"  >
             <h3>Personal information</h3>
 
-           <div class="input-group mb-3"><input type="text"   th:field="*{firstName}" class="form-control" placeholder="First Name" aria-label="First Name">
+           <div class="input-group mb-3"><input type="text"   th:field="*{firstName}" class="form-control" placeholder="First Name" aria-label="First Name" required>
         </div>
-           <div class="input-group mb-3"> <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" aria-label="Last Name">
+           <div class="input-group mb-3"> <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" aria-label="Last Name" required>
            </div>
-           <div class="input-group mb-3"><input type="email" th:field="*{email}"  class="form-control" placeholder="Email (e.g John@Outlook.com)" aria-label="Email">
+           <div class="input-group mb-3"><input type="email" th:field="*{email}"  class="form-control" placeholder="Email (e.g John@Outlook.com)" aria-label="Email" required>
            </div>
-            <div class="input-group mb-3"><input type="text" th:field="*{username}"  class="form-control" placeholder="Username" aria-label="Email">
+            <div class="input-group mb-3"><input type="text" th:field="*{username}"  class="form-control" placeholder="Username" aria-label="Username" required>
             </div>
-            <div class="input-group mb-3"><input type="password" th:field="*{password}"  class="form-control" placeholder="Password" aria-label="Email" >
+            <div class="input-group mb-3"><input type="password" th:field="*{password}"  class="form-control" placeholder="Password" aria-label="Password" required>
             </div>
-<!--            <input type="submit" id="submitpersonal">-->
-            <input type="button" value="Save Changes" id="post" th:onClick="sendData()" />
+<!--            <input type="submit" id="submitpersonal"  >-->
+            <input type="submit" class="btn btn-warning" value="Save Changes" id="post1" />
 
         </form>
        </div>
         <div class="col-md-6 text-center" id="general">
 
-            <form th:action="@{..//PtGeneralInfo}" th:object="${Generalinfo}"  method="get" id="form2">
+            <form th:action="@{/trainer/PtGeneralInfo}" th:object="${Generalinfo}"  method="get" id="form2">
                 <h3>General Information</h3>
                 <div class="form-group">
                     <label for="Textarea1" >About you</label>
-                    <textarea class="form-control" id="Textarea1" rows="3" th:field="*{about}"></textarea>
+                    <textarea class="form-control" id="Textarea1" rows="3" th:field="*{about}" required></textarea>
                 </div>
 
                 <div>
                     <label for="qualification">Qualifications</label>
-                  <select id ="qualification" th:field="*{qualifications}">
+                  <select id ="qualification" th:field="*{qualifications}" required>
                       <option value="Level-2 Gym Instructor">Level-2 Gym Instructor</option>
                       <option value="Level-3 Personal Trainer">Level-3 Personal Trainer</option>
                   </select>
                 </div>
                 <div>
-                    <label for="location">Location</label>
-                    <input type="text" id="location" th:field="*{location}" required>
+                    <div class="input-group mb-3"><input type="text" th:field="*{location}"  class="form-control" placeholder="Location" aria-label="Location" required>
+                    </div>
+<!--                    <label for="location">Location</label>-->
+<!--                    <input type="text" id="location" th:field="*{location}" required>-->
                 </div>
-
-                <input type="button" value="Save Changes" th:onclick="sendData2()">
-
-<!--<script th:inline="javascript">-->
-<!--    function sendData2()-->
-<!--    {-->
-<!--        $.ajax(-->
-<!--            {-->
-<!--                type: "GET",-->
-<!--                data: $("#form2").serialize(),-->
-<!--                // cache: false,-->
-<!--                url: "..//PtGeneralInfo",-->
-<!--                success: function()-->
-<!--                {-->
-<!--                    alert("Updated changes");-->
-<!--                },-->
-<!--                error: function()-->
-<!--                {-->
-<!--                    alert("Error - Data not saved");-->
-<!--                }-->
-
-<!--            });-->
-<!--    }-->
-
-<!--</script>-->
+<div class="genBtn"><input type="submit" class="btn btn-warning" value="Save Changes"></div>
             </form>
         </div>
     </div>
@@ -116,33 +91,31 @@
 
 <!--</section>-->
 <script th:inline="javascript">
-    function sendData()
-    {
+    $(document).ready(function () {
+        $("#form1").on("submit", function(e){
+            e.preventDefault()
         $.ajax(
             {
                 type: "GET",
                 data: $("#form1").serialize(),
-                // cache: false,
-                url: "..//PtPersonalInfo",
-                success: function()
-                {
+                cache: false,
+                url: "/trainer/PtPersonalInfo",
+                success: function () {
                     alert("Updated changes");
                 },
-                error: function()
-                {
+                error: function () {
                     alert("Error - Data not saved");
                 }
 
-            });
-    }
-    function sendData2()
-    {
-        $.ajax(
+            })})
+            $("#form2").on("submit", function(e){
+                e.preventDefault()
+            $.ajax(
             {
                 type: "GET",
                 data: $("#form2").serialize(),
-                // cache: false,
-                url: "..//PtGeneralInfo",
+                cache: false,
+                url: "/trainer/PtGeneralInfo",
                 success: function()
                 {
                     alert("Updated changes");
@@ -152,10 +125,7 @@
                     alert("Error - Data not saved");
                 }
 
-            });
-    }
-
-
+            }) })})
 </script>
 
 </body>
