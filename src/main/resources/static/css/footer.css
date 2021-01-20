@@ -1,12 +1,12 @@
 /*footer.css*/
 
-#container{
-    /*position:relative;*/
-    width:100%;
-    min-height:100%;
-    padding-bottom: 100px;
-    box-sizing: border-box;
-}
+/*#container{*/
+/*    position:relative;*/
+/*    width:100%;*/
+/*    min-height:100%;*/
+/*    padding-bottom: 100px;*/
+/*    box-sizing: border-box;*/
+/*}*/
 
 * {
     padding: 0;
@@ -22,8 +22,8 @@
     height: 80px;
     text-align: center;
     color: white;
-    bottom:0;
-    position:absolute;
+    /*bottom:0;*/
+    /*position:fixed;*/
 
 }
 
