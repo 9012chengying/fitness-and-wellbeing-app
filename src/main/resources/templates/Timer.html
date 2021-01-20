@@ -4,22 +4,25 @@
 <head th:replace="fragments/Head::Head"></head>
 
 <script th:inline="javascript">
-    let workoutLength = [[${workout.workoutLengthFormat}]];
-    let exerciseCount = [[${workout.exerciseCount}]];
-    let exerciseLength = [[${workout.exerciseLength}]];
-    let restLength = [[${workout.restLength}]];
-    let repRest = [[${workout.repRest}]];
-    let reps = [[${workout.reps}]];
-    let exerciseArray = 0;
+    let workoutLengthData = [[${workout.workoutLengthFormat}]];
+    let exerciseCountData = [[${workout.exerciseCount}]];
+    let exerciseLengthData = [[${workout.exerciseLength}]];
+    let restLengthData = [[${workout.restLength}]];
+    let repRestData = [[${workout.repRest}]];
+    let repsData = [[${workout.reps}]];
+    let exerciseArrayData = [[${exercises}]];
+    let thumbnailArrayData = [[${thumbnails}]];
 </script>
 
-<body>
+<body onload="timer()">
 
 <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
 
 <header>Timer</header> <!--change header-->
 
 <div id="instruction"></div>
+
+<img id="thumbnail" src="">
 
 <div id="seconds"></div>
 
