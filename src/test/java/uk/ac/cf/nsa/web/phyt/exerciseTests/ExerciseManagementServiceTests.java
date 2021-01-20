@@ -74,7 +74,7 @@ public class ExerciseManagementServiceTests {
         //create a new exercise test list
         List<Exercise> testListByCat;
 
-        //assign output from listExercisesByCategory to test list
+        //assign output from listExercisesByCategory to test lista
         testListByCat = exerciseManagementService.listExercisesByCategory("Cardio");
 
         //verify list not empty
@@ -86,6 +86,51 @@ public class ExerciseManagementServiceTests {
         }
 
     }
+
+    /* EDIT EXERCISE TEST */
+    @Test
+    public void editExercise (){
+
+        //Get existing exercise information use existing viewExercise method
+        Exercise testExercise = new Exercise();
+        testExercise = exerciseManagementService.viewExercise("5");
+
+        //Use testExercise to populate ExerciseForm
+        ExerciseForm testExerciseForm = new ExerciseForm();
+        testExerciseForm.setExerciseID(testExercise.getExerciseID());
+        testExerciseForm.setExerciseName(testExercise.getExerciseName());
+        testExerciseForm.setExerciseDesc(testExercise.getExerciseDesc());
+        testExerciseForm.setExerciseCat(testExercise.getExerciseCat());
+
+        //verify testExercise is equal to testExerciseForm before changes - should pass
+        assertEquals(testExercise.getExerciseID(), testExerciseForm.getExerciseID());
+        assertEquals(testExercise.getExerciseName(), testExerciseForm.getExerciseName());
+        assertEquals(testExercise.getExerciseDesc(), testExerciseForm.getExerciseDesc());
+        assertEquals(testExercise.getExerciseCat(), testExerciseForm.getExerciseCat());
+
+        //Change some information on the testExerciseForm
+        testExerciseForm.setExerciseDesc("Testing that description is changed");
+        testExerciseForm.setExerciseCat("Core");
+
+        //Verify that testExercise no longer matches testExerciseForm except for ID & Name
+        assertEquals(testExercise.getExerciseID(), testExerciseForm.getExerciseID());
+        assertEquals(testExercise.getExerciseName(), testExerciseForm.getExerciseName());
+        assertNotEquals(testExercise.getExerciseDesc(), testExerciseForm.getExerciseDesc());
+        assertNotEquals(testExercise.getExerciseCat(), testExerciseForm.getExerciseCat());
+
+        //Update Exercise using edit method
+        exerciseManagementService.editExercise(testExerciseForm);
+
+        //call the viewExercise method again and assign to testExercise
+        testExercise = exerciseManagementService.viewExercise("5");
+
+        //Verify that testExercise now matches exerciseForm
+        assertEquals(testExercise.getExerciseID(), testExerciseForm.getExerciseID());
+        assertEquals(testExercise.getExerciseName(), testExerciseForm.getExerciseName());
+        assertEquals(testExercise.getExerciseDesc(), testExerciseForm.getExerciseDesc());
+        assertEquals(testExercise.getExerciseCat(), testExerciseForm.getExerciseCat());
+    }
+
 
     /*
     DELETE EXERCISE TESTS
