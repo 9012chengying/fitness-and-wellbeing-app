@@ -1,30 +1,36 @@
 package uk.ac.cf.nsa.web.phyt.users.service;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
-import uk.ac.cf.nsa.web.phyt.users.data.repository.LoginRepository;
-import uk.ac.cf.nsa.web.phyt.users.data.repository.UserPrincipal;
+import uk.ac.cf.nsa.web.phyt.users.data.repository.RegisterRepository;
+import uk.ac.cf.nsa.web.phyt.users.data.repository.UserRepository;
+import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
 
-    final private LoginRepository loginRepository;
+    @Autowired
+    UserRepository userRepository;
+    RegisterRepository registerRepository;
 
-    public UserService (LoginRepository loginRepository){
-        super();
-        this.loginRepository = loginRepository;
+    public UserService(UserRepository userRepository, RegisterRepository registerRepository){
+        this.userRepository=userRepository;
+        this.registerRepository=registerRepository;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        UserDTO user = this.loginRepository.findByUserName(username);
-        if(null == user){
-            throw new UsernameNotFoundException("Cannot find username " + username);
+    //Method to register a new trainer to the application
+    public boolean setUpNewTrainer(UserForm userForm){
+        if(!registerRepository.registerUser(userForm)){
+            return false;
+        } else {
+            return true;
         }
-        return new UserPrincipal(user);
+    }
+
+    //Method to get the user information held in the database
+    public UserDTO getUserInfo(UserForm userForm){
+         return registerRepository.getUserInfo(userForm.getUsername());
     }
 }
+

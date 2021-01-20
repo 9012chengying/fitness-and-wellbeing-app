@@ -8,14 +8,16 @@ public class UserEntity {
     private String firstname;
     private String lastname;
     private String email;
+    private Boolean enabled;
 
-    public UserEntity(int userId, String username, String password, String firstname, String lastname, String email) {
+    public UserEntity(int userId, String username, String password, String firstname, String lastname, String email, Boolean enabled) {
         this.userId = userId;
         this.username = username;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
+        this.enabled = enabled;
     }
 
     public int getUserId() {
@@ -64,5 +66,13 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

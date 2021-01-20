@@ -8,7 +8,7 @@ public class UserForm {
     private String firstname;
     private String lastname;
     private String email;
-    private String role;
+    private String role = null;
 
     public UserForm(String username, String password, String firstname, String lastname, String email) {
         this.username = username;
@@ -16,7 +16,6 @@ public class UserForm {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.role = "Trainer";
     }
 
     public String getUsername() {

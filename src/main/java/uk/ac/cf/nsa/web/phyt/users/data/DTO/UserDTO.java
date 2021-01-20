@@ -10,13 +10,15 @@ public class UserDTO extends User {
     private String firstName;
     private String lastName;
     private String email;
+    private String role;
 
     //Constructor of User object
-    public UserDTO (int UserID, String userName, String password, String firstName, String lastName, String email){
+    public UserDTO (int UserID, String userName, String password, String firstName, String lastName, String email, String role){
         super(UserID, userName, password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.role = role;
     }
 
     @Override
@@ -71,6 +73,14 @@ public class UserDTO extends User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

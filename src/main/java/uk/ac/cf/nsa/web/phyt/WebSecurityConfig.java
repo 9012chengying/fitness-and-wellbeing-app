@@ -11,9 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import uk.ac.cf.nsa.web.phyt.users.service.UserService;
-
-import javax.sql.DataSource;
+import uk.ac.cf.nsa.web.phyt.users.service.PhytUserDetailsService;
 
 
 @Configuration
@@ -22,14 +20,15 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    DataSource dataSource;
+    PhytUserDetailsService phytUserDetailsService;
 
-    //sets in memory authentication for trainer & user roles - temporary logins for demo purposes
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                  .jdbcAuthentication()
-                  .dataSource(dataSource);
+                  .userDetailsService(phytUserDetailsService).passwordEncoder(passwordEncoder()); //database authentication
+
+        //sets in memory authentication for trainer & user roles - temporary logins for demo purposes
     //                .inMemoryAuthentication()
 //                .withUser("trainer2").password("{noop}password2").roles("TRAINER")
 //                .and()

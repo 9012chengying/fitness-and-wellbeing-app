@@ -3,9 +3,9 @@ package uk.ac.cf.nsa.web.phyt.users.data.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
-import uk.ac.cf.nsa.web.phyt.model.RegisterMapper;
+import uk.ac.cf.nsa.web.phyt.users.data.mapper.RegisterMapper;
 
 import java.util.List;
 
@@ -28,9 +28,9 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
     }
 
     @Override
-    public UserEntity getUserInfo(String username) {
+    public UserDTO getUserInfo(String username) {
         String sql="SELECT id, user_name,user_password,first_name,last_name, email FROM user where user_name = ?";
-        List<UserEntity> list = jdbcTemplate.query(sql,new Object[]{username}, new RegisterMapper());
+        List<UserDTO> list = jdbcTemplate.query(sql,new Object[]{username}, new RegisterMapper());
         if (list!=null&&list.size()!=0){
             return list.get(0);
         }

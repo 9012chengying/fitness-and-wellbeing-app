@@ -1,9 +1,10 @@
-package uk.ac.cf.nsa.web.phyt.exercises.data.repository;
+package uk.ac.cf.nsa.web.phyt.users.data.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.exercises.data.repository.UserRepository;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
+import uk.ac.cf.nsa.web.phyt.users.data.mapper.UserMapper;
 
 @Repository
 public class UserRepositoryJDBC implements UserRepository {
@@ -14,6 +15,16 @@ public class UserRepositoryJDBC implements UserRepository {
     public UserRepositoryJDBC(JdbcTemplate aTemplate) {
         jdbcTemplate = aTemplate;
     }
+
+    @Override
+    public UserEntity findByUserName(String username) {
+        UserEntity userEntity = (UserEntity) jdbcTemplate.queryForObject(
+                "SELECT id,user_name,user_password, first_name, last_name, email FROM user where user_name = ?",
+                new UserMapper(),new Object[]{username});
+        System.out.println(userEntity.toString());
+        return userEntity;
+    }
+
 
     public int getTrainerID(String username, String password){
         return 0;

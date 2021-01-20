@@ -1,5 +1,6 @@
 package uk.ac.cf.nsa.web.phyt.users.controllers;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -9,36 +10,41 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
-import uk.ac.cf.nsa.web.phyt.users.data.repository.LoginRepository;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
-import uk.ac.cf.nsa.web.phyt.users.data.repository.RegisterRepository;
+import uk.ac.cf.nsa.web.phyt.users.service.PhytUserDetailsService;
+import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
 
 @Controller
 public class UserController {
 
     @Autowired
-    private RegisterRepository registerRepository;
+    private PhytUserDetailsService phytUserDetailsService;
 
     @Autowired
-    private LoginRepository loginRepository;
+    private UserService userService;
 
     @RequestMapping(path="/register")
     public String trainerRegister() {
         return "register";
     }
 
+    //Route for registering a Trainer to the app
     @RequestMapping(path = "/register/user", method = RequestMethod.POST)
     public String trainerAdd(UserForm userForm) {
-        UserEntity user = registerRepository.getUserInfo(userForm.getUsername());
-        if (user!=null){
+        UserDTO user = userService.getUserInfo(userForm);
+        if (user != null) {
             return "failRegister";
+        } else {
+            userForm.setRole("Trainer");
+            if (!userService.setUpNewTrainer(userForm)) {
+                return "register";
+            } else {
+                return "redirect:/login";
+            }
         }
-        registerRepository.registerUser(userForm);
-        return "redirect:/login";
     }
-
 
     //sets redirect to login page if user goes doesn't enter a specific route
     @RequestMapping(path = "/" , method=RequestMethod.GET)
@@ -74,7 +80,7 @@ public class UserController {
 
         //display different page depending on role
         if (role.equals("ROLE_TRAINER")){
-            mav.addObject("info", loginRepository.findByUserName(name));
+           // mav.addObject("info", userService.loadUserByUsername(name));
             mav.addObject("username", name);
             mav.setViewName("PtHomePage");
         } else {
