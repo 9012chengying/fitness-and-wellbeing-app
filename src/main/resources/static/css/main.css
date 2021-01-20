@@ -33,6 +33,8 @@ p, a{
 header {
     margin-top: 17vh;
 }
+
+
 /*Additional button class to make bootstrap buttons larger
 Adapted from https://stackoverflow.com/questions/32864415/how-can-i-increase-the-size-of-a-bootstrap-button/32869241
 */

@@ -7,7 +7,7 @@
 
     <body class="exercise-body">
 
-    <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
+    <div th:replace="fragments/Navbar-Pt::PTnavbar"></div>
 
     <!--Page heading-->
     <header class="exercise-header">
@@ -58,6 +58,6 @@
 
 
     <!-- add a footer to contain about us and contact us links-->
-    <footer></footer>
+    <footer th:replace="fragments/Footer::Footer"> </footer>
     </body>
 </html>

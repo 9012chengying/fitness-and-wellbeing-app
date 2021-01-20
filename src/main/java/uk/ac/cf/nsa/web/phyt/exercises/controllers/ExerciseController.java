@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
-
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
+import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
 
 @Controller
@@ -17,10 +18,12 @@ public class ExerciseController {
 
     //Use ExerciseManagementService methods to access appropriate data
     private final ExerciseManagementService exerciseService;
+    private UserService userService;
 
     @Autowired
-    public ExerciseController(ExerciseManagementService exerciseService) {
+    public ExerciseController(ExerciseManagementService exerciseService, UserService userService) {
         this.exerciseService = exerciseService;
+        this.userService = userService;
     }
 
     //List all exercises
@@ -28,7 +31,9 @@ public class ExerciseController {
 
     public ModelAndView allExercises() {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("exercises", exerciseService.listAllExercises());
+        UserEntity currentUser = userService.authenticateUser();
+        int userID = currentUser.getUserId();
+        mav.addObject("exercises", exerciseService.listAllExercises(userID));
         mav.setViewName("AllExercises");
         return mav;
     }
@@ -37,7 +42,9 @@ public class ExerciseController {
     @GetMapping(path = "/filter")
     public ModelAndView filterExercises(@RequestParam(value = "categoryFilter", defaultValue = "All") String exerciseCat) {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("exercises", exerciseService.listExercisesByCategory(exerciseCat));
+        UserEntity currentUser = userService.authenticateUser();
+        int userID = currentUser.getUserId();
+        mav.addObject("exercises", exerciseService.listExercisesByCategory(exerciseCat,userID));
         mav.setViewName("AllExercises");
         return mav;
     }
@@ -57,13 +64,16 @@ public class ExerciseController {
     @GetMapping(path = "/add")
     public ModelAndView createExercise() {
         ModelAndView mav = new ModelAndView();
+        UserEntity currentUser = userService.authenticateUser();
+        int userID = currentUser.getUserId();
+        mav.addObject("userID", userID);
         mav.setViewName("CreateExercise");
         return mav;
     }
 
     //Create new exercise in database
     @PostMapping(path = "/add")
-    public String trainerAddExercise(ExerciseForm exerciseForm, BindingResult br) {
+    public String trainerAddExercise(ExerciseForm exerciseForm,  BindingResult br) {
         if (br.hasErrors()) {
             System.out.println(br.toString());
             return br.toString();

@@ -28,26 +28,33 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
     public boolean addExercise(ExerciseForm exerciseForm){
         int rows = jdbcTemplate.update(
                 "insert into Exercises(trainer_id, exercise_name,exercise_desc,category) values(?,?,?,?)" ,
-                new Object[]{exerciseForm.getUserID(),exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat()});
+                    new Object[]{exerciseForm.getUserID(),exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat()});
         System.out.println(rows>0);
         return rows>0;
     }
 
 
-    public List<Exercise> getAllExercises(){
+    public List<Exercise> getAllExercises(int userID){
         return jdbcTemplate.query (
-             "SELECT distinct exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, thumbnail_img, thumbnail_alt, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
-                     "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  FROM phyt.exercises \n" +
+             "SELECT distinct exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, thumbnail_img, thumbnail_alt, exercises.created_at, \n" +
+                     "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+                     "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  FROM phyt.exercises\n" +
                      "LEFT JOIN Media\n" +
-                     "ON exercises.id = Media.exercise_id order by exercises.created_at DESC;", new ExerciseMapper()
+                     "ON exercises.id = Media.exercise_id where exercises.trainer_id=?\n" +
+                     "order by exercises.created_at DESC;", new ExerciseMapper(), new Object[]{userID}
         );
     }
 
     @Override
-    public List<Exercise> getExercisesByCategory(String exerciseCat){
+    public List<Exercise> getExercisesByCategory(String exerciseCat, int userID){
         return jdbcTemplate.query(
-                "SELECT DISTINCT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, thumbnail_img, thumbnail_alt, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
-                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\" from phyt.exercises left join Media on exercises.id = Media.exercise_id where exercises.category= ? order by exercises.created_at DESC;", new ExerciseMapper(),  new Object[]{exerciseCat}
+                "SELECT distinct exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, exercises.thumbnail_img, exercises.thumbnail_alt, exercises.created_at, \n" +
+                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\" \n" +
+                        "from phyt.exercises \n" +
+                        "LEFT join Media on exercises.id = Media.exercise_id where exercises.category= ? and  exercises.trainer_id = ?\n" +
+                        "order by exercises.created_at DESC;",
+                new ExerciseMapper(), new Object[]{exerciseCat, userID}
                );
     }
 

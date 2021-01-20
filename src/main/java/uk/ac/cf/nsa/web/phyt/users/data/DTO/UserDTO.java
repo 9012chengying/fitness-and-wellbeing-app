@@ -13,6 +13,14 @@ public class UserDTO extends User {
     private String role;
 
     //Constructor of User object
+    public UserDTO(){
+        super();
+        this.firstName = null;
+        this.lastName = null;
+        this.email = null;
+        this.role = null;
+    }
+
     public UserDTO (int UserID, String userName, String password, String firstName, String lastName, String email, String role){
         super(UserID, userName, password);
         this.firstName = firstName;

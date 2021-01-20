@@ -8,6 +8,11 @@
     height: 100vh;
 }
 
+/*Add class="full-height" if you want container to be full height of screen */
+.full-height{
+    height: 80vh;
+}
+
 .login-main-content{
     width: 90%;
     margin: auto;

@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
+import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import uk.ac.cf.nsa.web.phyt.users.service.PhytUserDetailsService;
@@ -35,7 +37,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(phytUserDetailsService);
         provider.setPasswordEncoder(passwordEncoder());
+        provider.setAuthoritiesMapper(authoritiesMapper());
         return provider;
+    }
+
+    @Bean
+    public GrantedAuthoritiesMapper authoritiesMapper(){
+        SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
+        authorityMapper.setConvertToUpperCase(true);
+        return authorityMapper;
     }
 
     //Inserts the authentication provider into the Authentication Manager Builder
@@ -55,13 +65,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/register").permitAll();
 
         //userInfo page requires login as ROLE_USER or ROLE_TRAINER.
-        http.authorizeRequests().antMatchers("/home").access("hasAnyRole('ROLE_USER', 'ROLE_TRAINER')");
+        http.authorizeRequests().antMatchers("/home").access("hasAnyRole('ROLE_CLIENT', 'ROLE_TRAINER')");
 
         // Access to routes starting /trainer  - For TRAINERS only.
         http.authorizeRequests().antMatchers("/trainer/**").access("hasRole('ROLE_TRAINER')");
 
         //Access to routes starting /client - For USER only
-        http.authorizeRequests().antMatchers("/client/**").access("hasRole('ROLE_USER')");
+        http.authorizeRequests().antMatchers("/client/**").access("hasRole('ROLE_CLIENT')");
 
         // Config for Login Form
         http.authorizeRequests().and().formLogin()

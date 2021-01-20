@@ -19,7 +19,7 @@ public class UserRepositoryJDBC implements UserRepository {
     @Override
     public UserEntity findByUserName(String username) {
         UserEntity userEntity = (UserEntity) jdbcTemplate.queryForObject(
-                "SELECT id,user_name,user_password, first_name, last_name, email FROM user where user_name = ?",
+                "SELECT id,user_name,user_password, first_name, last_name, email, user_role, enabled FROM user where user_name = ? AND enabled=true",
                 new UserMapper(),new Object[]{username});
         System.out.println(userEntity.toString());
         return userEntity;

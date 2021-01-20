@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 import uk.ac.cf.nsa.web.phyt.users.service.PhytUserDetailsService;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
@@ -18,9 +19,6 @@ import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
 @Controller
 public class UserController {
-
-    @Autowired
-    private PhytUserDetailsService phytUserDetailsService;
 
     @Autowired
     private UserService userService;
@@ -64,29 +62,17 @@ public class UserController {
     @RequestMapping(path="/home")
     public ModelAndView userAccountInfo() {
         ModelAndView mav = new ModelAndView();
-        String name = "NOT Logged On";
-        String role = null;
-
-        //get authentication information & store role information in role String & username in name string
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            for (GrantedAuthority authority : authentication.getAuthorities()) {
-                role = authority.getAuthority();
-            }
-            String currentUserName = authentication.getName();
-            name = currentUserName;
-            System.out.println(name);
-        }
-
-        //display different page depending on role
-        if (role.equals("ROLE_TRAINER")){
-           // mav.addObject("info", userService.loadUserByUsername(name));
-            mav.addObject("username", name);
-            mav.setViewName("PtHomePage");
+        UserEntity currentUser = userService.authenticateUser();
+        String name = currentUser.getFirstname();
+        if(currentUser.getRole().equals("Trainer")){
+            mav.addObject("name", name);
+            mav.setViewName("Trainer");
+            return mav;
         } else {
+            mav.addObject("name", name);
             mav.setViewName("User");
+            return mav;
         }
-        return mav;
     }
 
     //    @RequestMapping(path = "/update/user")

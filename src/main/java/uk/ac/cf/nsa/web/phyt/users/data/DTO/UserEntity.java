@@ -8,15 +8,17 @@ public class UserEntity {
     private String firstname;
     private String lastname;
     private String email;
+    private String role;
     private Boolean enabled;
 
-    public UserEntity(int userId, String username, String password, String firstname, String lastname, String email, Boolean enabled) {
+    public UserEntity(int userId, String username, String password, String firstname, String lastname, String email, String role, Boolean enabled) {
         this.userId = userId;
         this.username = username;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
+        this.role = role;
         this.enabled = enabled;
     }
 
@@ -68,11 +70,33 @@ public class UserEntity {
         this.email = email;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public Boolean getEnabled() {
         return enabled;
     }
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                ", enabled=" + enabled +
+                '}';
     }
 }

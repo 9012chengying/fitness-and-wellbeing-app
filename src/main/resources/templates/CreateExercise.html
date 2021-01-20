@@ -16,7 +16,10 @@
 
         <!-- Main input form -->
         <main id="exercise-main">
-            <form id="exerciseForm" action="/trainer/exercises/add" method="post">
+            <form id="exerciseForm" th:action="@{/trainer/exercises/add}" method="post">
+                <div class="exercise-input hide">
+                    <input class="hide" id="userID" name="userID" type="text" th:value="${userID}">
+                </div>
                 <div class="exercise-input">
                     <label for="exerciseName">Exercise Name: </label>
                     <input id="exerciseName" name="exerciseName" type="text" required>
@@ -44,10 +47,7 @@
 
         </main>
 
-
-    <footer> </footer>
-
-
+        <footer th:replace="fragments/Footer::Footer"> </footer>
     </body>
 
 </html>
