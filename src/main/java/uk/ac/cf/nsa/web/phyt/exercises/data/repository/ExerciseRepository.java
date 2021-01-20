@@ -17,6 +17,8 @@ public interface ExerciseRepository {
 
     Exercise getExerciseByID(int id);
 
+    boolean updateExercise(ExerciseForm exerciseForm);
+
     boolean deleteExercise(int id);
 
     boolean addImage(ExerciseForm exerciseForm);
