@@ -21,7 +21,7 @@ public class WorkoutController {
     @GetMapping(path="")
     public ModelAndView latestWorkout(/*@RequestParam(value="clientID", defaultValue="null") int clientID*/) { //client ID should come from login - this is just to get it to work for now
         ModelAndView mav = new ModelAndView();
-        int workoutID = workoutRepository.findIncompleteWorkoutID(3); //client ID should come from login - this is just to get it to work for now
+        int workoutID = workoutRepository.findIncompleteWorkoutID(2); //client ID should come from login - this is just to get it to work for now
         if (workoutID == -1) {
             mav.setViewName("NoNewWorkouts"); //maybe change to restController or modal
         } else {
@@ -45,6 +45,8 @@ public class WorkoutController {
     public ModelAndView startTimer(@RequestParam(value="workoutID", defaultValue="null") int workoutID) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("workout", workoutRepository.workoutOverview(workoutID));
+        mav.addObject("exercises", workoutRepository.exerciseNameByWorkoutID(workoutID));
+        mav.addObject("thumbnails", workoutRepository.exerciseThumbnailByWorkoutID(workoutID));
         mav.setViewName("Timer");
         return mav;
     }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.workouts.DTO.*;
 import uk.ac.cf.nsa.web.phyt.workouts.model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -80,5 +81,33 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
         return (List<ExerciseMediaDTO>) jdbcTemplate.query(
                 "SELECT media.exercise_id, media.type, media.img_src, media.alt_text FROM media INNER JOIN exercises on exercises.id=media.exercise_id WHERE exercise_id=?",
                 new ExerciseMediaMapper(), exerciseID);
+    }
+
+    @Override
+    public ArrayList<String> exerciseNameByWorkoutID(int workoutID) {
+        ArrayList<String> exerciseArray = new ArrayList<>();
+        List<ExerciseWorkoutDTO> exerciseWorkoutDTO = (List<ExerciseWorkoutDTO>) jdbcTemplate.query(
+                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
+                        "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
+                new ExerciseWorkoutMapper(), workoutID);
+        int exerciseCount = exerciseWorkoutDTO.size();
+        for(int i = 0; i < exerciseCount; i++) {
+            exerciseArray.add(exerciseWorkoutDTO.get(i).getExerciseName());
+        }
+        return exerciseArray;
+    }
+
+    @Override
+    public ArrayList<String> exerciseThumbnailByWorkoutID(int workoutID) {
+        ArrayList<String> thumbnailArray = new ArrayList<>();
+        List<ExerciseWorkoutDTO> exerciseWorkoutDTO = (List<ExerciseWorkoutDTO>) jdbcTemplate.query(
+                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
+                        "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
+                new ExerciseWorkoutMapper(), workoutID);
+        int exerciseCount = exerciseWorkoutDTO.size();
+        for(int i = 0; i < exerciseCount; i++) {
+            thumbnailArray.add(exerciseWorkoutDTO.get(i).getThumbnailImg());
+        }
+        return thumbnailArray;
     }
 }
