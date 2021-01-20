@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,24 +23,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     PhytUserDetailsService phytUserDetailsService;
 
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                  .userDetailsService(phytUserDetailsService).passwordEncoder(passwordEncoder()); //database authentication
-
-        //sets in memory authentication for trainer & user roles - temporary logins for demo purposes
-    //                .inMemoryAuthentication()
-//                .withUser("trainer2").password("{noop}password2").roles("TRAINER")
-//                .and()
-//                .withUser("client").password("{noop}password1").roles("USER");
-    }
-
     //Only used for purposes of demo/prototype - should use a password encryption for security
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
+
+    //Sets up an authentication provider for Spring security
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(phytUserDetailsService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
+    }
+
+    //Inserts the authentication provider into the Authentication Manager Builder
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
+
 
     //configure security on pages, login and logout
     @Override
@@ -74,8 +78,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout=true");
 
     }
-
-
-
-
 }
