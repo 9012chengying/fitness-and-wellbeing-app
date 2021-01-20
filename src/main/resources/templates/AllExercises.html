@@ -6,8 +6,8 @@
 <head th:replace="fragments/Head::Head"> </head>
 
     <body class="exercise-body">
-    <div th:replace="fragments/Navbar-Pt::PTnavbar"></div>
-<!--    <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>-->
+
+    <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
 
     <!--Page heading-->
     <header class="exercise-header">
@@ -31,7 +31,7 @@
                 </select>
             </div>
         </form>
-        <a id="filter-button" href="/trainer/exercises/add"><button class="btn btn-warning btn-xl">Add new exercise</button></a>
+        <a class="exercise-link" id="filter-button" href="/trainer/exercises/add"><button class="btn btn-warning btn-xl">Add new exercise</button></a>
     </aside>
 
 
@@ -49,8 +49,8 @@
                     <p>Number of videos: <span th:text="${exercise.videoCount}"></span></p>
                 </div>
                 <div class="exercise-buttons">
-                    <a th:href="@{/trainer/exercises/view(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">View Details</button></a>
-                    <a th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-secondary btn-xl">Edit Details</button></a>
+                    <a class="exercise-link" th:href="@{/trainer/exercises/view(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">View Details</button></a>
+                    <a  class="exercise-link" th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-secondary btn-xl">Edit Details</button></a>
                 </div>
             </div>
         </div>
@@ -58,8 +58,6 @@
 
 
     <!-- add a footer to contain about us and contact us links-->
-    <footer>
-        <p>&copy Phyt App ltd</p>
-    </footer>
+    <footer></footer>
     </body>
 </html>

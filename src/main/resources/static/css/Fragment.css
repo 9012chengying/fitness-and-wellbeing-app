@@ -32,8 +32,8 @@
     overflow: hidden;
     cursor: pointer;
     width: 85px;
-}
 
+}
 .nav-bar ul {
     margin: 0;
     padding: 0;
@@ -178,18 +178,12 @@
 
 @media(max-width: 2100px) {
     .nav-bar li a {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     #NAVtitle {
         margin-top: 20px;
     }
-}
-@media(max-width: 2100px) {
-    .nav-bar li a {
-        font-size: 1.2rem;
-    }
-
 
 }
 

@@ -7,7 +7,7 @@
 
 <body class="exercise-body">
 
-<nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
+<div th:replace="fragments/Navbar-Pt::PTnavbar"></div>
 <!--Page heading-->
 <header class="exercise-header">
     <h2 id="exercise-name" th:text="${exercise.exerciseName}">Name of Exercise</h2>
@@ -28,7 +28,7 @@
                 <h5>The exercise has been successfully deleted</h5>
             </div>
             <div class="modal-footer">
-                <a href="/trainer/exercises/all"><button type="button" class="btn btn-primary">View Exercises</button></a>
+                <a class="exercise-link" href="/trainer/exercises/all"><button type="button" class="btn btn-primary">View Exercises</button></a>
             </div>
         </div>
     </div>
@@ -114,8 +114,7 @@
 
 
 <!-- add a footer to contain about us and contact us links-->
-<footer>
-    <p>&copy Phyt App ltd</p>
-</footer>
+<footer ></footer>
 </body>
+<footer th:replace="fragments/Footer::Footer"> </footer>
 </html>
