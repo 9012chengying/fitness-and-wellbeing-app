@@ -4,42 +4,42 @@
 <head th:replace="fragments/Head::Head"></head>
 
 <body>
-<div id="container">
-    <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+
+    <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
 
     <header class="alignHeader">
         <h2 class="workoutHeader">My Workout Diary</h2>
     </header>
 
-    <main>
-        <div class="container">
-            <div id="workoutSummary" class="row" th:each="workout: ${workouts}">
-                <div id="workoutThumbnail" class="col-3">
-                    <img th:src="${workout.imageSrc}" th:alt="${workout.altText}">
-                </div>
-                <div id="workoutDetails" class="col-5">
-                    <span>Set: </span><b th:text="${workout.createdDate}"></b>
+        <main>
+            <div class="container">
+                <div id="workoutSummary" class="row" th:each="workout: ${workouts}">
+                    <div id="workoutThumbnail" class="col-3">
+                        <img th:src="${workout.imageSrc}" th:alt="${workout.altText}">
+                    </div>
+                    <div id="workoutDetails" class="col-5">
+                        <span>Set: </span><b th:text="${workout.createdDate}"></b>
+                        <br>
+                        <span>Length: </span><b th:text="${workout.workoutLengthFormat}"></b>
+                        <br>
+                        <span>Exercises: </span><b th:text="${workout.exerciseCount}"></b>
+                        <b th:if="${workout.completed} == true"><br>Completed</b>
+                        <b th:if="${workout.completed} == false"><br>Due: <b th:text="${workout.dueDate}"></b></b>
+                    </div>
+                    <div id="diaryButton" class="col-4">
+                        <a th:href="@{/client/diary/workout(workoutID=${workout.id})}">
+                            <button type="button" class="btn btn-primary" th:if="${workout.completed} == true">Workout Details</button>
+                            <button type="button" class="btn btn-warning" th:if="${workout.completed} == false">New Workout</button>
+                        </a>
+                    </div>
                     <br>
-                    <span>Length: </span><b th:text="${workout.workoutLengthFormat}"></b>
-                    <br>
-                    <span>Exercises: </span><b th:text="${workout.exerciseCount}"></b>
-                    <b th:if="${workout.completed} == true"><br>Completed</b>
-                    <b th:if="${workout.completed} == false"><br>Due: <b th:text="${workout.dueDate}"></b></b>
                 </div>
-                <div id="diaryButton" class="col-4">
-                    <a th:href="@{/client/diary/workout(workoutID=${workout.id})}">
-                        <button type="button" class="btn btn-primary" th:if="${workout.completed} == true">Workout Details</button>
-                        <button type="button" class="btn btn-warning" th:if="${workout.completed} == false">New Workout</button>
-                    </a>
-                </div>
-                <br>
             </div>
-        </div>
-        <br><br>
-    </main>
+            <br><br><br>
+        </main>
 
     <footer th:replace="fragments/Footer::Footer"></footer>
-</div>
+
 </body>
 
 

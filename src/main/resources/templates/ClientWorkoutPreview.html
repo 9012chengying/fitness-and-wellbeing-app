@@ -5,7 +5,7 @@
 
 <body>
 
-    <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+    <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
 
     <header class="alignHeader">
         <h2 class="workoutHeader" th:if="${workout.completed} == true">Workout Completed <br><span th:text="${workout.completedDate}"></span></h2>
@@ -14,13 +14,7 @@
     <br>
     <main>
         <div class="workoutPreview container">
-            <div class="exerciseThumbnailNameBlock">
-                <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
-                    <a th:href="@{/client/workout/exercise(exerciseID=${exercise.exerciseID})}" onclick="openWin(this)"><img th:src="${exercise.thumbnailImg}" th:alt="${exercise.thumbnailAlt}"></a>
-                    <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
-                </figure>
-            </div>
-            <br><br>
+
             <div class="workoutDescription">
                 <span>Workout Length is <span class="font-weight-bold" th:text="${workout.workoutLengthFormat}"></span></span><br>
                 <span th:if="${workout.completed} == false">Set on <span class="font-weight-bold"  th:text="${workout.createdDate}"></span></span><br>
@@ -31,7 +25,18 @@
                 <span>Need <span class="font-weight-bold" th:text="${workout.equipment}"></span></span> <!--data is entered when building workout at the moment. Maybe find a way to link it to each exercise? Or check off options as opposed to manually entering-->
                 <br>
             </div>
+
             <br><br>
+
+            <div class="exerciseThumbnailNameBlock">
+                <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
+                    <a th:href="@{/client/workout/exercise(exerciseID=${exercise.exerciseID})}" onclick="openWin(this)"><img th:src="${exercise.thumbnailImg}" th:alt="${exercise.thumbnailAlt}"></a>
+                    <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
+                </figure>
+            </div>
+
+            <br><br>
+
             <a th:href="@{/client/workout/timer(workoutID=${workout.id})}">
                 <button th:if="${workout.completed} == false" class="timerButton btn btn-primary btn-xl">Start Workout</button>
                 <button th:if="${workout.completed} == true" class="timerButton btn btn-primary btn-xl">Repeat Workout</button>
@@ -40,7 +45,7 @@
         </div>
     </main>
 
-    <!--<footer th:replace="fragments/Footer::Footer"></footer>-->
+    <footer th:replace="fragments/Footer::Footer"></footer>
 
 </body>
 </html>

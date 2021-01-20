@@ -5,7 +5,7 @@
 
 <body>
 
-    <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+    <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
 
     <header class="alignHeader">
         <h2 class="workoutHeader">No New Workouts</h2>
@@ -23,6 +23,10 @@
     <div id="viewExercise-buttons">
         <a href="/client/diary/"><button class="btn btn-primary btn-xl">Workout Diary</button></a>
     </div>
+
+    <br><br><br><br>
+
+    <footer th:replace="fragments/Footer::Footer"></footer>
 
 </body>
 
