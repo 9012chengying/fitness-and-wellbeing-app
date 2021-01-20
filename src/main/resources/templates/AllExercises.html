@@ -6,8 +6,9 @@
 <head th:replace="fragments/Head::Head"> </head>
 
     <body class="exercise-body">
-    <div th:replace="fragments/Navbar-Pt::PTnavbar"></div>
-<!--    <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>-->
+<div id="container">
+<!--    <div th:replace="fragments/Navbar-Pt::PTnavbar"></div>-->
+    <nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
 
     <!--Page heading-->
     <header class="exercise-header">
@@ -58,8 +59,7 @@
 
 
     <!-- add a footer to contain about us and contact us links-->
-    <footer>
-        <p>&copy Phyt App ltd</p>
-    </footer>
+    <footer th:replace="fragments/Footer :: Footer"> </footer>
+</div>
     </body>
 </html>
