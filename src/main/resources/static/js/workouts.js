@@ -27,11 +27,10 @@ function timer() {
     let stopButton = document.getElementById("stopButton");
     let resetButton = document.getElementById("resetButton");
     let instruction = document.getElementById("instruction");
-    let thumbnail = document.getElementById("thumbnail");
+    let thumbnail = document.getElementById("timerThumbnail");
     let secondsSpan = document.getElementById("seconds");
     let exerciseArray = exerciseArrayData;
     let thumbnailArray = thumbnailArrayData;
-    let workoutLength = workoutLengthData;
 
     startButton.onclick = function() {
         console.log(exerciseCount + " is Exercise Count");
@@ -69,10 +68,15 @@ function timer() {
             setTimeout(changeToRepRest, 1000);
         } else if (exerciseIndex == exerciseCount && repIndex == repTotal) {
             clearInterval(interval);
-            instruction.innerHTML = "Workout Complete" //check working - change to modal maybe
-            secondsSpan.innerHTML = "Total Time was " + workoutLength;
+            secondsSpan.innerHTML = "Workout Complete"; //check working - change to modal maybe
+            $("#timerHeader").css("visibility","hidden");
+            $("#stopButton").css("display","none");
+            $("#resetButton").css("display","none");
+            $("#timerThumbnail").css("display","none");
+            $("#instruction").css("display","none");
+            $(".workoutComplete").css("display","block");
             //automatically updates database to show completed
-            //sends message to trainer
+            //sends message to trainer and shows modal
         }
     }
 
@@ -95,18 +99,18 @@ function timer() {
 
     function changeToRepRest() {
         $("body").css("background","#fdfd96");
-        instruction.innerHTML = "Long Rest";
+        instruction.innerHTML = "Rest<br><br>Reps Completed: " + (repIndex - 1) + "<br>Reps To Go: " + (repTotal - repIndex + 1);
         thumbnail.src = "";
     }
 
-    resetButton.onclick = function() {
+    resetButton.onclick = function() { //doesn't work properly - need to fix
         clearInterval(interval);
         rest = true;
         start();
         interval = setInterval(countdownSeconds, 1000);
     }
 
-    stopButton.onclick = function() { //need to figure out how to get button to continue where it left off
+    stopButton.onclick = function() { //need to figure out how to get button to continue where it left off so it can be a pause button
         clearInterval(interval);
     }
 }
