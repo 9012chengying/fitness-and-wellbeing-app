@@ -13,22 +13,21 @@ function closeWin() {
 
 window.onload = function() {
 
-    //to be replaced with values from database
-    let seconds = 3;
-    let rest = true;
     let interval;
+    let rest = true;
+    let seconds = 3;
     let exerciseIndex = 0;
-    let exerciseCount = 4;
+    let exerciseCount = exerciseCount;
     let repIndex = 1;
-    let repTotal = 3;
-    let exerciseLength = 4;
-    let restLength = 3;
-    let repRest = 5;
+    let repTotal = reps;
+    let exerciseLength = exerciseLength;
+    let restLength = restLength;
+    let repRest = repRest;
     let startButton = document.getElementById("startButton");
     let stopButton = document.getElementById("stopButton");
     let resetButton = document.getElementById("resetButton");
-    let statusHeader = document.getElementById("statusHeader");
-    let secondsSpan = document.getElementById("sec");
+    let instruction = document.getElementById("instruction");
+    let secondsSpan = document.getElementById("seconds");
     let exerciseArrayList = ["exercise1", "exercise2", "exercise3", "exercise4"];
 
     startButton.onclick = function() {
@@ -52,18 +51,18 @@ window.onload = function() {
     }
 
     function start() {
-        $("body").css("background","yellow");
-        statusHeader.innerText = "Get Ready";
+        $("body").css("background","#fdfd96");
+        instruction.innerHTML = "Get Ready";
     }
 
     function countdownSeconds() {
         seconds -= 1;
-        secondsSpan.innerText = seconds;
+        secondsSpan.innerHTML = seconds;
         checkForStateChange();
     }
 
     function checkForStateChange() {
-        if (exerciseIndex < exerciseCount) { /*checks this for 1 second then switches to long rest on last one*/
+        if (exerciseIndex < exerciseCount) {
             if (seconds == 0 && rest == false) {
                 seconds = restLength + 1;
                 rest = true;
@@ -74,32 +73,33 @@ window.onload = function() {
                 rest = false;
                 setTimeout(changeToExercise, 1000);
             }
-        } else if (exerciseIndex == exerciseCount && repIndex < repTotal) {
+        } else if (seconds == 0 && exerciseIndex == exerciseCount && repIndex < repTotal) {
             seconds = repRest +1;
             rest = true;
             exerciseIndex = 0;
             repIndex += 1;
             setTimeout(changeToRepRest, 1000);
-        } else if (exerciseIndex == exerciseCount - 1 && repIndex == repTotal) {
+        } else if (exerciseIndex == exerciseCount && repIndex == repTotal) {
             clearInterval(interval);
-            //congratulations you've completed the workout message
+            instruction.innerHTML = "Workout Complete" //didn't change
+            secondsSpan.innerHTML = "Total Time was " + workoutLength;
             //automatically updates database to show completed
             //sends message to trainer
         }
     }
 
     function changeToRest() {
-        $("body").css("background","skyblue");
-        statusHeader.innerText = "Rest";
+        $("body").css("background","#63D1F4");
+        instruction.innerHTML = "Rest";
     }
 
     function changeToRepRest() {
-        $("body").css("background","yellow");
-        statusHeader.innerText = "Long Rest";
+        $("body").css("background","#fdfd96");
+        instruction.innerHTML = "Long Rest";
     }
 
     function changeToExercise() {
         $("body").css("background", "pink");
-        statusHeader.innerText = exerciseArrayList[exerciseIndex];
+        instruction.innerHTML = exerciseArrayList[exerciseIndex];
         }
 }

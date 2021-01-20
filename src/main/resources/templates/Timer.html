@@ -4,12 +4,13 @@
 <head th:replace="fragments/Head::Head"></head>
 
 <script th:inline="javascript">
-    let workoutLength = [[${workout.workoutLength}]] * 1000;
-    let exerciseCount = [[${workout.exerciseCount}]] * 1000;
-    let exerciseLength = [[${workout.exerciseLength}]] * 1000;
-    let restLength = [[${workout.restLength}]] * 1000;
-    let repRest = [[${workout.repRest}]] * 1000;
-    let reps = [[${workout.reps}]] * 1000;
+    let workoutLength = [[${workout.workoutLengthFormat}]];
+    let exerciseCount = [[${workout.exerciseCount}]];
+    let exerciseLength = [[${workout.exerciseLength}]];
+    let restLength = [[${workout.restLength}]];
+    let repRest = [[${workout.repRest}]];
+    let reps = [[${workout.reps}]];
+    let exerciseArray = 0;
 </script>
 
 <body>
@@ -18,9 +19,9 @@
 
 <header>Timer</header> <!--change header-->
 
-<div id="statusHeader"></div>
+<div id="instruction"></div>
 
-<div id="sec"></div>
+<div id="seconds"></div>
 
 <button id="startButton">Start</button>
 <button id="stopButton">Stop</button>
