@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+<body>
+        <nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+
+        <header>
+            <h1>Welcome,
+                <span th:text="${name}"></span> </h1>
+        </header>
+
+        <main>
+            <h2>Placeholder for Client Overview</h2>
+        </main>
+
+</body>
+<footer th:replace="fragments/Footer::Footer"> </footer>
+</html>

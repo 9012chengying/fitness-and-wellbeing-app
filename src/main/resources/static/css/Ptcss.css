@@ -1,17 +1,11 @@
-html{
-    padding: 0;
-}
-body{
+
+.ptHomepage{
     margin:0;
     padding: 0;
 
 }
-*{
-    box-sizing: border-box;
-}
 
-
-h1{
+.overviewTitle{
     text-align: center;
     font-size: 2.5rem;
 }
@@ -45,11 +39,10 @@ h1{
 
     list-style: none;
 }
-.nav-links li a{
+.ptimg img{
 
-    text-decoration: none;
-    color:white;
-    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
 }
 
@@ -139,23 +132,12 @@ content: '\f00d';
 
 
 
-.sec{
-   margin: auto;
 }
 img.pt-image{
-  justify-content: center;
-
     height: auto;
     border-radius: 50%;
 }
 
-footer{
-    min-height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 2rem 2.5rem;
-}
 div.ratings h2{
     font-size: 2.5rem;
 }
