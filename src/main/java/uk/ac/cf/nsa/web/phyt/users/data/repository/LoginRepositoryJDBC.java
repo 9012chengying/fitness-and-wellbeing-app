@@ -17,12 +17,6 @@ public class LoginRepositoryJDBC implements LoginRepository {
         jdbcTemplate = aTemplate;
     }
 
-//    public boolean registerUser(UserForm userForm){
-//        int rows = jdbcTemplate.update(
-//                "SELECT from t_user(username,password) values(?,?,?,?)" ,
-//                new Object[]{userForm.getUsername(), userForm.getPassword()});
-//        return rows>0;
-//    }
 
     @Override
     public TrainerDTO findByUserName(String username) {

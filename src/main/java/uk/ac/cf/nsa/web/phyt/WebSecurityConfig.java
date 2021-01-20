@@ -1,6 +1,7 @@
 package uk.ac.cf.nsa.web.phyt;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -8,6 +9,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import uk.ac.cf.nsa.web.phyt.users.service.UserService;
+
+import javax.sql.DataSource;
 
 
 @Configuration
@@ -15,15 +21,25 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    DataSource dataSource;
 
     //sets in memory authentication for trainer & user roles - temporary logins for demo purposes
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .inMemoryAuthentication()
-                .withUser("trainer2").password("{noop}password2").roles("TRAINER")
-                .and()
-                .withUser("client").password("{noop}password1").roles("USER");
+                  .jdbcAuthentication()
+                  .dataSource(dataSource);
+    //                .inMemoryAuthentication()
+//                .withUser("trainer2").password("{noop}password2").roles("TRAINER")
+//                .and()
+//                .withUser("client").password("{noop}password1").roles("USER");
+    }
+
+    //Only used for purposes of demo/prototype - should use a password encryption for security
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
     }
 
     //configure security on pages, login and logout
@@ -59,5 +75,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout=true");
 
     }
+
+
+
 
 }

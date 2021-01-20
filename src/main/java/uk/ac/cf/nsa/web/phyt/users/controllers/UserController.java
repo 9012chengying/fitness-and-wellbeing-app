@@ -75,6 +75,7 @@ public class UserController {
         //display different page depending on role
         if (role.equals("ROLE_TRAINER")){
             mav.addObject("info", loginRepository.findByUserName(name));
+            mav.addObject("username", name);
             mav.setViewName("PtHomePage");
         } else {
             mav.setViewName("User");
