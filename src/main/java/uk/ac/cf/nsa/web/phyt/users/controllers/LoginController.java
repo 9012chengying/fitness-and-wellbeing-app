@@ -14,6 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
+    @RequestMapping(path = "/trainer/viewclients" , method=RequestMethod.GET)
+    public String getviewclients() {
+        return "clients";
+    }
 
     //sets redirect to login page if user goes doesn't enter a specific route
     @RequestMapping(path = "/" , method=RequestMethod.GET)
