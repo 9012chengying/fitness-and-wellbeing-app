@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/Head::Head"> </head>
-<body>
+<body onload="selectExercises()">
 
     <nav th:replace="fragments/Navbar-Pt::PTnavbar"></nav>
 
@@ -17,14 +17,15 @@
         <div class="exerciseThumbnailNameBlock">
             <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
                 <img th:src="${exercise.thumbnailSrc}" th:alt="${exercise.thumbnailAlt}">
-                <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption><input type="checkbox" name="exerciseName" th:data-id="${exercise.exerciseID}">
-
+                <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
+                <button class="add btn btn-success" th:attr="data-id=${exercise.exerciseName}">Add</button>
+                <button class="remove btn btn-danger">Remove</button>
             </figure>
         </div>
 
-        <br>
+        <br><br>
 
-        <a href="/trainer/workout/create/details"><button class="btn btn-primary">Add Exercises To Workout</button></a>
+        <a href="/trainer/workout/create/details"><button id="addExercises" class="btn btn-primary">Add Exercises To Workout</button></a>
 
     </main>
 

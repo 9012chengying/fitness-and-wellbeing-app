@@ -33,7 +33,6 @@ function timer() {
     let thumbnailArray = thumbnailArrayData;
 
     startButton.onclick = function() {
-        console.log(exerciseCount + " is Exercise Count");
         rest = true;
         start();
         interval = setInterval(countdownSeconds, 1000);
@@ -114,3 +113,87 @@ function timer() {
         clearInterval(interval);
     }
 }
+
+//Create Workout
+
+function selectExercises() {
+
+    console.log("select exercises initiated");
+
+    let addButton = document.getElementsByClassName("add");
+    let removeButton = document.getElementsByClassName("remove");
+    // let exerciseIDs = [];
+    // let rmExerciseID = removeButton.getAttribute('data-id');
+
+    let allExerciseIDs = function() {
+        let exerciseID = this.getAttribute('data-id');
+        alert(exerciseID);
+    }
+
+    for (let i = 0; i < allExerciseIDs(); i++) {
+        exerciseID[i].addEventListener('click', allExerciseIDs(), false);
+    }
+
+    addButton.addEventListener('click', function() {
+        console.log("add button initialised");
+
+        // console.log("data id is " + addExerciseID);
+        // exerciseIDs.push(5);
+        // console.log(exerciseIDs);
+        $("#add").css("display", "none");
+        $("#remove").css("display", "block");
+    });
+
+    removeButton.addEventListener('click', function() {
+        console.log("remove button initialised");
+            $("#add").css("display", "block");
+            $("#remove").css("display", "none");
+    });
+}
+
+/*function selectExercises() {
+
+    let exerciseIDs = [];
+    let addExercisesButton = document.getElementById("addExercises");
+    let exerciseCheckbox = document.getElementsByClassName("exerciseCheckbox");
+    let exerciseID = document.getElementById("exerciseID");
+    console.log(exerciseID);
+
+    addExercisesButton.onclick = function() {
+        if (exerciseCheckbox.checked) {
+            exerciseIDs.push(exerciseID);
+            console.log(exerciseIDs);
+        }
+    }
+
+
+}*/
+
+/*document.getElementById("exerciseCheckbox").onclick = function() {
+    if (this.checked) {
+
+    }
+}
+*/
+/*function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    let data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+
+$('#drag1').draggable();
+$( "#div1" ).droppable({
+    drop: function( event, ui ) {
+        $( this )
+            .addClass( "isDropped" )
+            .html( "Dropped!" );
+    }
+});*/
