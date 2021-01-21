@@ -115,7 +115,7 @@
 }
 
 #timerThumbnail {
-    border-radius: 20px; /*why isn't this working*/
+    border-radius: 12px; /*why isn't this working*/
     object-fit: contain;
     max-width: 100%;
     max-height: 100%;
@@ -124,14 +124,20 @@
     display: block;
 }
 
+.timerButtons {
+    text-align: center;
+}
+
 .timerButtons button {
     text-align: center;
     font-size: 3vh;
-}
-
-#stopButton, #resetButton {
+    width: 30vw;
     display: none;
     margin: 2vh 2vw;
+}
+
+#startButton {
+    display: inline-block;
 }
 
 .workoutComplete {
