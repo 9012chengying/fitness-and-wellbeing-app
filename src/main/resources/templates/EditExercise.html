@@ -16,7 +16,10 @@
 
     <!-- Main input form -->
     <main id="exercise-main">
-        <form id="exerciseForm" th:action="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}" th:object="${ExerciseForm}" method="post">
+        <form id="exerciseForm" th:action="@{/trainer/exercises/edit}" th:object="${ExerciseForm}" method="post">
+            <div class="exercise-input hide">
+                <input class="hide" id="exerciseID" name="exerciseID" type="text" th:value="${exercise.exerciseID}">
+            </div>
             <div class="exercise-input">
                 <label for="exerciseName">Exercise Name: </label>
                 <input id="exerciseName" name="exerciseName" type="text" th:value="${exercise.exerciseName}">
