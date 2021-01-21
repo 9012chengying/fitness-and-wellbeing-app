@@ -25,6 +25,7 @@ public class UserController {
     //Route for registering a Trainer to the app
     @RequestMapping(path = "/register/user", method = RequestMethod.POST)
     public String trainerAdd(UserForm userForm) {
+        //Create user object by checking userForm username details against database
         UserDTO user = userService.getUserInfo(userForm);
         if (user != null) {
             return "failRegister";

@@ -22,15 +22,15 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
 
     public boolean registerUser(UserForm userForm){
         int rows = jdbcTemplate.update(
-                "insert into user(user_name,user_password,first_name,last_name,email, user_role) values(?,?,?,?,?,?)",
+                "insert into user (user_name,user_password,first_name,last_name,email, user_role) values(?,?,?,?,?,?)",
                 new Object[]{userForm.getUsername(), userForm.getPassword(), userForm.getFirstname(),userForm.getLastname(), userForm.getEmail(), userForm.getRole()});
         return rows>0;
     }
 
     @Override
     public UserDTO getUserInfo(String username) {
-        String sql="SELECT id, user_name,user_password,first_name,last_name, email FROM user where user_name = ?";
-        List<UserDTO> list = jdbcTemplate.query(sql,new Object[]{username}, new RegisterMapper());
+        String sql="SELECT * FROM user where user_name = ?";
+        List<UserDTO> list = jdbcTemplate.query(sql, new RegisterMapper(), new Object[]{username});
         if (list!=null&&list.size()!=0){
             return list.get(0);
         }

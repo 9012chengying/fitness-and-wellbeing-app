@@ -1,22 +1,15 @@
 package uk.ac.cf.nsa.web.phyt.users.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import uk.ac.cf.nsa.web.phyt.users.data.DTO.Authorities;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.data.repository.RegisterRepository;
-import uk.ac.cf.nsa.web.phyt.users.data.repository.UserPrincipal;
 import uk.ac.cf.nsa.web.phyt.users.data.repository.UserRepository;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
-
-import java.util.Collection;
-import java.util.Collections;
 
 @Service
 public class UserService {
