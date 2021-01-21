@@ -12,7 +12,7 @@ function closeWin() {
 //Timer
 
 function timer() {
-    console.log("timer initiated");
+
     let interval;
     let rest = true;
     let seconds = 3;
