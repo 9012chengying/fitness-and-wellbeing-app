@@ -70,8 +70,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Access to routes starting /trainer  - For TRAINERS only.
         http.authorizeRequests().antMatchers("/trainer/**").access("hasRole('ROLE_TRAINER')");
 
-        //Access to routes starting /client - For USER only
+        //Access to routes starting /client - For CLIENT only
         http.authorizeRequests().antMatchers("/client/**").access("hasRole('ROLE_CLIENT')");
+
+        //Access to routes starting /admin - For ADMIN only
+        http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
 
         // Config for Login Form
         http.authorizeRequests().and().formLogin()

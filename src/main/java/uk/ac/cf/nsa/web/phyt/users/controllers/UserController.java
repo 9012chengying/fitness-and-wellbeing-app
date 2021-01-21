@@ -15,8 +15,13 @@ import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 @Controller
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
+
 
     @RequestMapping(path="/register", method=RequestMethod.GET)
     public String trainerRegister() {
@@ -71,32 +76,4 @@ public class UserController {
             return mav;
         }
     }
-
-    //    @RequestMapping(path = "/update/user")
-//    public String trainerUpdate(UserForm userForm) {
-//        registerRepository.updateUser(userForm);
-//        return "redirect:/register/info/"+userForm.getUsername();
-//    }
-
-//    @RequestMapping(path="/register/info/{username}")
-//    public ModelAndView trainerInfo(@PathVariable("username") String username) {
-//        ModelAndView mav = new ModelAndView();
-//        mav.addObject("info", registerRepository.getUserInfo(username));
-//        mav.setViewName("PtHomePage");
-//        return mav;
-//    }
-//
-//    @RequestMapping(path="/update/info")
-//    public ModelAndView trainerUpdateInfo(String username) {
-//        ModelAndView mav = new ModelAndView();
-//        mav.addObject("info", registerRepository.getUserInfo(username));
-//        mav.setViewName("update");
-//        return mav;
-//    }
-//
-//    @RequestMapping(path = "/user/delete")
-//    public String deleteUser(String username) {
-//        boolean success= registerRepository.deleteUser(username);
-//            return "redirect:/register";
-//    }
 }
