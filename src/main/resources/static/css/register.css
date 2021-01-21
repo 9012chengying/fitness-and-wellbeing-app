@@ -16,18 +16,11 @@
 }
 
 .register-message{
+    margin: 0;
+    padding: 0 0.5rem 0.5rem 0.5rem;
     color: red;
     font-size: 1.6rem;
     text-align: left;
-}
-
-.form-horizontal .form-group {
-    margin-right: -15px;
-    margin-left: -15px
-}
-
-.form-group {
-    margin-bottom: 15px
 }
 
 :after, :before {
@@ -63,7 +56,7 @@
     display: none
 }
 
-.btn {
+.btn-register {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -71,28 +64,12 @@
     font-weight: 400;
     line-height: 1.42857143;
     border: 1px solid transparent;
-    border-radius: 4px
-}
-
-.btn-primary {
+    border-radius: 4px;
     color: #fff;
     background-color: #337ab7;
-    border-color: #2e6da4
-}
-
-.btn-block {
+    border-color: #2e6da4;
     display: block;
-    width: 100%
-}
-
-.btn {
-    border-radius: 3px
-}
-
-.btn-primary {
-    background-color: #1ab394;
-    border-color: #1ab394;
-    color: #fff
+    width: 100%;
 }
 
 button, html input[type=button], input[type=reset], input[type=submit] {

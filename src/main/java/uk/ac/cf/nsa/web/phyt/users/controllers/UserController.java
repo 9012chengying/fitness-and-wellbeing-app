@@ -2,6 +2,7 @@ package uk.ac.cf.nsa.web.phyt.users.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,18 +18,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(path="/register")
+    @RequestMapping(path="/register", method=RequestMethod.GET)
     public String trainerRegister() {
         return "register";
     }
 
     //Route for registering a Trainer to the app
-    @RequestMapping(path = "/register/user", method = RequestMethod.POST)
-    public String trainerAdd(UserForm userForm) {
+    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    public String trainerAdd(UserForm userForm, Model model) {
         //Create user object by checking userForm username details against database
         UserDTO user = userService.getUserInfo(userForm);
         if (user != null) {
-            return "failRegister";
+            model.addAttribute("registerMessage", "Username already taken");
+            return "register";
         } else {
             userForm.setRole("Trainer");
             if (!userService.setUpNewTrainer(userForm)) {

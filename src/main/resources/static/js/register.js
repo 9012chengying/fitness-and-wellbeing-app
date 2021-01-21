@@ -15,7 +15,7 @@ function showImg(obj) {
     }
 }
 function isEmail(str) {
-    var reg = /^[a-zA-Z0-9_-]{6,}@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    var reg = /^[a-zA-Z0-9_-]{1,}@[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+$/;
     return reg.test(str);
 }
 function register() {
