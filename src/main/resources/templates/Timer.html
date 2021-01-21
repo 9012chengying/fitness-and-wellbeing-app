@@ -3,13 +3,49 @@
 
 <head th:replace="fragments/Head::Head"></head>
 
-<body>
+<script th:inline="javascript">
+    let exerciseCountData = [[${workout.exerciseCount}]];
+    let exerciseLengthData = [[${workout.exerciseLength}]];
+    let restLengthData = [[${workout.restLength}]];
+    let repRestData = [[${workout.repRest}]];
+    let repsData = [[${workout.reps}]];
+    let exerciseArrayData = [[${exercises}]];
+    let thumbnailArrayData = [[${thumbnails}]];
+</script>
 
-<nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+<body onload="timer()" id="timerBody">
 
-<header>
-    <h3>Timer</h3>
-</header>
+    <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
+
+    <header id="timerHeader">Timer</header>
+
+    <div id="seconds"></div>
+
+    <br>
+
+    <div id="instruction"></div>
+
+    <div class="thumbnailContainer">
+        <img id="timerThumbnail" src="">
+
+        <div class="workoutComplete">
+            <span>Total Time: <span th:text="${workout.workoutLengthFormat}"></span></span>
+            <br><br>
+            <a href="/client/diary/"><button id="diaryButton" class="btn btn-primary">Workout Diary</button></a>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="timerButtons">
+        <button id="startButton" class="btn btn-success">Start</button>
+        <button id="stopButton" class="btn btn-danger">Stop</button>
+        <button id="resetButton" class="btn btn-warning">Reset</button>
+    </div>
+
+    <br><br><br>
+
+    <footer th:replace="fragments/Footer::Footer"></footer>
 
 </body>
 </html>

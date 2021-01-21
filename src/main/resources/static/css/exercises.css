@@ -147,7 +147,7 @@
         justify-self: flex-end;
     }
 
-    .create-exercise-buttons{
+    .create-exercise-buttons, .edit-exercise-buttons{
         display: flex;
         justify-content: center;
     }
@@ -325,7 +325,7 @@
         }
 
         @media only screen and (max-width: 650px){
-            .create-exercise-buttons{
+            .create-exercise-buttons, .edit-exercise-buttons{
                 display: flex;
                 justify-content: space-around;
             }
