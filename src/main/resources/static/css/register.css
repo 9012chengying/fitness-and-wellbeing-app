@@ -1,80 +1,26 @@
-
-body {
-    margin: 0
-}
-
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: #fff
-}
-
-h1 {
-    margin: .67em 0;
-    font-size: 2em
-}
-
-h1 {
-    font-size: 36px
-}
-
-h1, h2, h3 {
-    margin-top: 20px;
-    margin-bottom: 10px
-}
-
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.1;
-    color: inherit
-}
-
-button, input, optgroup, select, textarea {
-    margin: 0;
-    font: inherit;
-    color: inherit
-}
-
-button, input, select, textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit
+.trainer-register-form {
+    width: 90%;
+    margin: auto;
 }
 
 #loginbox {
     margin: 0 auto;
     padding-top: 60px;
-    width: 400px;
+    width: 100%;
     text-align: center
 }
 
 #loginbox .logo-name {
     width: 100%;
     height: 60px;
-
 }
 
-h3 {
-    font-weight: 600;
-    font-size: 16px
-}
-
-.form-horizontal .form-group {
-    margin-right: -15px;
-    margin-left: -15px
-}
-
-.form-group {
-    margin-bottom: 15px
+.register-message{
+    margin: 0;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    color: red;
+    font-size: 1.6rem;
+    text-align: left;
 }
 
 :after, :before {
@@ -110,7 +56,7 @@ h3 {
     display: none
 }
 
-.btn {
+.btn-register {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -118,28 +64,12 @@ h3 {
     font-weight: 400;
     line-height: 1.42857143;
     border: 1px solid transparent;
-    border-radius: 4px
-}
-
-.btn-primary {
+    border-radius: 4px;
     color: #fff;
     background-color: #337ab7;
-    border-color: #2e6da4
-}
-
-.btn-block {
+    border-color: #2e6da4;
     display: block;
-    width: 100%
-}
-
-.btn {
-    border-radius: 3px
-}
-
-.btn-primary {
-    background-color: #1ab394;
-    border-color: #1ab394;
-    color: #fff
+    width: 100%;
 }
 
 button, html input[type=button], input[type=reset], input[type=submit] {
@@ -192,6 +122,4 @@ p {
 .form-control:focus {
     border-color: #1ab394
 }
-
-
 

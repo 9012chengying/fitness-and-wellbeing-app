@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
+import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 import uk.ac.cf.nsa.web.phyt.workouts.repository.WorkoutRepository;
 
 @Controller
@@ -13,16 +15,20 @@ import uk.ac.cf.nsa.web.phyt.workouts.repository.WorkoutRepository;
 public class DiaryController {
 
     private WorkoutRepository workoutRepository;
+    private UserService userService;
 
     @Autowired
-    public DiaryController(WorkoutRepository pRepo) {
-        workoutRepository = pRepo;
+    public DiaryController(WorkoutRepository workoutRepository, UserService userService) {
+        this.workoutRepository = workoutRepository;
+        this.userService = userService;
     }
 
     @GetMapping(path="")
-    public ModelAndView viewDiary(/*@RequestParam (value="clientID", defaultValue="null") int intClientID*/) {
+    public ModelAndView viewDiary() {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("workouts", workoutRepository.clientWorkoutDiary(2));
+        UserEntity currentUser = userService.authenticateUser();
+        int userID = currentUser.getUserId();
+        mav.addObject("workouts", workoutRepository.clientWorkoutDiary(userID));
         mav.setViewName("ClientDiary");
         return mav;
     }

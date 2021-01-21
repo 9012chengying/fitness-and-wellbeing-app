@@ -1,11 +1,11 @@
-package uk.ac.cf.nsa.web.phyt.repository;
+package uk.ac.cf.nsa.web.phyt.users.data.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.DTO.UserEntity;
-import uk.ac.cf.nsa.web.phyt.forms.UserForm;
-import uk.ac.cf.nsa.web.phyt.model.RegisterMapper;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
+import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
+import uk.ac.cf.nsa.web.phyt.users.data.mapper.RegisterMapper;
 
 import java.util.List;
 
@@ -22,15 +22,15 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
 
     public boolean registerUser(UserForm userForm){
         int rows = jdbcTemplate.update(
-                "insert into user(user_name,user_password,first_name,last_name,email) values(?,?,?,?,?)" ,
-                new Object[]{userForm.getUsername(), userForm.getPassword(), userForm.getFirstname(),userForm.getLastname(), userForm.getEmail()});
+                "insert into user (user_name,user_password,first_name,last_name,email, user_role) values(?,?,?,?,?,?)",
+                new Object[]{userForm.getUsername(), userForm.getPassword(), userForm.getFirstname(),userForm.getLastname(), userForm.getEmail(), userForm.getRole()});
         return rows>0;
     }
 
     @Override
-    public UserEntity getUserInfo(String username) {
-        String sql="SELECT id, user_name,user_password,first_name,last_name, email FROM user where user_name = ?";
-        List<UserEntity> list = jdbcTemplate.query(sql,new Object[]{username}, new RegisterMapper());
+    public UserDTO getUserInfo(String username) {
+        String sql="SELECT * FROM user where user_name = ?";
+        List<UserDTO> list = jdbcTemplate.query(sql, new RegisterMapper(), new Object[]{username});
         if (list!=null&&list.size()!=0){
             return list.get(0);
         }

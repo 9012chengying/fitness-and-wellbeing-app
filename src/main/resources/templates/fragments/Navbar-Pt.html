@@ -18,11 +18,11 @@
         <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
         <h1 id="NAVtitle">PHYT</h1>
         <ul class="menu">
-            <li class="homes"><a href="#" ><i class="fas fa-home active"></i>Home</a></li>
-            <li><a th:href="@{/trainer/exercises/add}"><i class="fas fa-dumbbell"></i>Create a workout</a></li>
+            <li class="homes"><a th:href="@{/home}"><i class="fas fa-home active"></i>Home</a></li>
+            <li><a th:href="@{/trainer/workout/create}"><i class="fas fa-dumbbell"></i>Create a workout</a></li>
             <li><a th:href="@{/trainer/exercises/all}"><i class="fas fa-book"></i>Exercise library</a></li>
             <li><a href="#"><i class="fas fa-users"></i>View Clients </a></li>
-            <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>
+            <li><a th:href="@{/trainer/update/info}"><i class="fas fa-user-cog"></i>Your Account </a></li>
             <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
 
         </ul>

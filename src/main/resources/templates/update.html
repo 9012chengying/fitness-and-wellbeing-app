@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr"
       xmlns:th="http://www.Thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/7d6ca13c9a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/Ptcss.css">
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script src="/js/PTJS.js"></script>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
-    <title>PT Homepage</title>
-</head>
+<head th:replace="fragments/Head::Head"> </head>
 <body>
 <!--Top navigation-->
 <a href="#" class="toggle-btn">
@@ -60,19 +49,19 @@
         </div>
         <div class="col-md-6 info">
             <h1 >Overview</h1>
-            <form action="/update/user" class="form-horizontal" method="post" onsubmit="return update();">
+            <form action="/trainer/update/user" class="form-horizontal" method="post" onsubmit="return update();">
                 <strong>About: </strong> <p>Personal trainer </p>
                 <strong>User Name: </strong>
                 <div class="form-group">
-               <input id="username" name="username" th:value="${info.username}" readonly/>
+               <input id="username" name="username" th:value="${info.userName}" readonly/>
                 </div>
                 <strong>Firstname: </strong>
                 <div class="form-group">
-                    <input  id="firstname" name="firstname" placeholder="firstname" autocomplete="off" th:value="${info.firstname}"/>
+                    <input  id="firstname" name="firstname" placeholder="firstname" autocomplete="off" th:value="${info.firstName}"/>
                 </div>
                 <strong>Lastname: </strong>
                 <div class="form-group">
-                    <input  id="lastname" name="lastname" placeholder="lastname" autocomplete="off" th:value="${info.lastname}"/>
+                    <input  id="lastname" name="lastname" placeholder="lastname" autocomplete="off" th:value="${info.lastName}"/>
                 </div>
                 <strong>Email: </strong>
                 <div class="form-group">
@@ -115,8 +104,5 @@
 
 </section>
 <!-- add a footer to contain about us and contact us links-->
-<footer>
-    <p>&copy Phyt App ltd</p>
-</footer>
 </body>
 </html>

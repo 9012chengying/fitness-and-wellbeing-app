@@ -1,12 +1,15 @@
 package uk.ac.cf.nsa.web.phyt.exerciseTests;
 
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
+
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,18 +20,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ExerciseManagementServiceTests {
 
+    private static ExerciseForm testExerciseForm;
+    private static Exercise testExercise;
 
     @Autowired
     private ExerciseManagementService exerciseManagementService;
 
 
+    @BeforeAll
+    public static void before() {
+        testExercise = new Exercise();
+        testExerciseForm = new ExerciseForm();
+    }
+
     @Test
     public void createNewExerciseTest() {
 
-        ExerciseForm testExerciseForm;
 
         //Create an exercise
-        testExerciseForm = new ExerciseForm();
         testExerciseForm.setExerciseName("Alternate Leg Lunges");
         testExerciseForm.setExerciseDesc("Description of lunges");
         testExerciseForm.setExerciseCat("Lower body");
@@ -45,8 +54,6 @@ public class ExerciseManagementServiceTests {
     @Test
     public void viewExerciseTest() {
 
-        Exercise testExercise;
-
         //assign output from viewExercise with exercise ID = 1 , to testExercise object
         testExercise = exerciseManagementService.viewExercise("1");
 
@@ -62,7 +69,7 @@ public class ExerciseManagementServiceTests {
         List<Exercise> testList;
 
         //assign output from listAllExercises to new list
-        testList = exerciseManagementService.listAllExercises();
+        testList = exerciseManagementService.listAllExercises(1);
 
         //verify that the list is not empty
         assertNotNull(testList);
@@ -74,8 +81,8 @@ public class ExerciseManagementServiceTests {
         //create a new exercise test list
         List<Exercise> testListByCat;
 
-        //assign output from listExercisesByCategory to test lista
-        testListByCat = exerciseManagementService.listExercisesByCategory("Cardio");
+        //assign output from listExercisesByCategory to test list
+        testListByCat = exerciseManagementService.listExercisesByCategory("Cardio", 1);
 
         //verify list not empty
         assertNotNull(testListByCat);
@@ -92,11 +99,9 @@ public class ExerciseManagementServiceTests {
     public void editExercise (){
 
         //Get existing exercise information use existing viewExercise method
-        Exercise testExercise = new Exercise();
         testExercise = exerciseManagementService.viewExercise("5");
 
         //Use testExercise to populate ExerciseForm
-        ExerciseForm testExerciseForm = new ExerciseForm();
         testExerciseForm.setExerciseID(testExercise.getExerciseID());
         testExerciseForm.setExerciseName(testExercise.getExerciseName());
         testExerciseForm.setExerciseDesc(testExercise.getExerciseDesc());

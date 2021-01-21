@@ -28,8 +28,8 @@ public class ExerciseManagementService {
     }
 
     //Return a list of all exercises for a Trainer
-    public List<Exercise> listAllExercises() {
-        List<Exercise> allExercises = exerciseRepo.getAllExercises();
+    public List<Exercise> listAllExercises(int userID) {
+        List<Exercise> allExercises = exerciseRepo.getAllExercises(userID);
 
         for (int i=0; i<allExercises.size(); i++){
             Exercise exercise = allExercises.get(i);
@@ -40,12 +40,12 @@ public class ExerciseManagementService {
     }
 
     //Return list of exercises based on category
-    public List<Exercise> listExercisesByCategory(String exerciseCat) {
+    public List<Exercise> listExercisesByCategory(String exerciseCat, int userID) {
         //if category selection is ALL then return list of all exercises otherwise filter
         if (exerciseCat.equals("All")) {
-            return listAllExercises();
+            return listAllExercises(userID);
         } else {
-            List<Exercise> allExercises = exerciseRepo.getExercisesByCategory(exerciseCat);
+            List<Exercise> allExercises = exerciseRepo.getExercisesByCategory(exerciseCat, userID);
             for (int i=0; i<allExercises.size(); i++){
                 Exercise exercise = allExercises.get(i);
                 Timestamp createdDate = exercise.getCreatedDate();
