@@ -11,6 +11,10 @@
     border-bottom: #007bff solid 0.5rem;;
 }
 
+.centreContainer, .centerText {
+    text-align: center;
+}
+
 /*ClientDiary*/
 
 #workoutSummary {
@@ -41,10 +45,6 @@
 }
 
 /*Client Workout Preview*/
-
-.workoutPreview, .centerText {
-    text-align: center;
-}
 
 .exerciseThumbnailNameBlock {
     display: inline-block;

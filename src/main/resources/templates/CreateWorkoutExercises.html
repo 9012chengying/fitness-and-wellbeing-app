@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+<body>
+
+    <nav th:replace="fragments/Navbar-Pt::PTnavbar"></nav>
+
+    <header class="alignHeader">
+        <h2 class="workoutHeader">My Workout Diary</h2>
+    </header>
+
+    <main class="centreContainer">
+
+        <div class="exerciseThumbnailNameBlock">
+            <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
+                <img th:src="${exercise.thumbnailSrc}" th:alt="${exercise.thumbnailAlt}">
+                <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption><input type="checkbox" name="exerciseName" th:data-id="${exercise.exerciseID}">
+
+            </figure>
+        </div>
+
+        <br>
+
+        <a href="/trainer/workout/create/details"><button class="btn btn-primary">Add Exercises To Workout</button></a>
+
+    </main>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.workouts.repository;
+package uk.ac.cf.nsa.web.phyt.client.repository;
 
 import java.util.List;
 

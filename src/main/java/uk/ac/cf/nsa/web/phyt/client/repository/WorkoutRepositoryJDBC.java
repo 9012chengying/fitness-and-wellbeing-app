@@ -1,11 +1,11 @@
-package uk.ac.cf.nsa.web.phyt.workouts.repository;
+package uk.ac.cf.nsa.web.phyt.client.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.workouts.DTO.*;
-import uk.ac.cf.nsa.web.phyt.workouts.model.*;
+import uk.ac.cf.nsa.web.phyt.client.DTO.*;
+import uk.ac.cf.nsa.web.phyt.client.model.*;
 
 import java.util.ArrayList;
 import java.util.List;

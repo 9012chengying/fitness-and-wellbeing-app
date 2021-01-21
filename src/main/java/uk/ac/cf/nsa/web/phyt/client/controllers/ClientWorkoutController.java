@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.workouts.controllers;
+package uk.ac.cf.nsa.web.phyt.client.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.cf.nsa.web.phyt.workouts.repository.WorkoutRepository;
+import uk.ac.cf.nsa.web.phyt.client.repository.WorkoutRepository;
 
 @Controller
 @RequestMapping(path="/client/workout")
-public class WorkoutController {
+public class ClientWorkoutController {
     private WorkoutRepository workoutRepository;
 
     @Autowired
-    public WorkoutController(WorkoutRepository pRepo) {
+    public ClientWorkoutController(WorkoutRepository pRepo) {
         workoutRepository = pRepo;
     }
 
