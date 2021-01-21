@@ -64,13 +64,18 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
                 "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
                         "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
                 new ExerciseWorkoutMapper(), workoutID);
-        for(int i = 0; i < exerciseWorkoutDTO.size() ; i++) {
-            categoryArray.add(exerciseWorkoutDTO.get(i).getExerciseCategory());
+        int categoryCount = exerciseWorkoutDTO.size();
+        if (categoryCount > 3) {
+            return "Full Body Workout";
+        } else {
+            for(int i = 0; i < categoryCount ; i++) {
+                categoryArray.add(exerciseWorkoutDTO.get(i).getExerciseCategory());
+            }
+            Set<String> set = new HashSet<>(categoryArray);
+            categoryArray.clear();
+            categoryArray.addAll(set);
+            return String.join(", ", categoryArray);
         }
-        Set<String> set = new HashSet<>(categoryArray);
-        categoryArray.clear();
-        categoryArray.addAll(set);
-        return String.join(", ", categoryArray);
     }
 
     //query for discovering workoutID for client's oldest incomplete workout
