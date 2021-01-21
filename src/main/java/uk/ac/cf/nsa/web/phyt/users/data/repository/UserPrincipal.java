@@ -8,6 +8,11 @@ import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 
 import java.util.*;
 
+// Code to set up UserPrincipal
+// adapted from linkedin Learning video - Spring:Security by Frank P Moley III 30-5-2018
+// accessed 20/01/20
+// https://www.linkedin.com/learning/spring-spring-security/authorization?u=76816418
+
 public class UserPrincipal implements UserDetails {
 
     final private UserEntity user;
@@ -61,3 +66,4 @@ public class UserPrincipal implements UserDetails {
         return this.user.getEnabled();
     }
 }
+//End of referenced code

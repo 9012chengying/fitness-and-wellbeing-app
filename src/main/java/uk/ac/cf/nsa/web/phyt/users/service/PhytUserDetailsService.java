@@ -12,6 +12,11 @@ import uk.ac.cf.nsa.web.phyt.users.data.repository.UserRepository;
 
 import java.util.List;
 
+// Code to set up UserDetailsService
+// adapted from linkedin Learning video - Spring:Security by Frank P Moley III 30-5-2018
+// accessed 20/01/20
+// https://www.linkedin.com/learning/spring-spring-security/authorization?u=76816418
+
 @Service
 public class PhytUserDetailsService implements UserDetailsService {
 
@@ -35,3 +40,5 @@ public class PhytUserDetailsService implements UserDetailsService {
         return new UserPrincipal(user, authorities);
     }
 }
+
+    //End of referenced code

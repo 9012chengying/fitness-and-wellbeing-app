@@ -22,6 +22,11 @@ import uk.ac.cf.nsa.web.phyt.users.service.PhytUserDetailsService;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    // Code to configure web security
+    // adapted from linkedin Learning video Spring:Security by Frank P Moley III 30-5-2018
+    // accessed 20/01/20
+    // https://www.linkedin.com/learning/spring-spring-security/authorization?u=76816418
+
     @Autowired
     PhytUserDetailsService phytUserDetailsService;
 
@@ -54,6 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+     // end of referenced code.
 
     //configure security on pages, login and logout
     @Override
@@ -76,7 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //Access to routes starting /admin - For ADMIN only
         http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
 
-        // Config for Login Form
+        // Config for Login Form - Code reuse & Altered from https://gitlab.cs.cf.ac.uk/scmimc/TakeawayMSc
         http.authorizeRequests().and().formLogin()
                 //Submit URL of login page.
                 .loginProcessingUrl("/phyt_security_check")
