@@ -31,7 +31,7 @@
         <div class="workoutComplete">
             <span>Total Time: <span th:text="${workout.workoutLengthFormat}"></span></span>
             <br><br>
-            <a href="/client/diary/"><button id="diaryButton" class="btn btn-primary">Workout Diary</button></a>
+            <form action="/client/workout/workoutComplete" method="post"><button type="submit" name="${workout.id}" id="endButton" class="btn btn-primary">Click if Workout Completed</button></form>
         </div>
     </div>
 

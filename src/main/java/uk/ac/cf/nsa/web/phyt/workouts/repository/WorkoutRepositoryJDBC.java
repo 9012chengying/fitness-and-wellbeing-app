@@ -110,4 +110,15 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
         }
         return thumbnailArray;
     }
+
+    @Override
+    public boolean workoutComplete(int workoutID) {
+        int rows = jdbcTemplate.update(
+            "UPDATE Workouts SET completed=true, completed_at=current_timestamp() WHERE workouts.id=?");
+        return rows > 0; //shouldn't be this
+    }
+
+    /*@Override
+    Arraylist for category names
+     */
 }

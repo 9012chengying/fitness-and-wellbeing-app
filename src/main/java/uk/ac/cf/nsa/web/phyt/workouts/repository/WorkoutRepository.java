@@ -12,5 +12,6 @@ public interface WorkoutRepository {
     public Object mediaByExerciseID(int exerciseID);
     public List<String> exerciseNameByWorkoutID(int workoutID);
     public List<String> exerciseThumbnailByWorkoutID(int workoutID);
+    public boolean workoutComplete(int workoutID);
 
 }
