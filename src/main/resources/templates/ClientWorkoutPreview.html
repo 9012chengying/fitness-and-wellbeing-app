@@ -18,8 +18,8 @@
             <div class="workoutDescription">
                 <span>Workout Length is <span class="font-weight-bold" th:text="${workout.workoutLengthFormat}"></span></span><br>
                 <span th:if="${workout.completed} == false">Set on <span class="font-weight-bold"  th:text="${workout.createdDate}"></span></span><br>
-                <span>Focus on <span class="exerciseCategoriesBlock" th:each="exercise: ${exercises}">
-                    <span class="exerciseCategory font-weight-bold" th:text="${exercise.exerciseCategory}"></span><span>, </span></span>
+                <span>Focus on <span class="exerciseCategoriesBlock">
+                    <span class="exerciseCategory font-weight-bold" th:text="${categories}"></span></span>
                 </span> <!--need to figure out how to combine all the categories but with no repeats and get rid of last comma-->
                 <br>
                 <span>Need <span class="font-weight-bold" th:text="${workout.equipment}"></span></span> <!--data is entered when building workout at the moment. Maybe find a way to link it to each exercise? Or check off options as opposed to manually entering-->

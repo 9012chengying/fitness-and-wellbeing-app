@@ -8,7 +8,9 @@ import uk.ac.cf.nsa.web.phyt.client.DTO.*;
 import uk.ac.cf.nsa.web.phyt.client.model.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public class WorkoutRepositoryJDBC implements WorkoutRepository {
@@ -53,6 +55,22 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
                 "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
                         "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
                 new ExerciseWorkoutMapper(), workoutID);
+    }
+
+    @Override
+    public String workoutCategories(int workoutID) {
+        ArrayList<String> categoryArray = new ArrayList<>();
+        List<ExerciseWorkoutDTO> exerciseWorkoutDTO = (List<ExerciseWorkoutDTO>) jdbcTemplate.query(
+                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
+                        "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
+                new ExerciseWorkoutMapper(), workoutID);
+        for(int i = 0; i < exerciseWorkoutDTO.size() ; i++) {
+            categoryArray.add(exerciseWorkoutDTO.get(i).getExerciseCategory());
+        }
+        Set<String> set = new HashSet<>(categoryArray);
+        categoryArray.clear();
+        categoryArray.addAll(set);
+        return String.join(", ", categoryArray);
     }
 
     //query for discovering workoutID for client's oldest incomplete workout

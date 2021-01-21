@@ -32,6 +32,7 @@ public class DiaryController {
         ModelAndView mav = new ModelAndView();
         mav.addObject("workout", workoutRepository.workoutOverview(workoutID));
         mav.addObject("exercises", workoutRepository.workoutExerciseDetails(workoutID));
+        mav.addObject("categories", workoutRepository.workoutCategories(workoutID));
         mav.setViewName("ClientWorkoutPreview");
         return mav;
     }
