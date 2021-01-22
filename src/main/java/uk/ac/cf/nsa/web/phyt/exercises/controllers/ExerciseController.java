@@ -5,15 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
-import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Video;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
-
-import java.util.List;
-
 
 @Controller
 @RequestMapping(path ="/trainer/exercises")
@@ -22,9 +17,7 @@ public class ExerciseController {
 
     //Use ExerciseManagementService methods to access appropriate data
     private final ExerciseManagementService exerciseService;
-
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public ExerciseController(ExerciseManagementService exerciseService, UserService userService) {
