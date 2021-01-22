@@ -144,6 +144,24 @@
     font-size: 3vh;
 }
 
+/*Create Workout Details*/
+
+#workoutDetailsForm {
+    font-size: 2vh;
+}
+
+#workoutDetailsForm label {
+    margin-left: 6vw;
+}
+
+#workoutDetailsForm select, #workoutDetailsForm input {
+    margin-left: 4vw;
+}
+
+#createWorkoutButton {
+    font-size: 2.5vh;
+}
+
 /*Create Workout Exercises*/
 
 .add {
