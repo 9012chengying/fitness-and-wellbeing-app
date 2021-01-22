@@ -30,10 +30,10 @@
         <div class="workoutComplete">
             <span>Total Time: <span th:text="${workout.workoutLengthFormat}"></span></span>
             <br><br>
-<!--            <form action="" method="post" th:action="@{/client/workout/workoutComplete}" th:object="${}">-->
-<!--                <input type="hidden" name="workoutID" th:field="*{workout.id}"></input>-->
-<!--                <button type="submit" name="" id="endButton" class="btn btn-primary">Click if Workout Completed</button>-->
-<!--            </form>-->
+            <form method="post" th:action="@{/client/workout/timer/complete}" th:object="${WorkoutForm}">
+                <input type="hidden" name="workoutID" th:value="${workout.id}">
+                <button type="submit" id="workoutCompleteButton" class="btn btn-primary">Confirm Workout Completed</button>
+            </form>
         </div>
     </div>
 

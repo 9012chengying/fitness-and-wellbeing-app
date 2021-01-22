@@ -5,6 +5,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.client.DTO.*;
+import uk.ac.cf.nsa.web.phyt.client.form.ClientWorkoutForm;
 import uk.ac.cf.nsa.web.phyt.client.model.*;
 
 import java.util.ArrayList;
@@ -135,13 +136,10 @@ public class ClientWorkoutRepositoryJDBC implements ClientWorkoutRepository {
     }
 
     @Override
-    public boolean workoutComplete(int workoutID) {
+    public boolean workoutComplete(ClientWorkoutForm clientWorkoutForm) {
         int rows = jdbcTemplate.update(
-            "UPDATE Workouts SET completed=true, completed_at=current_timestamp() WHERE workouts.id=?");
-        return rows > 0; //shouldn't be this
+            "UPDATE Workouts SET completed=true, completed_at=current_timestamp() WHERE workouts.id=?",
+                new Object[]{clientWorkoutForm.getWorkoutID()});
+        return rows > 0;
     }
-
-    /*@Override
-    Arraylist for category names
-     */
 }

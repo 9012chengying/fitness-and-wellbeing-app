@@ -2,11 +2,10 @@ package uk.ac.cf.nsa.web.phyt.client.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cf.nsa.web.phyt.client.form.ClientWorkoutForm;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 import uk.ac.cf.nsa.web.phyt.client.repository.ClientWorkoutRepository;
@@ -59,10 +58,16 @@ public class ClientWorkoutController {
         return mav;
     }
 
-    @RequestMapping(path="/workoutComplete", method=RequestMethod.POST) //should this be a rest controller returning a string?
-    public ModelAndView workoutComplete(@RequestParam(value="workoutID", defaultValue="null") int workoutID) {
+    @PostMapping(path="/timer/complete")
+    public ModelAndView workoutComplete(ClientWorkoutForm clientWorkoutForm) {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("Client");
+        System.out.println(clientWorkoutForm.getWorkoutID());
+        if (clientWorkoutRepository.workoutComplete(clientWorkoutForm)) {
+            mav.setViewName("User"); //return to home page
+        } else {
+            System.out.println("Workout not updated");
+            mav.setViewName("Timer");
+        }
         return mav;
     }
 }

@@ -26,7 +26,7 @@
                         <b th:if="${workout.completed} == true"><br>Completed</b>
                         <b th:if="${workout.completed} == false"><br>Due: <b th:text="${workout.dueDate}"></b></b>
                     </div>
-                    <div id="endButton" class="col-4">
+                    <div id="workoutButton" class="col-4">
                         <a th:href="@{/client/diary/workout(workoutID=${workout.id})}">
                             <button type="button" class="btn btn-primary" th:if="${workout.completed} == true">Workout Details</button>
                             <button type="button" class="btn btn-warning" th:if="${workout.completed} == false">New Workout</button>

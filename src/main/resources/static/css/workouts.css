@@ -38,7 +38,7 @@
     margin: auto;
 }
 
-#endButton button {
+#workoutButton {
     font-size: 1.3rem;
     padding: 1vh 1.8vw;
     margin: 1.5vh 1vw;
@@ -146,7 +146,7 @@
     font-size: 5vh;
 }
 
-#endButton {
+#workoutCompleteButton {
     font-size: 3vh;
 }
 

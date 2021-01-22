@@ -1,5 +1,7 @@
 package uk.ac.cf.nsa.web.phyt.client.repository;
 
+import uk.ac.cf.nsa.web.phyt.client.form.ClientWorkoutForm;
+
 import java.util.List;
 
 public interface ClientWorkoutRepository {
@@ -13,6 +15,6 @@ public interface ClientWorkoutRepository {
     public Object mediaByExerciseID(int exerciseID);
     public List<String> exerciseNameByWorkoutID(int workoutID);
     public List<String> exerciseThumbnailByWorkoutID(int workoutID);
-    public boolean workoutComplete(int workoutID);
+    public boolean workoutComplete(ClientWorkoutForm clientWorkoutForm);
 
 }
