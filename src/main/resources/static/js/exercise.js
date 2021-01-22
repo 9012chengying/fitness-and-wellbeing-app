@@ -1,3 +1,11 @@
+/*Create exercise
+Pop up Box for youtube information
+ */
+document.getElementById("youtube-popup-modal").addEventListener("click", openYouTubeModal);
+
+function openYouTubeModal(){
+    document.getElementById("youtube-popup-modal").style.display="block";
+}
 
 //VIEW EXERCISE PAGE
 //Function to display modal

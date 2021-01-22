@@ -18,6 +18,8 @@ public class ExerciseController {
 
     //Use ExerciseManagementService methods to access appropriate data
     private final ExerciseManagementService exerciseService;
+
+    @Autowired
     private UserService userService;
 
     @Autowired

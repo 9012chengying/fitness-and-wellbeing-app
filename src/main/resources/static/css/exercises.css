@@ -156,6 +156,36 @@
         justify-content: center;
     }
 
+    #exerciseVideo{
+        margin-bottom: 0;
+    }
+    .youtube-info {
+        padding: 0.1rem;
+        margin-bottom: 2rem;
+        height: auto;
+        width: 100%;
+    }
+    #youtube-popup{
+        background-color: white;
+        border: none;
+        text-decoration: underline;
+        width: 100%;
+        color: #007bff;
+        font-size: 1.3rem;
+        margin: 0.5rem 0 2rem 0;
+    }
+    #youtube-popup-modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 20%;
+        top: 30vh;
+        width:50%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
 
 /* ************************* */
     /* CSS FOR ViewExercise PAGE */
