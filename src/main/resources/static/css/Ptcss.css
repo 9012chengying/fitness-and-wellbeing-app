@@ -1,71 +1,33 @@
 
-.ptHomepage{
-    margin:0;
-    padding: 0;
-
-}
 
 .overviewTitle{
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
+    box-sizing: border-box;
 }
-
-
+.sec{
+    margin: auto;
+}
 .ptimg img{
 
     margin-left: auto;
     margin-right: auto;
     display: block;
+    border-radius: 50%;
+
 }
-
-
-
-.toggle-btn{
-    position: absolute;
-    /*top: .75rem;*/
-    right: 1rem;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    /*width: 30px;*/
-    /*height: 21px;*/
-}
-
-@media (max-width: 956px) {
-    .toggle-btn{
-        display: block;
-
-    }
-    body{
-        padding: 0;
-    }
-
-    .toggle-btn:before {
-
-        content: '\f0c9';
-        font-family: FontAwesome, serif;
-         color:white;
-
-    }
-
-    .toggle-btn.active:before{
-content: '\f00d';
-
-    }
-}
-
 img.pt-image{
     height: auto;
     border-radius: 50%;
 }
 
 div.ratings h2{
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 div.ratings a
 {
     color:#f1c40f;
-    font-size:2.5rem;
+    font-size:20px;
     align-content: flex-start;
 }
 div.ratings a:hover
@@ -73,19 +35,15 @@ div.ratings a:hover
     color: #f39c12;
     text-decoration:none;
 }
-div p{
-    margin: 20px;
-    font-size: 2.5rem;
+.info p{
+    font-size: 1rem;
     text-align: left;
 }
 div strong{
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 div.info{
-    font-size: 2.5rem;
+
     margin: 0;
     padding: 0;
 }
-
-
-

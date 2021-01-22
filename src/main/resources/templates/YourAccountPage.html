@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/Head::Head">
+    <meta charset="UTF-8">
+
+    <title>YourAccount</title>
+</head>
+
+<body class="accountedit">
+<nav th:replace="/fragments/Navbar-Pt::PTnavbar"></nav>
+
+<header class="DummyHeader">
+    <h2 class="AccountpageH2">Your Account</h2>
+</header>
+
+
+<hr>
+<section class="container">
+    <div class="row " id="get">
+       <div class="About col-md-6 text-center">
+
+        <form th:action="@{/trainer/PtPersonalInfo}"  th:object="${PersonalTrainer}" class="personalInfo" method="GET"  id="form1"  >
+            <h3>Personal information</h3>
+
+           <div class="input-group mb-3"><input type="text"   th:field="*{firstName}" class="form-control" placeholder="First Name" aria-label="First Name" required>
+        </div>
+           <div class="input-group mb-3"> <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" aria-label="Last Name" required>
+           </div>
+           <div class="input-group mb-3"><input type="email" th:field="*{email}"  class="form-control" placeholder="Email (e.g John@Outlook.com)" aria-label="Email" required>
+           </div>
+            <div class="input-group mb-3"><input type="text" th:field="*{username}"  class="form-control" placeholder="Username" aria-label="Username" required>
+            </div>
+            <div class="input-group mb-3"><input type="password" th:field="*{password}"  class="form-control" placeholder="Password" aria-label="Password" required>
+            </div>
+            <input type="submit" class="btn btn-warning" value="Save Changes" id="post1" />
+
+        </form>
+       </div>
+        <div class="col-md-6 text-center" id="general">
+
+            <form th:action="@{/trainer/PtGeneralInfo}" th:object="${Generalinfo}"  method="get" id="form2" class="formLabels">
+                <h3>General Information</h3>
+                <div class="form-group">
+                    <label for="Textarea1" >About you</label>
+                    <textarea class="form-control" id="Textarea1" rows="3" th:field="*{about}" required></textarea>
+                </div>
+
+                <div>
+                    <label for="qualification">Qualifications</label>
+                  <select id ="qualification" th:field="*{qualifications}" required>
+                      <option value="Level-2 Gym Instructor">Level-2 Gym Instructor</option>
+                      <option value="Level-3 Personal Trainer">Level-3 Personal Trainer</option>
+                  </select>
+                </div>
+                <div>
+                    <div class="input-group mb-3"><input type="text" th:field="*{location}"  class="form-control" placeholder="Location" aria-label="Location" required>
+                    </div>
+                </div>
+<div class="genBtn"><input type="submit" class="btn btn-warning" value="Save Changes"></div>
+            </form>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

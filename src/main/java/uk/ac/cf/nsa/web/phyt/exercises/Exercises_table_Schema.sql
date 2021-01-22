@@ -46,3 +46,14 @@ CREATE TABLE IF NOT EXISTS Media (
 		REFERENCES Exercises(id)
 		ON DELETE CASCADE	
 );
+
+CREATE TABLE IF NOT EXISTS PTInfo(
+    id int not null AUTO_INCREMENT primary key,
+    about TEXT,
+    qualifications varchar(200),
+    PT_location VARCHAR(200) NOT NULL,
+    Trainer_id INT NOT NULL,
+     FOREIGN KEY(Trainer_id)
+    REFERENCES user(id)
+    ON DELETE CASCADE
+);
