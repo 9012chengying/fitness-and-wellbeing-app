@@ -27,7 +27,7 @@ function timer() {
     let resetButton = document.getElementById("resetButton");
     let pauseButton = document.getElementById("pauseButton");
     let continueButton = document.getElementById("continueButton");
-    let skipButton = document.getElementById("skipButton");
+    let exitButton = document.getElementById("exitButton");
     let instruction = document.getElementById("instruction");
     let thumbnail = document.getElementById("timerThumbnail");
     let secondsSpan = document.getElementById("seconds");
@@ -44,7 +44,7 @@ function timer() {
         $("#startButton").css("display","none");
         $("#resetButton").css("display","inline-block");
         $("#pauseButton").css("display","inline-block");
-        $("#skipButton").css("display","inline-block");
+        $("#exitButton").css("display","inline-block");
     }
 
     function countdownSeconds() {
@@ -78,7 +78,7 @@ function timer() {
             $("#resetButton").css("display","none");
             $("#pauseButton").css("display","none");
             $("#continueButton").css("display","none");
-            $("#skipButton").css("display","none");
+            $("#exitButton").css("display","none");
             $("#timerThumbnail").css("display","none");
             $("#instruction").css("display","none");
             $(".workoutComplete").css("display","block");
@@ -112,7 +112,9 @@ function timer() {
 
     resetButton.onclick = function() {
         clearInterval(interval);
+        seconds = 3;
         startTimer();
+        $("#continueButton").css("display","none");
         thumbnail.src = "";
     }
 
@@ -128,7 +130,8 @@ function timer() {
         $("#continueButton").css("display","none");
     });
 
-    skipButton.addEventListener('click', function () {
-        seconds = 1;
+    exitButton.addEventListener('click', function () {
+        window.history.go(-1);
+        return false;
     })
 }
