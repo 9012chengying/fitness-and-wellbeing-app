@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.workouts.DTO.ClientDTO;
-
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
+import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
 import uk.ac.cf.nsa.web.phyt.workouts.repository.ClientRepository;
 
@@ -17,12 +18,13 @@ import uk.ac.cf.nsa.web.phyt.workouts.repository.ClientRepository;
 public class ClientController {
 
     private ClientRepository clientRepository;
+    private UserService userService;
 
     @Autowired
 
-
-    public ClientController(ClientRepository pRepo) {
+    public ClientController(ClientRepository pRepo,UserService userService) {
         clientRepository = pRepo;
+        this.userService = userService;
     }
 
 
@@ -30,8 +32,9 @@ public class ClientController {
     @RequestMapping(path = "/client/ClientAccountDetails")
     public ModelAndView clientInfo(String name) {
         ModelAndView mav = new ModelAndView();
-        name = "Ziyu Liu";
-        mav.addObject("info", clientRepository.getClientInfo(name));
+        UserEntity currentUser = userService.authenticateUser();
+        int userID = currentUser.getUserId();
+        mav.addObject("info", clientRepository.getClientInfo(userID));
         mav.setViewName("ClientAccountDetails");
         return mav;
     }

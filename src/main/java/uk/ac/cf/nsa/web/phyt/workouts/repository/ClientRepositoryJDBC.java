@@ -27,9 +27,9 @@ public class ClientRepositoryJDBC implements ClientRepository {
 
 
     @Override
-    public ClientDTO getClientInfo(String name) {
-        String sql="SELECT * FROM i_user where name = ?";
-        clientDTO = (ClientDTO)jdbcTemplate.queryForObject(sql, new ClientMapper(),new Object[]{name});
+    public ClientDTO getClientInfo(int id) {
+        String sql="SELECT * FROM i_user where user_id = ?";
+        clientDTO = (ClientDTO)jdbcTemplate.queryForObject(sql, new ClientMapper(),new Object[]{id});
         if (clientDTO!=null){
             return clientDTO;
         }

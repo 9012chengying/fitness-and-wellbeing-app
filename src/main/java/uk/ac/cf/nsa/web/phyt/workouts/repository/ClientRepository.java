@@ -5,7 +5,7 @@ import uk.ac.cf.nsa.web.phyt.workouts.DTO.ClientDTO;
 
 public interface ClientRepository {
 
-   ClientDTO getClientInfo(String name);
+   ClientDTO getClientInfo(int id);
 
    boolean updateClientInfo(ClientDTO clientDTO);
 }
