@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.workouts.DTO;
+package uk.ac.cf.nsa.web.phyt.client.DTO;
 
 public class ExerciseWorkoutDTO {
     private int workoutID;

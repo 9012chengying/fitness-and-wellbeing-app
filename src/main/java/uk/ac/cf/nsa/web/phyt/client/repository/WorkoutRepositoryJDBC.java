@@ -1,14 +1,16 @@
-package uk.ac.cf.nsa.web.phyt.workouts.repository;
+package uk.ac.cf.nsa.web.phyt.client.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.workouts.DTO.*;
-import uk.ac.cf.nsa.web.phyt.workouts.model.*;
+import uk.ac.cf.nsa.web.phyt.client.DTO.*;
+import uk.ac.cf.nsa.web.phyt.client.model.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public class WorkoutRepositoryJDBC implements WorkoutRepository {
@@ -53,6 +55,27 @@ public class WorkoutRepositoryJDBC implements WorkoutRepository {
                 "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
                         "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
                 new ExerciseWorkoutMapper(), workoutID);
+    }
+
+    @Override
+    public String workoutCategories(int workoutID) {
+        ArrayList<String> categoryArray = new ArrayList<>();
+        List<ExerciseWorkoutDTO> exerciseWorkoutDTO = (List<ExerciseWorkoutDTO>) jdbcTemplate.query(
+                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
+                        "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
+                new ExerciseWorkoutMapper(), workoutID);
+        int categoryCount = exerciseWorkoutDTO.size();
+        if (categoryCount > 3) {
+            return "Full Body Workout";
+        } else {
+            for(int i = 0; i < categoryCount ; i++) {
+                categoryArray.add(exerciseWorkoutDTO.get(i).getExerciseCategory());
+            }
+            Set<String> set = new HashSet<>(categoryArray);
+            categoryArray.clear();
+            categoryArray.addAll(set);
+            return String.join(", ", categoryArray);
+        }
     }
 
     //query for discovering workoutID for client's oldest incomplete workout
