@@ -1,0 +1,51 @@
+package uk.ac.cf.nsa.web.phyt.AllClients.Data.Repository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+import uk.ac.cf.nsa.web.phyt.AllClients.Data.DTO.Client;
+import uk.ac.cf.nsa.web.phyt.AllClients.Data.Mapper.AllClientsMapper;
+
+import java.util.List;
+
+@Repository
+public class ViewClientsRepoJdbc implements ViewClientsRepo {
+
+private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public ViewClientsRepoJdbc(JdbcTemplate myTemplate) {
+        this.jdbcTemplate = myTemplate;
+    }
+
+
+   @Override
+   public List<Client> GetAllClients(){
+       return jdbcTemplate.query (
+               "", new AllClientsMapper()
+       );
+    }
+
+
+}
+
+
+
+//
+//select users.trainer_id,users.first_name,users.last_name,workouts.completed_at
+//        from users inner join workouts on users.trainer_id = workouts.trainer_id=1
+//        inner join(select workouts.trainer_id,
+//        max(workouts.completed_at)as LatestWorkout
+//        from workouts
+//        ) as NewWorkouts
+//        on workouts.trainer_id = NewWorkouts.trainer_id
+//        and workouts.completed_at = NewWorkouts.LatestWorkout
+
+//
+//THis works!!!
+//select distinct users.trainer_id,users.first_name,users.last_name,max(workouts.completed_at)
+//        from users
+//        inner join workouts
+//        on users.client_id = workouts.client_id
+//        group by workouts.client_id
+
