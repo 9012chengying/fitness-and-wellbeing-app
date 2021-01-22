@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+<body>
+
+    <div th:replace="fragments/Navbar-Pt::PTnavbar"></div>
+
+    <header class="alignHeader">
+        <h2 class="workoutHeader">Enter Workout Details</h2>
+    </header>
+
+    <main class="centreContainer">
+        <!--will do styling once all functionality is completed-->
+        <form id="workoutDetails" action="/trainer/workout/create/submitDetails" method="post">
+            <label>Client Username:</label>
+                <select name="exerciseCat" id="exerciseCat" required th:each="client: ${clients}">
+                    <option value="">-- Assign Workout to Client --</option>
+                    <option th:text="${client.username}">Core</option>
+                </select>
+            <label>Length Of Each Exercise (seconds): <input type="text" name="exerciseLength" required></label><br>
+            <label>Rest Between Exercises (seconds): <input type="text" name="exerciseRest" required></label><br>
+            <label>Rest Between Reps (seconds): <input type="text" name="repRest" required></label><br>
+            <label>Number of Reps: <input type="text" name="reps" required></label><br>
+            <label>Equipment Needed: <input type="text" name="equipment"></label><br> <!--move to next page after selecting exercises-->
+            <label>Workout To Be Completed By: <input type="date" name="dueDate"></label><br>
+            <button class="btn btn-primary" type="submit">Confirm</button>
+        </form>
+
+    </main>
+
+    <footer th:replace="fragments/Footer::Footer"></footer>
+
+</body>
+</html>

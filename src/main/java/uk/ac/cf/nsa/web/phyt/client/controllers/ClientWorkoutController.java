@@ -12,13 +12,13 @@ import uk.ac.cf.nsa.web.phyt.client.repository.WorkoutRepository;
 
 @Controller
 @RequestMapping(path="/client/workout")
-public class WorkoutController {
+public class ClientWorkoutController {
 
     private WorkoutRepository workoutRepository;
     private UserService userService;
 
     @Autowired
-    public WorkoutController(WorkoutRepository workoutRepository, UserService userService) {
+    public ClientWorkoutController(WorkoutRepository workoutRepository, UserService userService) {
         this.workoutRepository = workoutRepository;
         this.userService = userService;
     }
