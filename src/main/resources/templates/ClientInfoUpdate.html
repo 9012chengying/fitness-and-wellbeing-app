@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"></head>
+
+<body class="ClientAccountDetails">
+
+<nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+
+<header>
+    <h1>My Account Details</h1>
+</header>
+<form action="/client/ClientAccountDetails" method="post" onsubmit="return update();">
+    <strong>Name: </strong>
+    <div class="form-group">
+        <input id="name" name="name" placeholder="Name" autocomplete="off" th:value="${name}"/>
+    </div>
+    <strong>Gender: </strong>
+    <div class="form-group">
+        <input id="gender" name="gender" placeholder="Gender" autocomplete="off" th:value="${gender}"/>
+    </div>
+    <strong>Age: </strong>
+    <div class="form-group">
+        <input id="age" name="age" placeholder="Age" autocomplete="off" th:value="${age}"/>
+    </div>
+    <strong>Height: </strong>
+    <div class="form-group">
+        <input id="height" name="height" placeholder="Height" autocomplete="off" th:value="${height}"/>
+    </div>
+    <strong>Weight: </strong>
+    <div class="form-group">
+        <input id="weight" name="weight" placeholder="Weight" autocomplete="off" th:value="${weight}"/>
+    </div>
+    <strong>Email: </strong>
+    <div class="form-group">
+        <input id="email" name="email" placeholder="Email" type="email" autocomplete="off" th:value="${email}"/>
+    </div>
+
+    <a th:href="@{/client/ClientAccountDetails}">Update</a>
+    <script>
+        function isEmail(str) {
+            var reg = /^[a-zA-Z0-9_-]{6,}@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            return reg.test(str);
+        }
+
+        function update() {
+            var name = $('#name').val();
+            var age = $('#age').val();
+            var height = $('#height').val();
+            var weight = $('#weight').val();
+            var email = $('#email').val();
+            if (name.length < 2 || name.length > 20) {
+                alert('Firstname should be 2 to 20 characters');
+                return false;
+            }
+            if (!isEmail(email)) {
+                alert('Invalid email');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</form>
+
+<footer th:replace="fragments/Footer::Footer"></footer>
+
+</body>
+</html>

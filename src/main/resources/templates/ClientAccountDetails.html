@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"></head>
+
+<body class="ClientAccountDetails">
+
+<nav th:replace="fragments/TempNavbar::clientNavbar"></nav>
+
+<header>
+    <h1>My Account Details</h1>
+</header>
+<div class="info">
+    <strong>Name: </strong>
+    <p th:text="${info.name}"></p>
+    <strong>Gender: </strong>
+    <p th:text="${info.gender}"></p>
+    <strong>Age: </strong>
+    <p th:text="${info.age}"></p>
+    <strong>Height: </strong>
+    <p th:text="${info.height}"></p>
+    <strong>Weight: </strong>
+    <p th:text="${info.weight}"></p>
+    <strong>Email: </strong>
+    <p th:text="${info.email}"></p>
+    <a th:href="@{/client/ClientInfoUpdate}">Edit</a>
+</div>
+
+<footer th:replace="fragments/Footer::Footer"></footer>
+
+</body>
+
+</html>
