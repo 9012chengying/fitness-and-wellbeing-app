@@ -22,12 +22,22 @@ private final JdbcTemplate jdbcTemplate;
    @Override
    public List<Client> GetAllClients(){
        return jdbcTemplate.query (
-               "", new AllClientsMapper()
+               "SELECT distinct distinct users.first_name,users.last_name,max(workouts.completed_at) as lastWorkout, \n"+
+                "from workouts inner join users on users.client_id = workouts.client_id,\n"+
+                "where users.trainer_id = workouts.trainer_id = 1 group by users.client_id", new AllClientsMapper()
        );
     }
 
 
 }
+
+//    select distinct users.trainer_id,users.first_name,users.last_name,max(workouts.completed_at) as latestworkout
+//        from workouts
+//        inner join users
+//        on users.client_id = workouts.client_id
+//        where users.trainer_id = workouts.trainer_id = 1
+//        group by users.client_id
+
 
 
 
