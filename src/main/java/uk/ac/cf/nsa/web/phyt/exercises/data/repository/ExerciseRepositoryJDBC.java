@@ -77,17 +77,37 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
     //Request to database to update an exercise by id
     public boolean updateExercise(ExerciseForm exerciseForm){
         int row = jdbcTemplate.update(
-                "UPDATE Exercises SET exercise_name=? ,exercise_desc=? ,category=? WHERE id=?" ,
+                "UPDATE Exercises SET exercise_name=? ,exercise_desc=? ,category=? WHERE id=?;" ,
                 new Object[]{exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat(), exerciseForm.getExerciseID()});;
         return row > 0;
     }
 
-    public boolean addImage(ExerciseForm exerciseForm){
+
+
+    public boolean addImage(ExerciseForm exerciseForm) {
         return false;
     }
 
     public boolean addVideo(ExerciseForm exerciseForm){
-        return false;
+        int row = jdbcTemplate.update(
+                "INSERT INTO media (img_src, alt_text, type, exercise_id) VALUES (?,  '', 'Video', LAST_INSERT_ID());",
+                new Object[]{exerciseForm.getExerciseVideo()});
+        return row > 0;
+    }
+
+    @Override
+    public boolean addVideoWithExerciseID(ExerciseForm exerciseForm) {
+        int row = jdbcTemplate.update(
+                "INSERT INTO media (img_src, alt_text, type, exercise_id) VALUES (?,  '', 'Video', ?);",
+                new Object[]{exerciseForm.getExerciseVideo(), exerciseForm.getExerciseID()});
+        return row > 0;
+    }
+
+    public boolean updateVideo(ExerciseForm exerciseForm){
+        int row = jdbcTemplate.update(
+                "UPDATE Media SET img_src=? WHERE exercise_id=? AND type='Video';",new Object[]{exerciseForm.getExerciseVideo(), exerciseForm.getExerciseID()}
+        );
+        return row >0;
     }
 
 

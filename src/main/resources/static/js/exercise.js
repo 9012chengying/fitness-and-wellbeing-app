@@ -1,10 +1,13 @@
 /*Create exercise
 Pop up Box for youtube information
  */
-document.getElementById("youtube-popup-modal").addEventListener("click", openYouTubeModal);
 
-function openYouTubeModal(){
-    document.getElementById("youtube-popup-modal").style.display="block";
+function youtube(){
+    document.getElementById("youtube-popup-modal").style.display = "block";
+}
+
+function closeYoutube(){
+    document.getElementById("youtube-popup-modal").style.display="none";
 }
 
 //VIEW EXERCISE PAGE
@@ -17,6 +20,7 @@ function closeModal(){
     document.getElementById("deleteExerciseModal").style.display= "none";
     document.getElementById("successMessageModal").style.display="none";
     document.getElementById("failedMessageModal").style.display="none";
+
 }
 
 

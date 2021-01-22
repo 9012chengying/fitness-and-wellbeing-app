@@ -5,10 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Video;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
+
+import java.util.List;
 
 
 @Controller
@@ -92,8 +96,14 @@ public class ExerciseController {
     @GetMapping(path = "/edit")
     public ModelAndView getEditExercise(@RequestParam(value = "exerciseID", defaultValue = "") String exerciseID) {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("exercise", exerciseService.viewExercise(exerciseID));
-        mav.setViewName("EditExercise");
+        if( exerciseService.viewExercise(exerciseID).getVideos().size() != 0){
+            mav.addObject("exercise", exerciseService.viewExercise(exerciseID));
+            mav.addObject("videos", exerciseService.viewExercise(exerciseID).getVideos());
+            mav.setViewName("EditExercise");
+        } else {
+            mav.addObject("exercise", exerciseService.viewExercise(exerciseID));
+            mav.setViewName("EditExerciseNoVideo");
+        }
         return mav;
     }
 
@@ -104,14 +114,16 @@ public class ExerciseController {
             System.out.println(br.toString());
             mav.setViewName("EditExercise");
             return mav;
-        } else {
-            mav.addObject("exercise",exerciseService.editExercise(exerciseForm));
+        }
+            exerciseService.editExercise(exerciseForm);
+            int id = exerciseForm.getExerciseID();
+            String ID = String.valueOf(id);
+            mav.addObject("exercise",exerciseService.viewExercise(ID));
+            mav.addObject("refresh", "Refresh Page");
             mav.setViewName("ViewExercise");
             return mav;
         }
     }
-
-}
 
 
 

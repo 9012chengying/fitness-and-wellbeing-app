@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.event.annotation.BeforeTestClass;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
@@ -30,7 +31,7 @@ public class ExerciseManagementServiceTests {
     @BeforeAll
     public static void before() {
         testExercise = new Exercise();
-        testExerciseForm = new ExerciseForm();
+        testExerciseForm = new ExerciseForm(1, "Test Name", "Test Description", "Core", null);
     }
 
     @Test
@@ -41,6 +42,8 @@ public class ExerciseManagementServiceTests {
         testExerciseForm.setExerciseName("Alternate Leg Lunges");
         testExerciseForm.setExerciseDesc("Description of lunges");
         testExerciseForm.setExerciseCat("Lower body");
+        testExerciseForm.setExerciseVideo("https://www.youtube.com/embed/PWic8ckZ1q0");
+
         System.out.println(testExerciseForm.toString());
 
         //Test adding the new exercise - should return true when created
@@ -49,6 +52,7 @@ public class ExerciseManagementServiceTests {
         //Verify the test
         assertTrue(exerciseCreated);
     }
+
 
 
     @Test
