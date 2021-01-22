@@ -1,12 +1,12 @@
 /*footer.css*/
 
-#container{
-    position:relative;
-    width:100%;
-    min-height:100%;
-    padding-bottom: 100px;
-    box-sizing: border-box;
-}
+/*#container{*/
+/*    position:relative;*/
+/*    width:100%;*/
+/*    min-height:100%;*/
+/*    padding-bottom: 100px;*/
+/*    box-sizing: border-box;*/
+/*}*/
 
 * {
     padding: 0;
@@ -14,6 +14,7 @@
 }
 
 *
+
 .footer {
     margin-top: 30px;
     background: #222c3a;
@@ -21,8 +22,9 @@
     height: 80px;
     text-align: center;
     color: white;
-    position: absolute;
-    bottom:0;
+    /*bottom:0;*/
+    /*position:fixed;*/
+
 }
 
 .footer
@@ -33,7 +35,7 @@
 .footer a {
     color: #f0f1f1;
     text-decoration: none;
-    padding: 8px;
+    padding: 1px;
     vertical-align: middle;
     font-size: medium;
 }
@@ -44,9 +46,11 @@
 }
 
 .footer p {
-    height: 5px;
+    height: 6px;
     color: #888888;
     margin-top: 0;
 }
+
+
 
 
