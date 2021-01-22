@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.workouts.controllers;
+package uk.ac.cf.nsa.web.phyt.client.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
-import uk.ac.cf.nsa.web.phyt.workouts.repository.WorkoutRepository;
+import uk.ac.cf.nsa.web.phyt.client.repository.ClientWorkoutRepository;
 
 @Controller
 @RequestMapping(path="/client/workout")
-public class WorkoutController {
+public class ClientWorkoutController {
 
-    private WorkoutRepository workoutRepository;
+    private ClientWorkoutRepository clientWorkoutRepository;
     private UserService userService;
 
     @Autowired
-    public WorkoutController(WorkoutRepository workoutRepository, UserService userService) {
-        this.workoutRepository = workoutRepository;
+    public ClientWorkoutController(ClientWorkoutRepository clientWorkoutRepository, UserService userService) {
+        this.clientWorkoutRepository = clientWorkoutRepository;
         this.userService = userService;
     }
 
@@ -29,12 +29,12 @@ public class WorkoutController {
         ModelAndView mav = new ModelAndView();
         UserEntity currentUser = userService.authenticateUser();
         int userID = currentUser.getUserId();
-        int workoutID = workoutRepository.findIncompleteWorkoutID(userID);
+        int workoutID = clientWorkoutRepository.findIncompleteWorkoutID(userID);
         if (workoutID == -1) {
             mav.setViewName("NoNewWorkouts");
         } else {
-            mav.addObject("workout", workoutRepository.workoutOverview(workoutID));
-            mav.addObject("exercises", workoutRepository.workoutExerciseDetails(workoutID));
+            mav.addObject("workout", clientWorkoutRepository.workoutOverview(workoutID));
+            mav.addObject("exercises", clientWorkoutRepository.workoutExerciseDetails(workoutID));
             mav.setViewName("ClientWorkoutPreview");
         }
         return mav;
@@ -43,8 +43,8 @@ public class WorkoutController {
     @GetMapping(path="/exercise")
     public ModelAndView viewExercise(int exerciseID) {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("exercise", workoutRepository.viewExerciseByID(exerciseID));
-        mav.addObject("media", workoutRepository.mediaByExerciseID(exerciseID));
+        mav.addObject("exercise", clientWorkoutRepository.viewExerciseByID(exerciseID));
+        mav.addObject("media", clientWorkoutRepository.mediaByExerciseID(exerciseID));
         mav.setViewName("ClientExerciseView");
         return mav;
     }
@@ -52,9 +52,9 @@ public class WorkoutController {
     @GetMapping(path="/timer")
     public ModelAndView startTimer(@RequestParam(value="workoutID", defaultValue="null") int workoutID) {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("workout", workoutRepository.workoutOverview(workoutID));
-        mav.addObject("exercises", workoutRepository.exerciseNameByWorkoutID(workoutID));
-        mav.addObject("thumbnails", workoutRepository.exerciseThumbnailByWorkoutID(workoutID));
+        mav.addObject("workout", clientWorkoutRepository.workoutOverview(workoutID));
+        mav.addObject("exercises", clientWorkoutRepository.exerciseNameByWorkoutID(workoutID));
+        mav.addObject("thumbnails", clientWorkoutRepository.exerciseThumbnailByWorkoutID(workoutID));
         mav.setViewName("Timer");
         return mav;
     }

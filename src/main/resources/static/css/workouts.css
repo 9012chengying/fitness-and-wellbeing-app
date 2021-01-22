@@ -11,6 +11,10 @@
     border-bottom: #007bff solid 0.5rem;;
 }
 
+.centreContainer, .centerText {
+    text-align: center;
+}
+
 /*ClientDiary*/
 
 #workoutSummary {
@@ -41,10 +45,6 @@
 }
 
 /*Client Workout Preview*/
-
-.workoutPreview, .centerText {
-    text-align: center;
-}
 
 .exerciseThumbnailNameBlock {
     display: inline-block;
@@ -149,5 +149,53 @@
 #endButton {
     font-size: 3vh;
 }
+
+/*Create Workout Details*/
+
+#workoutDetailsForm {
+    font-size: 2vh;
+}
+
+#workoutDetailsForm label {
+    margin-left: 6vw;
+}
+
+#workoutDetailsForm select, #workoutDetailsForm input {
+    margin-left: 4vw;
+}
+
+#createWorkoutButton {
+    font-size: 2.5vh;
+}
+
+/*Create Workout Exercises*/
+
+.add {
+    display: block;
+}
+
+.remove {
+    display: none;
+}
+
+#addExercises {
+    max-width: 40vw;
+    font-size: 3vh;
+}
+
+/*.exerciseThumbnailNameNoBorder img {
+    border-radius: 8px; /*not working
+    object-fit: cover;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 2vw;
+}
+
+.dropExercise {
+    display: inline-block;
+    border: solid orange 0.3rem;
+    width: 12rem;
+    height: 12rem;
+}*/
 
 /*Need to adjust for @media*/
