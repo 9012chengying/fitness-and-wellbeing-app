@@ -1,33 +1,26 @@
-
-.register-md-skin {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
-    margin:0;
-    padding: 0;
-    background-color: #fff
+.trainer-register-form {
+    width: 90%;
+    margin: auto;
 }
 
-#register-loginbox{
+#loginbox {
     margin: 0 auto;
     padding-top: 60px;
-    width: 400px;
+    width: 100%;
     text-align: center
 }
 
-.register-logo-name{
+#loginbox .logo-name {
     width: 100%;
     height: 60px;
-
 }
 
-
-.register-form-horizontal{
-    margin-right: -15px;
-    margin-left: -15px
-}
-
-.register-form-group {
-    margin-bottom: 15px
+.register-message{
+    margin: 0;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    color: red;
+    font-size: 1.6rem;
+    text-align: left;
 }
 
 :after, :before {
@@ -36,11 +29,13 @@
     box-sizing: border-box
 }
 
-.register-form-control{
+.form-control {
     display: block;
     width: 100%;
     height: 34px;
     padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
     color: #555;
     background-color: #fff;
     background-image: none;
@@ -50,29 +45,81 @@
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
 }
 
-.register-form-control{
+.form-control {
     border-radius: 1px
 }
 
+.field-validation-valid {
+    display: none
+}
 
-.register-form-control:focus {
+.btn-register {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    display: block;
+    width: 100%;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+
+input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block {
+    width: 100%
+}
+
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+
+p {
+    margin: 0 0 10px
+}
+
+.form-control:focus {
     border-color: #66afe9;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
 }
 
-.register-form-control:focus {
+.form-control:focus {
     border-color: #1ab394
 }
-
 

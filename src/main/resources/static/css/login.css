@@ -8,6 +8,11 @@
     height: 100vh;
 }
 
+/*Add class="full-height" if you want container to be full height of screen */
+.full-height{
+    height: 80%;
+}
+
 .login-main-content{
     width: 90%;
     margin: auto;
@@ -21,6 +26,7 @@
 .login-message {
     color: white;
     font-weight: bold;
+    font-size: 2rem;
     text-align: center;
     width: 100%;
     padding: 1rem;
@@ -61,12 +67,15 @@
 }
 
 .login-buttons {
-    margin-top: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 2rem;
     align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.login-buttons>button{
+    width: 50%;
 }
 
 .register-button{
@@ -74,7 +83,6 @@
     justify-content: center;
     width: 100%;
     align-items: center;
-    padding-top: 2rem;
 }
 .register-button-h3{
     color: white;
