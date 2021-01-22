@@ -6,7 +6,7 @@
 </head>
 
 <body class="full-height">
-    <form action="/register" class="form-horizontal trainer-register-form" method="post" onsubmit="return register();">
+    <form action="/client/register" class="form-horizontal trainer-register-form" method="post" onsubmit="return register();">
         <div id="loginbox">
             <div><h1 class="logo-name"></h1></div>
             <div class="form-group">
@@ -35,9 +35,8 @@
     <!--            <span style="color:red;" id="emailSpan"></span>-->
             </div>
             <div class="form-group">
-                <a th:href="@{/register/client}"><p>To be a client</p></a>
+                <a th:href="@{/register}"><p>To be a trainer</p></a>
             </div>
-
            <!-- <div class="form-group">
                 <a href="javascript:void(0);" class="file">Choose picture
                     <input type="file" class="file" accept="image/*" onchange="showImg(this)" />

@@ -69,6 +69,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Public pages that do not require authorisation
         http.authorizeRequests().antMatchers("/","/public/**", "/login", "/logout", "/register").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/register").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/client/register").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/trainer/update/user").permitAll();
 
         //userInfo page requires login as ROLE_USER or ROLE_TRAINER.
         http.authorizeRequests().antMatchers("/home").access("hasAnyRole('ROLE_CLIENT', 'ROLE_TRAINER')");

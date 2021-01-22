@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.data.repository.RegisterRepository;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
@@ -27,8 +28,9 @@ public class TrainerController {
 
     @RequestMapping(path = "/trainer/update/user")
     public String trainerUpdate(UserForm userForm) {
-        UserEntity currentUser = userService.authenticateUser();
-        int userID = currentUser.getUserId();
+//        UserEntity currentUser = userService.authenticateUser();
+//        int userID = currentUser.getUserId();
+//        UserDTO bean = userService.getUserInfo(userForm);
         //todo NEED TO CHECK SQL QUERY STILL VALID
         registerRepository.updateUser(userForm);
         return "redirect:/register/info/"+userForm.getUsername();
@@ -61,4 +63,6 @@ public class TrainerController {
         boolean success= registerRepository.deleteUser(username);
         return "redirect:/register";
     }
+
+
 }

@@ -3,6 +3,7 @@ package uk.ac.cf.nsa.web.phyt.users.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +29,11 @@ public class UserController {
         return "register";
     }
 
+    @RequestMapping(path="/register/client", method=RequestMethod.GET)
+    public String clientRegister() {
+        return "registerClient";
+    }
+
     //Route for registering a Trainer to the app
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public String trainerAdd(UserForm userForm, Model model) {
@@ -40,6 +46,22 @@ public class UserController {
             userForm.setRole("Trainer");
             if (!userService.setUpNewTrainer(userForm)) {
                 return "register";
+            } else {
+                return "redirect:/login";
+            }
+        }
+    }
+
+    @RequestMapping(path = "/client/register")
+    public String clientAdd(UserForm userForm, Model model) {
+        UserDTO user = userService.getUserInfo(userForm);
+        if (user != null) {
+            model.addAttribute("registerMessage", "Username already taken");
+            return "registerClient";
+        } else {
+            userForm.setRole("Client");
+            if (!userService.setUpNewTrainer(userForm)) {
+                return "registerClient";
             } else {
                 return "redirect:/login";
             }
@@ -65,7 +87,7 @@ public class UserController {
     public ModelAndView userAccountInfo() {
         ModelAndView mav = new ModelAndView();
         UserEntity currentUser = userService.authenticateUser();
-        String name = currentUser.getFirstname();
+        String name = currentUser.getUsername();
         if(currentUser.getRole().equals("Trainer")){
             mav.addObject("name", name);
             mav.setViewName("Trainer");
@@ -75,5 +97,44 @@ public class UserController {
             mav.setViewName("User");
             return mav;
         }
+    }
+
+    @RequestMapping(path = "/update/user")
+    public String trainerUpdate(UserForm userForm) {
+        userService.updateUser(userForm);
+        return "redirect:/register/info/"+userForm.getUsername();
+    }
+
+    @RequestMapping(path="/register/info/{username}")
+    public ModelAndView trainerInfo(@PathVariable("username") String username) {
+        ModelAndView mav = new ModelAndView();
+        UserForm userForm = new UserForm(username,null,null,null,null);
+        UserDTO bean = userService.getUserInfo(userForm);
+        mav.addObject("info", bean);
+        mav.setViewName("PtHomePage");
+        return mav;
+    }
+    @RequestMapping(path="/ClientPage/{username}")
+    public ModelAndView clientInfo(@PathVariable("username") String username) {
+        ModelAndView mav = new ModelAndView();
+        UserForm userForm = new UserForm(username,null,null,null,null);
+        mav.addObject("info", userService.getUserInfo(userForm));
+        mav.setViewName("ClientPage");
+        return mav;
+    }
+
+    @RequestMapping(path="/update/info")
+    public ModelAndView trainerUpdateInfo(String username) {
+        ModelAndView mav = new ModelAndView();
+        UserForm userForm = new UserForm(username,null,null,null,null);
+        mav.addObject("info", userService.getUserInfo(userForm));
+        mav.setViewName("update");
+        return mav;
+    }
+
+    @RequestMapping(path = "/user/delete")
+    public String deleteUser(String username) {
+        boolean success= userService.deleteUser(username);
+        return "redirect:/register";
     }
 }

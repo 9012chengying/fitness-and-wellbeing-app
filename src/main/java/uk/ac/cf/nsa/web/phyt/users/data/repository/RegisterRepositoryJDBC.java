@@ -39,6 +39,7 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
 
     @Override
     public boolean deleteUser(String userName) {
+        jdbcTemplate.update("delete from authorities where  username = ?",userName);
         int rows =   jdbcTemplate.update("delete from user where  user_name = ?",userName);
         return rows>0;
     }
@@ -50,4 +51,6 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
                 new Object[]{ userForm.getFirstname(),userForm.getLastname(),userForm.getEmail(),userForm.getUsername()});
         return rows>0;
     }
+
+
 }
