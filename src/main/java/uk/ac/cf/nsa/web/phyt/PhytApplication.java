@@ -8,6 +8,7 @@ public class PhytApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PhytApplication.class, args);
-    }
+
 
 }
+    }
