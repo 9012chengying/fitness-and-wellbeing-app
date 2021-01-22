@@ -19,15 +19,11 @@ public class PtController {
         this.personaltRepo = personaltRepo;
     }
 
-    @GetMapping(path="/")
-    public String getPT(){
-        return "PtHomePage";
-    }
-
-//    @GetMapping(path = "/PersonalTrainer/YourAccount")
-//    public String PTAccountedit(){
-//        return "YourAccountPage";
+//    @GetMapping(path="/")
+//    public String getPT(){
+//        return "PtHomePage";
 //    }
+
     @GetMapping(path = "/YourAccount")
     public String getyourDetails(Model model){
 
@@ -35,16 +31,6 @@ public class PtController {
         model.addAttribute("Generalinfo", new GeneralinfoPT());
         return "YourAccountPage";
     }
-
-//     @GetMapping(path="/PtPersonalInfo")
-//    public ModelAndView updatept(@ModelAttribute PersonalTrainer personalTrainer){
-//
-//        ModelAndView mav = new ModelAndView();
-//
-//        mav.addObject(personaltRepo.updatePtInfoById(personalTrainer));
-//        mav.setViewName("Thanks");
-//        return mav;
-//     }
 
     @GetMapping("/PtPersonalInfo")
     public String submitDetails(PersonalTrainer personalTrainer, GeneralinfoPT generalinfoPT,Model model){
@@ -66,25 +52,6 @@ return "YourAccountPage";
     }
 
     //TODO Add mapping so trainer can change profile image
-
-
-
-
-
-//    @RequestMapping(value = "/PtPersonalInfo",method = RequestMethod.POST)
-//    public String changeInfo(Model model){
-//
-//        model.addAttribute("personalTrainer",new PersonalTrainer());
-//
-//
-//
-//
-//        return "Thanks";
-//
-//    }
-
-
-
 
 
 

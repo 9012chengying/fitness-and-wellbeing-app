@@ -3,8 +3,6 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:insert="/fragments/Head::Head">
-
-<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>-->
     <meta charset="UTF-8">
 
     <title>YourAccount</title>
@@ -12,9 +10,12 @@
 
 <body class="accountedit">
 <nav th:replace="/fragments/Navbar-Pt::PTnavbar"></nav>
-<header class="DummyHeader"></header>
 
-<h2>Your Account</h2>
+<header class="DummyHeader">
+    <h2 class="AccountpageH2">Your Account</h2>
+</header>
+
+
 <hr>
 <section class="container">
     <div class="row " id="get">
@@ -39,7 +40,7 @@
        </div>
         <div class="col-md-6 text-center" id="general">
 
-            <form th:action="@{/trainer/PtGeneralInfo}" th:object="${Generalinfo}"  method="get" id="form2">
+            <form th:action="@{/trainer/PtGeneralInfo}" th:object="${Generalinfo}"  method="get" id="form2" class="formLabels">
                 <h3>General Information</h3>
                 <div class="form-group">
                     <label for="Textarea1" >About you</label>
@@ -56,8 +57,6 @@
                 <div>
                     <div class="input-group mb-3"><input type="text" th:field="*{location}"  class="form-control" placeholder="Location" aria-label="Location" required>
                     </div>
-<!--                    <label for="location">Location</label>-->
-<!--                    <input type="text" id="location" th:field="*{location}" required>-->
                 </div>
 <div class="genBtn"><input type="submit" class="btn btn-warning" value="Save Changes"></div>
             </form>
@@ -65,43 +64,5 @@
     </div>
 
 </section>
-<script th:inline="javascript">
-    $(document).ready(function () {
-        $("#form1").on("submit", function(e){
-            e.preventDefault()
-        $.ajax(
-            {
-                type: "GET",
-                data: $("#form1").serialize(),
-                cache: false,
-                url: "/trainer/PtPersonalInfo",
-                success: function () {
-                    alert("Updated changes");
-                },
-                error: function () {
-                    alert("Error - Data not saved");
-                }
-
-            })})
-            $("#form2").on("submit", function(e){
-                e.preventDefault()
-            $.ajax(
-            {
-                type: "GET",
-                data: $("#form2").serialize(),
-                cache: false,
-                url: "/trainer/PtGeneralInfo",
-                success: function()
-                {
-                    alert("Updated changes");
-                },
-                error: function()
-                {
-                    alert("Error - Data not saved");
-                }
-
-            }) })})
-</script>
-
 </body>
 </html>
