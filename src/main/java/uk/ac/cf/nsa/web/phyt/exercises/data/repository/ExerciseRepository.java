@@ -11,9 +11,9 @@ public interface ExerciseRepository {
 
     boolean addExercise(ExerciseForm exerciseForm);
 
-    List<Exercise> getAllExercises();
+    List<Exercise> getAllExercises(int userID);
 
-    List<Exercise> getExercisesByCategory(String exerciseCat);
+    List<Exercise> getExercisesByCategory(String exerciseCat, int userID);
 
     Exercise getExerciseByID(int id);
 

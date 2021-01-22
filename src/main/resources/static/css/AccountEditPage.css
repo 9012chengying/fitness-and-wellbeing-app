@@ -1,0 +1,58 @@
+
+.accountedit{
+    /*height: 100%;*/
+    /*width: auto;*/
+    background: url('/images/108395-orange-curve.jpg') center center no-repeat fixed;
+    background-size: cover;
+}
+
+#form1,#form2{
+    background-color: rgba(255, 255, 255, 0.5);
+    border: solid 2px #800;
+    border-radius: 15px;
+    height: 100%;
+
+}
+div #Textarea1{
+    resize: none;
+}
+
+#form1:hover,#form2:hover{
+    border: solid 2px white;
+    transition: border 0.25s ;
+}
+
+#submitInfo{
+    margin: 5px 0;
+}
+
+form .genBtn{
+    bottom: 0;
+}
+.formLabels label{
+    font-weight: bold;
+
+}
+.FirstDiv{
+    display: inline;
+}
+
+
+.AccountpageH2{
+   text-align: center;
+
+    margin-bottom: 3rem;
+}
+hr{
+    border-top: 1px solid #800;
+    width: 90%;
+}
+
+@media(max-width: 767px) {
+#general{
+    margin-top: 10px;
+}
+
+}
+
+

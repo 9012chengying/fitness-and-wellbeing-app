@@ -95,11 +95,15 @@ public class WorkoutDTO {
         return type;
     }
 
-    public String workoutLength() {
+    public int workoutLength() {
         int totalRepLength = exerciseCount  * (exerciseLength + restLength);
         int totalWorkoutLengthInSeconds = reps * (totalRepLength + repRest);
-        int hh = totalWorkoutLengthInSeconds / 3600;
-        int remainder = totalWorkoutLengthInSeconds % 3600;
+        return totalWorkoutLengthInSeconds;
+    }
+
+    public String workoutLengthFormat() {
+        int hh = workoutLength() / 3600;
+        int remainder = workoutLength() % 3600;
         int mm = remainder / 60;
         int ss = remainder % 60;
         if (hh == 0) {

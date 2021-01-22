@@ -8,44 +8,47 @@
 
 <body class="exercise-body" onload="listen()">
 
-<nav th:replace="fragments/TempNavbar::ptNavbar"></nav>
+    <nav th:replace="fragments/Navbar-Pt::PTnavbar"></nav>
 
-<header class="exercise-header">
-    <h2>Edit exercise</h2>
-</header>
+    <header class="exercise-header">
+        <h2>Edit exercise</h2>
+    </header>
 
-<!-- Main input form -->
-<main id="exercise-main">
-    <form id="exerciseForm" th:action="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}" th:object="${ExerciseForm}" method="post">
-        <div class="exercise-input">
-            <label for="exerciseName">Exercise Name: </label>
-            <input id="exerciseName" name="exerciseName" type="text" th:value="${exercise.exerciseName}">
-        </div>
-        <div class="exercise-input">
-            <label for="exerciseDesc">Exercise Details: </label>
-            <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10" th:text="${exercise.exerciseDesc}"></textarea>
-        </div>
-        <div class="exercise-input">
-            <label for="exerciseCat">Exercise Category: </label>
-            <select name="exerciseCat" id="exerciseCat" required>
-                <option th:value="${exercise.exerciseCat}" th:text="${exercise.exerciseCat}"> </option>
-                <option value="Core">Core</option>
-                <option value="Upper body">Upper Body</option>
-                <option value="Lower body">Lower Body</option>
-                <option value="Cardio">Cardio</option>
-                <option value="Drills">Drills</option>
-            </select>
-        </div>
+    <!-- Main input form -->
+    <main id="exercise-main">
+        <form id="exerciseForm" th:action="@{/trainer/exercises/edit}" th:object="${ExerciseForm}" method="post">
+            <div class="exercise-input hide">
+                <input class="hide" id="exerciseID" name="exerciseID" type="text" th:value="${exercise.exerciseID}">
+            </div>
+            <div class="exercise-input">
+                <label for="exerciseName">Exercise Name: </label>
+                <input id="exerciseName" name="exerciseName" type="text" th:value="${exercise.exerciseName}">
+            </div>
+            <div class="exercise-input">
+                <label for="exerciseDesc">Exercise Details: </label>
+                <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10" th:text="${exercise.exerciseDesc}"></textarea>
+            </div>
+            <div class="exercise-input">
+                <label for="exerciseCat">Exercise Category: </label>
+                <select name="exerciseCat" id="exerciseCat" required>
+                    <option th:value="${exercise.exerciseCat}" th:text="${exercise.exerciseCat}"> </option>
+                    <option value="Core">Core</option>
+                    <option value="Upper body">Upper Body</option>
+                    <option value="Lower body">Lower Body</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Drills">Drills</option>
+                </select>
+            </div>
 
-        <div class="edit-exercise-buttons">
-            <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Save</button>
-            <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
-        </div>
-    </form>
+            <div class="edit-exercise-buttons">
+                <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Save</button>
+                <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
+            </div>
+        </form>
 
-</main>
+    </main>
 
-<footer></footer>
+    <footer th:replace="fragments/Footer::Footer"> </footer>
 </body>
 
 </html>

@@ -3,33 +3,31 @@ package uk.ac.cf.nsa.web.phyt.exercises.forms;
 //Class for data received from the Create Exercise form
 public class ExerciseForm {
 
-    int userID;
     int exerciseID;
+    int userID;
     String exerciseName;
     String exerciseDesc;
     String exerciseCat;
 
     //Constructors
     public ExerciseForm (){
-        this.userID = 1;
         this.exerciseName = null;
         this.exerciseDesc = null;
         this.exerciseCat = null;
     }
 
     //Constructor for new exercise where no exercise ID exists
-    public ExerciseForm( String exerciseName, String exerciseDesc, String exerciseCat) {
+    public ExerciseForm( int userID, String exerciseName, String exerciseDesc, String exerciseCat) {
         //todo - figure out how to get  user entity from log in details
-        //this.user = user;
-        this.userID = 1;
+        this.userID = userID;
         this.exerciseName = exerciseName;
         this.exerciseDesc = exerciseDesc;
         this.exerciseCat = exerciseCat;
     }
 
     //Constructor for existing exercise where exercise ID is known
-    public ExerciseForm (int exerciseID, String exerciseName, String exerciseDesc, String exerciseCat ){
-        this.userID = 1;
+    public ExerciseForm (int userID, int exerciseID, String exerciseName, String exerciseDesc, String exerciseCat){
+        this.userID = userID;
         this.exerciseID = exerciseID;
         this.exerciseName = exerciseName;
         this.exerciseDesc = exerciseDesc;
@@ -37,8 +35,13 @@ public class ExerciseForm {
     }
 
     //Getters & Setters
-    public int getUserID(){
+
+    public int getUserID() {
         return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public int getExerciseID() {
@@ -76,7 +79,6 @@ public class ExerciseForm {
     @Override
     public String toString() {
         return "ExerciseForm{" +
-                "trainerID=" + userID +
                 ", exerciseName='" + exerciseName + '\'' +
                 ", exerciseDesc='" + exerciseDesc + '\'' +
                 ", exerciseCat='" + exerciseCat + '\'' +
