@@ -26,12 +26,12 @@ public class UserController {
 
     @RequestMapping(path="/register", method=RequestMethod.GET)
     public String trainerRegister() {
-        return "register";
+        return "TrainerRegister";
     }
 
     @RequestMapping(path="/register/client", method=RequestMethod.GET)
     public String clientRegister() {
-        return "registerClient";
+        return "ClientRegister";
     }
 
     //Route for registering a Trainer to the app
@@ -41,11 +41,11 @@ public class UserController {
         UserDTO user = userService.getUserInfo(userForm);
         if (user != null) {
             model.addAttribute("registerMessage", "Username already taken");
-            return "register";
+            return "TrainerRegister";
         } else {
             userForm.setRole("Trainer");
             if (!userService.setUpNewTrainer(userForm)) {
-                return "register";
+                return "TrainerRegister";
             } else {
                 return "redirect:/login";
             }
@@ -57,11 +57,11 @@ public class UserController {
         UserDTO user = userService.getUserInfo(userForm);
         if (user != null) {
             model.addAttribute("registerMessage", "Username already taken");
-            return "registerClient";
+            return "ClientRegister";
         } else {
             userForm.setRole("Client");
             if (!userService.setUpNewTrainer(userForm)) {
-                return "registerClient";
+                return "ClientRegister";
             } else {
                 return "redirect:/login";
             }
