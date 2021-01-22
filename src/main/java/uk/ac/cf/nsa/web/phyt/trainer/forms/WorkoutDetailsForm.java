@@ -11,8 +11,6 @@ public class WorkoutDetailsForm {
     private int reps;
     private String equipment;
     private Date dueDate;
-    /*private int dueDateMonth;
-    private int dueDateYear;*/
 
     public WorkoutDetailsForm(int clientID, int exerciseLength, int exerciseRest, int repRest, int reps, String equipment, Date dueDate) {
         this.clientID = clientID;
@@ -51,22 +49,4 @@ public class WorkoutDetailsForm {
     public Date getDueDate() {
         return dueDate;
     }
-
-    /*public int getDueDateDays() {
-        return dueDateDays;
-    }
-
-    public int getDueDateMonth() {
-        return dueDateMonth;
-    }
-
-    public int getDueDateYear() {
-        return dueDateYear;
-    }
-
-    public String dueDate() {
-        Format formatter = new SimpleDateFormat("MMM");
-        String s = formatter.format(new Date());
-        return dueDateDays + "-" + s + "-" + dueDateYear;
-    }*/
 }

@@ -12,12 +12,12 @@
     </header>
 
     <main class="centreContainer">
-        <!--will do styling once all functionality is completed-->
+
         <form id="workoutDetails" action="/trainer/workout/create/submitDetails" method="post">
             <label>Client Username:</label>
-                <select name="exerciseCat" id="exerciseCat" required th:each="client: ${clients}">
+                <select name="clientID">
                     <option value="">-- Assign Workout to Client --</option>
-                    <option th:text="${client.username}">Core</option>
+                    <option th:each="client: ${clients}" th:value="${client.clientID}" th:text="${client.clientUsername}"></option> <!--this works so I'm not sure why the underline-->
                 </select>
             <label>Length Of Each Exercise (seconds): <input type="text" name="exerciseLength" required></label><br>
             <label>Rest Between Exercises (seconds): <input type="text" name="exerciseRest" required></label><br>

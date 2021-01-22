@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public class WorkoutRepositoryJDBC implements WorkoutRepository {
+public class ClientWorkoutRepositoryJDBC implements ClientWorkoutRepository {
 
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public WorkoutRepositoryJDBC(JdbcTemplate aTemplate) {
+    public ClientWorkoutRepositoryJDBC(JdbcTemplate aTemplate) {
         jdbcTemplate = aTemplate;
     }
 

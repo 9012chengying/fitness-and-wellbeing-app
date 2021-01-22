@@ -2,11 +2,10 @@ package uk.ac.cf.nsa.web.phyt.trainer.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.trainer.DTO.ClientDTO;
 import uk.ac.cf.nsa.web.phyt.trainer.forms.WorkoutDetailsForm;
+import uk.ac.cf.nsa.web.phyt.trainer.mapper.ClientMapper;
 
 import java.util.List;
 
@@ -30,8 +29,8 @@ public class TrainerWorkoutRepositoryJDBC implements TrainerWorkoutRepository {
 
     @Override
     public List<ClientDTO> clientUsernameByTrainerID(int trainerID) {
-        return null;
+        return (List<ClientDTO>) jdbcTemplate.query(
+                "SELECT trainer_id, id, user_name FROM user WHERE trainer_id=?",
+                new ClientMapper(), trainerID);
     }
-
-
 }

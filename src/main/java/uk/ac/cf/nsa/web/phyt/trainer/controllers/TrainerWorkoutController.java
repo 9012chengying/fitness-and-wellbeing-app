@@ -32,6 +32,9 @@ public class TrainerWorkoutController {
     @GetMapping(path="")
     public ModelAndView detailsForm() {
         ModelAndView mav = new ModelAndView();
+        UserEntity currentUser = userService.authenticateUser();
+        int userID = currentUser.getUserId();
+        mav.addObject("clients", trainerWorkoutRepository.clientUsernameByTrainerID(userID));
         mav.setViewName("CreateWorkoutDetails");
         return mav;
     }

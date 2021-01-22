@@ -2,7 +2,7 @@ package uk.ac.cf.nsa.web.phyt.client.repository;
 
 import java.util.List;
 
-public interface WorkoutRepository {
+public interface ClientWorkoutRepository {
 
     public Object clientWorkoutDiary(int clientID);
     public Object workoutOverview(int workoutID);
