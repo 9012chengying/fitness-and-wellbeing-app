@@ -1,12 +1,12 @@
-package uk.ac.cf.nsa.web.phyt.workouts.repository;
+package uk.ac.cf.nsa.web.phyt.client.repository;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import uk.ac.cf.nsa.web.phyt.workouts.DTO.ClientDTO;
+import uk.ac.cf.nsa.web.phyt.client.DTO.ClientDTO;
 
-import uk.ac.cf.nsa.web.phyt.workouts.model.ClientMapper;
+import uk.ac.cf.nsa.web.phyt.client.model.ClientMapper;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

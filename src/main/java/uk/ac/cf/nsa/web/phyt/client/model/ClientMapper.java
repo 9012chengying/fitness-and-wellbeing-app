@@ -1,7 +1,7 @@
-package uk.ac.cf.nsa.web.phyt.workouts.model;
+package uk.ac.cf.nsa.web.phyt.client.model;
 
 import org.springframework.jdbc.core.RowMapper;
-import uk.ac.cf.nsa.web.phyt.workouts.DTO.ClientDTO;
+import uk.ac.cf.nsa.web.phyt.client.DTO.ClientDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.workouts.controllers;
+package uk.ac.cf.nsa.web.phyt.client.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,11 +10,11 @@ import uk.ac.cf.nsa.web.phyt.UserInfo.Forms.GeneralinfoPT;
 import uk.ac.cf.nsa.web.phyt.UserInfo.Forms.PersonalTrainer;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
-import uk.ac.cf.nsa.web.phyt.workouts.DTO.ClientDTO;
+import uk.ac.cf.nsa.web.phyt.client.DTO.ClientDTO;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
-import uk.ac.cf.nsa.web.phyt.workouts.repository.ClientRepository;
+import uk.ac.cf.nsa.web.phyt.client.repository.ClientRepository;
 
 @Controller
 public class ClientController {

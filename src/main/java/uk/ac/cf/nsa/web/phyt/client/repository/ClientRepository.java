@@ -1,6 +1,6 @@
-package uk.ac.cf.nsa.web.phyt.workouts.repository;
+package uk.ac.cf.nsa.web.phyt.client.repository;
 
-import uk.ac.cf.nsa.web.phyt.workouts.DTO.ClientDTO;
+import uk.ac.cf.nsa.web.phyt.client.DTO.ClientDTO;
 
 
 public interface ClientRepository {
