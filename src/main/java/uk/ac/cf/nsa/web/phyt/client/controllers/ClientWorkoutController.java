@@ -63,7 +63,10 @@ public class ClientWorkoutController {
         ModelAndView mav = new ModelAndView();
         System.out.println(clientWorkoutForm.getWorkoutID());
         if (clientWorkoutRepository.workoutComplete(clientWorkoutForm)) {
-            mav.setViewName("User"); //return to home page
+            UserEntity currentUser = userService.authenticateUser();
+            int userID = currentUser.getUserId();
+            mav.addObject("workouts", clientWorkoutRepository.clientWorkoutDiary(userID));
+            mav.setViewName("ClientDiary");
         } else {
             System.out.println("Workout not updated");
             mav.setViewName("Timer");
