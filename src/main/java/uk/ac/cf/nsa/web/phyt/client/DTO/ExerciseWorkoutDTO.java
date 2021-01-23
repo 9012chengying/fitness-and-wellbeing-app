@@ -5,16 +5,14 @@ public class ExerciseWorkoutDTO {
     private int exerciseID;
     private String exerciseName;
     private String exerciseCategory;
-    private String exerciseEquipment;
     private String thumbnailImg;
     private String thumbnailAlt;
 
-    public ExerciseWorkoutDTO(int workoutID, int exerciseID, String exerciseName, String exerciseCategory, String exerciseEquipment, String thumbnailImg, String thumbnailAlt) {
+    public ExerciseWorkoutDTO(int workoutID, int exerciseID, String exerciseName, String exerciseCategory, String thumbnailImg, String thumbnailAlt) {
         this.workoutID = workoutID;
         this.exerciseID = exerciseID;
         this.exerciseName = exerciseName;
         this.exerciseCategory = exerciseCategory;
-        this.exerciseEquipment = exerciseEquipment;
         this.thumbnailImg = thumbnailImg;
         this.thumbnailAlt = thumbnailAlt;
     }
@@ -33,10 +31,6 @@ public class ExerciseWorkoutDTO {
 
     public String getExerciseCategory() {
         return exerciseCategory;
-    }
-
-    public String getExerciseEquipment() {
-        return exerciseEquipment;
     }
 
     public String getThumbnailImg() {
