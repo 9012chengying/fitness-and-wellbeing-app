@@ -4,29 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ImageForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
+import uk.ac.cf.nsa.web.phyt.exercises.service.FileUploadService;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
-import java.io.File;
-import java.nio.file.Files;
 
 @Controller
 @RequestMapping(path ="/trainer/exercises")
-
 public class ExerciseController {
 
-    //Use ExerciseManagementService methods to access appropriate data
+    //Use Services to run methods to send data from and to controller
     private final ExerciseManagementService exerciseService;
     private final UserService userService;
+    private final FileUploadService fileUploadService;
 
     @Autowired
-    public ExerciseController(ExerciseManagementService exerciseService, UserService userService) {
+    public ExerciseController(ExerciseManagementService exerciseService, UserService userService, FileUploadService fileUploadService) {
         this.exerciseService = exerciseService;
         this.userService = userService;
+        this.fileUploadService = fileUploadService;
     }
 
     //List all exercises
@@ -130,19 +131,11 @@ public class ExerciseController {
     }
 
     @PostMapping(path="/uploadImages")
-    public ModelAndView uploadImageFiles(ImageForm imageForm, BindingResult br){
-        ModelAndView mav = new ModelAndView();
-        if (br.hasErrors()) {
-            System.out.println(br.toString());
-            mav.setViewName("AddImages");
-            return mav;
-        }
-        Files images = imageForm.getImageFiles();
-        int id = imageForm.getExerciseID();
-        String ID = String.valueOf(id);
-        mav.addObject("exercise",exerciseService.viewExercise(ID));
-        mav.setViewName("ViewExercise");
-        return mav;
+    public String uploadImageFiles(ImageForm imageForm, MultipartFile[] multipartFiles, BindingResult br){
+       // ModelAndView mav = new ModelAndView();
+        //add images to the database in the media table.
+        fileUploadService.addFilesToDatabase(multipartFiles, imageForm.getExerciseID());
+        return "ViewExercise";
     }
 }
 

@@ -21,17 +21,15 @@
                 </div>
 
                 <div class="exercise-input">
-                    <label for="images">Select images you wish to add</label>
-                    <input type="file" id="images" name="images" multiple accept="image/png, image/jpeg" onchange="updateList()">
+                    <label for="numberOfImages">How many images do you want to upload?</label>
+                    <input id="numberOfImages" type="number" >
+                    <input id="inputNumber" type="button" onclick="increaseImageInput()" value="Enter">
                 </div>
+                <div class="exercise-input" id="imageInputs">
+                    <label >Select images you wish to add</label>
+                    <input type="file" id="images" name="images" accept="image/png, image/jpeg">
 
-                <div class="exercise-input">
-                    <p>Selected files:</p>
-                    <div id="imageList"></div>
                 </div>
-
-
-
                 <div class="edit-exercise-buttons">
                     <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Add Images</button>
                     <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>

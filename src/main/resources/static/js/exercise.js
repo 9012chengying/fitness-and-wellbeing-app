@@ -22,6 +22,19 @@ function closeModal(){
 }
 
 
+function increaseImageInput(){
+    let numOfImg = document.getElementById("numberOfImages").value;
+    console.log(numOfImg);
+    let imageInputDiv = document.getElementById("imageInputs");
+    for (let i=1; i<numOfImg; i++){
+        let imageInput = document.createElement("input");
+        imageInput.type="file";
+        imageInput.id="image"+i+1;
+        imageInput.name="image"+i+1;
+        imageInput.accept="image/png, image/jpeg";
+        imageInputDiv.appendChild(imageInput);
+    }
+}
 // Code to add list of image files selected
 // adapted from Stack Overflow post by Andrea Ligios 29/09/14
 // accessed 23/01/20

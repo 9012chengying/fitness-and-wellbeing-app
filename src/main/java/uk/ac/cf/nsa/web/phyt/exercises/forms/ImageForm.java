@@ -10,6 +10,9 @@ public class ImageForm {
     Files imageFiles;
     List<Byte> byteData;
 
+    public ImageForm() {
+    }
+
     public ImageForm(int exerciseID, Files imageFiles) {
         this.exerciseID = exerciseID;
         this.imageFiles = imageFiles;
@@ -31,7 +34,6 @@ public class ImageForm {
         this.imageFiles = imageFiles;
     }
 
-    public Byte readFileData(Files imageFiles){
 
-    }
+
 }
