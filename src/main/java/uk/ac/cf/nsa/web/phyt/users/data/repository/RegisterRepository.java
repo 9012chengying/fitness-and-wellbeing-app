@@ -5,6 +5,8 @@ import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 
+import java.util.List;
+
 
 public interface RegisterRepository {
 
@@ -15,4 +17,5 @@ public interface RegisterRepository {
     boolean deleteUser(String userName);
 
     boolean updateUser(UserForm userForm);
+
 }

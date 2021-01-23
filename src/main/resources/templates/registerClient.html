@@ -6,12 +6,12 @@
 </head>
 
 <body class="full-height">
-    <form action="/register" class="form-horizontal trainer-register-form" method="post" onsubmit="return register();">
+    <form action="/register/client" class="form-horizontal trainer-register-form" method="post" onsubmit="return register();">
         <div id="loginbox">
             <div><h1 class="logo-name"></h1></div>
             <div class="form-group">
                 <h3>Welcome to Phyt</h3>
-                <h4>Personal Trainer registration</h4>
+                <h4>Personal Client registration</h4>
             </div>
             <div class="form-group">
                 <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="2" data-val-required="mandatory" id="username" name="username" placeholder="Username" type="text" value="" autocomplete="off" />
@@ -35,9 +35,8 @@
     <!--            <span style="color:red;" id="emailSpan"></span>-->
             </div>
             <div class="form-group">
-                <a th:href="@{/register/client}"><p>To be a client</p></a>
+                <a th:href="@{/register}"><p>To be a trainer</p></a>
             </div>
-
            <!-- <div class="form-group">
                 <a href="javascript:void(0);" class="file">Choose picture
                     <input type="file" class="file" accept="image/*" onchange="showImg(this)" />

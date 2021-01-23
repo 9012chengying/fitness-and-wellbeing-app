@@ -1,33 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr"
-      xmlns:th="http://www.Thymeleaf.org">
-<head th:replace="fragments/Head::Head"> </head>
-<body>
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/Head::head">
+    <title>PT Homepage</title>
+</head>
+<body class="ptHomepage">
 <!--Top navigation-->
-<a href="#" class="toggle-btn">
-<!--    <i class="fas fa-bars"></i>-->
-</a>
 
-<nav class="nav-bar">
-
-<div class="brand ">PHYT</div>
-
-
-    <div class="nav-links">
-        <ul>
-            <li><a href="home page.html" class="homes"><i class="fas fa-home active"></i>Home</a></li>
-            <li>  <a href="exercises.html"><i class="fas fa-dumbbell"></i>Create an exercise</a></li>
-            <li> <a href="#"><i class="fas fa-book"></i>Bookings</a></li>
-            <li><a href="clients.html"><i class="fas fa-users"></i>View Clients </a></li>
-            <li><a href="#"><i class="fas fa-user-cog"></i>Your Account </a></li>
-        </ul>
-    </div>
-</nav>
+<div th:insert="fragments/Navbar-Pt::PTnavbar"></div>
+<div class="DummyHeader"></div>
 
 <section class="container-fluid px-0 sec" >
     <div class="row  stuff">
         <div class="col-md-6 ">
-            <img src="/images/OCTOBERFIT.jpg" alt="pt" class="pt-image img-fluid rounded-circle ">
+            <div class="ptimg"><img src="/images/pt.jpg" alt="pt" class="img-fluid rounded-circle "></div>
             <div class="ratings col-12 text-center" >
                 <h2>Ratings</h2>
                 <a href="#">
@@ -49,7 +35,7 @@
         </div>
         <div class="col-md-6 info">
             <h1 >Overview</h1>
-            <form action="/trainer/update/user" class="form-horizontal" method="post" onsubmit="return update();">
+            <form action="/trainer/update" class="form-horizontal" method="post" onsubmit="return update();">
                 <strong>About: </strong> <p>Personal trainer </p>
                 <strong>User Name: </strong>
                 <div class="form-group">
