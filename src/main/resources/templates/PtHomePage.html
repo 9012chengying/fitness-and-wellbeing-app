@@ -42,7 +42,7 @@
             <strong>Lastname: </strong><p th:text="${info.lastName}"></p>
             <strong>Email: </strong><p th:text="${info.email}"></p>
 <!--            <strong>Contact info: </strong> <p>02920195111</p>-->
-            <a th:href="@{/update/info(username=${info.userName})}"><p>Update User</p></a>
+            <a th:href="@{/trainer/query(username=${info.userName})}"><p>Update User</p></a>
             <br>
             <a th:href="@{/user/delete(username=${info.userName})}"><p>Delete Current User</p></a>
         </div>

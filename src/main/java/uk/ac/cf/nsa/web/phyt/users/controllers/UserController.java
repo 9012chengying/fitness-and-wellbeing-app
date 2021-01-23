@@ -26,12 +26,12 @@ public class UserController {
 
     @RequestMapping(path="/register", method=RequestMethod.GET)
     public String trainerRegister() {
-        return "TrainerRegister";
+        return "register";
     }
 
     @RequestMapping(path="/register/client", method=RequestMethod.GET)
     public String clientRegister() {
-        return "ClientRegister";
+        return "registerClient";
     }
 
     //Route for registering a Trainer to the app
@@ -41,27 +41,27 @@ public class UserController {
         UserDTO user = userService.getUserInfo(userForm);
         if (user != null) {
             model.addAttribute("registerMessage", "Username already taken");
-            return "TrainerRegister";
+            return "register";
         } else {
             userForm.setRole("Trainer");
             if (!userService.setUpNewTrainer(userForm)) {
-                return "TrainerRegister";
+                return "register";
             } else {
                 return "redirect:/login";
             }
         }
     }
 
-    @RequestMapping(path = "/client/register")
+    @RequestMapping(path = "/register/client", method = RequestMethod.POST)
     public String clientAdd(UserForm userForm, Model model) {
         UserDTO user = userService.getUserInfo(userForm);
         if (user != null) {
             model.addAttribute("registerMessage", "Username already taken");
-            return "ClientRegister";
+            return "registerClient";
         } else {
             userForm.setRole("Client");
             if (!userService.setUpNewTrainer(userForm)) {
-                return "ClientRegister";
+                return "registerClient";
             } else {
                 return "redirect:/login";
             }
@@ -102,10 +102,10 @@ public class UserController {
     @RequestMapping(path = "/update/user")
     public String trainerUpdate(UserForm userForm) {
         userService.updateUser(userForm);
-        return "redirect:/register/info/"+userForm.getUsername();
+        return "redirect:/trainer/info/"+userForm.getUsername();
     }
 
-    @RequestMapping(path="/register/info/{username}")
+    @RequestMapping(path="/trainer/info/{username}")
     public ModelAndView trainerInfo(@PathVariable("username") String username) {
         ModelAndView mav = new ModelAndView();
         UserForm userForm = new UserForm(username,null,null,null,null);
@@ -114,7 +114,7 @@ public class UserController {
         mav.setViewName("PtHomePage");
         return mav;
     }
-    @RequestMapping(path="/ClientPage/{username}")
+    @RequestMapping(path="/client/{username}")
     public ModelAndView clientInfo(@PathVariable("username") String username) {
         ModelAndView mav = new ModelAndView();
         UserForm userForm = new UserForm(username,null,null,null,null);
@@ -123,7 +123,7 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping(path="/update/info")
+    @RequestMapping(path="/trainer/query")
     public ModelAndView trainerUpdateInfo(String username) {
         ModelAndView mav = new ModelAndView();
         UserForm userForm = new UserForm(username,null,null,null,null);

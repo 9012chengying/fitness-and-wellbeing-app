@@ -21,7 +21,7 @@
             <div class="home-links">
                 <a th:href="@{client/workout}"><button class="btn btn-xl btn-primary">New Workout</button></a>
                 <a th:href="@{client/diary}"><button class="btn btn-xl btn-secondary">View Diary</button></a>
-                <a th:href="@{'/ClientPage/'+${name}}"><button class="btn btn-xl btn-secondary">View Info</button></a>
+                <a th:href="@{'/client/'+${name}}"><button class="btn btn-xl btn-secondary">View Info</button></a>
             </div>
         </main>
 
@@ -29,5 +29,4 @@
         <div class="home-footer">
             <footer th:replace="fragments/Footer::Footer"> </footer>
         </div>
-</body>
 </html>

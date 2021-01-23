@@ -26,17 +26,20 @@ public class TrainerController {
         this.userService = userService;
     }
 
-    @RequestMapping(path = "/trainer/update/user")
+    @RequestMapping(path = "/trainer/update")
     public String trainerUpdate(UserForm userForm) {
-//        UserEntity currentUser = userService.authenticateUser();
-//        int userID = currentUser.getUserId();
-//        UserDTO bean = userService.getUserInfo(userForm);
+        UserEntity currentUser = userService.authenticateUser();
+        int userID = currentUser.getUserId();
+        UserDTO bean = userService.getUserInfo(userForm);
+        if (userID!=bean.getUserID()){
+            return "redirect:/login";
+        }
         //todo NEED TO CHECK SQL QUERY STILL VALID
         registerRepository.updateUser(userForm);
-        return "redirect:/register/info/"+userForm.getUsername();
+        return "redirect:/trainer/info/"+userForm.getUsername();
     }
 
-//    @RequestMapping(path="/register/info/{username}")
+//    @RequestMapping(path="/trainer/info/{username}")
 //    public ModelAndView trainerInfo(@PathVariable("username") String username) {
 //        ModelAndView mav = new ModelAndView();
 //        mav.addObject("info", registerRepository.getUserInfo(username));
