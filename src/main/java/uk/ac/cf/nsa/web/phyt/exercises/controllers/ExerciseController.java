@@ -6,9 +6,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
+import uk.ac.cf.nsa.web.phyt.exercises.forms.ImageForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
+
+import java.io.File;
+import java.nio.file.Files;
 
 @Controller
 @RequestMapping(path ="/trainer/exercises")
@@ -125,6 +129,21 @@ public class ExerciseController {
         return mav;
     }
 
+    @PostMapping(path="/uploadImages")
+    public ModelAndView uploadImageFiles(ImageForm imageForm, BindingResult br){
+        ModelAndView mav = new ModelAndView();
+        if (br.hasErrors()) {
+            System.out.println(br.toString());
+            mav.setViewName("AddImages");
+            return mav;
+        }
+        Files images = imageForm.getImageFiles();
+        int id = imageForm.getExerciseID();
+        String ID = String.valueOf(id);
+        mav.addObject("exercise",exerciseService.viewExercise(ID));
+        mav.setViewName("ViewExercise");
+        return mav;
+    }
 }
 
 

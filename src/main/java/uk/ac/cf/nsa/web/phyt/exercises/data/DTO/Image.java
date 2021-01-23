@@ -3,14 +3,29 @@ package uk.ac.cf.nsa.web.phyt.exercises.data.DTO;
 import uk.ac.cf.nsa.web.phyt.model.Media;
 
 //Image class
-public class Image extends Media {
+public class Image {
 
-    public Image(int id, String src, String altText, String Type, int exerciseID) {
-        super(id, src, altText, Type, exerciseID);
+    private int id;
+    private int exercise_id;
+    private String name;
+    private String type;
+    private byte[] data;
+
+
+    //Constructor for Image object that doesn't exist in db yet
+    public Image(int exercise_id, String name, String type, byte[] data) {
+        this.exercise_id = exercise_id;
+        this.name = name;
+        this.type = type;
+        this.data = data;
     }
 
-    public Image (String src, String altText, String Type, int exerciseID){
-     super(src, altText, Type,exerciseID);
+    //Constructor for image that exists in the database
+    public Image(int id, int exercise_id, String name, String type, byte[] data) {
+        this.id = id;
+        this.exercise_id = exercise_id;
+        this.name = name;
+        this.type = type;
+        this.data = data;
     }
-
 }

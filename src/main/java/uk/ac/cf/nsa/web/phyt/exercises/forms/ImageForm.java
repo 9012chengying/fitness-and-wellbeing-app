@@ -1,38 +1,37 @@
 package uk.ac.cf.nsa.web.phyt.exercises.forms;
 
-import java.sql.Blob;
+import java.nio.file.Files;
+import java.util.List;
+
 
 public class ImageForm {
 
-    Blob thumbnailImage;
-    Blob image1;
-    Blob image2;
-    Blob image3;
+    int exerciseID;
+    Files imageFiles;
+    List<Byte> byteData;
 
-    public ImageForm() {
+    public ImageForm(int exerciseID, Files imageFiles) {
+        this.exerciseID = exerciseID;
+        this.imageFiles = imageFiles;
     }
 
-
-
-    public ImageForm(Blob thumbnailImage, Blob image1, Blob image2, Blob image3) {
-        this.thumbnailImage = thumbnailImage;
-        this.image1 = image1;
-        this.image2 = image2;
-        this.image3 = image3;
+    public int getExerciseID() {
+        return exerciseID;
     }
 
-    public ImageForm(Blob image1, Blob image2, Blob image3) {
-        this.image1 = image1;
-        this.image2 = image2;
-        this.image3 = image3;
+    public void setExerciseID(int exerciseID) {
+        this.exerciseID = exerciseID;
     }
 
-    public ImageForm(Blob image1, Blob image2) {
-        this.image1 = image1;
-        this.image2 = image2;
+    public Files getImageFiles() {
+        return imageFiles;
     }
 
-    public ImageForm(Blob image1) {
-        this.image1 = image1;
+    public void setImageFiles(Files imageFiles) {
+        this.imageFiles = imageFiles;
+    }
+
+    public Byte readFileData(Files imageFiles){
+
     }
 }
