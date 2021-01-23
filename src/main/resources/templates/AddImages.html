@@ -20,18 +20,13 @@
                     <input class="hide" id="exerciseID" name="exerciseID" type="text" th:value="${exercise.exerciseID}">
                 </div>
 
-                <div class="exercise-input">
-                    <label for="numberOfImages">How many images do you want to upload?</label>
-                    <input id="numberOfImages" type="number" >
-                    <input id="inputNumber" type="button" onclick="increaseImageInput()" value="Enter">
-                </div>
                 <div class="exercise-input" id="imageInputs">
-                    <label >Select images you wish to add</label>
-                    <input type="file" id="images" name="images" accept="image/png, image/jpeg">
+                    <label for="image" >Select images you wish to add</label>
+                    <input type="file" id="image" name="image" accept="image/png, image/jpeg">
 
                 </div>
                 <div class="edit-exercise-buttons">
-                    <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Add Images</button>
+                    <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Add Image</button>
                     <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
                 </div>
             </form>

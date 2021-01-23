@@ -23,12 +23,11 @@ public class FileUploadService {
         this.exerciseRepo = exerciseR;
     }
 
-    public ImageBlob addFilesToDatabase(ImageForm imageForm){
+    public ImageBlob addFilesToDatabase(ImageForm imageForm, MultipartFile multipartFile){
 
         ImageBlob imageBlob = new ImageBlob();
 
             imageBlob.setExercise_id(imageForm.getExerciseID());
-            MultipartFile multipartFile = imageForm.getMultipartFile();
             String imageName = multipartFile.getName();
             System.out.println(imageName);
             imageBlob.setName(imageName);

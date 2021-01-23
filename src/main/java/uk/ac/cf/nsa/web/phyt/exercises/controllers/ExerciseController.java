@@ -132,14 +132,14 @@ public class ExerciseController {
     }
 
     @PostMapping(path="/uploadImages")
-    public String uploadImageFiles(ImageForm imageForm, BindingResult br){
+    public String uploadImageFiles(ImageForm imageForm, @RequestParam("image") MultipartFile multipartFile, BindingResult br){
         if (br.hasErrors()) {
             System.out.println(br.toString());
             return br.toString();
         }
        // ModelAndView mav = new ModelAndView();
         //add images to the database in the media table.
-        fileUploadService.addFilesToDatabase(imageForm);
+        fileUploadService.addFilesToDatabase(imageForm, multipartFile);
         return "ViewExercise";
     }
 }
