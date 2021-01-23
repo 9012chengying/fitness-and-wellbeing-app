@@ -6,7 +6,7 @@
 <head th:replace="fragments/Head :: Head"> </head>
 
 
-    <body class="exercise-body" onload="listen()">
+    <body class="exercise-body">
 
         <nav th:replace="fragments/Navbar-Pt::PTnavbar"></nav>
 
@@ -15,26 +15,22 @@
         </header>
 
         <main>
-            <form id="exerciseForm" th:action="@{/trainer/exercises/uploadImages}" enctype="multipart/form-data" method="post">
+            <form id="imageForm" th:action="@{/trainer/exercises/uploadImages}" enctype="multipart/form-data" method="post">
                 <div class="exercise-input hide">
                     <input class="hide" id="exerciseID" name="exerciseID" type="text" th:value="${exercise.exerciseID}">
                 </div>
+
                 <div class="exercise-input">
-                    <label for="thumbnailImg">Image for Exercise Thumbnail:</label>
-                    <input type="file" id="thumbnailImg" name="image" accept="image/png, image/jpeg" >
+                    <label for="images">Select images you wish to add</label>
+                    <input type="file" id="images" name="images" multiple accept="image/png, image/jpeg" onchange="updateList()">
                 </div>
+
                 <div class="exercise-input">
-                    <label for="Image1">Image 1:</label>
-                    <input type="file" id="Image1" name="image" accept="image/png, image/jpeg" >
+                    <p>Selected files:</p>
+                    <div id="imageList"></div>
                 </div>
-                <div class="exercise-input">
-                    <label for="Image2">Image 2:</label>
-                    <input type="file" id="Image2" name="image" accept="image/png, image/jpeg" >
-                </div>
-                <div class="exercise-input">
-                    <label for="Image3">Image 3:</label>
-                    <input type="file" id="Image3" name="image" accept="image/png, image/jpeg" >
-                </div>
+
+
 
                 <div class="edit-exercise-buttons">
                     <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Add Images</button>

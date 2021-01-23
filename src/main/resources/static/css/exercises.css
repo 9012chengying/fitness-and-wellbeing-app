@@ -188,6 +188,30 @@
     }
 
 /* ************************* */
+    /* CSS FOR AddImages PAGE */
+
+    #imageForm{
+        font-size: 1.8rem;
+        width: 65%;
+        margin: 20px auto;
+    }
+
+    #imageList{
+        min-height: 10vh;
+        margin-bottom: 2rem;
+    }
+
+    .ul-image{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .listItem{
+        padding-left: 1rem;
+    }
+
+/* ************************* */
     /* CSS FOR ViewExercise PAGE */
 
     #exercise-name{
