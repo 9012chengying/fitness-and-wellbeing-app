@@ -26,7 +26,7 @@
     <p th:text="${info.weight}"></p>
     <strong>Email: </strong>
     <p th:text="${info.email}"></p>
-    <a th:href="@{/client/ClientInfoUpdate}">Edit</a>
+    <a href="/client/ClientInfoUpdate"><button type="button" id="update-cancel" class="btn btn-primary btn-xl">Edit</button></a>
 </div>
 
 <footer th:replace="fragments/Footer::Footer"></footer>
