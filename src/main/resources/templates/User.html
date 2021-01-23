@@ -6,8 +6,8 @@
 <head th:replace="fragments/Head::Head"> </head>
 
 <body>
-        <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
 
+        <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
         <header class="home-header">
             <h1>Hi,
                 <span th:text="${name}"></span> </h1>
@@ -21,7 +21,7 @@
             <div class="home-links">
                 <a th:href="@{client/workout}"><button class="btn btn-xl btn-primary">New Workout</button></a>
                 <a th:href="@{client/diary}"><button class="btn btn-xl btn-secondary">View Diary</button></a>
-                <a th:href="@{'/client/'+${name}}"><button class="btn btn-xl btn-secondary">View Info</button></a>
+                <a th:href="@{'/client/info/'+${name}}"><button class="btn btn-xl btn-secondary">View Info</button></a>
             </div>
         </main>
 

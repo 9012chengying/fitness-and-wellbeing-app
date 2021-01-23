@@ -4,9 +4,6 @@ public class ClientDTO {
 
     private int id;
     private String name;
-
-
-
     private String gender;
     private int age;
     private float height;

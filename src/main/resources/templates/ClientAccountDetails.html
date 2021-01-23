@@ -14,19 +14,24 @@
     <h1>My Account Details</h1>
 </header>
 <div class="info">
-    <strong>Name: </strong>
-    <p th:text="${info.name}"></p>
-    <strong>Gender: </strong>
-    <p th:text="${info.gender}"></p>
-    <strong>Age: </strong>
-    <p th:text="${info.age}"></p>
-    <strong>Height: </strong>
-    <p th:text="${info.height}"></p>
-    <strong>Weight: </strong>
-    <p th:text="${info.weight}"></p>
-    <strong>Email: </strong>
-    <p th:text="${info.email}"></p>
-    <a href="/client/ClientInfoUpdate"><button type="button" id="update-cancel" class="btn btn-primary btn-xl">Edit</button></a>
+<!--    <strong>Name: </strong>-->
+<!--    <p th:text="${info.name}"></p>-->
+<!--    <strong>Gender: </strong>-->
+<!--    <p th:text="${info.gender}"></p>-->
+<!--    <strong>Age: </strong>-->
+<!--    <p th:text="${info.age}"></p>-->
+<!--    <strong>Height: </strong>-->
+<!--    <p th:text="${info.height}"></p>-->
+<!--    <strong>Weight: </strong>-->
+<!--    <p th:text="${info.weight}"></p>-->
+<!--    <strong>Email: </strong>-->
+<!--    <p th:text="${info.email}"></p>-->
+    <strong>User Name: </strong> <br><p th:text="${info.userName}"></p>
+    <strong>Firstname: </strong><p th:text="${info.firstName}"></p>
+    <strong>Lastname: </strong><p th:text="${info.lastName}"></p>
+    <strong>Email: </strong><p th:text="${info.email}"></p>
+<!--    <a href="/client/ClientInfoUpdate"><button type="button" id="update-cancel" class="btn btn-primary btn-xl">Edit</button></a>-->
+    <a th:href="@{/client/query(username=${info.userName})}"><p>Edit</p></a>
 </div>
 
 <footer th:replace="fragments/Footer::Footer"></footer>

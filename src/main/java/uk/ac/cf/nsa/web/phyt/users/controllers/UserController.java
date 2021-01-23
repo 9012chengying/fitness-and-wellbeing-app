@@ -104,7 +104,7 @@ public class UserController {
         userService.updateUser(userForm);
         return "redirect:/trainer/info/"+userForm.getUsername();
     }
-
+    //trainer info page
     @RequestMapping(path="/trainer/info/{username}")
     public ModelAndView trainerInfo(@PathVariable("username") String username) {
         ModelAndView mav = new ModelAndView();
@@ -114,7 +114,8 @@ public class UserController {
         mav.setViewName("PtHomePage");
         return mav;
     }
-    @RequestMapping(path="/client/{username}")
+    //client info page
+    @RequestMapping(path="/client/info/{username}")
     public ModelAndView clientInfo(@PathVariable("username") String username) {
         ModelAndView mav = new ModelAndView();
         UserForm userForm = new UserForm(username,null,null,null,null);
@@ -123,6 +124,7 @@ public class UserController {
         return mav;
     }
 
+    //update trainer info
     @RequestMapping(path="/trainer/query")
     public ModelAndView trainerUpdateInfo(String username) {
         ModelAndView mav = new ModelAndView();
@@ -132,9 +134,20 @@ public class UserController {
         return mav;
     }
 
+    //delete trainer info
     @RequestMapping(path = "/user/delete")
     public String deleteUser(String username) {
         boolean success= userService.deleteUser(username);
         return "redirect:/register";
+    }
+    
+    //update client info
+    @RequestMapping(path="/client/query")
+    public ModelAndView clientUpdateInfo(String username) {
+        ModelAndView mav = new ModelAndView();
+        UserForm userForm = new UserForm(username,null,null,null,null);
+        mav.addObject("info", userService.getUserInfo(userForm));
+        mav.setViewName("ClientInfoUpdate");
+        return mav;
     }
 }
