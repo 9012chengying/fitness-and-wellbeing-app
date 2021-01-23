@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head :: Head"> </head>
+
+
+<body class="exercise-body" onload="listen()">
+
+<nav th:replace="fragments/Navbar-Pt::PTnavbar"></nav>
+
+<header class="exercise-header">
+    <h2>Edit exercise</h2>
+</header>
+
+<!-- Main input form -->
+<main id="exercise-main">
+    <form id="exerciseForm" th:action="@{/trainer/exercises/edit}" th:object="${ExerciseForm}" method="post">
+        <div class="exercise-input hide">
+            <input class="hide" id="exerciseID" name="exerciseID" type="text" th:value="${exercise.exerciseID}">
+        </div>
+        <div class="exercise-input">
+            <label for="exerciseName">Exercise Name: </label>
+            <input id="exerciseName" name="exerciseName" type="text" th:value="${exercise.exerciseName}">
+        </div>
+        <div class="exercise-input">
+            <label for="exerciseDesc">Exercise Details: </label>
+            <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10" th:text="${exercise.exerciseDesc}"></textarea>
+        </div>
+        <div class="exercise-input">
+            <label for="exerciseCat">Exercise Category: </label>
+            <select name="exerciseCat" id="exerciseCat" required>
+                <option th:value="${exercise.exerciseCat}" th:text="${exercise.exerciseCat}"> </option>
+                <option value="Core">Core</option>
+                <option value="Upper body">Upper Body</option>
+                <option value="Lower body">Lower Body</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Drills">Drills</option>
+            </select>
+        </div>
+        <div class="exercise-input">
+            <label for="exerciseVideo" title="Right click on video and copy the Embed code">YouTube Video: </label>
+            <input name="exerciseVideo" id="exerciseVideo" type="text">
+            <p onclick="youtube()" id="youtube-popup">Click here for more information about embed codes</p>
+        </div>
+        <div class="edit-exercise-buttons">
+            <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Save</button>
+            <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
+        </div>
+    </form>
+
+    <!-- Pop up box - how to get embed code for Youtube videos  -->
+    <div id="youtube-popup-modal" class="modal">
+        <!-- Modal - from bootstrap https://getbootstrap.com/docs/4.0/components/modal/ -->
+        <div class="modal-dialog modal-dialog-video" role="document">
+            <div class="modal-content">
+                <div class="modal-header-video">
+                    <h4 class="modal-title" id="delete-Exercise-warning">How to add a YouTube Video</h4>
+                    <button id="closeIcon" type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Go to your video in YouTube.<br>
+                        Right click on the Video and select 'Copy embed code'<br><br>
+                        Paste the code into a word document or note pad.<br><br>
+                        You will see something that looks like this within an iframe html tag <br><br>
+                        <code> width="1280" height="720" src="https://www.youtube.com/embed/PWic8ckZ1q0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen"</code><br><br>
+                        Copy the src (the URL that starts https://) and paste that into the Video input field.<br><br>
+                        Your YouTube link should look something like this:  https://www.youtube.com/embed/PWic8ckZ1q0
+                    </h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeYoutube()">Close Popup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/Footer::Footer"> </footer>
+</body>
+
+</html>

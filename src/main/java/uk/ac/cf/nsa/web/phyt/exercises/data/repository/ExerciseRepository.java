@@ -21,9 +21,11 @@ public interface ExerciseRepository {
 
     boolean deleteExercise(int id);
 
-    boolean addImage(ExerciseForm exerciseForm);
+    boolean updateVideo(ExerciseForm exerciseForm);
 
     boolean addVideo(ExerciseForm exerciseForm);
+
+    boolean addVideoWithExerciseID(ExerciseForm exerciseForm);
 
     List<Image> getExerciseImages(int exercise_id);
 
