@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.ImageBlob;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ImageForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.ExerciseManagementService;
@@ -131,10 +132,14 @@ public class ExerciseController {
     }
 
     @PostMapping(path="/uploadImages")
-    public String uploadImageFiles(ImageForm imageForm, MultipartFile[] multipartFiles, BindingResult br){
+    public String uploadImageFiles(ImageForm imageForm, BindingResult br){
+        if (br.hasErrors()) {
+            System.out.println(br.toString());
+            return br.toString();
+        }
        // ModelAndView mav = new ModelAndView();
         //add images to the database in the media table.
-        fileUploadService.addFilesToDatabase(multipartFiles, imageForm.getExerciseID());
+        fileUploadService.addFilesToDatabase(imageForm);
         return "ViewExercise";
     }
 }

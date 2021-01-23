@@ -1,5 +1,6 @@
 package uk.ac.cf.nsa.web.phyt.exercises.data.DTO;
 
+
 public class ImageBlob {
     private int id;
     private int exercise_id;

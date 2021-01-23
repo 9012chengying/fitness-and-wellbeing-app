@@ -1,5 +1,7 @@
 package uk.ac.cf.nsa.web.phyt.exercises.forms;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.nio.file.Files;
 import java.util.List;
 
@@ -7,15 +9,14 @@ import java.util.List;
 public class ImageForm {
 
     int exerciseID;
-    Files imageFiles;
-    List<Byte> byteData;
+    MultipartFile multipartFile;
 
     public ImageForm() {
     }
 
-    public ImageForm(int exerciseID, Files imageFiles) {
+    public ImageForm(int exerciseID, MultipartFile multipartFile) {
         this.exerciseID = exerciseID;
-        this.imageFiles = imageFiles;
+        this.multipartFile = multipartFile;
     }
 
     public int getExerciseID() {
@@ -26,14 +27,11 @@ public class ImageForm {
         this.exerciseID = exerciseID;
     }
 
-    public Files getImageFiles() {
-        return imageFiles;
+    public MultipartFile getMultipartFile() {
+        return multipartFile;
     }
 
-    public void setImageFiles(Files imageFiles) {
-        this.imageFiles = imageFiles;
+    public void setMultipartFile(MultipartFile multipartFile) {
+        this.multipartFile = multipartFile;
     }
-
-
-
 }
