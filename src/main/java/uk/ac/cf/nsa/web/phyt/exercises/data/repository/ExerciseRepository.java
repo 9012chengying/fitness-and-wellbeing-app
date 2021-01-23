@@ -2,6 +2,7 @@ package uk.ac.cf.nsa.web.phyt.exercises.data.repository;
 
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Image;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.ImageBlob;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Video;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 
@@ -24,6 +25,8 @@ public interface ExerciseRepository {
     boolean updateVideo(ExerciseForm exerciseForm);
 
     boolean addVideo(ExerciseForm exerciseForm);
+
+    boolean addImage(ImageBlob imageBlob);
 
     boolean addVideoWithExerciseID(ExerciseForm exerciseForm);
 

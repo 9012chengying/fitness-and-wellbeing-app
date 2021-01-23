@@ -140,7 +140,7 @@ public class ExerciseController {
        // ModelAndView mav = new ModelAndView();
         //add images to the database in the media table.
         fileUploadService.addFilesToDatabase(imageForm, multipartFile);
-        return "ViewExercise";
+        return "AddImages";
     }
 }
 

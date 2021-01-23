@@ -8,6 +8,7 @@ import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.springframework.web.multipart.MultipartFile;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Image;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.ImageBlob;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ImageForm;
 import uk.ac.cf.nsa.web.phyt.exercises.service.FileUploadService;
@@ -21,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FileUploadServiceTests {
 
     private static ImageForm testImageForm;
-    private static Image testImage;
+    private static ImageBlob testImageBlob;
 
     @Autowired
     private FileUploadService fileUploadService;
@@ -29,11 +30,11 @@ public class FileUploadServiceTests {
     @BeforeAll
     public static void before() {
         testImageForm = new ImageForm();
-        testImage = new Image();
+        testImageBlob = new ImageBlob();
     }
 
     @Test
-    public void addFilesToDatabaseTest(MultipartFile[] multipartFiles, int exerciseID){
+    public void addFilesToDatabaseTest(ImageForm imageForm, MultipartFile multipartFile){
 
     }
 //    Java Code Examples for org.springframework.web.multipart ,

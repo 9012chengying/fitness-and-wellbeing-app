@@ -23,25 +23,34 @@ public class FileUploadService {
         this.exerciseRepo = exerciseR;
     }
 
-    public ImageBlob addFilesToDatabase(ImageForm imageForm, MultipartFile multipartFile){
+    public ImageBlob createImageBlob(ImageForm imageForm, MultipartFile multipartFile){
 
         ImageBlob imageBlob = new ImageBlob();
-
-            imageBlob.setExercise_id(imageForm.getExerciseID());
-            String imageName = multipartFile.getName();
-            System.out.println(imageName);
-            imageBlob.setName(imageName);
-            try{
-                byte[] imageBytes = multipartFile.getBytes();
-                imageBlob.setImageData(imageBytes);
-                System.out.println(imageBytes);
-            } catch(IOException ioe){
-                throw new RuntimeException("IOException in reading file",ioe);
-            }
-            String imageType = multipartFile.getContentType();
-            System.out.println(imageType);
-            imageBlob.setType(imageType);
+        imageBlob.setExercise_id(imageForm.getExerciseID());
+        String imageName = multipartFile.getOriginalFilename();
+        System.out.println(imageName);
+        imageBlob.setName(imageName);
+        try{
+            byte[] imageBytes = multipartFile.getBytes();
+            imageBlob.setImageData(imageBytes);
+            System.out.println(imageBytes);
+        } catch(IOException ioe){
+            throw new RuntimeException("IOException in reading file",ioe);
+        }
+        String imageType = multipartFile.getContentType();
+        System.out.println(imageType);
+        imageBlob.setType(imageType);
         return imageBlob;
+    }
+
+    public boolean addFilesToDatabase(ImageForm imageForm, MultipartFile multipartFile){
+        ImageBlob imageBlob = createImageBlob(imageForm, multipartFile);
+        exerciseRepo.addImage(imageBlob);
+        if(!exerciseRepo.addImage(imageBlob)){
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
