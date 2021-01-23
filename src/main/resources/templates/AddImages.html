@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head :: Head"> </head>
+
+
+    <body class="exercise-body" onload="listen()">
+
+        <nav th:replace="fragments/Navbar-Pt::PTnavbar"></nav>
+
+        <header class="exercise-header">
+            <h2>Add Images to <span th:value="${exercise.exerciseName}"></span></h2>
+        </header>
+
+        <main>
+            <form id="exerciseForm" th:action="@{/trainer/exercises/uploadImages}" method="post">
+                <div class="exercise-input hide">
+                    <input class="hide" id="exerciseID" name="exerciseID" type="text" th:value="${exercise.exerciseID}">
+                </div>
+                <div class="exercise-input">
+                    <label for="exerciseName">Exercise Name: </label>
+                    <input id="exerciseName" name="exerciseName" type="text" th:value="${exercise.exerciseName}">
+                </div>
+                <div class="exercise-input">
+                    <label for="exerciseDesc">Exercise Details: </label>
+                    <textarea name="exerciseDesc" id="exerciseDesc" cols="30" rows="10" th:text="${exercise.exerciseDesc}"></textarea>
+                </div>
+
+                <div class="edit-exercise-buttons">
+                    <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Add Images</button>
+                    <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
+                </div>
+            </form>
+
+        </main>
+
+    </body>
+</html>
