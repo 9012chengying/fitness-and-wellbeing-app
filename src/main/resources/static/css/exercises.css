@@ -190,6 +190,16 @@
 /* ************************* */
     /* CSS FOR AddImages PAGE */
 
+    .image-message{
+        width: 90%;
+        margin: auto;
+        color: #007bff;
+        font-weight: bold;
+    }
+    .image-message>p{
+        text-align: center;
+    }
+
     #imageForm{
         font-size: 1.8rem;
         width: 65%;
@@ -209,6 +219,13 @@
 
     .listItem{
         padding-left: 1rem;
+    }
+
+    .addImage-exercise-buttons{
+        width: 100%;
+    }
+    #image-add-button, .addImage-exercise-buttons>a{
+        width: 80%;
     }
 
 /* ************************* */

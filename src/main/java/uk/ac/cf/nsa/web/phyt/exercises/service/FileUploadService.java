@@ -45,8 +45,8 @@ public class FileUploadService {
 
     public boolean addFilesToDatabase(ImageForm imageForm, MultipartFile multipartFile){
         ImageBlob imageBlob = createImageBlob(imageForm, multipartFile);
-        exerciseRepo.addImage(imageBlob);
-        if(!exerciseRepo.addImage(imageBlob)){
+        boolean imageAdded = exerciseRepo.addImage(imageBlob);
+        if(!imageAdded){
             return false;
         } else {
             return true;

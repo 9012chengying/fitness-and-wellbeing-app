@@ -132,15 +132,21 @@ public class ExerciseController {
     }
 
     @PostMapping(path="/uploadImages")
-    public String uploadImageFiles(ImageForm imageForm, @RequestParam("image") MultipartFile multipartFile, BindingResult br){
+    public ModelAndView uploadImageFiles(ImageForm imageForm, @RequestParam("image") MultipartFile multipartFile, BindingResult br){
+        ModelAndView mav = new ModelAndView();
+        String exerciseID = String.valueOf(imageForm.getExerciseID());
         if (br.hasErrors()) {
             System.out.println(br.toString());
-            return br.toString();
-        }
-       // ModelAndView mav = new ModelAndView();
+            mav.addObject("message", "Image failed to upload");
+            mav.setViewName("AddImages");
+            return mav;
+        } else
         //add images to the database in the media table.
         fileUploadService.addFilesToDatabase(imageForm, multipartFile);
-        return "AddImages";
+        mav.addObject("message", "Image successfully added");
+        mav.addObject("exercise", exerciseService.viewExercise(exerciseID));
+        mav.setViewName("AddImages");
+        return mav;
     }
 }
 
