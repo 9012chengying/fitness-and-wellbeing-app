@@ -5,6 +5,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.client.DTO.*;
+import uk.ac.cf.nsa.web.phyt.client.form.ClientWorkoutForm;
 import uk.ac.cf.nsa.web.phyt.client.model.*;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class ClientWorkoutRepositoryJDBC implements ClientWorkoutRepository {
     @Override
     public List<ExerciseWorkoutDTO> workoutExerciseDetails(int workoutID) {
         return (List<ExerciseWorkoutDTO>) jdbcTemplate.query(
-                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
+                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.thumbnail_img, exercises.thumbnail_alt " +
                         "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
                 new ExerciseWorkoutMapper(), workoutID);
     }
@@ -61,7 +62,7 @@ public class ClientWorkoutRepositoryJDBC implements ClientWorkoutRepository {
     public String workoutCategories(int workoutID) {
         ArrayList<String> categoryArray = new ArrayList<>();
         List<ExerciseWorkoutDTO> exerciseWorkoutDTO = (List<ExerciseWorkoutDTO>) jdbcTemplate.query(
-                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
+                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.thumbnail_img, exercises.thumbnail_alt " +
                         "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
                 new ExerciseWorkoutMapper(), workoutID);
         int categoryCount = exerciseWorkoutDTO.size();
@@ -94,7 +95,7 @@ public class ClientWorkoutRepositoryJDBC implements ClientWorkoutRepository {
     @Override
     public ExerciseDTO viewExerciseByID(int exerciseID) {
         ExerciseDTO exerciseDTO = (ExerciseDTO) jdbcTemplate.queryForObject(
-                "SELECT id, exercise_name, exercise_desc, category, equipment FROM exercises WHERE id=?",
+                "SELECT id, exercise_name, exercise_desc, category FROM exercises WHERE id=?",
                 new ExerciseMapper(), exerciseID);
         return exerciseDTO;
     }
@@ -110,7 +111,7 @@ public class ClientWorkoutRepositoryJDBC implements ClientWorkoutRepository {
     public ArrayList<String> exerciseNameByWorkoutID(int workoutID) {
         ArrayList<String> exerciseArray = new ArrayList<>();
         List<ExerciseWorkoutDTO> exerciseWorkoutDTO = (List<ExerciseWorkoutDTO>) jdbcTemplate.query(
-                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
+                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.thumbnail_img, exercises.thumbnail_alt " +
                         "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
                 new ExerciseWorkoutMapper(), workoutID);
         int exerciseCount = exerciseWorkoutDTO.size();
@@ -124,7 +125,7 @@ public class ClientWorkoutRepositoryJDBC implements ClientWorkoutRepository {
     public ArrayList<String> exerciseThumbnailByWorkoutID(int workoutID) {
         ArrayList<String> thumbnailArray = new ArrayList<>();
         List<ExerciseWorkoutDTO> exerciseWorkoutDTO = (List<ExerciseWorkoutDTO>) jdbcTemplate.query(
-                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.equipment, exercises.thumbnail_img, exercises.thumbnail_alt " +
+                "SELECT ExerciseWorkoutLink.workout_id, exercises.id AS exercise_id, exercises.exercise_name, exercises.category, exercises.thumbnail_img, exercises.thumbnail_alt " +
                         "FROM Exercises INNER JOIN ExerciseWorkoutLink ON Exercises.id=ExerciseWorkoutLink.exercise_id WHERE workout_id=?",
                 new ExerciseWorkoutMapper(), workoutID);
         int exerciseCount = exerciseWorkoutDTO.size();
@@ -132,5 +133,13 @@ public class ClientWorkoutRepositoryJDBC implements ClientWorkoutRepository {
             thumbnailArray.add(exerciseWorkoutDTO.get(i).getThumbnailImg());
         }
         return thumbnailArray;
+    }
+
+    @Override
+    public boolean workoutComplete(ClientWorkoutForm clientWorkoutForm) {
+        int rows = jdbcTemplate.update(
+            "UPDATE Workouts SET completed=true, completed_at=current_timestamp() WHERE workouts.id=?",
+                new Object[]{clientWorkoutForm.getWorkoutID()});
+        return rows > 0;
     }
 }

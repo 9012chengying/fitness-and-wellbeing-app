@@ -8,7 +8,7 @@
     <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
 
     <header class="alignHeader">
-        <h2 class="workoutHeader" th:if="${workout.completed} == true">Workout Completed <br><span th:text="${workout.completedDate}"></span></h2>
+        <h2 class="workoutHeader" th:if="${workout.completed} == true">Workout Last Completed <br><span th:text="${workout.completedDate}"></span></h2>
         <h2 class="workoutHeader" th:if="${workout.completed} == false">Complete by <span th:text="${workout.dueDate}"></span></h2>
     </header>
     <br>
