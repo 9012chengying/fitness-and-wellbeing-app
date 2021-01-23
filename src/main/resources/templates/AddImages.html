@@ -11,7 +11,7 @@
         <nav th:replace="fragments/Navbar-Pt::PTnavbar"></nav>
 
         <header class="exercise-header">
-            <h2>Add Images to <span th:value="${exercise.exerciseName}"></span></h2>
+            <h2>Add Images to <span th:text="${exercise.exerciseName}"></span></h2>
         </header>
 
         <main>
