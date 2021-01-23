@@ -12,6 +12,7 @@
     </header>
 
     <!--add filter by client maybe-->
+    <!--add filter by complete/incomplete maybe-->
 
     <main>
         <div class="container">
@@ -20,13 +21,13 @@
                     <img th:src="${workout.imageSrc}" th:alt="${workout.imageAlt}">
                 </div>
                 <div id="workoutDetails" class="col-6">
-                    <span>Client Username: </span><b th:text="${workout.clientUsername}"></b>
+                    <span>Client: </span><b th:text="${workout.clientUsername}"></b>
                     <br>
                     <span>Created: </span><b th:text="${workout.createdAt}"></b>
                     <br>
                     <span>Number of Exercises: </span><b th:text="${workout.exerciseCount}"></b>
-                    <b th:if="${workout.completed} == true"><br>Completed: <span th:text="${workout.completedAt}"</b>
-                    <b th:if="${workout.completed} == false"><br>Due: <b th:text="${workout.dueDate}"></b></b>
+                    <b th:if="${workout.completed} == true"><br>Completed: <span th:text="${workout.completedAt}"</span></b>
+                    <b th:if="${workout.completed} == false"><br>Due: <span th:text="${workout.dueDate}"></span></b>
                 </div>
                 <div id="diaryButton" class="col-3">
                     <!--<a th:href="@{/trainer/workout/view(workoutID=${workout.id})}"><button type="button" class="btn btn-primary" th:if="${workout.completed} == true">View Details</button></a>-->
@@ -35,10 +36,12 @@
                 <br>
             </div>
         </div>
-        <br><br><br>
+        <br>
     </main>
 
-    <a href="/trainer/workouts/create" class="centerText"><button class="btn btn-primary">Create New Workout</button></a>
+    <div class="centerText">
+        <a href="/trainer/workouts/create"><button id="createWorkoutButton" class="btn btn-primary">Create New Workout</button></a>
+    </div>
 
     <footer th:replace="fragments/Footer::Footer"></footer>
 
