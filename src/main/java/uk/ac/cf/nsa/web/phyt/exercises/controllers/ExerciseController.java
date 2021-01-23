@@ -109,6 +109,14 @@ public class ExerciseController {
         }
     }
 
+    @GetMapping(path="/uploadImages")
+    public ModelAndView getUploadImagesForm(@RequestParam(value = "exerciseID", defaultValue = "") String exerciseID){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exercise", exerciseService.viewExercise(exerciseID));
+        mav.setViewName("AddImages");
+        return mav;
+    }
+
 }
 
 
