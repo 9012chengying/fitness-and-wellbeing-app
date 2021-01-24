@@ -10,6 +10,7 @@ public class UserForm {
     private String email;
     private String role = null;
 
+
     public UserForm(String username, String password, String firstname, String lastname, String email) {
         this.username = username;
         this.password = password;

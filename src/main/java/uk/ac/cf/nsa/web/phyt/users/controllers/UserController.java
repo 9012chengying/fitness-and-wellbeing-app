@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
-import uk.ac.cf.nsa.web.phyt.users.data.repository.RegisterRepository;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
@@ -115,8 +114,9 @@ public class UserController {
         mav.setViewName("PtHomePage");
         return mav;
     }
+
     //client info page
-    @RequestMapping(path="/client/info/{username}")
+    @RequestMapping(path="/client/info/{username}") //Displays user information
     public ModelAndView clientInfo(@PathVariable("username") String username) {
         ModelAndView mav = new ModelAndView();
         UserForm userForm = new UserForm(username,null,null,null,null);
@@ -126,7 +126,7 @@ public class UserController {
     }
 
     //update trainer info
-    @RequestMapping(path="/trainer/query")
+    @RequestMapping(path="/trainer/query") //
     public ModelAndView trainerUpdateInfo(String username) {
         ModelAndView mav = new ModelAndView();
         UserForm userForm = new UserForm(username,null,null,null,null);
@@ -136,12 +136,28 @@ public class UserController {
     }
 
     //update client info
-    @RequestMapping(path="/client/query")
+    @RequestMapping(path="/client/query", method=RequestMethod.GET) //Gets the update page for the user
     public ModelAndView clientUpdateInfo(String username) {
         ModelAndView mav = new ModelAndView();
         UserForm userForm = new UserForm(username,null,null,null,null);
         mav.addObject("info", userService.getUserInfo(userForm));
         mav.setViewName("ClientInfoUpdate");
+        return mav;
+    }
+
+    //New Post route to update user info for client - client/ClientInfoUpdate
+    @RequestMapping(path="/client/ClientInfoUpdate", method=RequestMethod.POST)
+    public ModelAndView updateClientInfo(UserForm userForm){
+        ModelAndView mav = new ModelAndView();
+        boolean success = userService.updateUser(userForm);
+        if(!success){
+            mav.addObject("updateMessage", "Unable to update your details");
+            mav.addObject("info", userService.getUserInfo(userForm));
+            mav.setViewName("ClientInfoUpdate");
+        } else {
+            mav.addObject("info", userService.getUserInfo(userForm));
+            mav.setViewName("ClientAccountDetails");
+        }
         return mav;
     }
     
