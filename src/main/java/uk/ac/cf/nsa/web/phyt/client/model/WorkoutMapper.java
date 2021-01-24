@@ -24,9 +24,6 @@ public class WorkoutMapper implements RowMapper {
                 rs.getBoolean("completed"),
                 rs.getString("completed_at"),
                 rs.getString("created_at"),
-                rs.getString("img_src"),
-                rs.getString("alt_text"),
-                rs.getString("type")
-        );
+                rs.getString("thumbnail_img"));
     }
 }

@@ -5,14 +5,12 @@ public class ExerciseDTO {
     private String name;
     private String description;
     private String category;
-    private String equipment;
 
-    public ExerciseDTO(int id, String name, String description, String category, String equipment) {
+    public ExerciseDTO(int id, String name, String description, String category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.category = category;
-        this.equipment = equipment;
     }
 
     public int getId() {
@@ -29,9 +27,5 @@ public class ExerciseDTO {
 
     public String getCategory() {
         return category;
-    }
-
-    public String getEquipment() {
-        return equipment;
     }
 }

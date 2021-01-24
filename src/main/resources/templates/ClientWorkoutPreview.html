@@ -30,7 +30,7 @@
 
             <div class="exerciseThumbnailNameBlock">
                 <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
-                    <a th:href="@{/client/workout/exercise(exerciseID=${exercise.exerciseID})}" onclick="openWin(this)"><img th:src="${exercise.thumbnailImg}" th:alt="${exercise.thumbnailAlt}"></a>
+                    <a th:href="@{/client/workout/exercise(exerciseID=${exercise.exerciseID})}" onclick="openWin(this)"><img th:src="${exercise.thumbnailImg}"></a>
                     <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
                 </figure>
             </div>
