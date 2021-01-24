@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Image;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.ImageBlob;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Video;
 import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.ExerciseMapper;
 import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.ImageMapper;
@@ -84,8 +85,12 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
 
 
 
-    public boolean addImage(ExerciseForm exerciseForm) {
-        return false;
+    public boolean addImage(ImageBlob imageBlob) {
+        int rows = jdbcTemplate.update(
+                "insert into media(exercise_id, img_src, alt_text,type, media_blob,media_type) values(?,?,?,'Image',?,?)" ,
+                new Object[]{imageBlob.getExercise_id(),imageBlob.getName(), imageBlob.getName(), imageBlob.getImageData(), imageBlob.getType()});
+        System.out.println(rows>0);
+        return rows>0;
     }
 
     public boolean addVideo(ExerciseForm exerciseForm){
