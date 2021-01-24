@@ -12,71 +12,71 @@
     <body>
     <!--Top navigation-->
         <nav th:replace="/fragments/Navbar-Pt::PTnavbar">
-            <span><a href="PtHomePage.html"><i class="fas fa-arrow-left"></i>Back to Home</a></span>
-            <span>Joe Bloggs
-            <img class="trainer-image" src="../static/images/male_profile_image.jpg" alt="trainer profile image"></span>
-            <span><a href="">Invite Clients <i class="fas fa-user-plus"></i></a></span>
+<!--            <span><a href="PtHomePage.html"><i class="fas fa-arrow-left"></i>Back to Home</a></span>-->
+<!--            <span>Joe Bloggs-->
+<!--            <img class="trainer-image" src="../static/images/male_profile_image.jpg" alt="trainer profile image"></span>-->
+<!--            <span><a href="">Invite Clients <i class="fas fa-user-plus"></i></a></span>-->
         </nav>
 
         <header>
             <h1>Phyt App</h1>
-            <h2>Your Clients</h2>
+<!--            <h2>Your Clients</h2>-->
         </header>
 
     <!--main list of trainers clients-->
         <main>
-            <div class="client-list">
-                <div class="client-card">
-                    <img class="client-thumbnail" src="../static/images/male_profile_image.jpg" alt="thumbnail image of client">
+<!--            <div class="client-list">-->
+                <div class="client-card" th:each="client:${allClients}">
+                    <img class="client-thumbnail" src="/static/images/female_profile_image.jpg"  alt="thumbnail image of client">
                     <div class="client-summary">
-                        <p>Client Name: John Smith</p>
-                        <p>Last workout completed: 10/12/2020</p>
+                        <p>Client Name: <span th:text="${client.getFirstName()} + ' ' + ${client.getLastName()}"></span></p>
+                        <p>Last workout completed: <span th:text="${client.getLastWorkout()}"></span></p>
                     </div>
                     <button class="btn btn-primary btn-xl">View Details</button>
                 </div>
 
-                <div class="client-card">
-                    <img class="client-thumbnail" src="../static/images/female_profile_image.jpg" alt="thumbnail image of client">
-                    <div class="client-summary">
-                        <p>Client Name: Jane Smith</p>
-                        <p>Last workout completed: 7/12/2020</p>
-                    </div>
-                    <button class="btn btn-primary btn-xl">View Details</button>
-                </div>
-                <div class="client-card">
-                    <img class="client-thumbnail" src="../static/images/male_profile_image.jpg" alt="thumbnail image of client">
-                    <div class="client-summary">
-                        <p>Client Name:</p>
-                        <p>Last workout completed:</p>
-                    </div>
-                    <button class="btn btn-primary btn-xl">View Details</button>
-                </div>
-                <div class="client-card">
-                    <img class="client-thumbnail" src="../static/images/female_profile_image.jpg" alt="thumbnail image of client">
-                    <div class="client-summary">
-                        <p>Client Name:</p>
-                        <p>Last workout completed:</p>
-                    </div>
-                    <button class="btn btn-primary btn-xl">View Details</button>
-                </div>
-                <div class="client-card">
-                    <img class="client-thumbnail" src="../static/images/male_profile_image.jpg" alt="thumbnail image of client">
-                    <div class="client-summary">
-                        <p>Client Name: </p>
-                        <p>Last workout completed:</p>
-                    </div>
-                    <button class="btn btn-primary btn-xl">View Details</button>
+<!--                <div class="client-card">-->
+<!--                    <img class="client-thumbnail" src="../static/images/female_profile_image.jpg" alt="thumbnail image of client">-->
+<!--                    <div class="client-summary">-->
+<!--                        <p>Client Name: Jane Smith</p>-->
+<!--                        <p>Last workout completed: 7/12/2020</p>-->
+<!--                    </div>-->
+<!--                    <button class="btn btn-primary btn-xl">View Details</button>-->
+<!--                </div>-->
+<!--                <div class="client-card">-->
+<!--                    <img class="client-thumbnail" src="../static/images/male_profile_image.jpg" alt="thumbnail image of client">-->
+<!--                    <div class="client-summary">-->
+<!--                        <p>Client Name:</p>-->
+<!--                        <p>Last workout completed:</p>-->
+<!--                    </div>-->
+<!--                    <button class="btn btn-primary btn-xl">View Details</button>-->
+<!--                </div>-->
+<!--                <div class="client-card">-->
+<!--                    <img class="client-thumbnail" src="../static/images/female_profile_image.jpg" alt="thumbnail image of client">-->
+<!--                    <div class="client-summary">-->
+<!--                        <p>Client Name:</p>-->
+<!--                        <p>Last workout completed:</p>-->
+<!--                    </div>-->
+<!--                    <button class="btn btn-primary btn-xl">View Details</button>-->
+<!--                </div>-->
+<!--                <div class="client-card">-->
+<!--                    <img class="client-thumbnail" src="../static/images/male_profile_image.jpg" alt="thumbnail image of client">-->
+<!--                    <div class="client-summary">-->
+<!--                        <p>Client Name: </p>-->
+<!--                        <p>Last workout completed:</p>-->
+<!--                    </div>-->
+<!--                    <button class="btn btn-primary btn-xl">View Details</button>-->
 
-                </div>
-                <div class="client-card">
-                    <img class="client-thumbnail" src="../static/images/female_profile_image.jpg" alt="thumbnail image of client">
-                    <div class="client-summary">
-                        <p>Client Name:</p>
-                        <p>Last workout completed:</p>
-                    </div>
-                    <button class="btn btn-primary btn-xl">View Details</button>
-                </div>
-            </div>
+<!--                </div>-->
+<!--                <div class="client-card">-->
+<!--                    <img class="client-thumbnail" src="../static/images/female_profile_image.jpg" alt="thumbnail image of client">-->
+<!--                    <div class="client-summary">-->
+<!--                        <p>Client Name:</p>-->
+<!--                        <p>Last workout completed:</p>-->
+<!--                    </div>-->
+<!--                    <button class="btn btn-primary btn-xl">View Details</button>-->
+<!--                </div>-->
+<!--            </div>-->
         </main>
 
         <!-- add a footer to contain about us and contact us links-->

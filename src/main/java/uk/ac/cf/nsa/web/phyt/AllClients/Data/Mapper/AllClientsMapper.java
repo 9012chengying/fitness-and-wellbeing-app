@@ -13,7 +13,7 @@ public class AllClientsMapper implements RowMapper {
         return new Client(
                 rs.getString("first_name"),
                 rs.getString("last_name"),
-                rs.getString("completed_at")
+                rs.getString("lastWorkout")
 
         );
 

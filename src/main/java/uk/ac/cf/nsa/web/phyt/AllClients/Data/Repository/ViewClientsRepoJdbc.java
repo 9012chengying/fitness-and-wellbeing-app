@@ -20,16 +20,20 @@ private final JdbcTemplate jdbcTemplate;
 
 
    @Override
-   public List<Client> GetAllClients(){
+   public List<Client> GetAllClients(int trainerID){
        return jdbcTemplate.query (
-               "SELECT distinct distinct users.first_name,users.last_name,max(workouts.completed_at) as lastWorkout, \n"+
-                "from workouts inner join users on users.client_id = workouts.client_id,\n"+
-                "where users.trainer_id = workouts.trainer_id = 1 group by users.client_id", new AllClientsMapper()
+               "SELECT distinct users.first_name,users.last_name,max(workouts.completed_at) as lastWorkout \n"+
+                "from users inner join workouts on users.id = workouts.client_id \n"+
+                "where users.user_role='Client' and trainer_id =? group by client_id", new AllClientsMapper(),new Object[]{trainerID}
        );
     }
 
 
+
 }
+//    SELECT distinct users.first_name,users.last_name,max(workouts.completed_at) as lastWorkout
+//        from users inner join workouts on users.id = workouts.client_id
+//        where users.user_role='Client' and trainer_id = 2 group by client_id
 
 //    select distinct users.trainer_id,users.first_name,users.last_name,max(workouts.completed_at) as latestworkout
 //        from workouts

@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ViewClientsRepo {
 
-List<Client> GetAllClients();
+List<Client> GetAllClients(int trainerID);
 
 }

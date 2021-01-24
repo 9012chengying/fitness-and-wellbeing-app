@@ -1,7 +1,7 @@
 package uk.ac.cf.nsa.web.phyt.AllClients.Data.DTO;
 
 public class Client {
-    private int Trainer_id;
+    private int Trainer_id = 2;
     private String firstName;
     private String lastName;
     private String lastWorkout;
@@ -43,6 +43,12 @@ public class Client {
     public void setTrainer_id(int trainer_id) {
         this.Trainer_id = trainer_id;
     }
+
+//    @Override
+//    public String toString(){
+//
+//
+//    }
 }
 
 
