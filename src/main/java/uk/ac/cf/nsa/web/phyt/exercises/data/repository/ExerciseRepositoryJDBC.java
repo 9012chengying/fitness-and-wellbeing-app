@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Image;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.ImageBlob;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Video;
 import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.ExerciseMapper;
 import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.ImageMapper;
@@ -77,17 +78,41 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
     //Request to database to update an exercise by id
     public boolean updateExercise(ExerciseForm exerciseForm){
         int row = jdbcTemplate.update(
-                "UPDATE Exercises SET exercise_name=? ,exercise_desc=? ,category=? WHERE id=?" ,
+                "UPDATE Exercises SET exercise_name=? ,exercise_desc=? ,category=? WHERE id=?;" ,
                 new Object[]{exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat(), exerciseForm.getExerciseID()});;
         return row > 0;
     }
 
-    public boolean addImage(ExerciseForm exerciseForm){
-        return false;
+
+
+    public boolean addImage(ImageBlob imageBlob) {
+        int rows = jdbcTemplate.update(
+                "insert into media(exercise_id, img_src, alt_text,type, media_blob,media_type) values(?,?,?,'Image',?,?)" ,
+                new Object[]{imageBlob.getExercise_id(),imageBlob.getName(), imageBlob.getName(), imageBlob.getImageData(), imageBlob.getType()});
+        System.out.println(rows>0);
+        return rows>0;
     }
 
     public boolean addVideo(ExerciseForm exerciseForm){
-        return false;
+        int row = jdbcTemplate.update(
+                "INSERT INTO media (img_src, alt_text, type, exercise_id) VALUES (?,  '', 'Video', LAST_INSERT_ID());",
+                new Object[]{exerciseForm.getExerciseVideo()});
+        return row > 0;
+    }
+
+    @Override
+    public boolean addVideoWithExerciseID(ExerciseForm exerciseForm) {
+        int row = jdbcTemplate.update(
+                "INSERT INTO media (img_src, alt_text, type, exercise_id) VALUES (?,  '', 'Video', ?);",
+                new Object[]{exerciseForm.getExerciseVideo(), exerciseForm.getExerciseID()});
+        return row > 0;
+    }
+
+    public boolean updateVideo(ExerciseForm exerciseForm){
+        int row = jdbcTemplate.update(
+                "UPDATE Media SET img_src=? WHERE exercise_id=? AND type='Video';",new Object[]{exerciseForm.getExerciseVideo(), exerciseForm.getExerciseID()}
+        );
+        return row >0;
     }
 
 

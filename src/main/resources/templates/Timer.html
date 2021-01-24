@@ -11,6 +11,7 @@
     let repsData = [[${workout.reps}]];
     let exerciseArrayData = [[${exercises}]];
     let thumbnailArrayData = [[${thumbnails}]];
+    let workoutIDData = [[${workout.id}]];
 </script>
 
 <body onload="timer()" id="timerBody">
@@ -21,8 +22,6 @@
 
     <div id="seconds"></div>
 
-    <br>
-
     <div id="instruction"></div>
 
     <div class="thumbnailContainer">
@@ -31,7 +30,10 @@
         <div class="workoutComplete">
             <span>Total Time: <span th:text="${workout.workoutLengthFormat}"></span></span>
             <br><br>
-            <a href="/client/diary/"><button id="diaryButton" class="btn btn-primary">Workout Diary</button></a>
+            <form method="post" th:action="@{/client/workout/timer/complete}" th:object="${WorkoutForm}">
+                <input type="hidden" name="workoutID" th:value="${workout.id}">
+                <button type="submit" id="workoutCompleteButton" class="btn btn-primary">Confirm Workout Completed</button>
+            </form>
         </div>
     </div>
 
@@ -39,8 +41,10 @@
 
     <div class="timerButtons">
         <button id="startButton" class="btn btn-success">Start</button>
-        <button id="stopButton" class="btn btn-danger">Stop</button>
+        <button id="pauseButton" class="btn btn-secondary">Pause</button>
+        <button id="continueButton" class="btn btn-secondary">Continue</button>
         <button id="resetButton" class="btn btn-warning">Reset</button>
+        <button id="exitButton" class="btn btn-danger">Exit</button>
     </div>
 
     <br><br><br>

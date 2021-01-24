@@ -11,6 +11,10 @@
     border-bottom: #007bff solid 0.5rem;;
 }
 
+.centreContainer, .centerText {
+    text-align: center;
+}
+
 /*ClientDiary*/
 
 #workoutSummary {
@@ -34,17 +38,13 @@
     margin: auto;
 }
 
-#diaryButton button {
+#workoutButton {
     font-size: 1.3rem;
     padding: 1vh 1.8vw;
     margin: 1.5vh 1vw;
 }
 
 /*Client Workout Preview*/
-
-.workoutPreview, .centerText {
-    text-align: center;
-}
 
 .exerciseThumbnailNameBlock {
     display: inline-block;
@@ -115,7 +115,7 @@
 }
 
 #timerThumbnail {
-    border-radius: 20px; /*why isn't this working*/
+    border-radius: 12px; /*why isn't this working*/
     object-fit: contain;
     max-width: 100%;
     max-height: 100%;
@@ -124,14 +124,20 @@
     display: block;
 }
 
+.timerButtons {
+    text-align: center;
+}
+
 .timerButtons button {
     text-align: center;
     font-size: 3vh;
-}
-
-#stopButton, #resetButton {
+    width: 30vw;
     display: none;
     margin: 2vh 2vw;
+}
+
+#startButton {
+    display: inline-block;
 }
 
 .workoutComplete {
@@ -140,8 +146,56 @@
     font-size: 5vh;
 }
 
-#diaryButton {
+#workoutCompleteButton {
     font-size: 3vh;
 }
+
+/*Create Workout Details*/
+
+#workoutDetailsForm {
+    font-size: 2vh;
+}
+
+#workoutDetailsForm label {
+    margin-left: 6vw;
+}
+
+#workoutDetailsForm select, #workoutDetailsForm input {
+    margin-left: 4vw;
+}
+
+#createWorkoutButton {
+    font-size: 2.5vh;
+}
+
+/*Create Workout Exercises*/
+
+.add {
+    display: block;
+}
+
+.remove {
+    display: none;
+}
+
+#addExercises {
+    max-width: 40vw;
+    font-size: 3vh;
+}
+
+/*.exerciseThumbnailNameNoBorder img {
+    border-radius: 8px; /*not working
+    object-fit: cover;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 2vw;
+}
+
+.dropExercise {
+    display: inline-block;
+    border: solid orange 0.3rem;
+    width: 12rem;
+    height: 12rem;
+}*/
 
 /*Need to adjust for @media*/

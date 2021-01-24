@@ -58,10 +58,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
+ // end of referenced code.
 
-     // end of referenced code.
-
-    //configure security on pages, login and logout
+// Code to configure HttpSecurity
+// adapted from TakeawayMSC Project on Gitlab by Dr Ian Cooper 9 July 2018
+// accessed 14/01/20
+// https://gitlab.cs.cf.ac.uk/scmimc/TakeawayMSc/-/network/master
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
@@ -96,6 +98,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 //Configuration for Logout Page - goes back to login with logout message displayed
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout=true");
-
     }
+//End of referenced Code
 }

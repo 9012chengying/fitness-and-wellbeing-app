@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+<body>
+
+    <div th:replace="fragments/Navbar-Pt::PTnavbar"></div>
+
+    <header class="alignHeader">
+        <h2 class="workoutHeader">Enter Workout Details</h2>
+    </header>
+
+    <br><br>
+
+    <main>
+
+        <form id="workoutDetailsForm" action="/trainer/workout/create/submitDetails" method="post">
+            <label>Client Username:</label>
+                <select name="clientID">
+                    <option value="">-- Assign Workout to Client --</option>
+                    <option th:each="client: ${clients}" th:value="${client.clientID}" th:text="${client.clientUsername}"></option> <!--this works so I'm not sure why the underline-->
+                </select>
+            <label>Length of Each Exercise (seconds): <input type="text" size="2" name="exerciseLength" required></label><br>
+            <label>Rest Between Exercises (seconds): <input type="text" size="2" name="exerciseRest" required></label><br>
+            <label>Rest Between Reps (seconds): <input type="text" size="2" name="repRest" required></label><br>
+            <label>Number of Reps: <input type="text" size="2" name="reps" required></label><br>
+            <label>Equipment Needed: <input type="text" name="equipment"></label><br> <!--move to next page after selecting exercises-->
+            <label>Workout To Be Completed By: <input type="date" name="dueDate"></label><br><br><br><br>
+            <div class="centerText"><button id="createWorkoutButton" class="btn btn-primary" type="submit">Create Workout</button></div>
+        </form>
+
+    </main>
+
+    <br><br><br>
+
+    <footer th:replace="fragments/Footer::Footer"></footer>
+
+</body>
+</html>
