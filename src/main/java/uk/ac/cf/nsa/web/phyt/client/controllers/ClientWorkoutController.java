@@ -2,10 +2,10 @@ package uk.ac.cf.nsa.web.phyt.client.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cf.nsa.web.phyt.client.form.ClientWorkoutForm;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 import uk.ac.cf.nsa.web.phyt.client.repository.ClientWorkoutRepository;
@@ -55,6 +55,22 @@ public class ClientWorkoutController {
         mav.addObject("exercises", clientWorkoutRepository.exerciseNameByWorkoutID(workoutID));
         mav.addObject("thumbnails", clientWorkoutRepository.exerciseThumbnailByWorkoutID(workoutID));
         mav.setViewName("Timer");
+        return mav;
+    }
+
+    @PostMapping(path="/timer/complete")
+    public ModelAndView workoutComplete(ClientWorkoutForm clientWorkoutForm) {
+        ModelAndView mav = new ModelAndView();
+        System.out.println(clientWorkoutForm.getWorkoutID());
+        if (clientWorkoutRepository.workoutComplete(clientWorkoutForm)) {
+            UserEntity currentUser = userService.authenticateUser();
+            int userID = currentUser.getUserId();
+            mav.addObject("workouts", clientWorkoutRepository.clientWorkoutDiary(userID));
+            mav.setViewName("ClientDiary");
+        } else {
+            System.out.println("Workout not updated");
+            mav.setViewName("Timer");
+        }
         return mav;
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.trainer.DTO.ClientDTO;
 import uk.ac.cf.nsa.web.phyt.trainer.forms.WorkoutDetailsForm;
-import uk.ac.cf.nsa.web.phyt.trainer.mapper.ClientMapper;
+import uk.ac.cf.nsa.web.phyt.trainer.model.ClientMapper;
 
 import java.util.List;
 
