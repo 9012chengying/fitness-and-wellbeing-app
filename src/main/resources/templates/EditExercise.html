@@ -39,13 +39,44 @@
                     <option value="Drills">Drills</option>
                 </select>
             </div>
-
+            <div class="exercise-input" th:each="video: ${videos}" >
+                <label for="exerciseVideo" title="Right click on video and copy the Embed code">YouTube Video: </label>
+                <input name="exerciseVideo" id="exerciseVideo" type="text" th:value="${video.src}">
+                <p onclick="youtube()" id="youtube-popup">Click here for more information about embed codes</p>
+            </div>
             <div class="edit-exercise-buttons">
                 <button id="exercise-save-button" type="submit" class="btn btn-primary btn-xl">Save</button>
                 <a href="/trainer/exercises/all"><button type="button" id="exercise-cancel" class="btn btn-secondary btn-xl">Cancel</button></a>
             </div>
         </form>
 
+        <!-- Pop up box - how to get embed code for Youtube videos  -->
+        <div id="youtube-popup-modal" class="modal">
+            <!-- Modal - from bootstrap https://getbootstrap.com/docs/4.0/components/modal/ -->
+            <div class="modal-dialog modal-dialog-video" role="document">
+                <div class="modal-content">
+                    <div class="modal-header-video">
+                        <h4 class="modal-title" id="delete-Exercise-warning">How to add a YouTube Video</h4>
+                        <button id="closeIcon" type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Go to your video in YouTube.<br>
+                            Right click on the Video and select 'Copy embed code'<br><br>
+                            Paste the code into a word document or note pad.<br><br>
+                            You will see something that looks like this within an iframe html tag <br><br>
+                            <code> width="1280" height="720" src="https://www.youtube.com/embed/PWic8ckZ1q0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen"</code><br><br>
+                            Copy the src (the URL that starts https://) and paste that into the Video input field.<br><br>
+                            Your YouTube link should look something like this:  https://www.youtube.com/embed/PWic8ckZ1q0
+                        </h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeYoutube()">Close Popup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer th:replace="fragments/Footer::Footer"> </footer>

@@ -24,7 +24,11 @@ public class ExerciseManagementService {
 
     //Add new exercise
     public boolean createNewExercise(ExerciseForm exerciseForm) {
-        return exerciseRepo.addExercise(exerciseForm);
+        boolean exerciseAdded = exerciseRepo.addExercise(exerciseForm);
+        if(!exerciseForm.getExerciseVideo().isEmpty()){
+            exerciseRepo.addVideo(exerciseForm);
+        }
+           return exerciseAdded;
     }
 
     //Return a list of all exercises for a Trainer
@@ -74,16 +78,19 @@ public class ExerciseManagementService {
     }
 
     //Edit exercise details
-    public Exercise editExercise(ExerciseForm exerciseForm){
-
+    public void editExercise(ExerciseForm exerciseForm){
+        System.out.println(exerciseForm.toString());
         //Run update query on exercise using form
         exerciseRepo.updateExercise(exerciseForm);
-
         //Convert int ID into String to be used in viewExercise method
         int id = exerciseForm.getExerciseID();
         String ID = String.valueOf(id);
-        return viewExercise(ID);
-
+        //check if exercise has videos already added
+        if(viewExercise(ID).getVideos().size() == 0){
+            exerciseRepo.addVideoWithExerciseID(exerciseForm);
+        } else {
+            exerciseRepo.updateVideo(exerciseForm);
+        }
     }
 
     public String deleteExercise(String exerciseID) {

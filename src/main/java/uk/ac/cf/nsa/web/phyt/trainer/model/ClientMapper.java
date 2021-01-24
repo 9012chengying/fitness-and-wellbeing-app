@@ -1,4 +1,4 @@
-package uk.ac.cf.nsa.web.phyt.trainer.mapper;
+package uk.ac.cf.nsa.web.phyt.trainer.model;
 
 import org.springframework.jdbc.core.RowMapper;
 import uk.ac.cf.nsa.web.phyt.trainer.DTO.ClientDTO;

@@ -16,7 +16,6 @@ public class ExerciseWorkoutMapper implements RowMapper {
                 rs.getInt("exercise_id"),
                 rs.getString("exercise_name"),
                 rs.getString("category"),
-                rs.getString("equipment"),
                 rs.getString("thumbnail_img"),
                 rs.getString("thumbnail_alt"));
     }
