@@ -6,85 +6,55 @@
 <head th:replace="fragments/Head::Head"></head>
 
 <body class="ClientAccountDetails">
-
-
 <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
-<header>
+<header class="home-header">
     <h1>My Account Details</h1>
 </header>
-
-<!--<form action="/client/ClientInfoUpdate" method="post" onsubmit="return update();">-->
-<!--    <strong>Name: </strong>-->
-<!--    <div class="form-group">-->
-<!--        <input id="name" name="name" placeholder="Name" autocomplete="off" th:value="${info.name}"/>-->
-<!--    </div>-->
-<!--    <strong>Gender: </strong>-->
-<!--    <div class="form-group">-->
-<!--        <input id="gender" name="gender" placeholder="Gender" autocomplete="off" th:value="${info.gender}"/>-->
-<!--    </div>-->
-<!--    <strong>Age: </strong>-->
-<!--    <div class="form-group">-->
-<!--        <input id="age" name="age" placeholder="Age" autocomplete="off" th:value="${info.age}"/>-->
-<!--    </div>-->
-<!--    <strong>Height: </strong>-->
-<!--    <div class="form-group">-->
-<!--        <input id="height" name="height" placeholder="Height" autocomplete="off" th:value="${info.height}"/>-->
-<!--    </div>-->
-<!--    <strong>Weight: </strong>-->
-<!--    <div class="form-group">-->
-<!--        <input id="weight" name="weight" placeholder="Weight" autocomplete="off" th:value="${info.weight}"/>-->
-<!--    </div>-->
-<!--    <strong>Email: </strong>-->
-<!--    <div class="form-group">-->
-<!--        <input id="email" name="email" placeholder="Email" type="email" autocomplete="off" th:value="${info.email}"/>-->
-<!--    </div>-->
-
-<!--    <div class="edit-ClientInfo-buttons">-->
-<!--        <button id="ClientInfo-save-button" type="submit" class="btn btn-primary btn-xl">Save</button>-->
-<!--        <a href="/client/ClientAccountDetails">-->
-<!--            <button type="button" id="update-cancel" class="btn btn-secondary btn-xl">Cancel</button>-->
-<!--        </a>-->
-<!--    </div>-->
-<!--</form>-->
+<main class="client-home full-height">
 <form action="/client/ClientInfoUpdate" class="form-horizontal" method="post" onsubmit="return update();">
-    <strong>About: </strong> <p>Client </p>
+    <strong>About: </strong>
+    <p>Client </p>
     <strong>User Name: </strong>
     <div class="form-group">
         <input id="username" name="username" th:value="${info.userName}" readonly/>
     </div>
     <strong>Firstname: </strong>
     <div class="form-group">
-        <input  id="firstname" name="firstname" placeholder="firstname" autocomplete="off" th:value="${info.firstName}"/>
+        <input id="firstname" name="firstname" placeholder="firstname" autocomplete="off" th:value="${info.firstName}"/>
     </div>
     <strong>Lastname: </strong>
     <div class="form-group">
-        <input  id="lastname" name="lastname" placeholder="lastname" autocomplete="off" th:value="${info.lastName}"/>
+        <input id="lastname" name="lastname" placeholder="lastname" autocomplete="off" th:value="${info.lastName}"/>
     </div>
     <strong>Email: </strong>
     <div class="form-group">
         <input id="email" name="email" placeholder="email" type="email" autocomplete="off" th:value="${info.email}"/>
     </div>
     <div class="form-group">
-        <input type="submit" value="update" />
+        <!--        <input type="submit" value="Update" />-->
+        <div class="edit-ClientInfo-buttons">
+            <button id="ClientInfo-save-button" type="submit" class="btn btn-primary btn-xl">Update</button>
+        </div>
     </div>
     <script>
         function isEmail(str) {
             var reg = /^[a-zA-Z0-9_-]{6,}@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
             return reg.test(str);
         }
+
         function update() {
             var firstname = $('#firstname').val();
             var lastname = $('#lastname').val();
             var email = $('#email').val();
-            if (firstname.length < 2||firstname.length > 20) {
+            if (firstname.length < 2 || firstname.length > 20) {
                 alert('Firstname should be 2 to 20 characters');
                 return false;
             }
-            if (lastname.length < 2||lastname.length > 20) {
+            if (lastname.length < 2 || lastname.length > 20) {
                 alert('Lastname should be 2 to 20 characters');
                 return false;
             }
-            if (!isEmail(email)){
+            if (!isEmail(email)) {
                 alert('Invalid email');
                 return false;
             }
@@ -92,6 +62,7 @@
         }
     </script>
 </form>
+</main>
 <footer th:replace="fragments/Footer::Footer"></footer>
 
 </body>

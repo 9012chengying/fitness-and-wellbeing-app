@@ -1,6 +1,4 @@
 package uk.ac.cf.nsa.web.phyt.users.controllers;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,12 +8,9 @@ import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.data.repository.RegisterRepository;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
-;
-
 
 @Controller
 public class TrainerController {
-
 
     private final RegisterRepository registerRepository;
     private final UserService userService;
@@ -38,25 +33,6 @@ public class TrainerController {
         registerRepository.updateUser(userForm);
         return "redirect:/trainer/info/"+userForm.getUsername();
     }
-
-//    @RequestMapping(path="/trainer/info/{username}")
-//    public ModelAndView trainerInfo(@PathVariable("username") String username) {
-//        ModelAndView mav = new ModelAndView();
-//        mav.addObject("info", registerRepository.getUserInfo(username));
-//        mav.setViewName("PtHomePage");
-//        return mav;
-//    }
-
-    @RequestMapping(path="/trainer/update/info")
-    public ModelAndView trainerUpdateInfo() {
-        UserEntity currentUser = userService.authenticateUser();
-        String username = currentUser.getUsername();
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("info", registerRepository.getUserInfo(username));
-        mav.setViewName("update");
-        return mav;
-    }
-
 
     //Made route admin only as there should be security around people deleting users
     @RequestMapping(path = "/admin/user/delete")

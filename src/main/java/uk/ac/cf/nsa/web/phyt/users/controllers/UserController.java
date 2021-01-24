@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserDTO;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
+import uk.ac.cf.nsa.web.phyt.users.data.repository.RegisterRepository;
 import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 import uk.ac.cf.nsa.web.phyt.users.service.UserService;
 
@@ -120,7 +121,7 @@ public class UserController {
         ModelAndView mav = new ModelAndView();
         UserForm userForm = new UserForm(username,null,null,null,null);
         mav.addObject("info", userService.getUserInfo(userForm));
-        mav.setViewName("ClientPage");
+        mav.setViewName("ClientAccountDetails");
         return mav;
     }
 
@@ -134,13 +135,6 @@ public class UserController {
         return mav;
     }
 
-    //delete trainer info
-    @RequestMapping(path = "/user/delete")
-    public String deleteUser(String username) {
-        boolean success= userService.deleteUser(username);
-        return "redirect:/register";
-    }
-    
     //update client info
     @RequestMapping(path="/client/query")
     public ModelAndView clientUpdateInfo(String username) {
@@ -150,4 +144,13 @@ public class UserController {
         mav.setViewName("ClientInfoUpdate");
         return mav;
     }
+    
+    //delete trainer info
+    @RequestMapping(path = "/user/delete")
+    public String deleteUser(String username) {
+        boolean success= userService.deleteUser(username);
+        return "redirect:/register";
+    }
+    
+
 }
