@@ -1,7 +1,5 @@
-/*Create exercise
-Pop up Box for youtube information
- */
-
+//Create exercise
+//Pop up Box for youtube information
 function youtube(){
     document.getElementById("youtube-popup-modal").style.display = "block";
 }
@@ -9,6 +7,7 @@ function youtube(){
 function closeYoutube(){
     document.getElementById("youtube-popup-modal").style.display="none";
 }
+
 
 //VIEW EXERCISE PAGE
 //Function to display modal
@@ -20,8 +19,41 @@ function closeModal(){
     document.getElementById("deleteExerciseModal").style.display= "none";
     document.getElementById("successMessageModal").style.display="none";
     document.getElementById("failedMessageModal").style.display="none";
-
 }
+
+
+function increaseImageInput(){
+    let numOfImg = document.getElementById("numberOfImages").value;
+    console.log(numOfImg);
+    let imageInputDiv = document.getElementById("imageInputs");
+    for (let i=1; i<numOfImg; i++){
+        let imageInput = document.createElement("input");
+        imageInput.type="file";
+        imageInput.id="image"+i+1;
+        imageInput.name="image"+i+1;
+        imageInput.accept="image/png, image/jpeg";
+        imageInputDiv.appendChild(imageInput);
+    }
+}
+// Code to add list of image files selected
+// adapted from Stack Overflow post by Andrea Ligios 29/09/14
+// accessed 23/01/20
+// https://stackoverflow.com/questions/26082721/how-to-display-selected-file-names-before-uploading-multiple-files-in-struts2
+function updateList(){
+    let input = document.getElementById('images');
+    let output = document.getElementById('imageList');
+    let unorderedList = document.createElement("ul");
+    output.appendChild(unorderedList);
+    unorderedList.setAttribute("class", "ul-image");
+    for (let i = 0; i < input.files.length; ++i) {
+        let listItem=document.createElement("li");
+        let listText = document.createTextNode(input.files.item(i).name);
+        listItem.appendChild(listText);
+        listItem.setAttribute("class", "listItem");
+        unorderedList.appendChild(listItem);
+    }
+}
+//End of referenced Code
 
 
 //CREATE EXERCISE - COLLATES INPUT DATA FOR COOKIES IF CANCELS OR DELETES COOKIES IF SUBMITS DATA
@@ -57,8 +89,10 @@ function setCookie(cookieName, cookieValue, exdays){
     document.cookie = cookieName+ "=" + cookieValue + ";" + expires + ";path=/trainer/exercises/add";
 }
 
-//read cookie data back to client
-//From https://www.w3schools.com/js/js_cookies.asp
+// Code to read cookies from browser
+// taken from W3Schools
+// accessed 30/12/20
+// From https://www.w3schools.com/js/js_cookies.asp
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -74,6 +108,7 @@ function getCookie(cname) {
     }
     return "";
 }
+//End of referenced code
 
 //Delete cookies function
 function deleteCookies(){

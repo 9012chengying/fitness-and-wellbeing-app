@@ -188,6 +188,47 @@
     }
 
 /* ************************* */
+    /* CSS FOR AddImages PAGE */
+
+    .image-message{
+        width: 90%;
+        margin: auto;
+        color: #007bff;
+        font-weight: bold;
+    }
+    .image-message>p{
+        text-align: center;
+    }
+
+    #imageForm{
+        font-size: 1.8rem;
+        width: 65%;
+        margin: 20px auto;
+    }
+
+    #imageList{
+        min-height: 10vh;
+        margin-bottom: 2rem;
+    }
+
+    .ul-image{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .listItem{
+        padding-left: 1rem;
+    }
+
+    .addImage-exercise-buttons{
+        width: 100%;
+    }
+    #image-add-button, .addImage-exercise-buttons>a{
+        width: 80%;
+    }
+
+/* ************************* */
     /* CSS FOR ViewExercise PAGE */
 
     #exercise-name{
