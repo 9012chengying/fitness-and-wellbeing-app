@@ -19,7 +19,7 @@
             <li><a th:href="@{/client/workout}" class="homes"><i class="fas fa-dumbbell"></i>Start a workout</a></li>
             <li>  <a th:href="@{/client/diary}"><i class="fas fa-book"></i>View Diary</a></li>
             <li> <a href="#" ><i class="fas fa-user"></i>Trainer Profile</a></li>
-            <li><a href="#"><i class="fas fa-user-cog lastlist"></i>Your Account </a></li>
+            <li><a th:href="@{'/client/'+${name}}"><i class="fas fa-user-cog lastlist"></i>Your Account </a></li>
             <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
         </ul>
     </nav>
