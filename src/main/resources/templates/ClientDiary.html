@@ -10,14 +10,14 @@
     <header class="alignHeader">
         <h2 class="workoutHeader">My Workout Diary</h2>
     </header>
-        <!--view has changed for some reason-->
+
         <main>
             <div class="container">
                 <div id="workoutSummary" class="row" th:each="workout: ${workouts}">
                     <div id="workoutThumbnail" class="col-3">
                         <img th:src="${workout.thumbnailImg}">
                     </div>
-                    <div id="workoutDetails" class="col-5">
+                    <div id="workoutDetails" class="col-6">
                         <span>Set: </span><b th:text="${workout.createdDate}"></b>
                         <br>
                         <span>Length: </span><b th:text="${workout.workoutLengthFormat}"></b>
@@ -26,7 +26,7 @@
                         <b th:if="${workout.completed} == true"><br>Completed</b>
                         <b th:if="${workout.completed} == false"><br>Due: <b th:text="${workout.dueDate}"></b></b>
                     </div>
-                    <div id="workoutButton" class="col-4">
+                    <div id="diaryButton" class="col-3">
                         <a th:href="@{/client/diary/workout(workoutID=${workout.id})}">
                             <button type="button" class="btn btn-primary" th:if="${workout.completed} == true">Workout Details</button>
                             <button type="button" class="btn btn-warning" th:if="${workout.completed} == false">New Workout</button>
