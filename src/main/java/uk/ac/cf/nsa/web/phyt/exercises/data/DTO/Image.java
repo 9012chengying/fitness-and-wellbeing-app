@@ -3,23 +3,23 @@ package uk.ac.cf.nsa.web.phyt.exercises.data.DTO;
 import uk.ac.cf.nsa.web.phyt.model.Media;
 
 //Image class
-public class Image {
+public class Image  extends Media{
 
     private int id;
-    private String imgSrc;
+    private String src;
     private String altText;
-    private String type;
+    private String Type;
     private int exerciseID;
 
 
     public Image() {
     }
 
-    public Image(int id, String imgSrc, String altText, String type, int exerciseID) {
+    public Image(int id, String src, String altText, String Type, int exerciseID) {
         this.id = id;
-        this.imgSrc = imgSrc;
+        this.src = src;
         this.altText = altText;
-        this.type = type;
+        this.Type = Type;
         this.exerciseID = exerciseID;
     }
 
@@ -32,11 +32,11 @@ public class Image {
     }
 
     public String getImgSrc() {
-        return imgSrc;
+        return src;
     }
 
     public void setImgSrc(String imgSrc) {
-        this.imgSrc = imgSrc;
+        this.src = imgSrc;
     }
 
     public String getAltText() {
@@ -48,11 +48,11 @@ public class Image {
     }
 
     public String getType() {
-        return type;
+        return Type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.Type = type;
     }
 
     public int getExerciseID() {
