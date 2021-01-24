@@ -34,6 +34,7 @@ public class ClientWorkoutController {
         } else {
             mav.addObject("workout", clientWorkoutRepository.workoutOverview(workoutID));
             mav.addObject("exercises", clientWorkoutRepository.workoutExerciseDetails(workoutID));
+            mav.addObject("categories", clientWorkoutRepository.workoutCategories(workoutID));
             mav.setViewName("ClientWorkoutPreview");
         }
         return mav;

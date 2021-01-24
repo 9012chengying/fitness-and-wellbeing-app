@@ -38,10 +38,8 @@
     margin: auto;
 }
 
-#workoutButton {
+#diaryButton {
     font-size: 1.3rem;
-    padding: 1vh 1.8vw;
-    margin: 1.5vh 1vw;
 }
 
 /*Client Workout Preview*/
@@ -157,8 +155,22 @@
     font-size: 2vh;
 }
 
-#workoutDetailsForm label {
-    margin-left: 6vw;
+.bold {
+    font-weight: bold;
+    font-size: 2.2vh;
+}
+
+#workoutDetailsTable {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#workoutDetailsTable td {
+    border: #007bff solid 0.2rem;
+    border-radius: 8px;
+    width: 24%;
+    padding: 2vh 0;
 }
 
 #workoutDetailsForm select, #workoutDetailsForm input {

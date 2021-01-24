@@ -36,7 +36,6 @@
                     <b th:if="${workout.completed} == false"><br>Due: <span th:text="${workout.dueDate}"></span></b>
                 </div>
                 <div id="diaryButton" class="col-3">
-                    <!--<a th:href="@{/trainer/workout/view(workoutID=${workout.id})}"><button type="button" class="btn btn-primary" th:if="${workout.completed} == true">View Details</button></a>-->
                     <a th:href="@{/trainer/workouts/exercises(workoutID=${workout.workoutID})}"><button type="button" class="btn btn-warning" th:if="${workout.completed} == false">Add Exercises</button></a>
                 </div>
                 <br>
