@@ -20,8 +20,6 @@ public class TrainerWorkoutMapper implements RowMapper {
                 rs.getString("complete_by"),
                 rs.getBoolean("completed"),
                 rs.getString("completed_at"),
-                rs.getInt("thumbnail_id"),
-                rs.getString("img_src"),
-                rs.getString("alt_text"));
+                rs.getString("thumbnail_img"));
     }
 }

@@ -26,8 +26,9 @@ public class TrainerWorkoutRepositoryJDBC implements TrainerWorkoutRepository {
     @Override
     public boolean addWorkout(WorkoutDetailsForm workoutDetailsForm) {
         int rows = jdbcTemplate.update(
-                "INSERT INTO Workouts (client_id, exercise_length, exercise_rest, rep_rest, reps, equipment, complete_by) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                new Object[]{workoutDetailsForm.getClientID(), workoutDetailsForm.getExerciseLength(), workoutDetailsForm.getExerciseRest(), workoutDetailsForm.getRepRest(), workoutDetailsForm.getReps(), workoutDetailsForm.getEquipment(), workoutDetailsForm.getDueDate()});
+                "INSERT INTO Workouts (client_id, exercise_length, exercise_rest, rep_rest, reps, complete_by) VALUES (?, ?, ?, ?, ?, ?)",
+                new Object[]{workoutDetailsForm.getClientID(), workoutDetailsForm.getExerciseLength(), workoutDetailsForm.getExerciseRest(), workoutDetailsForm.getRepRest(),
+                        workoutDetailsForm.getReps(), workoutDetailsForm.getDueDate()});
         return rows > 0;
     }
 
@@ -41,19 +42,29 @@ public class TrainerWorkoutRepositoryJDBC implements TrainerWorkoutRepository {
     @Override
     public List<TrainerWorkoutDTO> allWorkouts(int trainerID) {
         return (List<TrainerWorkoutDTO>) jdbcTemplate.query(
-                "SELECT workouts.id, workouts.client_id, workouts.thumbnail_id, date_format(workouts.complete_by, '%d-%b-%y') AS complete_by, workouts.completed, date_format(workouts.completed_at, '%d-%b-%y') AS completed_at, date_format(workouts.created_at, '%d-%b-%y') AS created_at, COUNT(ExerciseWorkoutLink.exercise_id) as exercise_count, user.trainer_id, user.user_name, media.img_src, media.alt_text FROM workouts INNER JOIN user ON workouts.client_id=user.id LEFT JOIN ExerciseWorkoutLink ON workouts.id=ExerciseWorkoutLink.workout_id LEFT JOIN media ON workouts.thumbnail_id=media.id WHERE user.trainer_id=? GROUP BY workouts.id, workouts.client_id, workouts.thumbnail_id, workouts.complete_by, workouts.completed, workouts.completed_at, workouts.created_at, user.trainer_id, user.user_name, media.img_src ORDER BY workouts.created_at DESC",
+                "SELECT workouts.id, workouts.client_id, workouts.thumbnail_img, date_format(workouts.complete_by, '%d-%b-%y') AS complete_by, workouts.completed, " +
+                        "date_format(workouts.completed_at, '%d-%b-%y') AS completed_at, date_format(workouts.created_at, '%d-%b-%y') AS created_at, COUNT(ExerciseWorkoutLink.exercise_id) " +
+                        "as exercise_count, user.trainer_id, user.user_name FROM workouts INNER JOIN user ON workouts.client_id=user.id LEFT JOIN " +
+                        "ExerciseWorkoutLink ON workouts.id=ExerciseWorkoutLink.workout_id WHERE user.trainer_id=? GROUP BY " +
+                        "workouts.id, workouts.client_id, workouts.thumbnail_img, workouts.complete_by, workouts.completed, workouts.completed_at, workouts.created_at, user.trainer_id, " +
+                        "user.user_name ORDER BY workouts.created_at DESC",
                 new TrainerWorkoutMapper(), trainerID);
     }
 
     @Override
     public boolean addExercise(WorkoutExercisesForm workoutExercisesForm) {
-        int rows = 0;
+        System.out.println(workoutExercisesForm.getWorkoutThumbnail());
+        int rowsE = 0;
         for (int i = 0; i < workoutExercisesForm.getExerciseID().size(); i++) {
-            rows = jdbcTemplate.update(
+            rowsE = jdbcTemplate.update(
                     "INSERT INTO ExerciseWorkoutLink (workout_id, exercise_id) VALUES (?, ?)",
                     new Object[]{workoutExercisesForm.getWorkoutID(), workoutExercisesForm.getExerciseID().get(i)});
 
         }
-        return rows > 0;
+        int rowsW = jdbcTemplate.update(
+                "UPDATE workouts SET equipment=?, thumbnail_img=? WHERE id=?",
+                new Object[]{workoutExercisesForm.getEquipment(), workoutExercisesForm.getWorkoutThumbnail(), workoutExercisesForm.getWorkoutID()});
+        return rowsE > 0 && rowsW > 0;
     }
+
 }

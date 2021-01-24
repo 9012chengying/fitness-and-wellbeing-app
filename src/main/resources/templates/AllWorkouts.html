@@ -14,11 +14,17 @@
     <!--add filter by client maybe-->
     <!--add filter by complete/incomplete maybe-->
 
+    <div class="centerText">
+        <a href="/trainer/workouts/create"><button id="createWorkoutButton" class="btn btn-primary">Create New Workout</button></a>
+    </div>
+
+    <br>
+
     <main>
         <div class="container">
             <div id="workoutSummary" class="row" th:each="workout: ${workouts}">
                 <div id="workoutThumbnail" class="col-3">
-                    <img th:src="${workout.imageSrc}" th:alt="${workout.imageAlt}">
+                    <img th:src="${workout.thumbnailImg}">
                 </div>
                 <div id="workoutDetails" class="col-6">
                     <span>Client: </span><b th:text="${workout.clientUsername}"></b>
@@ -38,10 +44,6 @@
         </div>
         <br>
     </main>
-
-    <div class="centerText">
-        <a href="/trainer/workouts/create"><button id="createWorkoutButton" class="btn btn-primary">Create New Workout</button></a>
-    </div>
 
     <footer th:replace="fragments/Footer::Footer"></footer>
 

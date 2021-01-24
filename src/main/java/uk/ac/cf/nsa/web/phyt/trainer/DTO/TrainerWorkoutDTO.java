@@ -11,11 +11,9 @@ public class TrainerWorkoutDTO {
     private String dueDate;
     private boolean completed;
     private String completedAt;
-    private int thumbnailID;
-    private String imageSrc;
-    private String imageAlt;
+    private String thumbnailImg;
 
-    public TrainerWorkoutDTO(int workoutID, int trainerID, int clientID, String clientUsername, int exerciseCount, String createdAt, String dueDate, boolean completed, String completedAt, int thumbnailID, String imageSrc, String imageAlt) {
+    public TrainerWorkoutDTO(int workoutID, int trainerID, int clientID, String clientUsername, int exerciseCount, String createdAt, String dueDate, boolean completed, String completedAt, String thumbnailImg) {
         this.workoutID = workoutID;
         this.trainerID = trainerID;
         this.clientID = clientID;
@@ -25,9 +23,7 @@ public class TrainerWorkoutDTO {
         this.dueDate = dueDate;
         this.completed = completed;
         this.completedAt = completedAt;
-        this.thumbnailID = thumbnailID;
-        this.imageSrc = imageSrc;
-        this.imageAlt = imageAlt;
+        this.thumbnailImg = thumbnailImg;
     }
 
     public int getWorkoutID() {
@@ -66,15 +62,9 @@ public class TrainerWorkoutDTO {
         return completedAt;
     }
 
-    public int getThumbnailID() {
-        return thumbnailID;
-    }
-
-    public String getImageSrc() {
-        return imageSrc;
-    }
-
-    public String getImageAlt() {
-        return imageAlt;
+    public String getThumbnailImg() {
+        return thumbnailImg;
     }
 }
+
+

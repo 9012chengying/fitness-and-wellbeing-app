@@ -83,7 +83,7 @@ public class TrainerWorkoutController {
         return mav;
     }
 
-    @PostMapping(path="/exercises/submit") //shouldn't redirect to pages as will reload and won't know which exercises have been added
+    @PostMapping(path="/exercises/submit")
     public ModelAndView addExercise(WorkoutExercisesForm workoutExerciseForm, BindingResult br) {
         ModelAndView mav = new ModelAndView();
         UserEntity currentUser = userService.authenticateUser();
