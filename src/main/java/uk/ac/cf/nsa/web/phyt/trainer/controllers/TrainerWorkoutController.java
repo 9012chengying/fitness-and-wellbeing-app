@@ -20,12 +20,14 @@ public class TrainerWorkoutController {
 
     private ExerciseRepository exerciseRepo;
     private TrainerWorkoutRepository trainerWorkoutRepository;
+    private ClientWorkoutRepository clientWorkoutRepository;
     private UserService userService;
 
     @Autowired
-    public TrainerWorkoutController(ExerciseRepository exerciseRepo, TrainerWorkoutRepository trainerWorkoutRepository, UserService userService) {
+    public TrainerWorkoutController(ExerciseRepository exerciseRepo, TrainerWorkoutRepository trainerWorkoutRepository, ClientWorkoutRepository clientWorkoutRepository, UserService userService) {
         this.exerciseRepo = exerciseRepo;
         this.trainerWorkoutRepository = trainerWorkoutRepository;
+        this.clientWorkoutRepository = clientWorkoutRepository;
         this.userService = userService;
     }
 
@@ -50,7 +52,7 @@ public class TrainerWorkoutController {
         return mav;
     }
 
-    @PostMapping(path="/create/submit") //add message to confirm if successful //check works with same name
+    @PostMapping(path="/create/submit") //add message to confirm if successful
     public ModelAndView addWorkout(WorkoutDetailsForm workoutDetailsForm, BindingResult br) {
         ModelAndView mav = new ModelAndView();
         UserEntity currentUser = userService.authenticateUser();
@@ -71,32 +73,37 @@ public class TrainerWorkoutController {
     }
 
     @GetMapping(path="/exercises")
-    public ModelAndView viewExercises() {
+    public ModelAndView viewExercises(@RequestParam(value="workoutID", defaultValue="null") int workoutID) {
         ModelAndView mav = new ModelAndView();
         UserEntity currentUser = userService.authenticateUser();
         int userID = currentUser.getUserId();
+        mav.addObject("workoutID", workoutID);
         mav.addObject("exercises", exerciseRepo.getAllExercises(userID));
         mav.setViewName("CreateWorkoutExercises");
         return mav;
     }
 
-    @PostMapping(path="/exercises/submit") //shouldn't redirect to pages as will reload and won't kno which exercises have been added
+    @PostMapping(path="/exercises/submit") //shouldn't redirect to pages as will reload and won't know which exercises have been added
     public ModelAndView addExercise(WorkoutExercisesForm workoutExerciseForm, BindingResult br) {
         ModelAndView mav = new ModelAndView();
         UserEntity currentUser = userService.authenticateUser();
         int userID = currentUser.getUserId();
         if (br.hasErrors()) {
-            System.out.println(br.toString());
+            System.out.println(br.toString()); //need to show message confirming if exercise failed
+            mav.addObject("workoutID", workoutExerciseForm.getWorkoutID());
+            mav.addObject("exercises", exerciseRepo.getAllExercises(userID));
             mav.setViewName("CreateWorkoutExercises");
         } else
-        if (trainerWorkoutRepository.addExercise(workoutExerciseForm)) {
-            System.out.println("Exercise added to workout");
-            mav.addObject("workouts", trainerWorkoutRepository.allWorkouts(userID));
-            mav.setViewName("AllWorkouts");
-        } else {
-            System.out.println("Not added to database");
-            mav.setViewName("CreateWorkoutExercises");
-        }
+            if (trainerWorkoutRepository.addExercise(workoutExerciseForm)) {
+                System.out.println("Exercise added to workout");
+                mav.addObject("workouts", trainerWorkoutRepository.allWorkouts(userID));
+                mav.setViewName("AllWorkouts");
+            } else {
+                System.out.println("Not added to database");
+                mav.addObject("workoutID", workoutExerciseForm.getWorkoutID());
+                mav.addObject("exercises", exerciseRepo.getAllExercises(userID));
+                mav.setViewName("CreateWorkoutExercises");
+            }
         return mav;
     }
 

@@ -47,9 +47,13 @@ public class TrainerWorkoutRepositoryJDBC implements TrainerWorkoutRepository {
 
     @Override
     public boolean addExercise(WorkoutExercisesForm workoutExercisesForm) {
-        int rows = jdbcTemplate.update(
-                "INSERT INTO ExerciseWorkoutLink (workout_id, exercise_id) VALUES (?, ?)",
-                new Object[]{workoutExercisesForm.getWorkoutID(), workoutExercisesForm.getExerciseID()});
+        int rows = 0;
+        for (int i = 0; i < workoutExercisesForm.getExerciseID().size(); i++) {
+            rows = jdbcTemplate.update(
+                    "INSERT INTO ExerciseWorkoutLink (workout_id, exercise_id) VALUES (?, ?)",
+                    new Object[]{workoutExercisesForm.getWorkoutID(), workoutExercisesForm.getExerciseID().get(i)});
+
+        }
         return rows > 0;
     }
 }
