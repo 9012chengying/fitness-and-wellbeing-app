@@ -18,6 +18,7 @@
             <strong>Firstname: </strong><p th:text="${info.firstName}"></p>
             <strong>Lastname: </strong><p th:text="${info.lastName}"></p>
             <strong>Email: </strong><p th:text="${info.email}"></p>
+            <a th:href="@{/client/query(username=${info.userName})}"><p>Edit</p></a>
         </div>
     </div>
 

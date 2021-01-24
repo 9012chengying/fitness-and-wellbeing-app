@@ -8,6 +8,9 @@ public class Media {
     String Type;
     int exerciseID;
 
+    public Media (){}
+
+
     public Media(String src, String altText, String Type, int exerciseID){
         this.src = src;
         this.altText = altText;

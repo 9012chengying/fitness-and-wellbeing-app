@@ -35,7 +35,7 @@ public class UserService {
     }
 
     public boolean updateUser(UserForm userForm) {
-        if (!registerRepository.updateUser(userForm)) {
+        if (!userRepository.updateUser(userForm)) {
             return false;
         } else {
             return true;

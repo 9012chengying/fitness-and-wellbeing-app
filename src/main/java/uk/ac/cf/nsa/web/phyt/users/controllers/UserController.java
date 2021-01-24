@@ -87,13 +87,16 @@ public class UserController {
     public ModelAndView userAccountInfo() {
         ModelAndView mav = new ModelAndView();
         UserEntity currentUser = userService.authenticateUser();
-        String name = currentUser.getUsername();
+        String name = currentUser.getFirstname();
+        String username = currentUser.getUsername();
         if(currentUser.getRole().equals("Trainer")){
             mav.addObject("name", name);
+            mav.addObject("username",username);
             mav.setViewName("Trainer");
             return mav;
         } else {
             mav.addObject("name", name);
+            mav.addObject("username",username);
             mav.setViewName("User");
             return mav;
         }
@@ -104,7 +107,7 @@ public class UserController {
         userService.updateUser(userForm);
         return "redirect:/trainer/info/"+userForm.getUsername();
     }
-
+    //trainer info page
     @RequestMapping(path="/trainer/info/{username}")
     public ModelAndView trainerInfo(@PathVariable("username") String username) {
         ModelAndView mav = new ModelAndView();
@@ -114,16 +117,19 @@ public class UserController {
         mav.setViewName("PtHomePage");
         return mav;
     }
-    @RequestMapping(path="/client/{username}")
+
+    //client info page
+    @RequestMapping(path="/client/info/{username}") //Displays user information
     public ModelAndView clientInfo(@PathVariable("username") String username) {
         ModelAndView mav = new ModelAndView();
         UserForm userForm = new UserForm(username,null,null,null,null);
         mav.addObject("info", userService.getUserInfo(userForm));
-        mav.setViewName("ClientPage");
+        mav.setViewName("ClientAccountDetails");
         return mav;
     }
 
-    @RequestMapping(path="/trainer/query")
+    //update trainer info
+    @RequestMapping(path="/trainer/query") //
     public ModelAndView trainerUpdateInfo(String username) {
         ModelAndView mav = new ModelAndView();
         UserEntity currentUser = userService.authenticateUser();
@@ -139,9 +145,38 @@ public class UserController {
         return mav;
     }
 
+    //update client info
+    @RequestMapping(path="/client/query", method=RequestMethod.GET) //Gets the update page for the user
+    public ModelAndView clientUpdateInfo(String username) {
+        ModelAndView mav = new ModelAndView();
+        UserForm userForm = new UserForm(username,null,null,null,null);
+        mav.addObject("info", userService.getUserInfo(userForm));
+        mav.setViewName("ClientInfoUpdate");
+        return mav;
+    }
+
+    //New Post route to update user info for client - client/ClientInfoUpdate
+    @RequestMapping(path="/client/ClientInfoUpdate", method=RequestMethod.POST)
+    public ModelAndView updateClientInfo(UserForm userForm){
+        ModelAndView mav = new ModelAndView();
+        boolean success = userService.updateUser(userForm);
+        if(!success){
+            mav.addObject("updateMessage", "Unable to update your details");
+            mav.addObject("info", userService.getUserInfo(userForm));
+            mav.setViewName("ClientInfoUpdate");
+        } else {
+            mav.addObject("info", userService.getUserInfo(userForm));
+            mav.setViewName("ClientAccountDetails");
+        }
+        return mav;
+    }
+    
+    //delete trainer info
     @RequestMapping(path = "/user/delete")
     public String deleteUser(String username) {
         boolean success= userService.deleteUser(username);
         return "redirect:/register";
     }
+    
+
 }

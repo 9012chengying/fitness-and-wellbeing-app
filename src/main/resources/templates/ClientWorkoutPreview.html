@@ -20,9 +20,9 @@
                 <span th:if="${workout.completed} == false">Set on <span class="font-weight-bold"  th:text="${workout.createdDate}"></span></span><br>
                 <span>Focus on <span class="exerciseCategoriesBlock">
                     <span class="exerciseCategory font-weight-bold" th:text="${categories}"></span></span>
-                </span> <!--need to figure out how to combine all the categories but with no repeats and get rid of last comma-->
+                </span>
                 <br>
-                <span>Need <span class="font-weight-bold" th:text="${workout.equipment}"></span></span> <!--data is entered when building workout at the moment. Maybe find a way to link it to each exercise? Or check off options as opposed to manually entering-->
+                <span>Need <span class="font-weight-bold" th:text="${workout.equipment}"></span></span>
                 <br>
             </div>
 
@@ -30,7 +30,7 @@
 
             <div class="exerciseThumbnailNameBlock">
                 <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
-                    <a th:href="@{/client/workout/exercise(exerciseID=${exercise.exerciseID})}" onclick="openWin(this)"><img th:src="${exercise.thumbnailImg}" th:alt="${exercise.thumbnailAlt}"></a>
+                    <a th:href="@{/client/workout/exercise(exerciseID=${exercise.exerciseID})}" onclick="openWin(this)"><img th:src="${exercise.thumbnailImg}"></a>
                     <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
                 </figure>
             </div>
