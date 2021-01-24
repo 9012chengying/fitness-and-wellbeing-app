@@ -87,13 +87,16 @@ public class UserController {
     public ModelAndView userAccountInfo() {
         ModelAndView mav = new ModelAndView();
         UserEntity currentUser = userService.authenticateUser();
-        String name = currentUser.getUsername();
+        String name = currentUser.getFirstname();
+        String username = currentUser.getUsername();
         if(currentUser.getRole().equals("Trainer")){
             mav.addObject("name", name);
+            mav.addObject("username",username);
             mav.setViewName("Trainer");
             return mav;
         } else {
             mav.addObject("name", name);
+            mav.addObject("username",username);
             mav.setViewName("User");
             return mav;
         }
