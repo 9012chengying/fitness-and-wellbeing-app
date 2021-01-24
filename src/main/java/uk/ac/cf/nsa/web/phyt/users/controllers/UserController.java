@@ -126,7 +126,14 @@ public class UserController {
     @RequestMapping(path="/trainer/query")
     public ModelAndView trainerUpdateInfo(String username) {
         ModelAndView mav = new ModelAndView();
+        UserEntity currentUser = userService.authenticateUser();
+        int userID = currentUser.getUserId();
         UserForm userForm = new UserForm(username,null,null,null,null);
+        UserDTO bean = userService.getUserInfo(userForm);
+        if (userID!=bean.getUserID()){
+            mav.setViewName("login");
+            return mav;
+        }
         mav.addObject("info", userService.getUserInfo(userForm));
         mav.setViewName("update");
         return mav;
