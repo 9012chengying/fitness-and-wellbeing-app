@@ -12,22 +12,34 @@
         <h2 class="workoutHeader">Add Exercises to Workout</h2>
     </header>
 
-    <main class="centreContainer">
+    <!--display exercises in random order-->
+
+    <form th:action="@{/trainer/workouts/exercises/submit}" method="post" class="centreContainer"> <!--th:object="${WorkoutExercisesForm}"-->
 
         <div class="exerciseThumbnailNameBlock">
             <figure class="exerciseThumbnailName" th:each="exercise: ${exercises}">
-                <img th:src="${exercise.thumbnailSrc}" th:alt="${exercise.thumbnailAlt}">
                 <figcaption class="exerciseName" th:text="${exercise.exerciseName}"></figcaption>
-                <button class="add btn btn-success" th:attr="data-id=${exercise.exerciseName}">Add</button>
-                <button class="remove btn btn-danger">Remove</button>
+                <img th:src="${exercise.thumbnailSrc}" th:alt="${exercise.thumbnailAlt}"><br><br>
+                <input type="hidden" name="exerciseThumbnailSrc" th:value="${exercise.thumbnailSrc}">
+                <input type="hidden" name="workoutID" th:value="${workoutID}">
+                <input type="checkbox" class="checkbox" name="exerciseID" path="exerciseID" th:value="${exercise.exerciseID}">
+                <br><br>
             </figure>
         </div>
 
         <br><br>
 
-        <a href="/trainer/workout/create/details"><button id="addExercises" class="btn btn-primary">Add Exercises To Workout</button></a>
+        <label id="equipment">Equipment Needed: <input type="text" name="equipment"></label><br>
 
-    </main>
+        <br><br>
+
+        <button type=submit id="addExercises" class="btn btn-primary">Add To Workout</button>
+
+    </form>
+
+    <br><br><br>
+
+    <footer th:replace="fragments/Footer::Footer"></footer>
 
 </body>
 </html>

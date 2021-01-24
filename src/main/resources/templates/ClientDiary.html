@@ -10,12 +10,12 @@
     <header class="alignHeader">
         <h2 class="workoutHeader">My Workout Diary</h2>
     </header>
-
+        <!--view has changed for some reason-->
         <main>
             <div class="container">
                 <div id="workoutSummary" class="row" th:each="workout: ${workouts}">
                     <div id="workoutThumbnail" class="col-3">
-                        <img th:src="${workout.imageSrc}" th:alt="${workout.altText}">
+                        <img th:src="${workout.thumbnailImg}">
                     </div>
                     <div id="workoutDetails" class="col-5">
                         <span>Set: </span><b th:text="${workout.createdDate}"></b>

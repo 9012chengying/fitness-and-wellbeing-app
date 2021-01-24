@@ -9,16 +9,14 @@ public class WorkoutDetailsForm {
     private int exerciseRest;
     private int repRest;
     private int reps;
-    private String equipment;
     private Date dueDate;
 
-    public WorkoutDetailsForm(int clientID, int exerciseLength, int exerciseRest, int repRest, int reps, String equipment, Date dueDate) {
+    public WorkoutDetailsForm(int clientID, int exerciseLength, int exerciseRest, int repRest, int reps, Date dueDate) {
         this.clientID = clientID;
         this.exerciseLength = exerciseLength;
         this.exerciseRest = exerciseRest;
         this.repRest = repRest;
         this.reps = reps;
-        this.equipment = equipment;
         this.dueDate = dueDate;
     }
 
@@ -40,10 +38,6 @@ public class WorkoutDetailsForm {
 
     public int getReps() {
         return reps;
-    }
-
-    public String getEquipment() {
-        return equipment;
     }
 
     public Date getDueDate() {
