@@ -34,6 +34,14 @@ public class UserService {
         }
     }
 
+    public boolean updateUser(UserForm userForm) {
+        if (!userRepository.updateUser(userForm)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     //Method to get the user information held in the database
     public UserDTO getUserInfo(UserForm userForm) {
         return registerRepository.getUserInfo(userForm.getUsername());
@@ -49,6 +57,10 @@ public class UserService {
         return userRepository.findByUserName(userPrincipal.getUsername());
     }
 
+    public boolean deleteUser(String username) {
+        registerRepository.deleteUser(username);
+        return true;
+    }
 }
 
 

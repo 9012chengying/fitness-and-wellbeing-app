@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"></head>
+<body class="ClientAccountDetails">
+<nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
+<header class="home-header">
+    <h1>My Account Details</h1>
+</header>
+<main class="client-home full-height">
+<div class="info">
+    <strong>User Name: </strong> <br><p th:text="${info.userName}"></p>
+    <strong>Firstname: </strong><p th:text="${info.firstName}"></p>
+    <strong>Lastname: </strong><p th:text="${info.lastName}"></p>
+    <strong>Email: </strong><p th:text="${info.email}"></p>
+<!--    <a th:href="@{/client/query(username=${info.userName})}"><p>Editt</p></a>-->
+    <a th:href="@{/client/query(username=${info.userName})}">
+        <button id="ClientInfo-save-button" type="submit" class="btn btn-primary btn-xl">Edit</button></a>
+</div>
+</main>
+<footer th:replace="fragments/Footer::Footer"></footer>
+
+</body>
+</html>

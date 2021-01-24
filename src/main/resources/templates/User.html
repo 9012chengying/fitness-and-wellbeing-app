@@ -3,29 +3,30 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.Thymeleaf.org">
 
-<head th:replace="fragments/Head::Head"> </head>
+<head th:replace="fragments/Head::Head"></head>
 
 <body>
-        <nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
+<nav th:replace="fragments/Navbar-client::Client-navbar"></nav>
+<header class="home-header">
+    <h1>Hi,<span th:text="${name}"></span></h1>
+</header>
 
-        <header class="home-header">
-            <h1>Hi,
-                <span th:text="${name}"></span> </h1>
-        </header>
+<main class="trainer-home full-height">
+    <h3>Use the quick links below to start a new workout or view your workout diary</h3>
+    <div class="home-links">
+        <a th:href="@{client/workout}">
+            <button class="btn btn-xl btn-primary">New Workout</button>
+        </a>
+        <a th:href="@{client/diary}">
+            <button class="btn btn-xl btn-secondary">View Diary</button>
+        </a>
+        <a th:href="@{'/client/info/'+${username}}">
+            <button class="btn btn-xl btn-secondary">View Info</button>
+        </a>
+    </div>
+</main>
 
+<footer th:replace="fragments/Footer::Footer"></footer>
 
-        <main class="trainer-home full-height">
-
-            <h3>Use the quick links below to start a new workout or view your workout diary</h3>
-
-            <div class="home-links">
-                <a th:href="@{client/workout}"><button class="btn btn-xl btn-primary">New Workout</button></a>
-                <a th:href="@{client/diary}"><button class="btn btn-xl btn-secondary">View Diary</button></a>
-            </div>
-        </main>
-
-
-        <div class="home-footer">
-            <footer th:replace="fragments/Footer::Footer"> </footer>
-        </div>
+</body>
 </html>

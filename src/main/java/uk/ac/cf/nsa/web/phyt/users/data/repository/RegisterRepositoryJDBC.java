@@ -50,4 +50,6 @@ public class RegisterRepositoryJDBC implements RegisterRepository {
                 new Object[]{ userForm.getFirstname(),userForm.getLastname(),userForm.getEmail(),userForm.getUsername()});
         return rows>0;
     }
+
+
 }

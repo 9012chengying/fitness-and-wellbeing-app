@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.users.data.DTO.UserEntity;
 import uk.ac.cf.nsa.web.phyt.users.data.mapper.UserMapper;
+import uk.ac.cf.nsa.web.phyt.users.forms.UserForm;
 
 @Repository
 public class UserRepositoryJDBC implements UserRepository {
@@ -25,6 +26,12 @@ public class UserRepositoryJDBC implements UserRepository {
         return userEntity;
     }
 
+    public boolean updateUser(UserForm userForm){
+         int row = jdbcTemplate.update(
+                 "UPDATE user SET first_name=? ,last_name=? , email=? WHERE user_name=?;" ,
+                 new Object[]{userForm.getFirstname(), userForm.getLastname(), userForm.getEmail(), userForm.getUsername()});
+        return row > 0;
+    }
 
     public int getTrainerID(String username, String password){
         return 0;

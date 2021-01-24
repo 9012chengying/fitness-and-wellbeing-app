@@ -25,6 +25,7 @@
     <div class="home-links">
         <a th:href="@{trainer/workouts/all}"><button class="btn btn-xl btn-primary">View Workouts</button></a>
         <a th:href="@{trainer/clients/all}"><button class="btn btn-xl btn-secondary">View Clients</button></a>
+        <a th:href="@{'/trainer/info/'+${username}}"><button class="btn btn-xl btn-secondary">View Info</button></a>
     </div>
 </main>
 
