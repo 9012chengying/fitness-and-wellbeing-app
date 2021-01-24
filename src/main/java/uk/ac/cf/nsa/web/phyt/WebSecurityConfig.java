@@ -69,8 +69,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         // Public pages that do not require authorisation
-        http.authorizeRequests().antMatchers("/", "/public/**", "/login", "/logout", "/register").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/register").permitAll();
+        http.authorizeRequests().antMatchers("/","/public/**", "/login", "/logout", "/register").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/register/**").permitAll();
 
         //userInfo page requires login as ROLE_USER or ROLE_TRAINER.
         http.authorizeRequests().antMatchers("/home").access("hasAnyRole('ROLE_CLIENT', 'ROLE_TRAINER')");
