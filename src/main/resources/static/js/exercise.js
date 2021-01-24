@@ -1,3 +1,14 @@
+/*Create exercise
+Pop up Box for youtube information
+ */
+
+function youtube(){
+    document.getElementById("youtube-popup-modal").style.display = "block";
+}
+
+function closeYoutube(){
+    document.getElementById("youtube-popup-modal").style.display="none";
+}
 
 //VIEW EXERCISE PAGE
 //Function to display modal
@@ -9,6 +20,7 @@ function closeModal(){
     document.getElementById("deleteExerciseModal").style.display= "none";
     document.getElementById("successMessageModal").style.display="none";
     document.getElementById("failedMessageModal").style.display="none";
+
 }
 
 
