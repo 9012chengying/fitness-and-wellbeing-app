@@ -282,7 +282,7 @@
     .exercise-gallery-image {
         display: inline-block;
         width: 90%;
-        height: auto;
+        height: 200px;
         margin-right: 1rem;
     }
 
