@@ -31,12 +31,12 @@ public class Image  extends Media{
         this.id = id;
     }
 
-    public String getImgSrc() {
+    public String getSrc() {
         return src;
     }
 
-    public void setImgSrc(String imgSrc) {
-        this.src = imgSrc;
+    public void setSrc(String src) {
+        this.src = src;
     }
 
     public String getAltText() {
@@ -61,5 +61,16 @@ public class Image  extends Media{
 
     public void setExerciseID(int exerciseID) {
         this.exerciseID = exerciseID;
+    }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "id=" + id +
+                ", src='" + src + '\'' +
+                ", altText='" + altText + '\'' +
+                ", Type='" + Type + '\'' +
+                ", exerciseID=" + exerciseID +
+                '}';
     }
 }

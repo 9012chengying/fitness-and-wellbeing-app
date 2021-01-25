@@ -101,13 +101,13 @@
     <!--gallery of all exercise images -->
     <h3>Image Gallery</h3>
     <div class="exercise-image-gallery" >
-        <img class="exercise-gallery-image" th:each="image: ${images}" th:src="${image.src}" th:alt-title="${image.altText}">
+            <img height="200" class="exercise-gallery-image" th:each="image:${images}" th:src="${image.src}" th:alt-title="${image.altText}">
     </div>
 
     <!--gallery of exercise videos-->
     <h3>Videos</h3>
     <div class="exercise-video-gallery">
-        <iframe class="exercise-gallery-video" th:each="video: ${videos}" th:src="${video.src}" th:alt-title="${video.altText}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="exercise-gallery-video" th:each="video:${videos}" th:src="${video.src}" th:alt-title="${video.altText}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
     <div id="viewExercise-buttons">

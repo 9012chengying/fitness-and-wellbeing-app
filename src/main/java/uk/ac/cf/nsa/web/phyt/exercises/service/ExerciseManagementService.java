@@ -73,6 +73,11 @@ public class ExerciseManagementService {
         Exercise selectedExercise = exerciseRepo.getExerciseByID(ID);
         selectedExercise.setVideos(exerciseVideos);
         selectedExercise.setImages(exerciseImages);
+        List<Image> exerciseList = selectedExercise.getImages();
+        for (Image image:
+                exerciseList) {
+            System.out.println(image.toString());
+        }
 
         return selectedExercise;
     }
