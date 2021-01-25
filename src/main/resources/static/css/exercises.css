@@ -104,6 +104,7 @@
         padding-right: 1rem;
         width: 215px;
         height: 150px !important;
+        object-fit: scale-down;
     }
 
     .exercise-summary{
@@ -284,6 +285,7 @@
         width: 90%;
         height: 200px;
         margin-right: 1rem;
+        object-fit: scale-down;
     }
 
     .exercise-video-gallery{
