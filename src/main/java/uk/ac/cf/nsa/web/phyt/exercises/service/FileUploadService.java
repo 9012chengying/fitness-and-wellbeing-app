@@ -29,7 +29,7 @@ public class FileUploadService {
         imageBlob.setExercise_id(imageForm.getExerciseID());
         String imageName = multipartFile.getOriginalFilename();
         System.out.println(imageName);
-        imageBlob.setName(imageName);
+        imageBlob.setName("/images/"+imageName);
         try{
             byte[] imageBytes = multipartFile.getBytes();
             imageBlob.setImageData(imageBytes);
