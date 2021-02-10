@@ -1,6 +1,7 @@
 package uk.ac.cf.nsa.web.phyt.AllClients.Data.DTO;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class ClientWorkout extends Client {
     private String first_name;
@@ -10,6 +11,34 @@ public class ClientWorkout extends Client {
     private Timestamp completed_at;
     private Timestamp created_at;
     private Timestamp complete_by;
+
+    public String getStringCompleted_at() {
+        return stringCompleted_at;
+    }
+
+    public void setStringCompleted_at(String stringCompleted_at) {
+        this.stringCompleted_at = stringCompleted_at;
+    }
+
+    public String getStringCreated_at() {
+        return stringCreated_at;
+    }
+
+    public void setStringCreated_at(String stringCreated_at) {
+        this.stringCreated_at = stringCreated_at;
+    }
+
+    public String getStringComplete_by() {
+        return stringComplete_by;
+    }
+
+    public void setStringComplete_by(String stringComplete_by) {
+        this.stringComplete_by = stringComplete_by;
+    }
+
+    private String stringCompleted_at;
+    private String stringCreated_at;
+    private String stringComplete_by;
 
 
 
@@ -92,4 +121,11 @@ public class ClientWorkout extends Client {
     public void setCompleted_at(Timestamp completed_at) {
         this.completed_at = completed_at;
     }
+
+
+
+
+
+
+
 }

@@ -39,9 +39,19 @@ return allClients;
         List<ClientWorkout> allWorkouts = viewClientsRepo.GetAllWorkouts(ClientID);
         for(int i =0; i<allWorkouts.size(); i++){
             ClientWorkout clientWorkout = allWorkouts.get(i);
-//            Timestamp timestamp1 = clientWorkout.getCompleted_at();
-//            Timestamp timestamp2 = clientWorkout.getCreated_at();
-//            clientWorkout.setCompleted_at(clientWorkout.dateFormater(timestamp1));
+            Timestamp timestamp1 = clientWorkout.getComplete_by();
+            Timestamp timestamp2 = clientWorkout.getCreated_at();
+            clientWorkout.setStringComplete_by(clientWorkout.dateFormater(timestamp1));
+            clientWorkout.setStringCreated_at(clientWorkout.dateFormater(timestamp2));
+            if(clientWorkout.getCompleted_at()==null){
+
+                clientWorkout.setCompleted_at(null);
+                clientWorkout.setStringCompleted_at("null");
+            }
+            else {
+                Timestamp timestamp3 = clientWorkout.getCompleted_at();
+                clientWorkout.setStringCompleted_at(clientWorkout.dateFormater(timestamp3));
+            }
             if(!clientWorkout.isIs_completed()){
                 clientWorkout.setCompleted("This workout has not been completed.");
                 }
