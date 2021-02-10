@@ -36,16 +36,17 @@
         </div>
         <div class="col-md-6 info">
             <h1 class="overviewTitle">Overview</h1>
-            <strong>About: </strong> <p>Personal trainer </p>
-            <strong>User Name: </strong> <br><p th:text="${info.username}"></p>
-            <strong>Firstname: </strong><p th:text="${info.firstname}"></p>
-            <strong>Lastname: </strong><p th:text="${info.lastname}"></p>
+            <strong>About: </strong> <p>Personal Trainer </p>
+            <strong>User Name: </strong> <br><p th:text="${info.userName}"></p>
+            <strong>Firstname: </strong><p th:text="${info.firstName}"></p>
+            <strong>Lastname: </strong><p th:text="${info.lastName}"></p>
             <strong>Email: </strong><p th:text="${info.email}"></p>
 <!--            <strong>Contact info: </strong> <p>02920195111</p>-->
-            <a th:href="@{/update/info(username=${info.username})}"><p>Update User</p></a>
+            <a th:href="@{/trainer/query(username=${info.userName})}"><p>Update User</p></a>
             <br>
-            <a th:href="@{/user/delete(username=${info.username})}"><p>Delete Current User</p></a>
+            <a th:href="@{/user/delete(username=${info.userName})}"><p>Delete Current User</p></a>
         </div>
+
     </div>
 
 

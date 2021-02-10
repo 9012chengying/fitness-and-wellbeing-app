@@ -2,6 +2,7 @@ package uk.ac.cf.nsa.web.phyt.exercises.data.repository;
 
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Image;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.ImageBlob;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Video;
 import uk.ac.cf.nsa.web.phyt.exercises.forms.ExerciseForm;
 
@@ -11,9 +12,9 @@ public interface ExerciseRepository {
 
     boolean addExercise(ExerciseForm exerciseForm);
 
-    List<Exercise> getAllExercises();
+    List<Exercise> getAllExercises(int userID);
 
-    List<Exercise> getExercisesByCategory(String exerciseCat);
+    List<Exercise> getExercisesByCategory(String exerciseCat, int userID);
 
     Exercise getExerciseByID(int id);
 
@@ -21,9 +22,13 @@ public interface ExerciseRepository {
 
     boolean deleteExercise(int id);
 
-    boolean addImage(ExerciseForm exerciseForm);
+    boolean updateVideo(ExerciseForm exerciseForm);
 
     boolean addVideo(ExerciseForm exerciseForm);
+
+    boolean addImage(ImageBlob imageBlob);
+
+    boolean addVideoWithExerciseID(ExerciseForm exerciseForm);
 
     List<Image> getExerciseImages(int exercise_id);
 

@@ -3,98 +3,60 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.Thymeleaf.org">
 <head th:replace="fragments/Head::Head">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <title>register</title>
 </head>
 
-<body class="register-md-skin">
-<form action="/register/user" class="register-form-horizontal" method="post" onsubmit="return register();">
-    <div id="register-loginbox">
-        <div><h1 class="register-logo-name"></h1></div>
-        <div class="register-form-group"><h3>Welcome to be a coach</h3></div>
-        <div class="register-form-group">
-            <input class="register-form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="2" data-val-required="mandatory" id="username" name="username" placeholder="Username" type="text" value="" autocomplete="off" />
-<!--            <span style="color:red;" id="userSpan"></span>-->
-        </div>
-        <div class="register-form-group">
-            <input class="register-form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="password" name="password" placeholder="password" type="password" />
-<!--            <span style="color:red;" id="pwdSpan"></span>-->
-        </div>
-        <div class="register-form-group">
-            <input class="register-form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="firstname" name="firstname" placeholder="firstname" autocomplete="off" />
-<!--            <span style="color:red;" id="nameSpan"></span>-->
-        </div>
-        <div class="register-form-group">
-            <input class="register-form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="lastname" name="lastname" placeholder="lastname" autocomplete="off" />
-            <!--            <span style="color:red;" id="nameSpan"></span>-->
-        </div>
-        <div class="register-form-group">
-            <input class="register-form-control" data-val="true"  data-val-required="mandatory" id="email" name="email" placeholder="email" type="email" autocomplete="off"/>
-<!--            <span style="color:red;" id="emailSpan"></span>-->
-        </div>
+<body class="full-height">
+    <form action="/register" class="form-horizontal trainer-register-form" method="post" onsubmit="return register();">
+        <div id="loginbox">
+            <div><h1 class="logo-name"></h1></div>
+            <div class="form-group">
+                <h3>Welcome to Phyt</h3>
+                <h4>Personal Trainer registration</h4>
+            </div>
+            <div class="form-group">
+                <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="2" data-val-required="mandatory" id="username" name="username" placeholder="Username" type="text" value="" autocomplete="off" />
+    <!--            <span style="color:red;" id="userSpan"></span>-->
+            </div>
+            <p class="register-message" th:text="${registerMessage}"></p>
+            <div class="form-group">
+                <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="password" name="password" placeholder="password" type="password" />
+    <!--            <span style="color:red;" id="pwdSpan"></span>-->
+            </div>
+            <div class="form-group">
+                <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="firstname" name="firstname" placeholder="firstname" autocomplete="off" />
+    <!--            <span style="color:red;" id="nameSpan"></span>-->
+            </div>
+            <div class="form-group">
+                <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="lastname" name="lastname" placeholder="lastname" autocomplete="off" />
+                <!--            <span style="color:red;" id="nameSpan"></span>-->
+            </div>
+            <div class="form-group">
+                <input class="form-control" data-val="true"  data-val-required="mandatory" id="email" name="email" placeholder="email" type="email" autocomplete="off"/>
+    <!--            <span style="color:red;" id="emailSpan"></span>-->
+            </div>
+            <div class="form-group">
+                <a th:href="@{/register/client}"><p>To be a client</p></a>
+            </div>
 
-        <div class="register-form-group">
-            <input type="submit" class="btn btn-primary btn-block" value="register" />
-        </div>
+           <!-- <div class="form-group">
+                <a href="javascript:void(0);" class="file">Choose picture
+                    <input type="file" class="file" accept="image/*" onchange="showImg(this)" />
+                </a>
+                <h3>The following is the preview effect:</h3>
+                <img src="" alt="" id="img">
+            </div>-->
 
+            <div class="form-group">
+                <input type="submit" class="btn-register btn btn-primary btn-block" value="register" />
+            </div>
+
+        </div>
+    </form>
+
+    <div class="home-footer">
+        <footer  th:replace="fragments/Footer::Footer"></footer>
     </div>
-    <script>
-        function showImg(obj) {
-            var file=$(obj)[0].files[0];
-            var imgdata='';
-            if(file)
-            {
-                var reader=new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload=function(evt){
-                    $("#img").attr('src',evt.target.result)
-                };
-            }
-            else{
-                alert("error");
-            }
-        }
-        function isEmail(str) {
-            var reg = /^[a-zA-Z0-9_-]{6,}@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-            return reg.test(str);
-        }
-        function register() {
-            var username = $('#username').val();
-            var password = $('#password').val();
-            var firstname = $('#firstname').val();
-            var lastname = $('#lastname').val();
-            var email = $('#email').val();
-            if (username.length < 2||username.length > 20) {
-                alert('Username should be 2 to 20 characters');
-                return false;
-            }
-            if (password.length < 6) {
-                alert('Password length cannot be less than 6 characters');
-                return false;
-            }
-            if (firstname.length < 2||firstname.length > 20) {
-                alert('First name should be 2 to 20 characters');
-                return false;
-            }
-            if (lastname.length < 2||lastname.length > 20) {
-                alert('Last name should be 2 to 20 characters');
-                return false;
-            }
-            if (!isEmail(email)){
-                alert('Invalid email');
-                return false;
-            }
-            return true;
-        }
-    </script>
-    <style>
-        img{
-            width: 400px;
-        }
-    </style>
-</form>
+
 </body>
-<footer th:replace="fragments/Footer::Footer"></footer>
+
 </html>

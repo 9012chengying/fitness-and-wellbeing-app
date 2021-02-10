@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th="http://www.Thymeleaf.org">
+<head th:replace="fragments/Head :: Head"> </head>
+<body onload="loadInfo()">
+<!--Top navigation-->
+<div th:insert="fragments/Navbar-Pt::PTnavbar"></div>
+<section class="container-fluid px-0 sec" >
+    <div class="row  stuff">
+        <div class="col-md-6 ">
+            <img src="/images/1.png" class="pt-image img-fluid rounded-circle ">
+        </div>
+        <div class="col-md-6 info">
+            <h1 >Overview</h1>
+            <strong>About: </strong> <p>Client </p>
+            <strong>User ID: </strong>  <p th:text="${info.UserID}"></p>
+            <strong>User Name: </strong>  <p th:text="${info.userName}"></p>
+            <strong>Firstname: </strong><p th:text="${info.firstName}"></p>
+            <strong>Lastname: </strong><p th:text="${info.lastName}"></p>
+            <strong>Email: </strong><p th:text="${info.email}"></p>
+            <a th:href="@{/client/query(username=${info.userName})}"><p>Edit</p></a>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

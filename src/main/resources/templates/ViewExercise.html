@@ -8,6 +8,7 @@
 <body class="exercise-body">
 
 <div th:replace="fragments/Navbar-Pt::PTnavbar"></div>
+
 <!--Page heading-->
 <header class="exercise-header">
     <h2 id="exercise-name" th:text="${exercise.exerciseName}">Name of Exercise</h2>
@@ -81,9 +82,13 @@
 
 <!--main details of exercise-->
 <main id="exercise-container" class="exercise-container" th:data-id="${exercise.exerciseID}">
+    <div class="refresh-link">
+        <a th:href=@{/trainer/exercises/view(exerciseID=${exercise.exerciseID})} th:text="${refresh}"></a>
+    </div>
+
     <!--thumbnail image-->
     <div class="exercise-thumbnail">
-        <img  th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
+        <img class="exercise-thumbnail" th:src="${exercise.thumbnailSrc}" th:alt-title="${exercise.thumbnailAlt}">
     </div>
 
 
@@ -96,17 +101,17 @@
     <!--gallery of all exercise images -->
     <h3>Image Gallery</h3>
     <div class="exercise-image-gallery" >
-        <img class="exercise-gallery-image" th:each="image: ${images}" th:src="${image.src}" th:alt-title="${image.altText}">
+            <img height="200" class="exercise-gallery-image" th:each="image:${images}" th:src="${image.src}" th:alt-title="${image.altText}">
     </div>
 
     <!--gallery of exercise videos-->
     <h3>Videos</h3>
     <div class="exercise-video-gallery">
-        <iframe class="exercise-gallery-video" th:each="video: ${videos}" th:src="${video.src}" th:alt-title="${video.altText}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="exercise-gallery-video" th:each="video:${videos}" th:src="${video.src}" th:alt-title="${video.altText}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
     <div id="viewExercise-buttons">
-        <a th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">Edit details</button></a>
+        <a th:href="@{/trainer/exercises/edit(exerciseID=${exercise.exerciseID})}"><button class="btn btn-primary btn-xl">Edit Exercise details</button></a>
         <a href="/trainer/exercises/all"><button class="btn btn-secondary btn-xl">Back to library</button></a>
         <button id="triggerModal" class="btn btn-xl btn-danger" onclick ="openModal()">Delete Exercise</button>
     </div>
@@ -114,7 +119,7 @@
 
 
 <!-- add a footer to contain about us and contact us links-->
-<footer ></footer>
-</body>
 <footer th:replace="fragments/Footer::Footer"> </footer>
+</body>
+
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/Head :: Head"> </head>
+<body>
+<h1 >Workout information for <span th:text="${allWorkouts.get(1).getFirst_name()}+ ' ' + ${allWorkouts.get(1).getLast_name()}"></span></h1>
+<div class="Workout-card" th:each="workout:${allWorkouts}">
+
+                        <div class="Workout-summary">
+                            <h2>Workout number: <span th:text="${workout.getWorkoutID()}"></span></h2>
+                            <p>workout created on: <span th:text="${workout.stringCreated_at}"></span></p>
+                            <p>Must be completed by:<span th:text="${workout.stringComplete_by}"></span></p>
+                            <p>workout status: <span th:text="${workout.getCompleted()}"></span></p>
+                            <p th:style="${workout.getStringCompleted_at() == 'null'}  ?  'display:none'">completed at: <span th:text="${workout.getStringCompleted_at()}"></span></p>
+
+                        </div>
+    <hr>
+                    </div>
+</body>
+</html>

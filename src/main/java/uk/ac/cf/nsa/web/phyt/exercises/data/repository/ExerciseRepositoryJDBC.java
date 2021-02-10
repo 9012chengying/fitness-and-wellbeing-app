@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Exercise;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Image;
+import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.ImageBlob;
 import uk.ac.cf.nsa.web.phyt.exercises.data.DTO.Video;
 import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.ExerciseMapper;
 import uk.ac.cf.nsa.web.phyt.exercises.data.mapper.ImageMapper;
@@ -28,26 +29,33 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
     public boolean addExercise(ExerciseForm exerciseForm){
         int rows = jdbcTemplate.update(
                 "insert into Exercises(trainer_id, exercise_name,exercise_desc,category) values(?,?,?,?)" ,
-                new Object[]{exerciseForm.getUserID(),exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat()});
+                    new Object[]{exerciseForm.getUserID(),exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat()});
         System.out.println(rows>0);
         return rows>0;
     }
 
 
-    public List<Exercise> getAllExercises(){
+    public List<Exercise> getAllExercises(int userID){
         return jdbcTemplate.query (
-             "SELECT distinct exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, thumbnail_img, thumbnail_alt, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
-                     "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  FROM phyt.exercises \n" +
+             "SELECT distinct exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, thumbnail_img, thumbnail_alt, exercises.created_at, \n" +
+                     "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+                     "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\"  FROM phyt.exercises\n" +
                      "LEFT JOIN Media\n" +
-                     "ON exercises.id = Media.exercise_id order by exercises.created_at DESC;", new ExerciseMapper()
+                     "ON exercises.id = Media.exercise_id where exercises.trainer_id=?\n" +
+                     "order by exercises.created_at DESC;", new ExerciseMapper(), new Object[]{userID}
         );
     }
 
     @Override
-    public List<Exercise> getExercisesByCategory(String exerciseCat){
+    public List<Exercise> getExercisesByCategory(String exerciseCat, int userID){
         return jdbcTemplate.query(
-                "SELECT DISTINCT exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, thumbnail_img, thumbnail_alt, exercises.created_at, (Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
-                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\" from phyt.exercises left join Media on exercises.id = Media.exercise_id where exercises.category= ? order by exercises.created_at DESC;", new ExerciseMapper(),  new Object[]{exerciseCat}
+                "SELECT distinct exercises.id, exercises.exercise_name, exercises.exercise_desc, exercises.category, exercises.thumbnail_img, exercises.thumbnail_alt, exercises.created_at, \n" +
+                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Image\") as \"img_count\", \n" +
+                        "(Select Count(media.id) from media where media.exercise_id=exercises.id AND type=\"Video\") as \"vid_count\" \n" +
+                        "from phyt.exercises \n" +
+                        "LEFT join Media on exercises.id = Media.exercise_id where exercises.category= ? and  exercises.trainer_id = ?\n" +
+                        "order by exercises.created_at DESC;",
+                new ExerciseMapper(), new Object[]{exerciseCat, userID}
                );
     }
 
@@ -70,17 +78,41 @@ public class ExerciseRepositoryJDBC implements ExerciseRepository {
     //Request to database to update an exercise by id
     public boolean updateExercise(ExerciseForm exerciseForm){
         int row = jdbcTemplate.update(
-                "UPDATE Exercises SET exercise_name=? ,exercise_desc=? ,category=? WHERE id=?" ,
+                "UPDATE Exercises SET exercise_name=? ,exercise_desc=? ,category=? WHERE id=?;" ,
                 new Object[]{exerciseForm.getExerciseName(), exerciseForm.getExerciseDesc(), exerciseForm.getExerciseCat(), exerciseForm.getExerciseID()});;
         return row > 0;
     }
 
-    public boolean addImage(ExerciseForm exerciseForm){
-        return false;
+
+
+    public boolean addImage(ImageBlob imageBlob) {
+        int rows = jdbcTemplate.update(
+                "insert into media(exercise_id, img_src, alt_text,type, media_blob,media_type) values(?,?,?,'Image',?,?)" ,
+                new Object[]{imageBlob.getExercise_id(),imageBlob.getName(), imageBlob.getName(), imageBlob.getImageData(), imageBlob.getType()});
+        System.out.println(rows>0);
+        return rows>0;
     }
 
     public boolean addVideo(ExerciseForm exerciseForm){
-        return false;
+        int row = jdbcTemplate.update(
+                "INSERT INTO media (img_src, alt_text, type, exercise_id) VALUES (?,  '', 'Video', LAST_INSERT_ID());",
+                new Object[]{exerciseForm.getExerciseVideo()});
+        return row > 0;
+    }
+
+    @Override
+    public boolean addVideoWithExerciseID(ExerciseForm exerciseForm) {
+        int row = jdbcTemplate.update(
+                "INSERT INTO media (img_src, alt_text, type, exercise_id) VALUES (?,  '', 'Video', ?);",
+                new Object[]{exerciseForm.getExerciseVideo(), exerciseForm.getExerciseID()});
+        return row > 0;
+    }
+
+    public boolean updateVideo(ExerciseForm exerciseForm){
+        int row = jdbcTemplate.update(
+                "UPDATE Media SET img_src=? WHERE exercise_id=? AND type='Video';",new Object[]{exerciseForm.getExerciseVideo(), exerciseForm.getExerciseID()}
+        );
+        return row >0;
     }
 
 

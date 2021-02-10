@@ -12,7 +12,7 @@ function closeWin() {
 //Timer
 
 function timer() {
-    console.log("timer initiated");
+
     let interval;
     let rest = true;
     let seconds = 3;
@@ -24,31 +24,36 @@ function timer() {
     let restLength = restLengthData;
     let repRest = repRestData;
     let startButton = document.getElementById("startButton");
-    let stopButton = document.getElementById("stopButton");
     let resetButton = document.getElementById("resetButton");
+    let pauseButton = document.getElementById("pauseButton");
+    let continueButton = document.getElementById("continueButton");
+    let exitButton = document.getElementById("exitButton");
     let instruction = document.getElementById("instruction");
     let thumbnail = document.getElementById("timerThumbnail");
     let secondsSpan = document.getElementById("seconds");
     let exerciseArray = exerciseArrayData;
     let thumbnailArray = thumbnailArrayData;
+    let workoutID = workoutIDData;
 
-    startButton.onclick = function() {
-        console.log(exerciseCount + " is Exercise Count");
+    startButton.addEventListener('click', startTimer);
+
+    function startTimer() {
         rest = true;
         start();
         interval = setInterval(countdownSeconds, 1000);
         $("#startButton").css("display","none");
-        $("#stopButton").css("display","inline-block");
         $("#resetButton").css("display","inline-block");
+        $("#pauseButton").css("display","inline-block");
+        $("#exitButton").css("display","inline-block");
     }
 
     function countdownSeconds() {
-        seconds -= 1;
-        secondsSpan.innerHTML = seconds;
-        checkForStateChange();
+            seconds -= 1;
+            secondsSpan.innerHTML = seconds;
+            checkForStateChange();
     }
 
-        function checkForStateChange() {
+    function checkForStateChange() {
         if (exerciseIndex < exerciseCount) {
             if (seconds == 0 && rest == false) {
                 seconds = restLength + 1;
@@ -68,10 +73,12 @@ function timer() {
             setTimeout(changeToRepRest, 1000);
         } else if (exerciseIndex == exerciseCount && repIndex == repTotal) {
             clearInterval(interval);
-            secondsSpan.innerHTML = "Workout Complete"; //check working - change to modal maybe
+            secondsSpan.innerHTML = "Workout Complete";
             $("#timerHeader").css("visibility","hidden");
-            $("#stopButton").css("display","none");
             $("#resetButton").css("display","none");
+            $("#pauseButton").css("display","none");
+            $("#continueButton").css("display","none");
+            $("#exitButton").css("display","none");
             $("#timerThumbnail").css("display","none");
             $("#instruction").css("display","none");
             $(".workoutComplete").css("display","block");
@@ -103,14 +110,28 @@ function timer() {
         thumbnail.src = "";
     }
 
-    resetButton.onclick = function() { //doesn't work properly - need to fix
+    resetButton.onclick = function() {
         clearInterval(interval);
-        rest = true;
-        start();
-        interval = setInterval(countdownSeconds, 1000);
+        seconds = 3;
+        startTimer();
+        $("#continueButton").css("display","none");
+        thumbnail.src = "";
     }
 
-    stopButton.onclick = function() { //need to figure out how to get button to continue where it left off so it can be a pause button
+    pauseButton.addEventListener('click', function () {
         clearInterval(interval);
-    }
+        $("#pauseButton").css("display","none");
+        $("#continueButton").css("display","inline-block");
+    });
+
+    continueButton.addEventListener('click', function () {
+        interval = setInterval(countdownSeconds, 1000);
+        $("#pauseButton").css("display","inline-block");
+        $("#continueButton").css("display","none");
+    });
+
+    exitButton.addEventListener('click', function () {
+        window.history.go(-1);
+        return false;
+    })
 }

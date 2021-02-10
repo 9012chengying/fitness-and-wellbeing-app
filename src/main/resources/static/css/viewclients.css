@@ -38,10 +38,10 @@
 /*nav>span>a>i{*/
 /*    padding: 0 1rem;*/
 /*}*/
-.trainer-image{
-    width: 50px;
-    height: 50px;
-}
+/*.trainer-image{*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*}*/
 header{
     margin-top: 10rem;
     min-height:10vh;
@@ -71,10 +71,10 @@ header>h2{
     border: #007bff solid 0.2rem;
     border-radius: 1rem;
 }
-.client-thumbnail{
-    width: 150px;
-    height: 150px;
-}
+/*.client-thumbnail{*/
+/*    width: 150px;*/
+/*    height: 150px;*/
+/*}*/
 .client-summary{
     padding: 1.5rem;
     flex-basis: 65%;

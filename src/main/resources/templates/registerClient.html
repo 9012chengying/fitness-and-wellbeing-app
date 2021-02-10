@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.Thymeleaf.org">
+<head th:replace="fragments/Head::Head">
+</head>
+
+<body class="full-height">
+    <form action="/register/client" class="form-horizontal trainer-register-form" method="post" onsubmit="return register();">
+        <div id="loginbox">
+            <div><h1 class="logo-name"></h1></div>
+            <div class="form-group">
+                <h3>Welcome to Phyt</h3>
+                <h4>Personal Client registration</h4>
+            </div>
+            <div class="form-group">
+                <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="2" data-val-required="mandatory" id="username" name="username" placeholder="Username" type="text" value="" autocomplete="off" />
+    <!--            <span style="color:red;" id="userSpan"></span>-->
+            </div>
+            <p class="register-message" th:text="${registerMessage}"></p>
+            <div class="form-group">
+                <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="password" name="password" placeholder="password" type="password" />
+    <!--            <span style="color:red;" id="pwdSpan"></span>-->
+            </div>
+            <div class="form-group">
+                <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="firstname" name="firstname" placeholder="firstname" autocomplete="off" />
+    <!--            <span style="color:red;" id="nameSpan"></span>-->
+            </div>
+            <div class="form-group">
+                <input class="form-control" data-val="true" data-val-length="2 to 20 characters" data-val-length-max="20" data-val-length-min="6" data-val-required="mandatory" id="lastname" name="lastname" placeholder="lastname" autocomplete="off" />
+                <!--            <span style="color:red;" id="nameSpan"></span>-->
+            </div>
+            <div class="form-group">
+                <input class="form-control" data-val="true"  data-val-required="mandatory" id="email" name="email" placeholder="email" type="email" autocomplete="off"/>
+    <!--            <span style="color:red;" id="emailSpan"></span>-->
+            </div>
+            <div class="form-group">
+                <a th:href="@{/register}"><p>To be a trainer</p></a>
+            </div>
+           <!-- <div class="form-group">
+                <a href="javascript:void(0);" class="file">Choose picture
+                    <input type="file" class="file" accept="image/*" onchange="showImg(this)" />
+                </a>
+                <h3>The following is the preview effect:</h3>
+                <img src="" alt="" id="img">
+            </div>-->
+
+            <div class="form-group">
+                <input type="submit" class="btn-register btn btn-primary btn-block" value="register" />
+            </div>
+
+        </div>
+    </form>
+
+    <div class="home-footer">
+        <footer  th:replace="fragments/Footer::Footer"></footer>
+    </div>
+
+</body>
+
+</html>

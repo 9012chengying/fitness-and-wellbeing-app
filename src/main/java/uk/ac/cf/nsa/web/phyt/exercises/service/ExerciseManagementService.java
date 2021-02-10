@@ -24,12 +24,16 @@ public class ExerciseManagementService {
 
     //Add new exercise
     public boolean createNewExercise(ExerciseForm exerciseForm) {
-        return exerciseRepo.addExercise(exerciseForm);
+        boolean exerciseAdded = exerciseRepo.addExercise(exerciseForm);
+        if(!exerciseForm.getExerciseVideo().isEmpty()){
+            exerciseRepo.addVideo(exerciseForm);
+        }
+           return exerciseAdded;
     }
 
     //Return a list of all exercises for a Trainer
-    public List<Exercise> listAllExercises() {
-        List<Exercise> allExercises = exerciseRepo.getAllExercises();
+    public List<Exercise> listAllExercises(int userID) {
+        List<Exercise> allExercises = exerciseRepo.getAllExercises(userID);
 
         for (int i=0; i<allExercises.size(); i++){
             Exercise exercise = allExercises.get(i);
@@ -40,12 +44,12 @@ public class ExerciseManagementService {
     }
 
     //Return list of exercises based on category
-    public List<Exercise> listExercisesByCategory(String exerciseCat) {
+    public List<Exercise> listExercisesByCategory(String exerciseCat, int userID) {
         //if category selection is ALL then return list of all exercises otherwise filter
         if (exerciseCat.equals("All")) {
-            return listAllExercises();
+            return listAllExercises(userID);
         } else {
-            List<Exercise> allExercises = exerciseRepo.getExercisesByCategory(exerciseCat);
+            List<Exercise> allExercises = exerciseRepo.getExercisesByCategory(exerciseCat, userID);
             for (int i=0; i<allExercises.size(); i++){
                 Exercise exercise = allExercises.get(i);
                 Timestamp createdDate = exercise.getCreatedDate();
@@ -69,21 +73,29 @@ public class ExerciseManagementService {
         Exercise selectedExercise = exerciseRepo.getExerciseByID(ID);
         selectedExercise.setVideos(exerciseVideos);
         selectedExercise.setImages(exerciseImages);
+        List<Image> exerciseList = selectedExercise.getImages();
+        for (Image image:
+                exerciseList) {
+            System.out.println(image.toString());
+        }
 
         return selectedExercise;
     }
 
     //Edit exercise details
-    public Exercise editExercise(ExerciseForm exerciseForm){
-
+    public void editExercise(ExerciseForm exerciseForm){
+        System.out.println(exerciseForm.toString());
         //Run update query on exercise using form
         exerciseRepo.updateExercise(exerciseForm);
-
         //Convert int ID into String to be used in viewExercise method
         int id = exerciseForm.getExerciseID();
         String ID = String.valueOf(id);
-        return viewExercise(ID);
-
+        //check if exercise has videos already added
+        if(viewExercise(ID).getVideos().size() == 0){
+            exerciseRepo.addVideoWithExerciseID(exerciseForm);
+        } else {
+            exerciseRepo.updateVideo(exerciseForm);
+        }
     }
 
     public String deleteExercise(String exerciseID) {

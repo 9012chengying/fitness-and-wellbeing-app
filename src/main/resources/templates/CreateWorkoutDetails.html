@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/Head::Head"> </head>
+
+<body>
+
+    <div th:replace="fragments/Navbar-Pt::PTnavbar"></div>
+
+    <header class="alignHeader">
+        <h2 class="workoutHeader">Enter Workout Details</h2>
+    </header>
+
+    <br><br>
+
+    <main>
+
+        <form class="centreContainer" id="workoutDetailsForm" action="/trainer/workouts/create/submit" method="post">
+            <label class="bold">Client Username:</label>
+                <select name="clientID">
+                    <option value="">-- Assign Workout to Client --</option>
+                    <option th:each="client: ${clients}" th:value="${client.clientID}" th:text="${client.clientUsername}"></option> <!--this works so I'm not sure why the underline-->
+                </select>
+            <label class="bold">Workout To Be Completed By: <input type="date" name="dueDate"></label>
+            <br><br><br>
+            <div class="bold">HIIT Interval Details (sec)</div>
+            <br>
+            <table id="workoutDetailsTable">
+                <tr>
+                    <td>
+                        <label for="exerciseLengthSelect">Length of Each Exercise:</label><br><br>
+                        <input type="number" size="2" id="exerciseLengthSelect" name="exerciseLength" min="1" max="120" required>
+                    </td>
+                    <td>
+                        <label for="exerciseRestSelect">Rest Between Exercises:</label><br><br>
+                        <input type="number" size="2" id="exerciseRestSelect" name="exerciseRest"  min="1" max="120" required>
+                    </td>
+                    <td>
+                        <label for="repRestSelect">Rest Between Reps:</label><br><br>
+                        <input type="number" size="2" id="repRestSelect" name="repRest"  min="1" max="120" required>
+                    </td>
+                    <td>
+                        <label for="repsSelect">Number of Reps:</label><br><br>
+                        <input type="number" size="2" id="repsSelect" name="reps" min="1" max="20" required>
+                    </td>
+                </tr>
+            </table>
+            <br><br><br>
+            <div class="centerText"><button id="createWorkoutButton" class="btn btn-primary" type="submit">Create Workout</button></div>
+        </form>
+
+    </main>
+
+    <br><br><br>
+
+    <footer th:replace="fragments/Footer::Footer"></footer>
+
+</body>
+</html>

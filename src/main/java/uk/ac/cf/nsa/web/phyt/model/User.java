@@ -8,6 +8,12 @@ public class User {
     String password;
 
     //Constructor of User object
+    public User(){
+        this.UserID=0;
+        this.userName = null;
+        this.password=null;
+    }
+
     public User (int UserID, String userName, String password){
         this.UserID = UserID;
         this.userName = userName;
