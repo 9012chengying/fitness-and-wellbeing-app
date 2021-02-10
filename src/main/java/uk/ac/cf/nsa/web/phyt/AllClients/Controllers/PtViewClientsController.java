@@ -34,7 +34,7 @@ public class PtViewClientsController {
     @GetMapping(path = "/client-details/{id}")
     public ModelAndView viewClientDetails(@PathVariable int id){
         ModelAndView mav = new ModelAndView();
-        mav.addObject("id",id);
+        mav.addObject("allWorkouts",allClientsService.listAllClientWorkouts(id));
         mav.setViewName("clientViewDetails");
         return mav;
 

@@ -5,6 +5,16 @@
 
 <head th:replace="fragments/Head :: Head"> </head>
 <body>
-<h1 >Client Id = </h1><p th:text="${id}"></p>
+
+<div class="Workout-card" th:each="workout:${allWorkouts}">
+
+                        <div class="Workout-summary">
+                            <p >Information for <span th:text="${workout.getFirstName()}"></span></p>
+                            <p>Must be completed by:<span th:text="${workout.getComplete_by()}"></span></p>
+                            <p>workout status: <span th:text="${workout.getCompleted()}"></span></p>
+                            <p>completed at:</p>
+                        </div>
+    <hr>
+                    </div>
 </body>
 </html>

@@ -11,16 +11,28 @@ public class Client {
     private String firstName;
     private String lastName;
     private String lastWorkoutAsString;
+    private int numOfWorkouts;
     private Timestamp lastWorkout;
 
-    public Client(String firstName, String lastName, Timestamp lastWorkout, int client_id) {
+    public Client(){};
+
+    public Client(String firstName, String lastName, Timestamp lastWorkout, int client_id, int numOfWorkouts) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.lastWorkout = lastWorkout;
         this.client_id = client_id;
+        this.numOfWorkouts = numOfWorkouts;
     }
     public int getClient_id() {
         return client_id;
+    }
+
+    public int getNumOfWorkouts() {
+        return numOfWorkouts;
+    }
+
+    public void setNumOfWorkouts(int numOfWorkouts) {
+        this.numOfWorkouts = numOfWorkouts;
     }
 
     public void setClient_id(int client_id) {

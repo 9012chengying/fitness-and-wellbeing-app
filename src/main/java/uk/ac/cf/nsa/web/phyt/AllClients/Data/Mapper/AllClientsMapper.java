@@ -14,9 +14,8 @@ public class AllClientsMapper implements RowMapper {
                 rs.getString("first_name"),
                 rs.getString("last_name"),
                 rs.getTimestamp("lastWorkout"),
-                rs.getInt("client_id")
-
-        );
+                rs.getInt("client_id"),
+                rs.getInt("numOfWorkouts"));
 
 
     }

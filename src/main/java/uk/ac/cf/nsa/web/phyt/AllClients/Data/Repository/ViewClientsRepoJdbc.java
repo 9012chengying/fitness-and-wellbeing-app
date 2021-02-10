@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import uk.ac.cf.nsa.web.phyt.AllClients.Data.DTO.Client;
+import uk.ac.cf.nsa.web.phyt.AllClients.Data.DTO.ClientWorkout;
 import uk.ac.cf.nsa.web.phyt.AllClients.Data.Mapper.AllClientsMapper;
+import uk.ac.cf.nsa.web.phyt.AllClients.Data.Mapper.ClientWorkoutsMapper;
 
 import java.util.List;
 
@@ -22,13 +24,17 @@ private final JdbcTemplate jdbcTemplate;
    @Override
    public List<Client> GetAllClients(int trainerID){
        return jdbcTemplate.query (
-               "SELECT distinct users.first_name,users.last_name,max(workouts.completed_at) as lastWorkout, client_id \n"+
+               "SELECT distinct users.first_name,users.last_name,max(workouts.completed_at) as lastWorkout, client_id, count(workouts.id) as numOfWorkouts \n"+
                 "from users inner join workouts on users.id = workouts.client_id \n"+
                 "where users.user_role='Client' and trainer_id =? group by client_id", new AllClientsMapper(),new Object[]{trainerID}
        );
     }
-
-
+    @Override
+    public List<ClientWorkout> GetAllWorkouts(int clientID){
+        return jdbcTemplate.query("SELECT distinct users.first_name,users.last_name,workouts.completed,workouts.completed_at ,workouts.created_at,workouts.complete_by,workouts.id \n" +
+                "from users inner join workouts on users.id = workouts.client_id \n" +
+                "where client_id =?", new ClientWorkoutsMapper(),new Object[]{clientID});
+    }
 
 }
 //    SELECT distinct users.first_name,users.last_name,max(workouts.completed_at) as lastWorkout
